@@ -28,8 +28,8 @@ const BookLayout = ( { pages }: BookLayoutProps ) => {
 				ref={ bookRef }
 				width={ 670 }
 				height={ 800 }
-				minHeight={ 500 }
-				minWidth={ 270 }
+				minHeight={ 0 }
+				minWidth={ 0 }
 				usePortrait={ false }
 				maxShadowOpacity={ 0.5 }
 				drawShadow
@@ -62,8 +62,6 @@ const BookLayout = ( { pages }: BookLayoutProps ) => {
 					>
 						<div className="page-content select-text relative">
 							{ component }
-
-							{/* Left corners */ }
 							{ !isFirstPage && (
 								<>
 									<div
@@ -84,8 +82,6 @@ const BookLayout = ( { pages }: BookLayoutProps ) => {
 									/>
 								</>
 							) }
-
-							{/* Right corners */ }
 							{ !isLastPage && (
 								<>
 									<div
