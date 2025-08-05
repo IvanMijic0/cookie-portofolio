@@ -1,0 +1,54 @@
+import { forwardRef } from "react";
+
+export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
+	<div
+		ref={ ref }
+		className="page relative pr-12 w-full h-full bg-cover bg-center bg-no-repeat"
+	>
+		<img
+			src="/human-rights-left.webp"
+			alt="Page background"
+			className="w-full h-full object-cover z-0"
+			loading="lazy"
+		/>
+		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
+		</div>
+	</div>
+) );
+
+export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
+	<div
+		ref={ ref }
+		className="page pl-4 relative w-full h-full bg-cover bg-center bg-no-repeat"
+	>
+		<div className="flex flex-col w-1/4 h-full">
+			{ ["1", "2", "3", "4"].map( ( i ) => (
+				<img
+					key={ i }
+					src={ `/human-rights-${ i }.webp` }
+					alt={ `Human Rights ${ i }` }
+					className="w-full h-1/4 object-cover"
+					loading="lazy"
+				/>
+			) ) }
+		</div>
+
+		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
+		</div>
+	</div>
+) );
+
+export function meta() {
+	return [
+		{ title: "Photography Series on Human Rights | Light as a Metaphor" },
+		{
+			name: "description",
+			content: "This conceptual series explores the fragility of human rights through light, shadow, and metaphor-rich visual storytelling."
+		}
+	];
+}
+
+export const loader = () => null;
+
+const HumanRights = () => null;
+export default HumanRights;

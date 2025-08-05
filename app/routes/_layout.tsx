@@ -1,9 +1,11 @@
 import HTMLFlipBook from "react-pageflip";
 import { useLocation, useNavigate } from "react-router";
-import type { SpreadKey } from "~/routes/spreads";
 import { type ForwardRefExoticComponent, type RefAttributes, useEffect, useState } from "react";
-import * as Spread1 from "./spreads/spread-1";
-import * as Spread2 from "./spreads/spread-2";
+import * as Homepage from "./spreads/homepage";
+import * as Photography from "./spreads/photography";
+import * as KillThemWithKindness from "~/routes/spreads/kill-them-with-kindness";
+import * as HumanRights from "~/routes/spreads/human-rights";
+import * as DoubleIndemnity from "~/routes/spreads/double-indemnity";
 
 type MetaEntry = Partial<{
 	title: string;
@@ -18,9 +20,14 @@ type SpreadModule = {
 };
 
 const spreadMap: Record<string, SpreadModule> = {
-	"spread-1": Spread1,
-	"spread-2": Spread2,
+	"homepage": Homepage,
+	"photography": Photography,
+	"photography/kill-them-with-kindness": KillThemWithKindness,
+	"photography/human-rights": HumanRights,
+	"photography/double-indemnity": DoubleIndemnity,
 };
+
+export type SpreadKey = keyof typeof spreadMap;
 
 const spreads = Object.keys( spreadMap ) as SpreadKey[];
 
@@ -75,11 +82,11 @@ export default function Flipbook() {
 
 	const navigate = useNavigate();
 	const location = useLocation();
-	const slug = location.pathname.split( "/" ).pop() ?? "spread-1";
+	const slug = location.pathname.replace( /^\/book\//, "" ) || "homepage";
 
 	const validatedSlug = spreads.includes( slug as SpreadKey )
 		? ( slug as SpreadKey )
-		: "spread-1";
+		: "homepage";
 
 	const startPage = spreads.indexOf( validatedSlug ) * 2;
 
@@ -89,7 +96,7 @@ export default function Flipbook() {
 	} );
 
 	return (
-		<div className="flex justify-center items-center w-screen h-screen overflow-hidden bg-black">
+		<div className="flex select-text justify-center items-center w-screen h-screen overflow-hidden bg-black">
 			<HTMLFlipBook
 				width={ dimensions.width }
 				height={ dimensions.height }
@@ -112,7 +119,7 @@ export default function Flipbook() {
 					const nextSlug = spreads[idx];
 					if (nextSlug) navigate( `/book/${ nextSlug }` );
 				} }
-				className=""
+				className="select-text"
 				size={ "fixed" }
 				minWidth={ 0 }
 				maxWidth={ 0 }
@@ -124,4 +131,3 @@ export default function Flipbook() {
 		</div>
 	);
 }
-
