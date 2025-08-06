@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { Button } from "@heroui/react";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -7,14 +6,11 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
 		<img
-			src="/homepage-left.webp"
+			src="/graphic-design-left.webp"
 			alt="Page background"
 			className="w-full h-full object-cover z-0"
 			loading="lazy"
 		/>
-		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
-			<Button className="bg-pink-200">Mah Baby</Button>
-		</div>
 	</div>
 ) );
 
@@ -24,20 +20,22 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
 		<img
-			src="/homepage-right.webp"
+			src="/graphic-design-right.webp"
 			alt="Page background"
 			className="w-full h-full object-cover z-0"
 			loading="lazy"
 		/>
 
-		<div className="absolute px-20 py-8 inset-0 z-10 flex items-start justify-start text-white">
+		<div
+			className="absolute px-20 pt-20 inset-0 z-10 flex items-end flex-col justify-start text-black leading-[0.8]">
+			<h1 className="text-[10rem] mix-blend-difference">GRAPHIC</h1>
 			<h1 className="text-[10rem] mix-blend-difference">DESIGN</h1>
 		</div>
 
 		<img
-			src="/cookie-pose.webp"
+			src="/graphic-design-right-cards.webp"
 			alt="Cookie Pose"
-			className="absolute bottom-0 right-0 max-h-full max-w-[78%] object-contain z-20 pointer-events-none"
+			className="absolute bottom-0 left-0 max-h-full max-w-[40%] object-contain z-20 pointer-events-none"
 			loading="lazy"
 		/>
 	</div>
@@ -45,15 +43,15 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 
 export function meta() {
 	return [
-		{ title: "Amna Kolić | Graphic Design, Photography & Illustration Portfolio" },
+		{ title: "Visual Identity & Branding Projects | Graphic Design Portfolio" },
 		{
 			name: "description",
-			content: "Explore the design portfolio of Amna Kolić, featuring creative work in graphic design, photography, illustration, and visual storytelling."
+			content: "Browse Amna Kolić’s graphic design archive—from expressive poster design to logo systems and branding."
 		}
 	];
 }
 
 export const loader = () => null;
 
-const Homepage = () => null;
-export default Homepage;
+const GraphicDesign = () => null;
+export default GraphicDesign;

@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { Button } from "@heroui/react";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -7,13 +6,12 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
 		<img
-			src="/homepage-left.webp"
+			src="/kreativ-festival-art-direction-left.webp"
 			alt="Page background"
 			className="w-full h-full object-cover z-0"
 			loading="lazy"
 		/>
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
-			<Button className="bg-pink-200">Mah Baby</Button>
 		</div>
 	</div>
 ) );
@@ -23,37 +21,35 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		ref={ ref }
 		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
-		<img
-			src="/homepage-right.webp"
-			alt="Page background"
-			className="w-full h-full object-cover z-0"
-			loading="lazy"
-		/>
-
-		<div className="absolute px-20 py-8 inset-0 z-10 flex items-start justify-start text-white">
-			<h1 className="text-[10rem] mix-blend-difference">DESIGN</h1>
+		<div className="flex px-14 justify-between items-end flex-col w-full h-full">
+			{ Array.from( { length: 3 } ).map( ( _, idx ) => {
+				let i = ( idx + 1 ).toString()
+				return <img
+					key={ i }
+					src={ `/kreativ-festival-art-direction-right-${ i }.webp` }
+					alt={ `Kreativ Festival Art Direction ${ i }` }
+					className="w-1/2 h-1/2 object-cover"
+					loading="lazy"
+				/>
+			} ) }
 		</div>
 
-		<img
-			src="/cookie-pose.webp"
-			alt="Cookie Pose"
-			className="absolute bottom-0 right-0 max-h-full max-w-[78%] object-contain z-20 pointer-events-none"
-			loading="lazy"
-		/>
+		<div className="absolute px-20 py-8 inset-0 z-10 flex items-start justify-start text-white">
+		</div>
 	</div>
 ) );
 
 export function meta() {
 	return [
-		{ title: "Amna Kolić | Graphic Design, Photography & Illustration Portfolio" },
+		{ title: "Festival Branding: KREATIV Fest Art Direction & Visual Identity" },
 		{
 			name: "description",
-			content: "Explore the design portfolio of Amna Kolić, featuring creative work in graphic design, photography, illustration, and visual storytelling."
+			content: "Art direction and branding system for KREATIV Fest, inspired by grunge aesthetics and David Carson’s experimental typography."
 		}
 	];
 }
 
 export const loader = () => null;
 
-const Homepage = () => null;
-export default Homepage;
+const KreativFestivalArtDirection = () => null;
+export default KreativFestivalArtDirection

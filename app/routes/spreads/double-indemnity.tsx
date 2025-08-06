@@ -6,15 +6,16 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
 		<div className="w-full h-full grid grid-cols-2 gap-3">
-			{ ["1", "2", "3", "4", "5", "6"].map( ( i ) => (
-				<img
+			{ Array.from( { length: 6 } ).map( ( _, idx ) => {
+				let i = ( idx + 1 ).toString()
+				return <img
 					key={ i }
 					src={ `/double-indemnity-left-${ i }.webp` }
 					alt={ `Double Indemnity Left ${ i }` }
 					className="w-full h-full object-cover"
 					loading="lazy"
 				/>
-			) ) }
+			} ) }
 		</div>
 	</div>
 ) );

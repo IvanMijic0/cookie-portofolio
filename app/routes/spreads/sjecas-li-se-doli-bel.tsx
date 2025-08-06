@@ -1,0 +1,48 @@
+import { forwardRef } from "react";
+
+export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
+	<div
+		ref={ ref }
+		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
+	>
+		<img
+			src="/doli-bel-left.webp"
+			alt="Page background"
+			className="w-full h-full object-cover z-0"
+			loading="lazy"
+		/>
+	</div>
+) );
+
+export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
+	<div
+		ref={ ref }
+		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
+	>
+		<img
+			src="/doli-bel-right.webp"
+			alt="Page background"
+			className="w-full h-full object-cover z-0"
+			loading="lazy"
+		/>
+
+		<div
+			className="absolute px-20 pt-20 inset-0 z-10 flex items-end flex-col justify-start text-black leading-[0.8]">
+		</div>
+	</div>
+) );
+
+export function meta() {
+	return [
+		{ title: "Theatre Poster Design | Doli Bel Stage Adaptation Visuals" },
+		{
+			name: "description",
+			content: "A dramatic red poster and typographic treatment inspired by emotional depth and instability in the iconic Bosnian play."
+		}
+	];
+}
+
+export const loader = () => null;
+
+const SjecasLiSeDoliBel = () => null;
+export default SjecasLiSeDoliBel;

@@ -6,6 +6,16 @@ import * as Photography from "./spreads/photography";
 import * as KillThemWithKindness from "~/routes/spreads/kill-them-with-kindness";
 import * as HumanRights from "~/routes/spreads/human-rights";
 import * as DoubleIndemnity from "~/routes/spreads/double-indemnity";
+import * as GraphicDesign from "~/routes/spreads/graphic-design";
+import * as KreativFestivalArtDirection from "~/routes/spreads/kreativ-festival-art-direction";
+import * as SjecasLiSeDoliBel from "~/routes/spreads/sjecas-li-se-doli-bel";
+import * as ChippstersLogo from "~/routes/spreads/chippsters-logo";
+import * as Illustration from "~/routes/spreads/illustration";
+import * as MountainFairy from "~/routes/spreads/mountain-fairy";
+import * as AustenInWatercolor from "~/routes/spreads/austen-in-watercolor";
+import * as Mural from "~/routes/spreads/mural";
+import * as AboutMe from "~/routes/spreads/about-me";
+import * as Contact from "~/routes/spreads/contact";
 
 type MetaEntry = Partial<{
 	title: string;
@@ -25,6 +35,16 @@ const spreadMap: Record<string, SpreadModule> = {
 	"photography/kill-them-with-kindness": KillThemWithKindness,
 	"photography/human-rights": HumanRights,
 	"photography/double-indemnity": DoubleIndemnity,
+	"graphic-design": GraphicDesign,
+	"graphic-design/kreativ-festival-art-direction": KreativFestivalArtDirection,
+	"graphic-design/sjecas-li-se-doli-bel": SjecasLiSeDoliBel,
+	"graphic-design/chippsters-logo": ChippstersLogo,
+	"illustration": Illustration,
+	"illustration/mountain-fairy": MountainFairy,
+	"illustration/austen-in-watercolor": AustenInWatercolor,
+	"illustration/mural": Mural,
+	"about-me": AboutMe,
+	"contact": Contact,
 };
 
 export type SpreadKey = keyof typeof spreadMap;

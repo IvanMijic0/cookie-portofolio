@@ -22,15 +22,16 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		className="page pl-4 relative w-full h-full bg-cover bg-center bg-no-repeat"
 	>
 		<div className="flex flex-col w-1/4 h-full">
-			{ ["1", "2", "3", "4"].map( ( i ) => (
-				<img
+			{ Array.from( { length: 4 } ).map( ( _, idx ) => {
+				let i = ( idx + 1 ).toString()
+				return <img
 					key={ i }
 					src={ `/human-rights-${ i }.webp` }
 					alt={ `Human Rights ${ i }` }
 					className="w-full h-1/4 object-cover"
 					loading="lazy"
 				/>
-			) ) }
+			} ) }
 		</div>
 
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
