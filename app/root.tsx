@@ -3,7 +3,6 @@ import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, 
 import type { Route } from "./+types/root";
 import "./app.css";
 import type { ReactNode } from "react";
-import { HeroUIProvider } from "@heroui/react";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -37,9 +36,7 @@ export function Layout( { children }: { children: ReactNode } ) {
 }
 
 export default function App() {
-	return <HeroUIProvider>
-		<Outlet/>
-	</HeroUIProvider>
+	return <Outlet/>
 }
 
 export function ErrorBoundary( { error }: Route.ErrorBoundaryProps ) {
