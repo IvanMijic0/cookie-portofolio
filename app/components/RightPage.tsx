@@ -10,8 +10,8 @@ const stop = ( e: SyntheticEvent ) => {
 };
 
 const variants: Variants = {
-	hidden: { y: "-93.5%" },
-	peek: { y: "-87%" },
+	hidden: { y: "-92%" },
+	peek: { y: "-87.5%" },
 	open: { y: "0%" },
 };
 
