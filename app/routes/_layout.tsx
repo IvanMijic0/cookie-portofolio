@@ -1,6 +1,6 @@
 import HTMLFlipBook from "react-pageflip";
 import { useLocation, useNavigate } from "react-router";
-import { type ForwardRefExoticComponent, type RefAttributes, useEffect, useState } from "react";
+import { type ForwardRefExoticComponent, type RefAttributes, useEffect, useMemo, useState } from "react";
 import * as Homepage from "./spreads/homepage";
 import * as Photography from "./spreads/photography";
 import * as KillThemWithKindness from "~/routes/spreads/kill-them-with-kindness";
@@ -57,6 +57,11 @@ const ASPECT_RATIO = 864 / 1117;
 
 export default function Flipbook() {
 	const [dimensions, setDimensions] = useState( { width: TARGET_WIDTH, height: TARGET_HEIGHT } );
+	const [open, setOpen] = useState( false );
+	const navigate = useNavigate();
+	const location = useLocation();
+
+	useEffect( () => setOpen( false ), [location.pathname] );
 
 	useEffect( () => {
 		const updateSize = () => {
@@ -100,8 +105,6 @@ export default function Flipbook() {
 		return () => window.removeEventListener( "resize", updateSize );
 	}, [] );
 
-	const navigate = useNavigate();
-	const location = useLocation();
 	const slug = location.pathname.replace( /^\/book\//, "" ) || "homepage";
 
 	const validatedSlug = spreads.includes( slug as SpreadKey )
@@ -110,44 +113,52 @@ export default function Flipbook() {
 
 	const startPage = spreads.indexOf( validatedSlug ) * 2;
 
-	const allPages = spreads.flatMap( ( key ) => {
-		const { Left, Right } = spreadMap[key];
-		return [<Left key={ `${ key }-left` }/>, <Right key={ `${ key }-right` }/>];
-	} );
+	const allPages = useMemo( () => {
+		return spreads.flatMap( ( key ) => {
+			const mod = spreadMap[key];
+			const Left = mod.Left;
+			const Right = mod.Right;
+			return [<Left key={ `${ key }-left` }/>, <Right key={ `${ key }-right` }/>];
+		} );
+	}, [] );
 
 	return (
-		<div className="flex select-text justify-center items-center w-screen h-screen overflow-hidden bg-black">
-			<HTMLFlipBook
-				width={ dimensions.width }
-				height={ dimensions.height }
-				flippingTime={ 1000 }
-				startZIndex={ 0 }
-				maxShadowOpacity={ 0.8 }
-				startPage={ startPage }
-				usePortrait={ false }
-				showCover={ false }
-				mobileScrollSupport
-				useMouseEvents
-				clickEventForward
-				drawShadow
-				swipeDistance={ 30 }
-				showPageCorners
-				disableFlipByClick={ false }
-				style={ { margin: "0 auto" } }
-				onFlip={ ( e ) => {
-					const idx = Math.floor( e.data / 2 );
-					const nextSlug = spreads[idx];
-					if (nextSlug) navigate( `/book/${ nextSlug }` );
-				} }
-				className="select-text"
-				size={ "fixed" }
-				minWidth={ 0 }
-				maxWidth={ 0 }
-				minHeight={ 0 }
-				maxHeight={ 0 }
-				autoSize={ false }>
-				{ allPages }
-			</HTMLFlipBook>
+		<div
+			className="relative flex select-text justify-center items-center w-screen h-screen overflow-hidden bg-black"
+		>
+			<div className="relative">
+				<HTMLFlipBook
+					width={ dimensions.width }
+					height={ dimensions.height }
+					flippingTime={ 800 }
+					startZIndex={ 0 }
+					maxShadowOpacity={ 0.8 }
+					startPage={ startPage }
+					usePortrait={ false }
+					showCover={ false }
+					mobileScrollSupport
+					useMouseEvents
+					clickEventForward
+					drawShadow
+					swipeDistance={ 20 }
+					showPageCorners
+					disableFlipByClick={ false }
+					style={ { margin: "0 auto" } }
+					onFlip={ ( e ) => {
+						const idx = Math.floor( e.data / 2 );
+						const nextSlug = spreads[idx];
+						if (nextSlug) navigate( `/book/${ nextSlug }`, { replace: true } );
+					} }
+					className="select-text"
+					size={ "fixed" }
+					minWidth={ 0 }
+					maxWidth={ 0 }
+					minHeight={ 0 }
+					maxHeight={ 0 }
+					autoSize={ false }>
+					{ allPages }
+				</HTMLFlipBook>
+			</div>
 		</div>
 	);
 }

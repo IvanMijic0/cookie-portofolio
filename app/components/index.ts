@@ -1,1 +1,2 @@
-export { default as PageLoader } from './PageLoader';
+export { default as RightPage } from './RightPage';
+export { default as AnimatedBookmarkIcon } from './AnimatedBookmark'

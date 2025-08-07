@@ -9,7 +9,6 @@ html,
 body {
     @apply bg-white dark:bg-gray-950;
 
-
     margin: 0;
     overflow: hidden;
     color: #000;
@@ -27,6 +26,7 @@ body {
     overflow: hidden;
     isolation: isolate;
     z-index: 50;
+    contain: layout paint;
 }
 
 .page::after {
@@ -43,4 +43,8 @@ body {
     inset 0 0 10px rgba(0, 0, 0, 0.1);
     pointer-events: none;
     z-index: 50;
+}
+
+.bookmark-button {
+    touch-action: none;
 }

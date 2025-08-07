@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { forwardRef } from "react";
+import { RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -27,28 +28,22 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<RightPage ref={ ref } showBookmark>
 		<img
 			src="/homepage-right.webp"
-			alt="Page background"
-			className="w-full h-full object-cover z-0"
+			className="absolute inset-0 w-full h-full object-cover z-0"
+			alt=""
 			loading="lazy"
 		/>
-
-		<div className="absolute px-20 py-8 inset-0 z-10 flex items-start justify-start text-white">
-			<h1 className="text-[10rem] mix-blend-difference">DESIGN</h1>
-		</div>
-
+		<h1 className="absolute left-20 top-8 z-10 text-[10rem] text-white mix-blend-difference">
+			DESIGN
+		</h1>
 		<img
 			src="/cookie-pose.webp"
 			alt="Cookie Pose"
 			className="absolute bottom-0 right-0 max-h-full max-w-[78%] object-contain z-20 pointer-events-none"
-			loading="lazy"
 		/>
-	</div>
+	</RightPage>
 ) );
 
 export function meta() {

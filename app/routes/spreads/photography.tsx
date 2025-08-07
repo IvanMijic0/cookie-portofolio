@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
-import { PTop } from "~/assets";
-import PBottom from "~/assets/PBottom";
+import { PBottom, PTop } from "~/assets";
+import { motion } from "framer-motion";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -13,6 +13,17 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			className="object-cover"
 			loading="lazy"
 		/>
+		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
+			<motion.button
+				onClick={ () => console.log( "Cookie" ) }
+				whileHover={ { scale: 1.05, rotate: -1 } }
+				whileTap={ { scale: 0.95, rotate: 1 } }
+				transition={ { type: "spring", stiffness: 300, damping: 15 } }
+				className="z-50 bg-pink-200 cursor-pointer rounded-full px-4 py-2 text-pink-950 font-semibold shadow-md hover:shadow-lg"
+			>
+				Mah Baby
+			</motion.button>
+		</div>
 	</div>
 ) );
 
