@@ -58,6 +58,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 									bg-[length:115%_105%]
 									bg-center
 									inset-0
+									shadow-lg
 									flex flex-col items-center py-1 justify-end
 									h-full w-full
 									cursor-pointer outline-none
