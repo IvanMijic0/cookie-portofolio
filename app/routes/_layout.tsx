@@ -1,6 +1,6 @@
 import HTMLFlipBook from "react-pageflip";
 import { useLocation, useNavigate } from "react-router";
-import { type ForwardRefExoticComponent, type RefAttributes, useEffect, useMemo, useState } from "react";
+import { type ForwardRefExoticComponent, type RefAttributes, useEffect, useMemo, useRef, useState } from "react";
 import * as Homepage from "./spreads/homepage";
 import * as Photography from "./spreads/photography";
 import * as KillThemWithKindness from "~/routes/spreads/kill-them-with-kindness";
@@ -16,6 +16,9 @@ import * as AustenInWatercolor from "~/routes/spreads/austen-in-watercolor";
 import * as Mural from "~/routes/spreads/mural";
 import * as AboutMe from "~/routes/spreads/about-me";
 import * as Contact from "~/routes/spreads/contact";
+import { useUI } from "~/context/ui";
+import { BarLoader } from "~/components";
+import { useFlipbook } from "~/context/flipbook";
 
 type MetaEntry = Partial<{
 	title: string;
@@ -55,11 +58,70 @@ const TARGET_WIDTH = 864;
 const TARGET_HEIGHT = 1117;
 const ASPECT_RATIO = 864 / 1117;
 
+const useDelayedVisibility = ( active: boolean, delayMs = 300, minVisibleMs = 250 ) => {
+	const [shown, setShown] = useState( false );
+	useEffect( () => {
+		let tShow: number | undefined;
+		let tHide: number | undefined;
+		if (active) {
+			tShow = window.setTimeout( () => setShown( true ), delayMs );
+		} else {
+			if (tShow) clearTimeout( tShow );
+			if (shown) tHide = window.setTimeout( () => setShown( false ), minVisibleMs );
+			else setShown( false );
+		}
+		return () => {
+			if (tShow) clearTimeout( tShow );
+			if (tHide) clearTimeout( tHide );
+		};
+	}, [active, delayMs, minVisibleMs, shown] );
+	return shown;
+}
+
 export default function Flipbook() {
 	const [dimensions, setDimensions] = useState( { width: TARGET_WIDTH, height: TARGET_HEIGHT } );
-	const [open, setOpen] = useState( false );
+	const [, setOpen] = useState( false );
 	const navigate = useNavigate();
 	const location = useLocation();
+	const [loading, setLoading] = useState( true );
+	const [mounting, setMounting] = useState( true );
+	const { readOnly } = useUI();
+
+	const bookRef = useRef<any>( null );
+	const { setController } = useFlipbook();
+
+	const flipKey = `flip-${ readOnly ? "ro" : "rw" }`;
+	const LOADER_MS = 500;
+
+	useEffect( () => {
+		const toPageIndex = ( slug: string ) => {
+			const clean = slug.replace( /^\/+/, "" );
+			const spreadIndex = spreads.indexOf( clean as any );
+			return spreadIndex >= 0 ? spreadIndex * 2 : 0;
+		};
+
+		const goToIndex = ( pageIndex: number ) => {
+			const api: any = bookRef.current?.pageFlip?.();
+			if (!api) return;
+			if (typeof api.flip === "function") api.flip( pageIndex );
+			else if (typeof api.turnToPage === "function") api.turnToPage( pageIndex );
+		};
+
+
+		const goToSpread = ( slug: string ) => goToIndex( toPageIndex( slug ) );
+
+		setController( {
+			ready: !!bookRef.current,
+			goToSpread,
+			goToIndex,
+		} );
+	}, [setController] );
+
+	useEffect( () => {
+		setLoading( true );
+		const t = setTimeout( () => setLoading( false ), LOADER_MS );
+		return () => clearTimeout( t );
+	}, [flipKey] );
 
 	useEffect( () => setOpen( false ), [location.pathname] );
 
@@ -79,9 +141,9 @@ export default function Flipbook() {
 			} else if (width < 1280) {
 				marginRatio = 0.07; // lg
 			} else if (width < 1536) {
-				marginRatio = 0.08; // xl
+				marginRatio = 0.06; // xl
 			} else if (width < 1920) {
-				marginRatio = 0.13; // 2xl
+				marginRatio = 0.12; // 2xl
 			} else {
 				marginRatio = 0.15; // 3xl+
 			}
@@ -104,6 +166,13 @@ export default function Flipbook() {
 		window.addEventListener( "resize", updateSize );
 		return () => window.removeEventListener( "resize", updateSize );
 	}, [] );
+
+	useEffect( () => {
+		setMounting( true );
+		const fallback = window.setTimeout( () => setMounting( false ), 800 );
+		return () => clearTimeout( fallback );
+	}, [flipKey] );
+
 
 	const slug = location.pathname.replace( /^\/book\//, "" ) || "homepage";
 
@@ -128,6 +197,8 @@ export default function Flipbook() {
 		>
 			<div className="relative">
 				<HTMLFlipBook
+					ref={ bookRef }
+					key={ flipKey }
 					width={ dimensions.width }
 					height={ dimensions.height }
 					flippingTime={ 800 }
@@ -136,14 +207,14 @@ export default function Flipbook() {
 					startPage={ startPage }
 					usePortrait={ false }
 					showCover={ false }
-					mobileScrollSupport
-					useMouseEvents
-					clickEventForward
-					drawShadow
-					swipeDistance={ 20 }
-					showPageCorners
-					disableFlipByClick={ false }
-					style={ { margin: "0 auto" } }
+					mobileScrollSupport={ !readOnly }
+					useMouseEvents={ !readOnly }
+					clickEventForward={ !readOnly }
+					drawShadow={ !readOnly }
+					swipeDistance={ readOnly ? 9999 : 20 }
+					showPageCorners={ !readOnly }
+					disableFlipByClick={ readOnly }
+					style={ { margin: "0 auto", display: mounting ? "none" : "block" } }
 					onFlip={ ( e ) => {
 						const idx = Math.floor( e.data / 2 );
 						const nextSlug = spreads[idx];
@@ -158,6 +229,13 @@ export default function Flipbook() {
 					autoSize={ false }>
 					{ allPages }
 				</HTMLFlipBook>
+				{ loading &&
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+                        <div
+                            className="rounded bg-black/20 p-4 backdrop-blur-2xl">
+                            <BarLoader/>
+                        </div>
+                    </div> }
 			</div>
 		</div>
 	);

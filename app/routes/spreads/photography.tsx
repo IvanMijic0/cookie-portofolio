@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { PBottom, PTop } from "~/assets";
 import { motion } from "framer-motion";
+import { RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -28,10 +29,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<RightPage ref={ ref } showBookmark>
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-between flex-col text-white">
 			<PTop/>
 			<div className="text-black flex justify-center items-end pl-14  flex-col">
@@ -46,7 +44,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				</div>
 			</div>
 		</div>
-	</div>
+	</RightPage>
 ) );
 
 export function meta() {

@@ -11,7 +11,7 @@ const TRANSITIONS = {
 	"down->up": { data: DownUp, reverse: false },
 } as const;
 
-const AnimatedBookmarkIcon = ( { state, className, size = 48 }: Props ) => {
+const AnimatedBookmarkIcon = ( { state, className, size = 70 }: Props ) => {
 	const prev = useRef<State>( state );
 	const lottieRef = useRef<LottieRefCurrentProps>( null );
 

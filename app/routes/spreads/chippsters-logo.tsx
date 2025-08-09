@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -15,10 +16,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<RightPage ref={ ref } showBookmark>
 		<div className="w-full h-full flex flex-col p-20 gap-6 justify-between">
 			<div className="flex gap-4 justify-between w-full">
 				<div className="flex flex-col gap-4">
@@ -56,7 +54,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		<div
 			className="absolute px-20 pt-20 inset-0 z-10 flex items-end flex-col justify-start text-black leading-[0.8]">
 		</div>
-	</div>
+	</RightPage>
 ) );
 
 export function meta() {

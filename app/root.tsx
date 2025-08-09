@@ -1,9 +1,10 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
+import "./app.css";
 
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
 import type { Route } from "./+types/root";
 import type { ReactNode } from "react";
-
-import "./app.css";
+import { UIProvider } from "~/context/ui";
+import { FlipbookProvider } from "~/context/flipbook";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -33,7 +34,11 @@ export function Layout( { children }: { children: ReactNode } ) {
 }
 
 export default function App() {
-	return <Outlet/>
+	return <UIProvider>
+		<FlipbookProvider>
+			<Outlet/>
+		</FlipbookProvider>
+	</UIProvider>
 }
 
 export function ErrorBoundary( { error }: Route.ErrorBoundaryProps ) {

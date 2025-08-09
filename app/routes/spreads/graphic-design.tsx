@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -15,10 +16,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<RightPage ref={ ref } showBookmark>
 		<img
 			src="/graphic-design-right.webp"
 			alt="Page background"
@@ -38,7 +36,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			className="absolute bottom-0 left-0 max-h-full max-w-[40%] object-contain z-20 pointer-events-none"
 			loading="lazy"
 		/>
-	</div>
+	</RightPage>
 ) );
 
 export function meta() {

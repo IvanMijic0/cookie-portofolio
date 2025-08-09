@@ -1,6 +1,5 @@
 export { default as PTop } from './PTop';
 export { default as PBottom } from './PBottom';
-export { default as Star } from './Star';
-export { default as ChevronDown } from './ChevronDown';
-export { default as ChevronUp } from './ChevronUp';
 export { DownUp, StarToDown, UpToStar } from './lottie'
+export { default as GlassesEmpty } from './GlassesEmpty'
+export { default as GlassesFilled } from './GlassesFilled'

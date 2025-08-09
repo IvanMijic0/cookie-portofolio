@@ -35,13 +35,14 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			alt=""
 			loading="lazy"
 		/>
-		<h1 className="font-display absolute left-20 top-8 z-10 text-[10rem]">
+
+		<h1 className="font-display absolute inset-0 flex justify-center text-white z-10 text-[8rem] 2xl:text-[10rem]">
 			DESIGN
 		</h1>
 		<img
 			src="/cookie-pose.webp"
 			alt="Cookie Pose"
-			className="absolute bottom-0 right-0 max-h-full max-w-[78%] object-contain z-20 pointer-events-none"
+			className="absolute bottom-0 right-0 max-w-[39rem] object-contain z-20 pointer-events-none"
 		/>
 	</RightPage>
 ) );
