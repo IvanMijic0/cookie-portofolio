@@ -1,20 +1,78 @@
 @import "tailwindcss";
 
-@theme {
-    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@font-face {
+    font-family: "Bodoni Moda";
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url("/fonts/bodoni-moda.woff2") format("woff2");
 }
 
-html,
-body {
-    @apply bg-white dark:bg-gray-950;
+@font-face {
+    font-family: "Bodoni Moda";
+    font-style: italic;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url("/fonts/bodoni-moda-italic.woff2") format("woff2");
+}
 
-    margin: 0;
-    overflow: hidden;
-    color: #000;
+@font-face {
+    font-family: "Libre Bodoni";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("/fonts/libre-bodoni.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Libre Bodoni";
+    font-style: italic;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("/fonts/libre-bodoni-italic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-display: swap;
+    src: url("/fonts/roboto.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Roboto";
+    font-style: italic;
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+    font-display: swap;
+    src: url("/fonts/roboto-italic.woff2") format("woff2");
+}
+
+@theme {
+    --font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    --font-serif: "Libre Bodoni", Georgia, "Times New Roman", serif;
+    --font-display: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
+}
+
+h1 {
+    font-family: "Bodoni Moda", Serif, serif;
+}
+
+@layer base {
+    html {
+        @apply font-sans antialiased;
+    }
+
+    .serif, .article {
+        @apply font-serif;
+    }
 }
 
 .page {
+    font-family: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
     position: relative;
     color: #000;
     background: #fff;

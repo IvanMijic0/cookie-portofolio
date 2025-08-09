@@ -21,7 +21,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				transition={ { type: "spring", stiffness: 300, damping: 15 } }
 				className="z-50 bg-pink-200 cursor-pointer rounded-full px-4 py-2 text-pink-950 font-semibold shadow-md hover:shadow-lg"
 			>
-				Mah Baby
+				Butterino
 			</motion.button>
 		</div>
 	</div>
@@ -35,7 +35,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			alt=""
 			loading="lazy"
 		/>
-		<h1 className="absolute left-20 top-8 z-10 text-[10rem] text-white mix-blend-difference">
+		<h1 className="font-display absolute left-20 top-8 z-10 text-[10rem]">
 			DESIGN
 		</h1>
 		<img

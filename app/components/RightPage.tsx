@@ -10,8 +10,8 @@ const stop = ( e: SyntheticEvent ) => {
 };
 
 const variants: Variants = {
-	hidden: { y: "-92%" },
-	peek: { y: "-87.5%" },
+	hidden: { y: "-93.6%" },
+	peek: { y: "-90%" },
 	open: { y: "0%" },
 };
 
@@ -50,7 +50,13 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 						<button
 							type="button"
 							aria-label="Open bookmark"
-							onClick={ () => setOpen( v => !v ) }
+							onClick={ () =>
+								setOpen( prev => {
+									const next = !prev;
+									if (!next) setHovered( false );
+									return next;
+								} )
+							}
 							className="
 									absolute
 									bg-[url('/bookmark.webp')]

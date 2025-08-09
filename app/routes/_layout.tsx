@@ -149,7 +149,7 @@ export default function Flipbook() {
 						const nextSlug = spreads[idx];
 						if (nextSlug) navigate( `/book/${ nextSlug }`, { replace: true } );
 					} }
-					className="select-text"
+					className=""
 					size={ "fixed" }
 					minWidth={ 0 }
 					maxWidth={ 0 }
