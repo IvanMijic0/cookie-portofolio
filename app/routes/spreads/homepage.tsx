@@ -47,7 +47,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				  [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
 				"
 			>
-				<DModified className="h-[0.75em] w-auto mr-[0.04em]"/>
+				<DModified className="h-[0.75em] w-auto"/>
 				ESIGN
 			</span>
 		</h1>
