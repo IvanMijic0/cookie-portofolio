@@ -22,7 +22,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="lazy"
+			loading="eager"
 		/>
 
 		<article
