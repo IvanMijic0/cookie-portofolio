@@ -13,6 +13,24 @@ export const links: Route.LinksFunction = () => [
 		href: "https://fonts.gstatic.com",
 		crossOrigin: "anonymous",
 	},
+	{ rel: "preload", as: "font", href: "/fonts/bodoni-moda.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/bodoni-moda-italic.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous"
+	},
+	{ rel: "preload", as: "font", href: "/fonts/libre-bodoni.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/libre-bodoni-italic.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous"
+	},
+	{ rel: "preload", as: "font", href: "/fonts/roboto.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{ rel: "preload", as: "font", href: "/fonts/roboto-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 ];
 
 export function Layout( { children }: { children: ReactNode } ) {

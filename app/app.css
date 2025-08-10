@@ -4,7 +4,7 @@
     font-family: "Bodoni Moda";
     font-style: normal;
     font-weight: 400 900;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/bodoni-moda.woff2") format("woff2");
 }
 
@@ -12,7 +12,7 @@
     font-family: "Bodoni Moda";
     font-style: italic;
     font-weight: 400 900;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/bodoni-moda-italic.woff2") format("woff2");
 }
 
@@ -20,7 +20,7 @@
     font-family: "Libre Bodoni";
     font-style: normal;
     font-weight: 400 700;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/libre-bodoni.woff2") format("woff2");
 }
 
@@ -28,7 +28,7 @@
     font-family: "Libre Bodoni";
     font-style: italic;
     font-weight: 400 700;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/libre-bodoni-italic.woff2") format("woff2");
 }
 
@@ -37,7 +37,7 @@
     font-style: normal;
     font-weight: 100 900;
     font-stretch: 75% 125%;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/roboto.woff2") format("woff2");
 }
 
@@ -46,7 +46,7 @@
     font-style: italic;
     font-weight: 100 900;
     font-stretch: 75% 125%;
-    font-display: swap;
+    font-display: block ;
     src: url("/fonts/roboto-italic.woff2") format("woff2");
 }
 
@@ -63,7 +63,7 @@ h1 {
 
 @layer base {
     html {
-        @apply font-sans antialiased;
+        @apply font-sans antialiased bg-gray-200;
     }
 
     .serif, .article {
@@ -71,37 +71,57 @@ h1 {
     }
 }
 
+.flip-book {
+    display: flex !important;
+}
+
 .page {
-    font-family: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
     position: relative;
     color: #000;
     background: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
-    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.3), inset 0 0 20px rgba(0, 0, 0, 0.2), 0 40px 80px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+
+    box-shadow: 0 32px 90px rgba(0, 0, 0, .48),
+    0 12px 36px rgba(0, 0, 0, .28),
+    0 1px 8px rgba(0, 0, 0, .24);
+
     overflow: hidden;
     isolation: isolate;
     z-index: 50;
     contain: layout paint;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .page::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(
-            ellipse at center,
-            rgba(0, 0, 0, 0) 40%,
-            rgba(0, 0, 0, 0.25) 100%
-    );
-    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.2),
-    inset 0 0 20px rgba(0, 0, 0, 0.15),
-    inset 0 0 10px rgba(0, 0, 0, 0.1);
     pointer-events: none;
-    z-index: 50;
+    z-index: 1;
+    background: radial-gradient(120% 80% at 50% 45%,
+    rgba(0, 0, 0, .26) 0%,
+    rgba(0, 0, 0, 0) 55%);
+    box-shadow: inset 0 0 26px rgba(0, 0, 0, .22);
 }
+
+.stf__item,
+.stf__block,
+.stf__page,
+.stf__parent canvas,
+.flip-book {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.page,
+.page::after {
+    will-change: transform, opacity;
+}
+
 
 .bookmark-button {
     touch-action: none;

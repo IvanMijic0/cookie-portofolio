@@ -12,7 +12,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			src="/photography-intro.webp"
 			alt="Page background"
 			className="object-cover"
-			loading="lazy"
+			loading="eager"
 		/>
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
 			<motion.button

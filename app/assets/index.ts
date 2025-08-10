@@ -3,3 +3,5 @@ export { default as PBottom } from './PBottom';
 export { DownUp, StarToDown, UpToStar } from './lottie'
 export { default as GlassesEmpty } from './GlassesEmpty'
 export { default as GlassesFilled } from './GlassesFilled'
+export { default as DModified } from './DModified'
+export { default as CModified } from './CModified'

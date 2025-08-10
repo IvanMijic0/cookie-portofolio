@@ -19,6 +19,9 @@ import * as Contact from "~/routes/spreads/contact";
 import { useUI } from "~/context/ui";
 import { BarLoader } from "~/components";
 import { useFlipbook } from "~/context/flipbook";
+import { useInitialAssets } from "~/hooks";
+import { CRITICAL_IMAGES, FONT_STRINGS } from "~/constants";
+import clsx from "clsx";
 
 type MetaEntry = Partial<{
 	title: string;
@@ -58,37 +61,16 @@ const TARGET_WIDTH = 864;
 const TARGET_HEIGHT = 1117;
 const ASPECT_RATIO = 864 / 1117;
 
-const useDelayedVisibility = ( active: boolean, delayMs = 300, minVisibleMs = 250 ) => {
-	const [shown, setShown] = useState( false );
-	useEffect( () => {
-		let tShow: number | undefined;
-		let tHide: number | undefined;
-		if (active) {
-			tShow = window.setTimeout( () => setShown( true ), delayMs );
-		} else {
-			if (tShow) clearTimeout( tShow );
-			if (shown) tHide = window.setTimeout( () => setShown( false ), minVisibleMs );
-			else setShown( false );
-		}
-		return () => {
-			if (tShow) clearTimeout( tShow );
-			if (tHide) clearTimeout( tHide );
-		};
-	}, [active, delayMs, minVisibleMs, shown] );
-	return shown;
-}
-
 export default function Flipbook() {
 	const [dimensions, setDimensions] = useState( { width: TARGET_WIDTH, height: TARGET_HEIGHT } );
 	const [, setOpen] = useState( false );
 	const navigate = useNavigate();
 	const location = useLocation();
-	const [loading, setLoading] = useState( true );
-	const [mounting, setMounting] = useState( true );
 	const { readOnly } = useUI();
 
 	const bookRef = useRef<any>( null );
 	const { setController } = useFlipbook();
+	const assetsReady = useInitialAssets( FONT_STRINGS, CRITICAL_IMAGES );
 
 	const flipKey = `flip-${ readOnly ? "ro" : "rw" }`;
 	const LOADER_MS = 500;
@@ -116,12 +98,6 @@ export default function Flipbook() {
 			goToIndex,
 		} );
 	}, [setController] );
-
-	useEffect( () => {
-		setLoading( true );
-		const t = setTimeout( () => setLoading( false ), LOADER_MS );
-		return () => clearTimeout( t );
-	}, [flipKey] );
 
 	useEffect( () => setOpen( false ), [location.pathname] );
 
@@ -167,13 +143,6 @@ export default function Flipbook() {
 		return () => window.removeEventListener( "resize", updateSize );
 	}, [] );
 
-	useEffect( () => {
-		setMounting( true );
-		const fallback = window.setTimeout( () => setMounting( false ), 800 );
-		return () => clearTimeout( fallback );
-	}, [flipKey] );
-
-
 	const slug = location.pathname.replace( /^\/book\//, "" ) || "homepage";
 
 	const validatedSlug = spreads.includes( slug as SpreadKey )
@@ -193,43 +162,48 @@ export default function Flipbook() {
 
 	return (
 		<div
-			className="relative flex select-text justify-center items-center w-screen h-screen overflow-hidden bg-black"
+			style={ {
+				display: 'none'
+			} }
+			className="relative flip-book flex select-text justify-center items-center w-screen h-screen overflow-hidden"
 		>
 			<div className="relative">
-				<HTMLFlipBook
-					ref={ bookRef }
-					key={ flipKey }
-					width={ dimensions.width }
-					height={ dimensions.height }
-					flippingTime={ 800 }
-					startZIndex={ 0 }
-					maxShadowOpacity={ 0.8 }
-					startPage={ startPage }
-					usePortrait={ false }
-					showCover={ false }
-					mobileScrollSupport={ !readOnly }
-					useMouseEvents={ !readOnly }
-					clickEventForward={ !readOnly }
-					drawShadow={ !readOnly }
-					swipeDistance={ readOnly ? 9999 : 20 }
-					showPageCorners={ !readOnly }
-					disableFlipByClick={ readOnly }
-					style={ { margin: "0 auto", display: mounting ? "none" : "block" } }
-					onFlip={ ( e ) => {
-						const idx = Math.floor( e.data / 2 );
-						const nextSlug = spreads[idx];
-						if (nextSlug) navigate( `/book/${ nextSlug }`, { replace: true } );
-					} }
-					className=""
-					size={ "fixed" }
-					minWidth={ 0 }
-					maxWidth={ 0 }
-					minHeight={ 0 }
-					maxHeight={ 0 }
-					autoSize={ false }>
-					{ allPages }
-				</HTMLFlipBook>
-				{ loading &&
+				<div className={ clsx( !assetsReady && "invisible" ) }>
+					<HTMLFlipBook
+						ref={ bookRef }
+						key={ flipKey }
+						width={ dimensions.width }
+						height={ dimensions.height }
+						flippingTime={ 900 }
+						startZIndex={ 0 }
+						maxShadowOpacity={ 0.8 }
+						startPage={ startPage }
+						usePortrait={ false }
+						showCover={ false }
+						mobileScrollSupport={ !readOnly }
+						useMouseEvents={ !readOnly }
+						clickEventForward={ !readOnly }
+						drawShadow={ true }
+						swipeDistance={ readOnly ? 9999 : 20 }
+						showPageCorners={ !readOnly }
+						disableFlipByClick={ readOnly }
+						style={ { margin: "0 auto", } }
+						onFlip={ ( e ) => {
+							const idx = Math.floor( e.data / 2 );
+							const nextSlug = spreads[idx];
+							if (nextSlug) navigate( `/book/${ nextSlug }`, { replace: true } );
+						} }
+						className="shadow-[0_32px_90px_rgba(0,0,0,.45),0_12px_36px_rgba(0,0,0,.25),0_1px_6px_rgba(0,0,0,.22)]"
+						size={ "fixed" }
+						minWidth={ 0 }
+						maxWidth={ 0 }
+						minHeight={ 0 }
+						maxHeight={ 0 }
+						autoSize={ false }>
+						{ allPages }
+					</HTMLFlipBook>
+				</div>
+				{ !assetsReady &&
                     <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
                         <div
                             className="rounded bg-black/20 p-4 backdrop-blur-2xl">

@@ -11,7 +11,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			src="/homepage-left.webp"
 			alt="Page background"
 			className="w-full h-full object-cover z-0"
-			loading="lazy"
+			loading="eager"
 		/>
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
 			<motion.button
@@ -28,12 +28,12 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+	<RightPage ref={ ref } showBookmark={ false }>
 		<img
 			src="/homepage-right.webp"
 			className="absolute inset-0 w-full h-full object-cover z-0"
 			alt=""
-			loading="lazy"
+			loading="eager"
 		/>
 
 		<h1 className="font-display absolute inset-0 flex justify-center text-white z-10 text-[8rem] 2xl:text-[10rem]">
@@ -43,6 +43,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			src="/cookie-pose.webp"
 			alt="Cookie Pose"
 			className="absolute bottom-0 right-0 max-w-[39rem] object-contain z-20 pointer-events-none"
+			loading="eager"
 		/>
 	</RightPage>
 ) );
