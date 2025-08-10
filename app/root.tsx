@@ -31,6 +31,7 @@ export const links: Route.LinksFunction = () => [
 	},
 	{ rel: "preload", as: "font", href: "/fonts/roboto.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/roboto-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{ rel: "preload", as: "font", href: "/fonts/athene-voyage.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 ];
 
 export function Layout( { children }: { children: ReactNode } ) {
@@ -76,11 +77,11 @@ export function ErrorBoundary( { error }: Route.ErrorBoundaryProps ) {
 	}
 
 	return (
-		<main className="pt-16 p-4 container mx-auto">
+		<main>
 			<h1>{ message }</h1>
 			<p>{ details }</p>
 			{ stack && (
-				<pre className="w-full p-4 overflow-x-auto">
+				<pre>
           <code>{ stack }</code>
         </pre>
 			) }

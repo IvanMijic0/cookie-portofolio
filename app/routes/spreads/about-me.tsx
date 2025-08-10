@@ -1,15 +1,12 @@
 import { forwardRef } from "react";
-import { RightPage } from "~/components";
+import { LeftPage, RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full bg-white h-full bg-cover bg-center bg-no-repeat"
-	>
+	<LeftPage ref={ ref }>
 		<div
 			className="absolute px-20 pt-20 inset-0 z-10 flex items-end flex-col justify-start text-black leading-[0.8]">
 		</div>
-	</div>
+	</LeftPage>
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (

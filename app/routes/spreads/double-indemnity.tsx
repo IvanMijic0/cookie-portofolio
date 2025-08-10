@@ -1,11 +1,8 @@
 import { forwardRef } from "react";
-import { RightPage } from "~/components";
+import { LeftPage, RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<LeftPage ref={ ref }>
 		<div className="w-full h-full grid grid-cols-2 gap-3">
 			{ Array.from( { length: 6 } ).map( ( _, idx ) => {
 				let i = ( idx + 1 ).toString()
@@ -18,7 +15,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				/>
 			} ) }
 		</div>
-	</div>
+	</LeftPage>
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (

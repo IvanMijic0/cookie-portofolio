@@ -1,13 +1,10 @@
 import { forwardRef } from "react";
 import { PBottom, PTop } from "~/assets";
 import { motion } from "framer-motion";
-import { RightPage } from "~/components";
+import { LeftPage, RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page mr-3 relative w-full h-full m-0 overflow-hidden"
-	>
+	<LeftPage ref={ ref }>
 		<img
 			src="/photography-intro.webp"
 			alt="Page background"
@@ -25,7 +22,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				Mah Baby
 			</motion.button>
 		</div>
-	</div>
+	</LeftPage>
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (

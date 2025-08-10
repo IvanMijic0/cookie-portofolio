@@ -1,11 +1,8 @@
 import { forwardRef } from "react";
-import { RightPage } from "~/components";
+import { LeftPage, RightPage } from "~/components";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<div
-		ref={ ref }
-		className="page relative pr-12 w-full h-full bg-cover bg-center bg-no-repeat"
-	>
+	<LeftPage ref={ ref }>
 		<img
 			src="/human-rights-left.webp"
 			alt="Page background"
@@ -14,7 +11,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 		/>
 		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
 		</div>
-	</div>
+	</LeftPage>
 ) );
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (

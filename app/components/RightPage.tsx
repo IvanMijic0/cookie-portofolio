@@ -1,67 +1,24 @@
-import { AnimatePresence, motion, type Variants } from "framer-motion";
-import { forwardRef, type PropsWithChildren, type SyntheticEvent, useState, } from "react";
+import { motion, type Variants } from "framer-motion";
+import { forwardRef, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, } from "react";
 import { AnimatedBookmarkIcon } from "~/components";
-import { GlassesEmpty, GlassesFilled } from "~/assets";
-import { useUI } from "~/context/ui";
 import { useFlipbook } from "~/context/flipbook";
+import { navSections } from "~/config";
 
 type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
 
-const stop = ( e: SyntheticEvent ) => {
-	e.preventDefault();
-	e.stopPropagation();
-};
-
 const variants: Variants = {
-	hidden: { y: "-92.3%" },
-	peek: { y: "-87.5%" },
+	hidden: { y: "-91.6%" },
+	peek: { y: "-86.5%" },
 	open: { y: "0%" },
 };
-
-const navSections = [
-	{
-		title: "HOME",
-		to: "/homepage",
-		items: [
-			{ label: "About me", to: "/about-me" },
-			{ label: "Contact", to: "/contact" },
-		],
-	},
-	{
-		title: "PHOTOGRAPHY",
-		to: "/photography",
-		items: [
-			{ label: "Kill them with kindness", to: "/photography/kill-them-with-kindness" },
-			{ label: "Human Rights", to: "/photography/human-rights" },
-			{ label: "Double Indemnity", to: "/photography/double-indemnity" },
-		],
-	},
-	{
-		title: "GRAPHIC DESIGN",
-		to: "/graphic-design",
-		items: [
-			{ label: "KREATIV festival Art Direction", to: "/graphic-design/kreativ-festival-art-direction" },
-			{ label: "Sjećaš li se Doli Bel?", to: "/graphic-design/sjecas-li-se-doli-bel" }, // fixed slug
-			{ label: "Chippsters logo", to: "/graphic-design/chippsters-logo" },
-		],
-	},
-	{
-		title: "ILLUSTRATION",
-		to: "/illustration",
-		items: [
-			{ label: "Mountain Fairy", to: "/illustration/mountain-fairy" },
-			{ label: "Austen in Watercolor", to: "/illustration/austen-in-watercolor" },
-			{ label: "“Bosnia in the heart of Europe” mural", to: "/illustration/mural" },
-		],
-	},
-] as const;
 
 const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 	( { children, showBookmark = true }, ref ) => {
 		const [open, setOpen] = useState( false );
 		const [hovered, setHovered] = useState( false );
-		const { readOnly, toggleReadOnly } = useUI();
 		const { goToSpread, ready } = useFlipbook();
+
+		const bookmarkRef = useRef<HTMLDivElement>( null );
 
 		const state: keyof typeof variants = open ? "open" : hovered ? "peek" : "hidden";
 
@@ -69,12 +26,21 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 			e.stopPropagation();
 		};
 
+		useEffect( () => {
+			const close = () => setOpen( false );
+			window.addEventListener( "bookmark:close", close );
+			return () => window.removeEventListener( "bookmark:close", close );
+		}, [] );
+
 		return (
-			<div ref={ ref } className="page relative w-full h-full overflow-hidden">
+			<div ref={ ref }
+			     className="page relative w-full h-full overflow-hidden"
+			>
 				{ children }
 				{ showBookmark && (
 					<motion.div
-						className="absolute top-0 left-4 h-[46rem] w-[13rem] z-50 pointer-events-auto"
+						ref={ bookmarkRef }
+						className="absolute top-0 left-4 h-[42rem] w-[13rem] z-50 pointer-events-auto"
 						variants={ variants }
 						animate={ state }
 						initial="hidden"
@@ -111,7 +77,6 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 											<a
 												onClick={ ( e ) => {
 													e.preventDefault();
-													console.log( "Title" )
 													if (ready) goToSpread( section.to );
 													setOpen( false );
 												} }
@@ -119,14 +84,12 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 											>
 												{ section.title }
 											</a>
-
 											<ul className="pl-2 space-y-2">
 												{ section.items.map( ( item ) => (
 													<li key={ item.to }>
 														<a
 															onClick={ ( e ) => {
 																e.preventDefault();
-																console.log( "label" )
 																if (ready) goToSpread( item.to );
 																setOpen( false );
 															} }
@@ -141,44 +104,6 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 									) ) }
 								</ul>
 							</nav>
-							<button
-								type="button"
-								aria-pressed={ readOnly }
-								onClick={ ( e ) => {
-									e.stopPropagation();
-									toggleReadOnly();
-								} }
-								className="cursor-pointer flex flex-col text-white gap-1 items-center z-30"
-							>
-								<span className="inline-flex items-center justify-center w-7 h-7">
-								<AnimatePresence mode="popLayout" initial={ false }>
-								  { readOnly ? (
-									  <motion.span
-										  key="filled"
-										  initial={ { opacity: 0, scale: 0.85, rotate: -6 } }
-										  animate={ { opacity: 1, scale: 1, rotate: 0 } }
-										  exit={ { opacity: 0, scale: 0.85, rotate: 6 } }
-										  transition={ { type: "spring", stiffness: 500, damping: 30 } }
-										  className="inline-flex"
-									  >
-										  <GlassesFilled className="w-10 h-10"/>
-									  </motion.span>
-								  ) : (
-									  <motion.span
-										  key="empty"
-										  initial={ { opacity: 0, scale: 0.85, rotate: 6 } }
-										  animate={ { opacity: 1, scale: 1, rotate: 0 } }
-										  exit={ { opacity: 0, scale: 0.85, rotate: -6 } }
-										  transition={ { type: "spring", stiffness: 500, damping: 30 } }
-										  className="inline-flex"
-									  >
-										  <GlassesEmpty className="w-10 h-10"/>
-									  </motion.span>
-								  ) }
-								</AnimatePresence>
-							  </span>
-								<span className="font-sans font-black text-md">READ ONLY</span>
-							</button>
 							<button
 								type="button"
 								aria-label={ open ? "Close bookmark" : "Open bookmark" }
