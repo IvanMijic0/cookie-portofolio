@@ -78,7 +78,6 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
           </span>
 				</p>
 			</header>
-
 			<section className="flex flex-col w-full font-serif justify-start text-[#505050] gap-4">
 				<p
 					className="w-72 2xl:w-[19rem] text-base 2xl:text-lg font-bold italic"
