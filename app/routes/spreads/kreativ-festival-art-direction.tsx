@@ -45,18 +45,18 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			<div className="flex justify-between gap-4 items-start">
 				<header>
 					<h1 className="flex flex-col gap-6 italic" itemProp="headline">
-            <span
-	            className="[text-shadow:_0_8px_24px_rgba(0,0,0,.45)] text-sm 2xl:text-base font-serif tracking-[0.17em]">
-              Festival Art Direction Proposal
-            </span>
+						<span
+							className="[text-shadow:_0_8px_24px_rgba(0,0,0,.45)] text-sm 2xl:text-base font-serif tracking-[0.17em]">
+						  Festival Art Direction Proposal
+						</span>
 						<span
 							className="pl-2 [text-shadow:_0_8px_24px_rgba(0,0,0,.45)] text-[2.5rem] text-nowrap leading-0 [-webkit-text-stroke:1px_white] [text-stroke:1px_white]">
-              KREATIV fest
-            </span>
+						  KREATIV fest
+						</span>
 						<span
 							className="[text-shadow:_0_8px_24px_rgba(0,0,0,.65)] text-sm 2xl:text-base [-webkit-text-stroke:0.5px_white] [text-stroke:0.5px_white] tracking-[0.4em]">
-              Kreativ Euphoria
-            </span>
+						  Kreativ Euphoria
+						</span>
 					</h1>
 				</header>
 				<section className="w-64" itemProp="description">
@@ -73,21 +73,111 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<RightPage ref={ ref } showBookmark>
-		<div className="flex px-14 justify-between items-end flex-col w-full h-full">
-			{ Array.from( { length: 3 } ).map( ( _, idx ) => {
-				let i = ( idx + 1 ).toString()
-				return <img
-					key={ i }
-					src={ `/kreativ-festival-art-direction-right-${ i }.webp` }
-					alt={ `Kreativ Festival Art Direction ${ i }` }
-					className="w-1/2 h-1/2 object-cover"
-					aria-hidden="true"
-					loading="eager"
-				/>
-			} ) }
-		</div>
-		<div className="absolute px-20 py-8 inset-0 z-10 flex items-start justify-start text-white">
-		</div>
+		<article
+			className="px-14 py-12 grid grid-cols-2 gap-12 w-full h-full"
+			itemScope
+			itemType="https://schema.org/CreativeWork"
+			itemID="/book/graphic-design/kreativ-festival-art-direction"
+		>
+			<meta itemProp="inLanguage" content="en"/>
+			<meta itemProp="genre" content="Festival Art Direction"/>
+			<meta
+				itemProp="keywords"
+				content="KREATIV fest, art direction, visual identity, David Carson, grunge design, poster design, student project, International Burch University"
+			/>
+			<meta itemProp="dateCreated" content="2024"/>
+			<link
+				itemProp="mainEntityOfPage"
+				href="/book/graphic-design/kreativ-festival-art-direction"
+			/>
+			<meta itemProp="name" content="Kreativ Euphoria — KREATIV fest Visual Identity Proposal"/>
+			<h1 className="sr-only" itemProp="headline">
+				KREATIV fest — Kreativ Euphoria (Visual Identity Proposal)
+			</h1>
+			<div
+				className="col-span-1 text-[#505050] font-serif py-8 2xl:py-12 flex flex-col justify-between text-justify"
+				itemProp="articleBody"
+			>
+				<p className="text-sm 2xl:text-lg font-bold italic">
+					As a submission for the 2024 KREATIV fest art direction at{ " " }
+					<span itemProp="provider" itemScope itemType="https://schema.org/Organization">
+            <span itemProp="name">International Burch University</span>
+          </span>
+					, this visual identity proposal draws heavily from grunge aesthetics and the
+					experimental legacy of David Carson.
+				</p>
+				<p className="text-xs 2xl:text-base">
+					Centered around a custom logotype reading “Kreativ Euphoria,” the design uses
+					negative-space lettering and a stamp-like composition to reflect the chaotic,
+					expressive energy of young creatives.
+				</p>
+				<p className="text-xs 2xl:text-base">
+					The visual language is built on a contrast of vivid neon green, pink, and orange
+					against stark black overlays, creating a dynamic, high-impact look that feels both
+					nostalgic and fresh. The textures and layering mimic ripped posters and street art,
+					reinforcing a raw, urban atmosphere.
+				</p>
+				<p className="text-xs 2xl:text-base">
+					Across posters, leaflets, and social media, the identity maintains a consistent,
+					tactile quality while adapting to different formats.
+				</p>
+				<p className="text-xs 2xl:text-base">
+					This concept celebrates imperfection, spontaneity, and the power of student
+					expression. It doesn’t just promote an event—it visually embodies its energy,
+					reminding every viewer: you can be kreativ too.
+				</p>
+			</div>
+			<div className="col-span-1">
+				<figure
+					itemProp="image"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className=""
+				>
+					<img
+						src={ `/kreativ-festival-art-direction-right-1.webp` }
+						alt="KREATIV fest visual identity poster — variant 1"
+						className="object-cover w-80"
+						loading="eager"
+						fetchPriority="high"
+					/>
+					<meta itemProp="contentUrl" content="/kreativ-festival-art-direction-right-1.webp"/>
+					<meta itemProp="caption" content="KREATIV fest poster — variant 1"/>
+				</figure>
+				<figure
+					itemProp="image"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className=""
+				>
+					<img
+						src={ `/kreativ-festival-art-direction-right-2.webp` }
+						alt="KREATIV fest visual identity poster — variant 2"
+						className="object-cover w-80"
+						loading="eager"
+						fetchPriority="high"
+					/>
+					<meta itemProp="contentUrl" content="/kreativ-festival-art-direction-right-2.webp"/>
+					<meta itemProp="caption" content="KREATIV fest poster — variant 2"/>
+				</figure>
+				<figure
+					itemProp="image"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className=""
+				>
+					<img
+						src={ `/kreativ-festival-art-direction-right-3.webp` }
+						alt="KREATIV fest visual identity poster — variant 3"
+						className="object-cover w-80"
+						loading="eager"
+						fetchPriority="high"
+					/>
+					<meta itemProp="contentUrl" content="/kreativ-festival-art-direction-right-3.webp"/>
+					<meta itemProp="caption" content="KREATIV fest poster — variant 3"/>
+				</figure>
+			</div>
+		</article>
 	</RightPage>
 ) );
 
