@@ -44,7 +44,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-						  <span itemProp="name">Amna Kolić</span>
+						  <span itemProp="name">by Amna Kolić</span>
 						</span>
 					</p>
 				</header>
@@ -57,11 +57,11 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 						force
 						in the room? In that world, war would have no place.
 					</p>
-					<p className="w-64 2xl:w-[19rem]">
+					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
 						True to its name, this project delivers a striking visual message: a call to disarm not just
 						physically, but emotionally.
 					</p>
-					<p className="w-64 2xl:w-[19rem]">
+					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
 						Each photo was meticulously staged in the studio under identical lighting, then artfully
 						composited
 						in Adobe Photoshop to create seamless, visually arresting narratives that challenge our
