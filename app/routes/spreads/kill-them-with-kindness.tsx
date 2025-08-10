@@ -5,12 +5,13 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<LeftPage ref={ ref }>
 		<img
 			src="/kill-them-with-kindness-left.webp"
-			alt="Page background"
-			className="w-full h-full object-cover z-0"
-			loading="lazy"
+			alt=""
+			aria-hidden="true"
+			role="presentation"
+			className="object-cover"
+			loading="eager"
+			fetchPriority="high"
 		/>
-		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
-		</div>
 	</LeftPage>
 ) );
 
@@ -18,12 +19,58 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<RightPage ref={ ref } showBookmark>
 		<img
 			src="/kill-them-with-kindness-right.webp"
-			alt="Page background"
-			className="w-full h-full object-cover z-0"
-			loading="lazy"
+			alt=""
+			aria-hidden="true"
+			role="presentation"
+			className="object-cover"
+			loading="eager"
+			fetchPriority="high"
 		/>
-		<div className="absolute p-12 inset-0 z-20 flex items-start justify-start text-white">
-		</div>
+		<article
+			className="absolute px-12 py-10 2xl:py-14 inset-0 z-20 flex flex-col items-center h-full"
+			aria-labelledby="ktwk-title"
+			itemScope
+			itemType="https://schema.org/CreativeWork"
+		>
+			<div className="gap-2 flex flex-col justify-between h-full text-right">
+				<header>
+					<h1
+						id="ktwk-title"
+						itemProp="name"
+						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[8rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+					>
+						Kill them<br/> with <br/> Kindness
+					</h1>
+					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
+						<span className="sr-only">Project by </span>
+						<span itemProp="author" itemScope itemType="https://schema.org/Person">
+						  <span itemProp="name">Amna Kolić</span>
+						</span>
+					</p>
+				</header>
+				<section
+					aria-label="Project description"
+					className="flex text-sm 2xl:text-base text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
+				>
+					<p itemProp="description" className="w-64 2xl:w-[19rem] text-base 2xl:text-lg font-bold italic">
+						What if empathy were more common than conflict? What if kindness—not violence—was the loudest
+						force
+						in the room? In that world, war would have no place.
+					</p>
+					<p className="w-64 2xl:w-[19rem]">
+						True to its name, this project delivers a striking visual message: a call to disarm not just
+						physically, but emotionally.
+					</p>
+					<p className="w-64 2xl:w-[19rem]">
+						Each photo was meticulously staged in the studio under identical lighting, then artfully
+						composited
+						in Adobe Photoshop to create seamless, visually arresting narratives that challenge our
+						perception
+						of strength, peace, and humanity.
+					</p>
+				</section>
+			</div>
+		</article>
 	</RightPage>
 ) );
 
