@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<RightPage ref={ ref } showBookmark>
 		<article
-			className="absolute p-12 inset-0 z-20 flex items-start justify-between flex-col text-white"
+			className="absolute px-12 pb-8 2xl:py-12 inset-0 z-20 flex items-start justify-between flex-col text-white"
 			itemScope
 			itemType="https://schema.org/WebPageSection"
 			aria-labelledby="photography-title"
@@ -28,10 +28,10 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				Photography &amp; Editing
 			</h1>
 			<div aria-hidden="true">
-				<PTop className="w-[30rem] 2xl:w-auto"/>
+				<PTop className="w-[30rem] h-[30rem] 2xl:w-auto 2xl:h-auto"/>
 			</div>
-			<div className="flex justify-center items-end pl-14 flex-col" aria-hidden="true">
-				<h2 className="text-[#363636] text-[3.4rem] 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
+			<div className="flex  justify-center items-end pl-14 flex-col" aria-hidden="true">
+				<h2 className="text-[#363636] text-[3.4rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
 					PHOTOGRAPHY
 				</h2>
 				<p className="text-3xl 2xl:text-5xl text-[#505050] tracking-[1rem] 2xl:tracking-[0.45em] font-display italic [-webkit-text-stroke:1px_#505050] [text-stroke:1px_#505050]">
@@ -40,7 +40,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 			<div className="flex w-full items-end justify-between gap-3">
 				<div aria-hidden="true">
-					<PBottom className="shrink-0 w-60 2xl:w-auto"/>
+					<PBottom className="shrink-0 w-60 2xl:w-80"/>
 				</div>
 				<div
 					className="min-w-0 text-right text-[#505050] font-serif text-xs 2xl:text-base pr-4 sm:pr-6 xl:pr-12 2xl:pr-[5rem]">

@@ -38,13 +38,13 @@ const Flipbook = () => {
 			const height = window.innerHeight;
 
 			let marginRatio: number;
-			if (width < 640) marginRatio = 0.03;
-			else if (width < 768) marginRatio = 0.05;
-			else if (width < 1024) marginRatio = 0.06;
-			else if (width < 1280) marginRatio = 0.07;
-			else if (width < 1536) marginRatio = 0.06;
-			else if (width < 1920) marginRatio = 0.12;
-			else marginRatio = 0.15;
+			if (width < 640) marginRatio = 0.01;
+			else if (width < 768) marginRatio = 0.02;
+			else if (width < 1024) marginRatio = 0.02;
+			else if (width < 1280) marginRatio = 0.03;
+			else if (width < 1536) marginRatio = 0.03;
+			else if (width < 1920) marginRatio = 0.1;
+			else marginRatio = 0.8;
 
 			const availableWidth = width * ( 1 - marginRatio * 2 );
 			const availableHeight = height * ( 1 - marginRatio * 2 );
