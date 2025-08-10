@@ -73,7 +73,6 @@ export default function Flipbook() {
 	const assetsReady = useInitialAssets( FONT_STRINGS, CRITICAL_IMAGES );
 
 	const flipKey = `flip-${ readOnly ? "ro" : "rw" }`;
-	const LOADER_MS = 500;
 
 	useEffect( () => {
 		const toPageIndex = ( slug: string ) => {

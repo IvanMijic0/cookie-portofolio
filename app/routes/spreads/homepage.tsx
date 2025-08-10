@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { forwardRef } from "react";
 import { RightPage } from "~/components";
+import { DModified } from "~/assets";
 
 export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<div
@@ -36,8 +37,19 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			loading="eager"
 		/>
 
-		<h1 className="font-display absolute inset-0 flex justify-center text-white z-10 text-[8rem] 2xl:text-[10rem]">
-			DESIGN
+
+		<h1 className="font-display font-normal absolute inset-0 flex justify-center text-white z-10 text-[8rem] 2xl:text-[10rem]">
+			<span className="sr-only">DESIGN</span>
+			<span
+				aria-hidden
+				className="
+				  inline-flex items-baseline text-white
+				  [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
+				"
+			>
+				<DModified className="h-[0.75em] w-auto mr-[0.04em]"/>
+				ESIGN
+			</span>
 		</h1>
 		<img
 			src="/cookie-pose.webp"
