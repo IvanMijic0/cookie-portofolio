@@ -99,77 +99,95 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => {
 	);
 } );
 
-
 export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	<RightPage ref={ ref } showBookmark={ false }>
 		<img
 			src="/homepage-right.webp"
 			className="absolute inset-0 w-full h-full object-cover z-0"
 			alt=""
+			role="presentation"
 			loading="eager"
+			fetchPriority="high"
+			decoding="async"
 		/>
-		<div
-			className="flex absolute h-full justify-between py-10 2xl:py-16 w-full flex-col inset-0 items-center">
+		<section
+			aria-labelledby="home-hero-title"
+			className="flex absolute h-full justify-between py-10 2xl:py-16 w-full flex-col inset-0 items-center"
+		>
 			<div className="flex flex-col h-[55%] 2xl:h-1/2 justify-between">
 				<div className="flex flex-col gap-3">
-					<h1 className="font-display leading-0 font-normal flex justify-center text-white text-[8rem] 2xl:text-[10rem]">
-						<span className="sr-only">DESIGN</span>
-						<span
-							aria-hidden
-							className="
-				  inline-flex items-baseline
-				  [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
-				"
-						>
-				<DModified className="h-[0.75em] w-auto"/>
-				ESIGN
-				</span>
+					<h1 id="home-hero-title" className="sr-only">
+						Amna Kolić — Design portfolio
 					</h1>
-					<h2 className="font-display italic tracking-[0.4em] text-[#272727] [-webkit-text-stroke:1px_#505050] [text-stroke:1px_#505050] text-4xl 2xl:text-5xl">
-						portofolio
+					<div
+						aria-hidden="true"
+						className="font-display leading-0 font-normal flex justify-center text-white text-[8rem] 2xl:text-[10rem]"
+					>
+            <span
+	            className="
+                inline-flex items-baseline
+                [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
+              "
+            >
+              <DModified className="h-[0.75em] w-auto"/>
+              ESIGN
+            </span>
+					</div>
+					<h2 className="font-display italic tracking-[0.4em] text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727] text-4xl 2xl:text-5xl">
+						<span aria-hidden="true">portofolio</span>
+						<span className="sr-only">portfolio</span>
 					</h2>
 				</div>
 				<div>
 					<h3 className="text-white font-serif text-2xl 2xl:text-3xl w-[13.3rem] 2xl:w-[16.3rem]">
-					<span className="flex flex-col">
-						<span>GRAPHIC</span>
-						<span className="w-full flex justify-end">DESIGN</span>
-					</span>
+            <span className="flex flex-col">
+              <span>GRAPHIC</span>
+              <span className="w-full flex justify-end">DESIGN</span>
+            </span>
 					</h3>
 					<h3 className="text-[#272727] font-serif text-2xl 2xl:text-3xl">
 						ILLUSTRATION
 					</h3>
 					<h3 className="text-white font-serif text-2xl 2xl:text-3xl w-[13rem] 2xl:w-[16rem]">
-					<span className="flex flex-col">
-						<span className="w-full flex justify-end">PHOTO</span>
-						<span>EDITING</span>
-					</span>
+            <span className="flex flex-col">
+              <span className="w-full flex justify-end">PHOTO</span>
+              <span>EDITING</span>
+            </span>
 					</h3>
 				</div>
 			</div>
-		</div>
+		</section>
 		<img
 			src="/cookie-pose.webp"
-			alt="Cookie Pose"
+			alt=""
+			role="presentation"
 			className="absolute bottom-0 right-0 xl:max-w-[28.5rem] 2xl:max-w-[39rem] object-contain z-20 pointer-events-none"
 			loading="eager"
+			decoding="async"
 		/>
 		<div
-			className="absolute -bottom-24 -right-12 w-[26rem] h-[26rem] 2xl:w-[33.5rem] 2xl:h-[33.5rem] rounded-full z-30 pointer-events-none isolate"
-		>
+			className="absolute -bottom-24 -right-12 w-[26rem] h-[26rem] 2xl:w-[33.5rem] 2xl:h-[33.5rem] rounded-full z-30 pointer-events-none isolate">
 			<div
 				className="
-				  absolute inset-0 rounded-full mix-blend-multiply
-				  bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)]
-				  bg-no-repeat bg-[length:100%_100%]
-				"
+						  absolute inset-0 rounded-full mix-blend-multiply
+						  bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)]
+						  bg-no-repeat bg-[length:100%_100%]
+						"
+				aria-hidden="true"
 			/>
 			<div className="absolute inset-0 gap-10 flex-col flex items-center justify-center pb-24">
-				<div className="text-white italic text-3xl 2xl:text-4xl font-serif text-end leading-tight px-4">
-					<span className="not-italic">The DIFFERENT</span><br/><span
-					className="not-italic">APPROACH</span><br/>to design<br/>with
-				</div>
-				<h2 className="text-white leading-0 text-[5rem] 2xl:text-[6rem] font-logo">AMNA</h2>
+				<p className="text-white italic text-3xl 2xl:text-4xl font-serif text-end leading-tight px-4">
+					<span className="not-italic">The DIFFERENT</span>
+					<br/>
+					<span className="not-italic">APPROACH</span>
+					<br/>
+					to design
+					<br/>
+					with
+				</p>
+				<h2 className="text-white leading-0 text-[5rem] 2xl:text-[6rem] font-logo">
+					AMNA
+				</h2>
 			</div>
 		</div>
 	</RightPage>
