@@ -48,7 +48,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</aside>
 		<article
-			className="absolute flex-col px-12 py-10 2xl:py-12 2xl:pt-24 inset-0 z-20 flex justify-between items-center"
+			className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex justify-between items-center"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 			itemID="/book/human-rights"
@@ -80,22 +80,22 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</header>
 			<section className="flex flex-col w-full font-serif justify-start text-[#505050] gap-4">
 				<p
-					className="w-72 2xl:w-[19rem] text-base 2xl:text-lg font-bold italic"
+					className="w-72 2xl:w-[21rem] text-base 2xl:text-lg font-bold italic"
 					itemProp="abstract"
 				>
 					This photo series explores the concept of light as a metaphor for human rights — a
 					visual narrative where illumination becomes both symbol and statement.
 				</p>
-				<p className="w-72 2xl:w-[19rem] text-sm 2xl:text-base">
+				<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
 					Each frame experiments with the quality, color, and direction of light to reflect the
 					fragile presence — or troubling absence — of a fundamental right.
 				</p>
-				<p className="w-72 2xl:w-[19rem] text-sm 2xl:text-base">
+				<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
 					The interplay of shadow and brightness isn't just aesthetic; it's intentional. Every
 					photo stands for a specific right slowly slipping from our grasp, each composition a
 					quiet act of resistance.
 				</p>
-				<p className="w-72 2xl:w-[19rem] text-sm 2xl:text-base">
+				<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
 					From top to bottom, left to right, the rights portrayed are: the Right to Express, the
 					Right to Privacy, the Right to Rest, the Right to Religion, and the Right to Choose.
 				</p>
