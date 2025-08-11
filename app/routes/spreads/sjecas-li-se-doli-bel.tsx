@@ -128,12 +128,44 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title =
+		"Sjećaš li se Doli Bel — Theatre Visual Identity & Poster Design | Amna Kolić";
+	const description =
+		"Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić.";
+	const url = "/book/graphic-design/sjecas-li-se-doli-bel";
+	const image = "/doli-bel-right.webp";
+	const imageAlt =
+		"Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout.";
+
 	return [
-		{ title: "Theatre Poster Design | Doli Bel Stage Adaptation Visuals" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "A dramatic red poster and typographic treatment inspired by emotional depth and instability in the iconic Bosnian play."
-		}
+			name: "keywords",
+			content:
+				"Sjećaš li se Doli Bel, Doli Bel, theatre poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design, Bosnian design, editorial, typography"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "og:locale:alternate", content: "bs_BA" },
+		{ property: "article:section", content: "Graphic Design" },
+		{ property: "article:tag", content: "Theatre Poster" },
+		{ property: "article:tag", content: "Visual Identity" },
+		{ property: "article:tag", content: "Bosnian Design" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

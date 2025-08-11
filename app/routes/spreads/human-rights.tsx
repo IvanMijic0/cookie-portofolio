@@ -48,7 +48,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</aside>
 		<article
-			className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex justify-between items-center"
+			className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex justify-start gap-12 2xl:gap-16 items-center"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 			itemID="/book/human-rights"
@@ -104,14 +104,45 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 	</RightPage>
 ) );
 
-
 export function meta() {
+	const title = "Human Rights – Conceptual Photo Series by Amna Kolić";
+	const description =
+		"A conceptual photo series where light and shadow symbolize the fragility of human rights. Explore the narrative and studio process behind each image.";
+	const url = "/book/photography/human-rights";
+	const image = "/human-rights-left.webp";
+	const imageAlt = "Conceptual photograph from the Human Rights series, using light as metaphor.";
+
 	return [
-		{ title: "Photography Series on Human Rights | Light as a Metaphor" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "This conceptual series explores the fragility of human rights through light, shadow, and metaphor-rich visual storytelling."
-		}
+			name: "keywords",
+			content:
+				"human rights photography, conceptual photography, studio lighting, visual metaphor, editorial photography, photo series, portfolio, Amna Kolić"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Photography" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "article:tag", content: "Conceptual Photography" },
+		{ property: "article:tag", content: "Visual Metaphor" },
+		{ property: "article:tag", content: "Studio Lighting" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

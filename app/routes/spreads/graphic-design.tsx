@@ -89,12 +89,45 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title = "Graphic Design – Visual Identity & Branding Projects | Amna Kolić";
+	const description =
+		"Explore graphic design work by Amna Kolić: branding, logo systems, editorial & poster design, and typography-driven visual identities.";
+	const url = "/book/graphic-design";
+	const image = "/graphic-design-right.webp";
+	const imageAlt =
+		"Graphic design spread with cards and logos from Amna Kolić’s portfolio.";
+
 	return [
-		{ title: "Visual Identity & Branding Projects | Graphic Design Portfolio" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "Browse Amna Kolić’s graphic design archive—from expressive poster design to logo systems and branding."
-		}
+			name: "keywords",
+			content:
+				"graphic design, branding, visual identity, logo design, editorial design, poster design, typography, portfolio, Amna Kolić"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Graphic Design" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "article:tag", content: "Branding" },
+		{ property: "article:tag", content: "Visual Identity" },
+		{ property: "article:tag", content: "Logo Design" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

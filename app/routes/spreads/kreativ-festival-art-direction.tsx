@@ -182,12 +182,46 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title =
+		"KREATIV Fest – Festival Art Direction & Visual Identity | Kreativ Euphoria — Amna Kolić";
+	const description =
+		"Festival branding and art direction for KREATIV Fest: a grunge-inspired visual identity with custom logotype, bold typography, and poster system by Amna Kolić.";
+	const url = "/book/graphic-design/kreativ-festival-art-direction";
+	const image = "/kreativ-festival-art-direction-left.webp";
+	const imageAlt =
+		"KREATIV Fest visual identity concept showcasing grunge textures, bold type, and the 'Kreativ Euphoria' logotype.";
+
 	return [
-		{ title: "Festival Branding: KREATIV Fest Art Direction & Visual Identity" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "Art direction and branding system for KREATIV Fest, inspired by grunge aesthetics and David Carson’s experimental typography."
-		}
+			name: "keywords",
+			content:
+				"KREATIV Fest, art direction, festival branding, visual identity, poster design, typography, David Carson, grunge design, student project, International Burch University, Kreativ Euphoria"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Graphic Design" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "article:tag", content: "Festival Branding" },
+		{ property: "article:tag", content: "Art Direction" },
+		{ property: "article:tag", content: "Poster Design" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

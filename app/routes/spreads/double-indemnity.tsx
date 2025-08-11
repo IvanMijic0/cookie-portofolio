@@ -74,12 +74,45 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title = "Double Indemnity – Film Noir Photo Series by Amna Kolić";
+	const description =
+		"A trio of black-and-white photographs reimagining Double Indemnity—meticulous lighting, composition, and mood that revive classic film noir.";
+	const url = "/book/photography/double-indemnity";
+	const image = "/double-indemnity-left-1.webp";
+	const imageAlt =
+		"Black-and-white film-noir style photograph from the Double Indemnity series.";
+
 	return [
-		{ title: "Film Noir Photography Tribute | Double Indemnity Reimagined" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "A cinematic homage to the 1940s classic Double Indemnity, brought to life through precise lighting, composition, and mood."
-		}
+			name: "keywords",
+			content:
+				"film noir photography, Double Indemnity, black and white photography, studio lighting, cinematic portrait, photo series, Amna Kolić"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Photography" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "article:tag", content: "Film Noir" },
+		{ property: "article:tag", content: "Black and White" },
+		{ property: "article:tag", content: "Studio Lighting" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

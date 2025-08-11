@@ -194,12 +194,33 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title = "Amna Kolić | Graphic Design, Photography & Illustration Portfolio";
+	const description =
+		"Explore the design portfolio of Amna Kolić, featuring creative work in graphic design, photography, illustration, and visual storytelling.";
+	const url = "/book/homepage";
+	const image = "/homepage-right.webp";
+	const imageAlt = "Stylized 'DESIGN' hero with category list and portrait overlay";
+
 	return [
-		{ title: "Amna Kolić | Graphic Design, Photography & Illustration Portfolio" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "Explore the design portfolio of Amna Kolić, featuring creative work in graphic design, photography, illustration, and visual storytelling."
-		}
+			name: "keywords",
+			content: "graphic design, photography, illustration, portfolio, visual identity, editorial, branding"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "website" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:locale", content: "en_US" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
 	];
 }
 

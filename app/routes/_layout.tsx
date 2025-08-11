@@ -1,9 +1,9 @@
+import { ASPECT_RATIO, CRITICAL_IMAGES, FONT_STRINGS, spreadMap, spreads, TARGET_HEIGHT, TARGET_WIDTH } from "~/config";
 import HTMLFlipBook from "react-pageflip";
 import { useLocation, useNavigate } from "react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useFlipbook } from "~/context/flipbook";
 import { useInitialAssets } from "~/hooks";
-import { ASPECT_RATIO, CRITICAL_IMAGES, FONT_STRINGS, spreadMap, spreads, TARGET_HEIGHT, TARGET_WIDTH } from "~/config";
 import clsx from "clsx";
 import type { SpreadKey } from "~/types";
 
@@ -37,17 +37,29 @@ const Flipbook = () => {
 			const width = window.innerWidth;
 			const height = window.innerHeight;
 
-			let marginRatio: number;
-			if (width < 640) marginRatio = 0.01;
-			else if (width < 768) marginRatio = 0.02;
-			else if (width < 1024) marginRatio = 0.02;
-			else if (width < 1280) marginRatio = 0.03;
-			else if (width < 1536) marginRatio = 0.03;
-			else if (width < 1920) marginRatio = 0.1;
-			else marginRatio = 0.8;
+			const marginX = ( () => {
+				if (width < 640) return 0.01;
+				if (width < 768) return 0.02;
+				if (width < 1024) return 0.02;
+				if (width < 1280) return 0.03;
+				if (width < 1536) return 0.08;
+				if (width < 1650) return 0.10;
+				if (width < 1720) return 0.05;
+				if (width < 1840) return 0.1;
+				return 0.12;
+			} )();
 
-			const availableWidth = width * ( 1 - marginRatio * 2 );
-			const availableHeight = height * ( 1 - marginRatio * 2 );
+			const marginY = ( () => {
+				if (height < 600) return 0.02;
+				if (height < 720) return 0.03;
+				if (height < 850) return 0.04;
+				if (height < 950) return 0.05;
+				if (height < 1100) return 0.06;
+				return 0.1;
+			} )();
+
+			const availableWidth = Math.max( 0, width * ( 1 - marginX * 2 ) );
+			const availableHeight = Math.max( 0, height * ( 1 - marginY * 2 ) );
 
 			let finalWidth = availableWidth;
 			let finalHeight = finalWidth / ASPECT_RATIO;
@@ -56,6 +68,7 @@ const Flipbook = () => {
 				finalHeight = availableHeight;
 				finalWidth = finalHeight * ASPECT_RATIO;
 			}
+
 			setDimensions( { width: finalWidth, height: finalHeight } );
 		};
 
@@ -74,6 +87,7 @@ const Flipbook = () => {
 			const i = spreads.indexOf( clean as any );
 			return i >= 0 ? i * 2 : 0;
 		};
+
 		const getApi = () => activeRef.current?.pageFlip?.();
 
 		const goToIndex = ( pageIndex: number ) => {

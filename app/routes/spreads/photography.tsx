@@ -65,12 +65,40 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title = "Creative Photography & Editing Projects | Amna Kolić Portfolio";
+	const description =
+		"Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives.";
+	const url = "/book/photography";
+	const image = "/photography-intro.webp";
+	const imageAlt = "Photography & editing title spread with typographic treatment.";
+
 	return [
-		{ title: "Creative Photography & Editing Projects | Amna Kolić Portfolio" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives."
-		}
+			name: "keywords",
+			content: "photography, photo editing, studio lighting, compositing, editorial photography, visual storytelling, portfolio"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Photography" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

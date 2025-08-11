@@ -32,7 +32,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 		>
-			<div className="gap-2 flex flex-col justify-between h-full text-right">
+			<div className="flex flex-col justify-start 2xl:gap-20 gap-16 h-full text-right">
 				<header>
 					<h1
 						id="ktwk-title"
@@ -75,12 +75,44 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title = "Kill Them with Kindness – Conceptual Photo Series by Amna Kolić";
+	const description =
+		"A conceptual photo series using staged lighting and compositing to present empathy as resistance. Explore the visual narrative and process behind each image.";
+	const url = "/book/photography/kill-them-with-kindness";
+	const image = "/kill-them-with-kindness-right.webp";
+	const imageAlt = "Conceptual portrait from the ‘Kill Them with Kindness’ photo series.";
+
 	return [
-		{ title: "Visual Storytelling in Photography: Kill Them with Kindness Series" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "A photo series that uses symbolism and staged lighting to present empathy as resistance. Explore the artistic concept behind each shot."
-		}
+			name: "keywords",
+			content:
+				"conceptual photography, photo series, studio lighting, compositing, visual storytelling, anti-war art, empathy in art, editorial photography, portfolio"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:width", content: "1200" },
+		{ property: "og:image:height", content: "630" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "article:section", content: "Photography" },
+		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "article:tag", content: "Conceptual Photography" },
+		{ property: "article:tag", content: "Studio Lighting" },
+		{ property: "article:tag", content: "Compositing" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 

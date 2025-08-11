@@ -26,7 +26,6 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			/>
 			<meta itemProp="image" content="/chippsters-left.webp"/>
 			<link itemProp="mainEntityOfPage" href="/book/graphic-design/chippsters-logo"/>
-
 			<header className="flex flex-col items-end gap-8 2xl:gap-10">
 				<div>
 					<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
@@ -114,12 +113,42 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 ) );
 
 export function meta() {
+	const title =
+		"Chippsters Logo Design — Tech Brand Visual Identity | Amna Kolić";
+	const description =
+		"Playful yet professional logo for a tech brand—chipmunk + hipster fused into a minimalist C-mark with negative space, clean geometry, and a fresh green gradient. Visual identity by Amna Kolić.";
+	const url = "/book/graphic-design/chippsters-logo";
+	const image = "/chippsters-right.webp";
+	const imageAlt =
+		"Chippsters logo mockups: circular C mark with a chipmunk silhouette in negative space, set on a soft green gradient.";
+
 	return [
-		{ title: "Logo Design for Tech Brand | Chippsters Visual Identity" },
+		{ title },
+		{ name: "description", content: description },
 		{
-			name: "description",
-			content: "A playful and professional brand mark combining “chipmunk” and “hipster” into a minimalist tech identity."
-		}
+			name: "keywords",
+			content:
+				"Chippsters, logo design, tech brand logo, mascot logo, negative space logo, branding, visual identity, wordmark, brand mark, minimalist logo, green gradient, portfolio, Amna Kolić"
+		},
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
+		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "article:section", content: "Graphic Design" },
+		{ property: "article:tag", content: "Logo Design" },
+		{ property: "article:tag", content: "Branding" },
+		{ property: "article:tag", content: "Negative Space" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
 }
 
