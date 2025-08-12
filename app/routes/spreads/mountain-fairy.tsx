@@ -47,7 +47,6 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
           </span>
 				</p>
 			</header>
-
 			<p className="text-base font-serif 2xl:text-lg font-bold italic text-justify" itemProp="description">
 				This digital illustration depicts the Bosnian mountain fairy, or <em>planinska vila</em>, as part of an
 				ongoing series dedicated to visualizing forgotten figures of Bosnian folklore.
