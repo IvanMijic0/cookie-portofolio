@@ -8,7 +8,7 @@ const LeftPage = forwardRef<HTMLDivElement, LeftPageProps>(
 		return (
 			<div
 				ref={ ref }
-				className="page relative w-full h-full overflow-hidden"
+				className="page page--left relative w-full h-full overflow-hidden"
 			>
 				{ children }
 			</div>

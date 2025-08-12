@@ -34,7 +34,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 
 		return (
 			<div ref={ ref }
-			     className="page relative w-full h-full overflow-hidden"
+			     className="page page--right relative w-full h-full overflow-hidden"
 			>
 				{ children }
 				{ showBookmark && (
