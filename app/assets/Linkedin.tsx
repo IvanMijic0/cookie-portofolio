@@ -1,9 +1,9 @@
 import type { SVGProps } from "react";
 import type { JSX } from "react/jsx-runtime";
 
-const Linkedin = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) => (
+const Linkedin = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
 	<svg
-		{ ...props }
+		{...props}
 		xmlns="http://www.w3.org/2000/svg"
 		width="36"
 		height="36"
@@ -11,7 +11,7 @@ const Linkedin = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) =>
 		viewBox="0 0 36 36"
 	>
 		<path
-			stroke="#379C8D"
+			stroke="currentColor"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="2.963"

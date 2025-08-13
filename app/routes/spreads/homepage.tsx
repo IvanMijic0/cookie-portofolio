@@ -1,16 +1,15 @@
 import { forwardRef } from "react";
 import { LeftPage, RightPage } from "~/components";
-import { DModified } from "~/assets";
+import { DModified, Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
-import Star from "~/assets/Star";
 import { motion } from "framer-motion";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => {
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	const { goToSpread, ready } = useFlipbook();
 
 	return (
-		<LeftPage ref={ ref }>
+		<LeftPage ref={ref}>
 			<img
 				src="/homepage-left.webp"
 				alt=""
@@ -23,84 +22,84 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => {
 				<nav aria-label="Table of contents" className="text-[#272727]">
 					<h2 className="text-5xl font-serif pb-4">contents</h2>
 					<ol className="space-y-6">
-						{ navSections.map( ( section ) => (
+						{navSections.map((section) => (
 							<li
-								key={ section.title }
+								key={section.title}
 								className="grid grid-cols-[2ch_1fr] items-start gap-8"
 							>
 								<span className="text-right tabular-nums font-sans text-4xl font-light">
-							        { section.pageNumber }
+									{section.pageNumber}
 								</span>
 								<div className="flex flex-col">
 									<a
-										href={ `/book${ section.to }` }
-										onClick={ ( e ) => {
+										href={`/book${section.to}`}
+										onClick={(e) => {
 											if (!ready) return;
 											e.preventDefault();
-											goToSpread( section.to );
-										} }
+											goToSpread(section.to);
+										}}
 										className="font-sans text-lg 2xl:text-xl font-black cursor-pointer hover:opacity-90 transition"
 									>
-										{ section.title }
+										{section.title}
 									</a>
 									<ul className="ml-3">
-										{ section.items.map( ( item ) => (
-											<li key={ item.to }>
+										{section.items.map((item) => (
+											<li key={item.to}>
 												<a
-													href={ `/book${ item.to }` }
-													onClick={ ( e ) => {
+													href={`/book${item.to}`}
+													onClick={(e) => {
 														if (!ready) return;
 														e.preventDefault();
-														goToSpread( item.to );
-													} }
+														goToSpread(item.to);
+													}}
 													className="font-serif italic text-md 2xl:text-lg cursor-pointer hover:opacity-90 transition"
 												>
-													{ item.label }
+													{item.label}
 												</a>
 											</li>
-										) ) }
+										))}
 									</ul>
 								</div>
 							</li>
-						) ) }
+						))}
 					</ol>
 				</nav>
 				<section
 					aria-label="Contact"
 					className="flex flex-col items-center gap-2"
 				>
-					<Star className="w-10 h-10 2xl:w-12 2xl:h-12" aria-hidden/>
+					<Star className="w-10 h-10 2xl:w-12 2xl:h-12 text-white" aria-hidden />
 					<h3 className="font-serif text-white text-xl 2xl:text-2xl">Let's chat!</h3>
 					<div className="flex items-center gap-2">
-						{ contactButtons.map( ( { label, to, icon: Icon } ) => {
-							const isExternal = to?.startsWith( "http" );
+						{contactButtons.map(({ label, to, icon: Icon }) => {
+							const isExternal = to?.startsWith("http");
 							return (
 								<motion.a
-									key={ label }
-									href={ to || undefined }
-									target={ isExternal ? "_blank" : undefined }
-									rel={ isExternal ? "noopener noreferrer me" : undefined }
-									aria-label={ label }
-									title={ label }
-									whileHover={ { scale: 1.05, rotate: -1 } }
-									whileTap={ { scale: 0.95, rotate: 1 } }
-									transition={ { type: "spring", stiffness: 300, damping: 15 } }
+									key={label}
+									href={to || undefined}
+									target={isExternal ? "_blank" : undefined}
+									rel={isExternal ? "noopener noreferrer me" : undefined}
+									aria-label={label}
+									title={label}
+									whileHover={{ scale: 1.05, rotate: -1 }}
+									whileTap={{ scale: 0.95, rotate: 1 }}
+									transition={{ type: "spring", stiffness: 300, damping: 15 }}
 									className="z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg"
 								>
-									<Icon className="h-6 w-6 2xl:w-7 2xl:h-7" aria-hidden/>
-									<span className="sr-only">{ label }</span>
+									<Icon className="h-6 w-6 text-[#379C8D] 2xl:w-7 2xl:h-7" aria-hidden />
+									<span className="sr-only">{label}</span>
 								</motion.a>
 							);
-						} ) }
+						})}
 					</div>
 				</section>
 			</div>
 		</LeftPage>
 	);
-} );
+});
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark={ false }>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark={false}>
 		<img
 			src="/homepage-right.webp"
 			className="absolute inset-0 w-full h-full object-cover z-0"
@@ -123,15 +122,15 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 						aria-hidden="true"
 						className="font-display leading-0 font-normal flex justify-center text-white text-[8rem] 2xl:text-[10rem]"
 					>
-            <span
-	            className="
+						<span
+							className="
                 inline-flex items-baseline
                 [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
               "
-            >
-              <DModified className="h-[0.75em] w-auto"/>
-              ESIGN
-            </span>
+						>
+							<DModified className="h-[0.75em] w-auto" />
+							ESIGN
+						</span>
 					</div>
 					<h2 className="font-display italic tracking-[0.4em] text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727] text-4xl 2xl:text-5xl">
 						<span aria-hidden="true">portofolio</span>
@@ -140,19 +139,19 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				</div>
 				<div>
 					<h3 className="text-white font-serif text-2xl 2xl:text-3xl w-[13.3rem] 2xl:w-[16.3rem]">
-            <span className="flex flex-col">
-              <span>GRAPHIC</span>
-              <span className="w-full flex justify-end">DESIGN</span>
-            </span>
+						<span className="flex flex-col">
+							<span>GRAPHIC</span>
+							<span className="w-full flex justify-end">DESIGN</span>
+						</span>
 					</h3>
 					<h3 className="text-[#272727] font-serif text-2xl 2xl:text-3xl">
 						ILLUSTRATION
 					</h3>
 					<h3 className="text-white font-serif text-2xl 2xl:text-3xl w-[13rem] 2xl:w-[16rem]">
-            <span className="flex flex-col">
-              <span className="w-full flex justify-end">PHOTO</span>
-              <span>EDITING</span>
-            </span>
+						<span className="flex flex-col">
+							<span className="w-full flex justify-end">PHOTO</span>
+							<span>EDITING</span>
+						</span>
 					</h3>
 				</div>
 			</div>
@@ -178,11 +177,11 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			<div className="absolute inset-0 gap-10 flex-col flex items-center justify-center pb-24">
 				<p className="text-white italic text-3xl 2xl:text-4xl font-serif text-end leading-tight px-4">
 					<span className="not-italic">The DIFFERENT</span>
-					<br/>
+					<br />
 					<span className="not-italic">APPROACH</span>
-					<br/>
+					<br />
 					to design
-					<br/>
+					<br />
 					with
 				</p>
 				<h2 className="text-white leading-0 text-[5rem] 2xl:text-[6rem] font-logo">
@@ -191,7 +190,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</div>
 	</RightPage>
-) );
+));
 
 export function meta() {
 	const title = "Amna Kolić | Graphic Design, Photography & Illustration Portfolio";

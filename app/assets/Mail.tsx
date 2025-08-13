@@ -1,9 +1,9 @@
 import type { SVGProps } from "react";
 import type { JSX } from "react/jsx-runtime";
 
-const Mail = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) => (
+const Mail = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
 	<svg
-		{ ...props }
+		{...props}
 		xmlns="http://www.w3.org/2000/svg"
 		width="36"
 		height="36"
@@ -11,14 +11,14 @@ const Mail = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) => (
 		viewBox="0 0 36 36"
 	>
 		<path
-			stroke="#379C8D"
+			stroke="currentColor"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="2.963"
 			d="M29.63 5.926H5.926a2.963 2.963 0 0 0-2.963 2.963v17.778a2.963 2.963 0 0 0 2.963 2.963H29.63a2.963 2.963 0 0 0 2.963-2.963V8.889a2.963 2.963 0 0 0-2.963-2.963"
 		></path>
 		<path
-			stroke="#379C8D"
+			stroke="currentColor"
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="2.963"

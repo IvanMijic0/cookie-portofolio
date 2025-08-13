@@ -1,9 +1,9 @@
 import type { SVGProps } from "react";
 import type { JSX } from "react/jsx-runtime";
 
-const Instagram = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) => (
+const Instagram = (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>, color?: string) => (
 	<svg
-		{ ...props }
+		{...props}
 		xmlns="http://www.w3.org/2000/svg"
 		width="36"
 		height="36"
@@ -11,14 +11,14 @@ const Instagram = ( props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement> ) =
 		viewBox="0 0 36 36"
 	>
 		<path
-			stroke="#379C8D"
+			stroke='currentColor'
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="2.963"
 			d="M25.185 2.963H10.37a7.407 7.407 0 0 0-7.407 7.407v14.815a7.407 7.407 0 0 0 7.407 7.408h14.815a7.407 7.407 0 0 0 7.408-7.408V10.37a7.407 7.407 0 0 0-7.408-7.407"
 		></path>
 		<path
-			stroke="#379C8D"
+			stroke='currentColor'
 			strokeLinecap="round"
 			strokeLinejoin="round"
 			strokeWidth="2.963"
