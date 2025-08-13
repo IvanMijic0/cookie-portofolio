@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { LeftPage, RightPage } from "~/components";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => (
+	<LeftPage ref={ref}>
 		<img
 			src="/mountain-fairy-left.webp"
 			alt=""
@@ -19,16 +19,16 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			itemID="/book/illustration/mountain-fairy"
 			aria-labelledby="mountain-fairy-title"
 		>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="genre" content="Illustration"/>
+			<meta itemProp="inLanguage" content="en" />
+			<meta itemProp="genre" content="Illustration" />
 			<meta
 				itemProp="keywords"
 				content="Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage"
 			/>
-			<meta itemProp="artMedium" content="Digital painting"/>
-			<meta itemProp="image" content="/mountain-fairy-left.webp"/>
-			<meta itemProp="image" content="/mountain-fairy-right.webp"/>
-			<link itemProp="mainEntityOfPage" href="/book/illustration/mountain-fairy"/>
+			<meta itemProp="artMedium" content="Digital painting" />
+			<meta itemProp="image" content="/mountain-fairy-left.webp" />
+			<meta itemProp="image" content="/mountain-fairy-right.webp" />
+			<link itemProp="mainEntityOfPage" href="/book/illustration/mountain-fairy" />
 
 			<header className="flex flex-col items-start gap-6">
 				<div>
@@ -43,8 +43,8 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
 					<span className="sr-only">Project by </span>
 					<span itemProp="author" itemScope itemType="https://schema.org/Person">
-            <span itemProp="name">by Amna Kolić</span>
-          </span>
+						<span itemProp="name">by Amna Kolić</span>
+					</span>
 				</p>
 			</header>
 			<p className="text-base font-serif 2xl:text-lg font-bold italic text-justify" itemProp="description">
@@ -70,10 +70,10 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</p>
 		</article>
 	</LeftPage>
-) );
+));
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<img
 			src="/mountain-fairy-right.webp"
 			alt=""
@@ -94,12 +94,12 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				Mountain Fairy — Visual Artwork
 			</h2>
 			<figure itemProp="image" itemScope itemType="https://schema.org/ImageObject" className="sr-only">
-				<meta itemProp="contentUrl" content="/mountain-fairy-right.webp"/>
-				<meta itemProp="caption" content="Mountain Fairy illustration — right page background"/>
+				<meta itemProp="contentUrl" content="/mountain-fairy-right.webp" />
+				<meta itemProp="caption" content="Mountain Fairy illustration — right page background" />
 			</figure>
 		</article>
 	</RightPage>
-) );
+));
 
 export function meta() {
 	const title = "Bosnian Mountain Fairy — Digital Illustration | Amna Kolić";

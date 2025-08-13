@@ -41,8 +41,8 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 				<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
 					<span className="sr-only">Project by </span>
 					<span itemProp="author" itemScope itemType="https://schema.org/Person">
-            <span itemProp="name">by Amna Kolić</span>
-          </span>
+						<span itemProp="name">by Amna Kolić</span>
+					</span>
 				</p>
 			</header>
 			<div className="flex 2xl:pt-8 flex-col gap-4 2xl:gap-8 justify-start w-[84%] 2xl:w-2/3">
