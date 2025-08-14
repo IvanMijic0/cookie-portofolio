@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { CModified, Star } from "~/assets";
+import { CModified } from "~/assets";
 import { LeftPage, RightPage } from "~/components";
 import { motion } from "framer-motion";
 import { contactButtons } from "~/config";
@@ -15,7 +15,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			loading="eager"
 			fetchPriority="high"
 		/>
-
 		<article
 			className="absolute px-20 w-2/3 inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-center pb-12 2xl:pb-11 leading-[0.8]"
 			itemScope
