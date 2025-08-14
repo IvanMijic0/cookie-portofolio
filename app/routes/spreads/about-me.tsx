@@ -5,52 +5,69 @@ import { LeftPage, RightPage } from "~/components";
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
 		<article
-			className="absolute px-12 2xl:px-16 gap-3 2xl:gap-8 py-16 inset-0 z-10 flex items-center flex-col justify-between text-[#363636] leading-[0.8]"
+			className="absolute px-12 2xl:px-16 gap-6 2xl:gap-10 py-16 inset-0 z-10 flex items-center flex-col justify-start text-[#363636] leading-[0.8]"
+			itemScope
+			itemType="https://schema.org/AboutPage"
+			itemID="/book/about-me"
+			aria-labelledby="about-title"
 		>
-			<header >
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{
+					__html: JSON.stringify({
+						"@context": "https://schema.org",
+						"@type": "Person",
+						name: "Amna Kolić",
+						jobTitle: ["Graphic Designer", "UX/UI Designer", "Visual Artist"],
+						image: "/about-me.webp",
+						email: "mailto:amna.kolic1@gmail.com",
+						alumniOf: {
+							"@type": "CollegeOrUniversity",
+							name: "International Burch University",
+						},
+						worksFor: [
+							{ "@type": "Organization", name: "Beyond" },
+							{ "@type": "Organization", name: "Epifront" },
+						],
+						knowsAbout: [
+							"Branding",
+							"Editorial design",
+							"UX/UI",
+							"Photography",
+							"Illustration",
+							"Visual storytelling",
+						],
+						url: "/book/about-me",
+					}),
+				}}
+			/>
+			<header>
 				<div>
 					<h1
-						className="text-[5rem] text-center tracking-wider 2xl:text-[7rem] leading-18 2xl:leading-28 [-webkit-text-stroke:1px_#363636] text-stroke:1px_#363636]"
+						id="about-title"
+						className="text-[5rem] text-center tracking-wider 2xl:text-[7rem] leading-18 2xl:leading-28 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+						itemProp="headline"
 					>
 						The Mind<br />Behind<br />The Design
 					</h1>
 				</div>
 			</header>
-			<div>
+			<div aria-hidden="true">
 				<Star />
 			</div>
-			<div className="h-full flex gap-8 w-full text-[#505050]">
-				<div className="flex flex-col w-full gap-4">
-					<p className="first-letter:float-left first-letter:mr-1 first-letter:mt-1
-						 first-letter:text-[4rem] first-letter:leading-[0.8] font-serif leading-5 first-letter:font-serif first-letter:font-[400] first-letter:text-[#363636] text-justify">
-						Hi, I’m Amna Kolić—a Bosnia-based graphic designer, UX/UI designer, and an artist
-						with a Bachelor of Arts in Graphic Design and Multimedia from the International
-						Burch University.
-					</p>
-					<p className="text-sm leading-5 2xl:text-base font-serif text-justify" itemProp="artworkSurface">
-						As a kid, I was obsessed with magazines—the layouts, the rhythm of the pages, the way design could shape how you feel while flipping through a story. That fascination stuck with me, and it’s a huge reason why I’ve chosen to design my portfolio with the spirit of an editorial spread.
-					</p>
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="artworkSurface">
-						I’ve been working professionally since my second year of university, when I co-founded OverVerse, a startup built with two colleagues that aimed to merge traditional picture books with interactive mobile experiences for preschoolers. I wore many hats there: graphic designer, UX/UI designer, 3D modeler, animator, texturer, and even voice actor, which had taught me how to move fluidly between disciplines while staying grounded in storytelling and design clarity.
-					</p>
-				</div>
-				<div className="flex flex-col w-full gap-4">
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="articleBody">
-						disciplines while staying grounded in storytelling and design clarity.
-					</p>
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="articleBody">
-						Since then, I’ve worked with the public relations and communications agency Beyond (since April 2024), as their graphic designer, and collaborated with the IT company Epifront as a graphic designer and illustrator.
-					</p>
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="articleBody">
-						Along the way, I’ve taken on a range of freelance and side projects that helped me grow, experiment, and eventually find the niche I feel most connected to: visual storytelling with purpose and personality.
-					</p>
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="articleBody">
-						When I’m not designing, you’ll likely find me hiking, sewing, or baking, still creating, just with different tools. I love thoughtful work, collaborative energy, and ideas that have something to say.
-					</p>
-					<p className="text-sm 2xl:text-base leading-5 font-serif text-justify" itemProp="articleBody">
-						If you think we’d make a great team, feel free to reach out, for I would love to hear from you and see how we can bring your vision to life, together.
-					</p>
-				</div>
+			<div className="flex flex-col gap-4 w-5/6" itemProp="mainEntity">
+				<p className="first-letter:float-left first-letter:mr-1 first-letter:mt-1 first-letter:text-[4rem] first-letter:leading-[0.8] font-serif leading-5 first-letter:font-serif first-letter:font-[400] first-letter:text-[#363636] text-justify">
+					Hi, I’m Amna Kolić—a Bosnia-based graphic and UX/UI designer with a BA in Graphic Design and Multimedia from International Burch University.
+				</p>
+				<p className="text-sm leading-5 2xl:text-base font-serif text-justify">
+					My editorial-inspired approach to design comes from a childhood love of magazines and visual storytelling.
+				</p>
+				<p className="text-sm 2xl:text-base leading-5 font-serif text-justify">
+					I started my career as co-founder of OverVerse, a startup merging picture books with interactive apps, where I worked across design, 3D, animation, and more. Today, I’m a graphic designer at Beyond, creating ad campaigns, social media visuals, and major national branding projects, while also collaborating with Epifront and taking on freelance work.
+				</p>
+				<p className="text-sm 2xl:text-base leading-5 font-serif text-justify">
+					Whether designing for print, digital, or campaigns, my focus is creating visuals with purpose and personality. Let’s bring your vision to life.
+				</p>
 			</div>
 		</article>
 	</LeftPage>
@@ -60,32 +77,51 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 	<RightPage ref={ref}>
 		<img
 			src="/about-me.webp"
-			alt="Page background"
+			alt="Portrait of Amna Kolić"
 			className="w-full h-full object-cover z-0"
 			loading="eager"
 			fetchPriority="high"
+			itemProp="image"
 		/>
 	</RightPage>
 ));
 
 export function meta() {
+	const title = "About Amna Kolić – Graphic Designer, UX/UI & Visual Artist";
+	const description =
+		"Learn about Amna Kolić, a Bosnia-based graphic & UX/UI designer and visual artist blending branding, editorial design, photography, and illustration.";
+	const url = "/book/about-me";
+	const image = "/about-me.webp";
+	const name = "Amna Kolić";
+
 	return [
-		{ title: "Meet the Designer | About Amna Kolić – Graphic Designer & Visual Artist" },
+		{ title },
+		{ name: "description", content: description },
+		{ name: "author", content: name },
+		{ name: "robots", content: "index,follow,max-image-preview:large" },
 		{
-			name: "description",
-			content: "Learn more about Amna Kolić, a Bosnia-based designer and illustrator combining UX, branding, and storytelling in her creative work."
-		}
+			name: "keywords",
+			content:
+				"Amna Kolić, graphic designer, UX/UI designer, visual artist, Bosnia, branding, editorial design, portfolio",
+		},
+		{ property: "og:type", content: "profile" },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:locale", content: "en_US" },
+		{ property: "profile:first_name", content: "Amna" },
+		{ property: "profile:last_name", content: "Kolić" },
+		{ name: "twitter:card", content: "summary_large_image" },
+		{ name: "twitter:title", content: title },
+		{ name: "twitter:description", content: description },
+		{ name: "twitter:image", content: image },
+		{ tagName: "link", rel: "canonical", href: url },
 	];
-};
+}
 
 export const loader = () => null;
 
-const Mural = () => null;
-export default Mural;
-
-
-
-
-
-
-
+const AboutMe = () => null;
+export default AboutMe;
