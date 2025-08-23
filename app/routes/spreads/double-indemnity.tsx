@@ -1,53 +1,117 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import { LeftPage, RightPage } from "~/components";
+import Lightbox, { type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Share from "yet-another-react-lightbox/plugins/share";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Download from "yet-another-react-lightbox/plugins/download";
+import { useDisclosure } from "~/helpers";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
-		<div className="w-full h-full grid grid-cols-2 gap-3">
-			{ Array.from( { length: 6 } ).map( ( _, idx ) => {
-				let i = ( idx + 1 ).toString()
-				return <img
-					key={ i }
-					src={ `/double-indemnity-left-${ i }.webp` }
-					alt={ `Double Indemnity Left ${ i }` }
-					className="w-full h-full object-cover"
-					aria-hidden="true"
-					loading="eager"
-					fetchPriority="high"
-				/>
-			} ) }
-		</div>
-	</LeftPage>
-) );
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const ASPECT = 4 / 3;
+	const isSlideImage = (s: Slide): s is SlideImage => "src" in s;
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+	const slides: SlideImage[] = useMemo(
+		() =>
+			Array.from({ length: 6 }).map((_, idx) => ({
+				src: `/double-indemnity-left-${idx + 1}.webp`,
+				alt: `Double Indemnity series photo ${idx + 1} of 6`,
+			})),
+		[]
+	);
+
+	const [opened, { open, close }] = useDisclosure(false);
+	const [index, setIndex] = useState(0);
+
+	return (
+		<LeftPage ref={ref}>
+			<div className="w-full h-full grid grid-cols-2 gap-3">
+				{slides.map((s, idx) => (
+					<img
+						key={s.src}
+						src={s.src}
+						alt={s.alt ?? ""}
+						className="w-full h-full object-cover z-30 cursor-zoom-in select-none"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						onClick={() => {
+							setIndex(idx);
+							open();
+						}}
+					/>
+				))}
+			</div>
+
+
+			<Lightbox
+				open={opened}
+				close={close}
+				index={index}
+				slides={slides as Slide[]}
+				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
+				controller={{ closeOnBackdropClick: true }}
+				carousel={{ finite: false, imageFit: "cover" }}
+				render={{
+					slide: ({ slide, rect }) => {
+						if (!isSlideImage(slide)) return null;
+
+						const frameWidth = Math.min(rect.width, rect.height * ASPECT);
+						const frameHeight = frameWidth / ASPECT;
+
+						return (
+							<figure
+								style={{ width: frameWidth, height: frameHeight }}
+								className="mx-auto overflow-hidden rounded-lg shadow-lg bg-black/5"
+							>
+								<img
+									src={slide.src}
+									alt={slide.alt ?? ""}
+									style={{ width: "100%", height: "100%", objectFit: "cover" }}
+								/>
+								{slide.alt && (
+									<figcaption className="mt-3 text-center text-sm text-white/90">
+										{slide.alt}
+									</figcaption>
+								)}
+							</figure>
+						);
+					},
+				}}
+			/>
+		</LeftPage>
+	);
+});
+
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<article
 			className="absolute p-12 inset-0 z-20 flex items-center flex-col justify-between text-black"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 			itemID="/book/photography/double-indemnity"
 		>
-			<link itemProp="url" href="/book/photography/double-indemnity"/>
-			<meta itemProp="name" content="Double Indemnity"/>
+			<link itemProp="url" href="/book/photography/double-indemnity" />
+			<meta itemProp="name" content="Double Indemnity" />
 			<meta
 				itemProp="description"
 				content="A trio of black-and-white photographs that revive classic film noir through meticulous recreations of key scenes from Double Indemnity—studies in light, shadow, and emotion."
 			/>
-			<meta itemProp="genre" content="Photography, Film noir recreation"/>
-			<meta itemProp="inLanguage" content="en"/>
+			<meta itemProp="genre" content="Photography, Film noir recreation" />
+			<meta itemProp="inLanguage" content="en" />
 			<div className="flex h-full justify-between flex-col items-end gap-5 2xl:gap-8">
 				<header className="flex flex-col gap-8">
 					<h1
 						className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 text-[#363636] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline"
 					>
-						Double<br/>Indemnity
+						Double<br />Indemnity
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-						  <span itemProp="name">by Amna Kolić</span>
+							<span itemProp="name">by Amna Kolić</span>
 						</span>
 					</p>
 				</header>
@@ -71,7 +135,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</article>
 	</RightPage>
-) );
+));
 
 export function meta() {
 	const title = "Double Indemnity – Film Noir Photo Series by Amna Kolić";

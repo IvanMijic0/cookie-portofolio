@@ -1,4 +1,5 @@
 import "./app.css";
+import "yet-another-react-lightbox/styles.css";
 
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
 import type { Route } from "./+types/root";
@@ -34,20 +35,20 @@ export const links: Route.LinksFunction = () => [
 	{ rel: "preload", as: "font", href: "/fonts/athene-voyage.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 ];
 
-export function Layout( { children }: { children: ReactNode } ) {
+export function Layout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="en">
-		<head>
-			<meta charSet="utf-8"/>
-			<meta name="viewport" content="width=device-width, initial-scale=1"/>
-			<Meta/>
-			<Links/>
-		</head>
-		<body>
-		{ children }
-		<ScrollRestoration/>
-		<Scripts/>
-		</body>
+			<head>
+				<meta charSet="utf-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<Meta />
+				<Links />
+			</head>
+			<body>
+				{children}
+				<ScrollRestoration />
+				<Scripts />
+			</body>
 		</html>
 	);
 }
@@ -55,17 +56,17 @@ export function Layout( { children }: { children: ReactNode } ) {
 export default function App() {
 	return <UIProvider>
 		<FlipbookProvider>
-			<Outlet/>
+			<Outlet />
 		</FlipbookProvider>
 	</UIProvider>
 }
 
-export function ErrorBoundary( { error }: Route.ErrorBoundaryProps ) {
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	let message = "Oops!";
 	let details = "An unexpected error occurred.";
 	let stack: string | undefined;
 
-	if (isRouteErrorResponse( error )) {
+	if (isRouteErrorResponse(error)) {
 		message = error.status === 404 ? "404" : "Error";
 		details =
 			error.status === 404
@@ -78,13 +79,13 @@ export function ErrorBoundary( { error }: Route.ErrorBoundaryProps ) {
 
 	return (
 		<main>
-			<h1>{ message }</h1>
-			<p>{ details }</p>
-			{ stack && (
+			<h1>{message}</h1>
+			<p>{details}</p>
+			{stack && (
 				<pre>
-          <code>{ stack }</code>
-        </pre>
-			) }
+					<code>{stack}</code>
+				</pre>
+			)}
 		</main>
 	);
 }

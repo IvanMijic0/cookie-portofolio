@@ -1,66 +1,99 @@
-import { forwardRef } from "react";
+import { forwardRef, useState } from "react";
 import { LeftPage, RightPage } from "~/components";
+import { useDisclosure } from "~/helpers";
+import Lightbox, { type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Share from "yet-another-react-lightbox/plugins/share";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Download from "yet-another-react-lightbox/plugins/download";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
-		<img
-			src="/doli-bel-left.webp"
-			alt=""
-			role="presentation"
-			aria-hidden="true"
-			className="w-full h-full object-cover z-0"
-			loading="eager"
-			fetchPriority="high"
-		/>
-		<article
-			className="absolute px-16 py-24 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
-			itemScope
-			itemType="https://schema.org/CreativeWork"
-			itemID="/book/graphic-design/sjecas-li-se-doli-bel"
-		>
-			<meta itemProp="inLanguage" content="bs"/>
-			<meta itemProp="genre" content="Graphic Design"/>
-			<meta
-				itemProp="keywords"
-				content="Sjećaš li se Doli Bel, Doli Bel, graphic design, poster, editorial, visual identity, Bosnian design"
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const slides: SlideImage[] = [
+		{
+			src: "/doli-bel-left-1.webp",
+			alt: "Visual detail from the ‘Sjećaš li se Doli Bel’ design concept",
+		},
+	];
+
+	const [opened, { open, close }] = useDisclosure(false);
+	const [index, setIndex] = useState(0);
+
+	return (
+		<LeftPage ref={ref}>
+			<img
+				src="/doli-bel-left.webp"
+				alt=""
+				role="presentation"
+				aria-hidden="true"
+				className="w-full h-full object-cover z-0"
+				loading="eager"
+				fetchPriority="high"
 			/>
-			<meta itemProp="name" content="Sjećaš li se Doli Bel — Visual Concept"/>
-			<meta itemProp="image" content="/doli-bel-left.webp"/>
-			<meta itemProp="image" content="/doli-bel-left-1.webp"/>
-			<link
-				itemProp="mainEntityOfPage"
-				href="/book/graphic-design/sjecas-li-se-doli-bel"
-			/>
-			<div className="flex flex-col items-start justify-between h-full gap-2">
-				<header className="flex flex-col gap-1">
-					<h1
-						className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
-						itemProp="headline"
-					>
-						Sjećaš<br/>li se<br/>Doli<br/>Bel
-					</h1>
-					<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
-						<span className="sr-only">Project by </span>
-						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-						  <span itemProp="name">by Amna Kolić</span>
-						</span>
-					</p>
-				</header>
-				<img
-					src="/doli-bel-left-1.webp"
-					alt="Visual detail from the ‘Sjećaš li se Doli Bel’ design concept"
-					className="w-64 2xl:w-96 2xl:pb-8 object-cover z-0"
-					loading="eager"
-					fetchPriority="high"
-					itemProp="image"
+
+			<article
+				className="absolute px-16 py-24 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
+				itemScope
+				itemType="https://schema.org/CreativeWork"
+				itemID="/book/graphic-design/sjecas-li-se-doli-bel"
+			>
+				<meta itemProp="inLanguage" content="bs" />
+				<meta itemProp="genre" content="Graphic Design" />
+				<meta
+					itemProp="keywords"
+					content="Sjećaš li se Doli Bel, Doli Bel, graphic design, poster, editorial, visual identity, Bosnian design"
 				/>
-			</div>
-		</article>
-	</LeftPage>
-) );
+				<meta itemProp="name" content="Sjećaš li se Doli Bel — Visual Concept" />
+				<meta itemProp="image" content="/doli-bel-left.webp" />
+				<meta itemProp="image" content="/doli-bel-left-1.webp" />
+				<link itemProp="mainEntityOfPage" href="/book/graphic-design/sjecas-li-se-doli-bel" />
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+				<div className="flex flex-col items-start justify-between h-full gap-2">
+					<header className="flex flex-col gap-1">
+						<h1
+							className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+							itemProp="headline"
+						>
+							Sjećaš<br />li se<br />Doli<br />Bel
+						</h1>
+						<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
+							<span className="sr-only">Project by </span>
+							<span itemProp="author" itemScope itemType="https://schema.org/Person">
+								<span itemProp="name">by Amna Kolić</span>
+							</span>
+						</p>
+					</header>
+
+					<img
+						src={slides[0].src}
+						alt={slides[0].alt}
+						className="w-64 2xl:w-96 2xl:pb-8 object-cover z-0 cursor-zoom-in select-none"
+						loading="eager"
+						fetchPriority="high"
+						itemProp="image"
+						onClick={() => {
+							setIndex(0);
+							open();
+						}}
+					/>
+				</div>
+			</article>
+
+			<Lightbox
+				open={opened}
+				close={close}
+				index={index}
+				slides={slides as Slide[]}
+				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
+				controller={{ closeOnBackdropClick: true }}
+				carousel={{ finite: false }}
+			/>
+		</LeftPage>
+	);
+});
+
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<img
 			src="/doli-bel-right.webp"
 			alt=""
@@ -79,27 +112,27 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			<h2 className="sr-only" itemProp="headline">
 				Sjećaš li se Doli Bel — Visual Identity for Stage Adaptation
 			</h2>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="genre" content="Graphic Design"/>
+			<meta itemProp="inLanguage" content="en" />
+			<meta itemProp="genre" content="Graphic Design" />
 			<meta
 				itemProp="keywords"
 				content="Sjećaš li se Doli Bel, Doli Bel, poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design"
 			/>
-			<meta itemProp="image" content="/doli-bel-right.webp"/>
+			<meta itemProp="image" content="/doli-bel-right.webp" />
 			<link
 				itemProp="mainEntityOfPage"
 				href="/book/graphic-design/sjecas-li-se-doli-bel"
 			/>
 			<span itemProp="creator" itemScope itemType="https://schema.org/Person" className="sr-only">
-        <span itemProp="name">Amna Kolić</span>
-      </span>
+				<span itemProp="name">Amna Kolić</span>
+			</span>
 			<span itemProp="about" itemScope itemType="https://schema.org/CreativeWork" className="sr-only">
-        <span itemProp="name">Sjećaš li se Doli Bel</span>
-      </span>
+				<span itemProp="name">Sjećaš li se Doli Bel</span>
+			</span>
 			<span itemProp="publisher" itemScope itemType="https://schema.org/Organization" className="sr-only">
-        <span itemProp="name">Kamerni Teatar 55</span>
-        <meta itemProp="address" content="Sarajevo, Bosnia and Herzegovina"/>
-      </span>
+				<span itemProp="name">Kamerni Teatar 55</span>
+				<meta itemProp="address" content="Sarajevo, Bosnia and Herzegovina" />
+			</span>
 			<p
 				className="w-72 2xl:w-[20rem] text-justify text-base 2xl:text-lg font-bold italic"
 				itemProp="description"
@@ -125,7 +158,7 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</p>
 		</article>
 	</RightPage>
-) );
+));
 
 export function meta() {
 	const title =

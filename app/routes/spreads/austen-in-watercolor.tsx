@@ -1,8 +1,15 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import { LeftPage, RightPage } from "~/components";
+import { useDisclosure } from "~/helpers";
+import Lightbox, { type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Share from "yet-another-react-lightbox/plugins/share";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Download from "yet-another-react-lightbox/plugins/download";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => (
+	<LeftPage ref={ref}>
 		<img
 			src="/austen-left.webp"
 			alt=""
@@ -19,26 +26,26 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			itemID="/book/illustration/austen-in-watercolor"
 			aria-labelledby="austen-watercolor-title"
 		>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="genre" content="Illustration"/>
+			<meta itemProp="inLanguage" content="en" />
+			<meta itemProp="genre" content="Illustration" />
 			<meta
 				itemProp="keywords"
 				content="Jane Austen, watercolor illustration, Pride and Prejudice, Sense and Sensibility, Emma, literary art, concept illustration, portfolio"
 			/>
-			<meta itemProp="artMedium" content="Watercolor"/>
-			<meta itemProp="artform" content="Illustration"/>
-			<meta itemProp="image" content="/austen-left.webp"/>
-			<link itemProp="mainEntityOfPage" href="/book/illustration/austen-in-watercolor"/>
-			<link itemProp="isPartOf" href="/book/illustration"/>
+			<meta itemProp="artMedium" content="Watercolor" />
+			<meta itemProp="artform" content="Illustration" />
+			<meta itemProp="image" content="/austen-left.webp" />
+			<link itemProp="mainEntityOfPage" href="/book/illustration/austen-in-watercolor" />
+			<link itemProp="isPartOf" href="/book/illustration" />
 			<span className="sr-only" itemProp="about" itemScope itemType="https://schema.org/CreativeWork">
 				<span itemProp="name">Pride and Prejudice</span>
-			  </span>
+			</span>
 			<span className="sr-only" itemProp="about" itemScope itemType="https://schema.org/CreativeWork">
 				<span itemProp="name">Sense and Sensibility</span>
-			  </span>
+			</span>
 			<span className="sr-only" itemProp="about" itemScope itemType="https://schema.org/CreativeWork">
 				<span itemProp="name">Emma</span>
-			  </span>
+			</span>
 			<header>
 				<div>
 					<h1
@@ -57,15 +64,15 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 						itemProp="description"
 					>
 						This illustration series was inspired by the emotional and thematic richness of Jane
-						Austen’s{ ' ' }
+						Austen’s{' '}
 						<em>Pride and Prejudice</em>, <em>Sense and Sensibility</em>, and <em>Emma</em>.
 					</p>
 
 					<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="creator author" itemScope itemType="https://schema.org/Person">
-              <span itemProp="name">by Amna Kolić</span>
-            </span>
+							<span itemProp="name">by Amna Kolić</span>
+						</span>
 					</p>
 				</div>
 
@@ -106,91 +113,141 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</article>
 	</LeftPage>
-) );
+));
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
-		<img
-			src="/austen-right.webp"
-			alt=""
-			role="presentation"
-			aria-hidden="true"
-			className="w-full h-full object-cover z-0"
-			loading="eager"
-			fetchPriority="high"
-		/>
-		<article
-			className="absolute px-12 2xl:px-20 pt-14 2xl:pt-20 inset-0 z-10 flex items-start justify-between"
-			itemScope
-			itemType="https://schema.org/ImageGallery"
-			itemID="/book/illustration/austen-in-watercolor"
-			aria-labelledby="austen-gallery-title"
-		>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="name" content="Austen in Watercolor — Illustration Gallery"/>
-			<meta
-				itemProp="keywords"
-				content="Jane Austen illustrations, watercolor, Pride and Prejudice, Sense and Sensibility, Emma, literary art gallery"
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const slides: SlideImage[] = useMemo(
+		() => [
+			{
+				src: "/austen-right-1.webp",
+				alt: "Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice.",
+			},
+			{
+				src: "/austen-right-2.webp",
+				alt: "Watercolor cameo illustration inspired by Sense and Sensibility.",
+			},
+			{
+				src: "/austen-right-3.webp",
+				alt: "Watercolor cameo illustration inspired by Emma.",
+			},
+		],
+		[]
+	);
+
+	const [opened, { open, close }] = useDisclosure(false);
+	const [index, setIndex] = useState(0);
+
+	return (
+		<RightPage ref={ref} showBookmark>
+			<img
+				src="/austen-right.webp"
+				alt=""
+				role="presentation"
+				aria-hidden="true"
+				className="w-full h-full object-cover z-0"
+				loading="eager"
+				fetchPriority="high"
 			/>
-			<link itemProp="mainEntityOfPage" href="/book/illustration/austen-in-watercolor"/>
-			<h2 id="austen-gallery-title" className="sr-only">Austen in Watercolor — Gallery</h2>
-			<figure
-				className="w-36 2xl:w-52"
-				itemProp="associatedMedia"
+
+			<article
+				className="absolute px-12 2xl:px-20 pt-14 2xl:pt-20 inset-0 z-10 flex items-start justify-between"
 				itemScope
-				itemType="https://schema.org/ImageObject"
+				itemType="https://schema.org/ImageGallery"
+				itemID="/book/illustration/austen-in-watercolor"
+				aria-labelledby="austen-gallery-title"
 			>
-				<img
-					src="/austen-right-1.webp"
-					alt="Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice."
-					className="object-cover z-0 w-full"
-					loading="eager"
-					fetchPriority="high"
+				<meta itemProp="inLanguage" content="en" />
+				<meta itemProp="name" content="Austen in Watercolor — Illustration Gallery" />
+				<meta
+					itemProp="keywords"
+					content="Jane Austen illustrations, watercolor, Pride and Prejudice, Sense and Sensibility, Emma, literary art gallery"
 				/>
-				<meta itemProp="contentUrl" content="/austen-right-1.webp"/>
-				<figcaption className="sr-only" itemProp="caption">
-					Pride and Prejudice — watercolor cameo illustration
-				</figcaption>
-			</figure>
-			<figure
-				className="w-36 2xl:w-52"
-				itemProp="associatedMedia"
-				itemScope
-				itemType="https://schema.org/ImageObject"
-			>
-				<img
-					src="/austen-right-2.webp"
-					alt="Watercolor cameo illustration inspired by Sense and Sensibility."
-					className="object-cover z-0 w-full"
-					loading="eager"
-					fetchPriority="high"
-				/>
-				<meta itemProp="contentUrl" content="/austen-right-2.webp"/>
-				<figcaption className="sr-only" itemProp="caption">
-					Sense and Sensibility — watercolor cameo illustration
-				</figcaption>
-			</figure>
-			<figure
-				className="w-36 2xl:w-52"
-				itemProp="associatedMedia"
-				itemScope
-				itemType="https://schema.org/ImageObject"
-			>
-				<img
-					src="/austen-right-3.webp"
-					alt="Watercolor cameo illustration inspired by Emma."
-					className="object-cover z-0 w-full"
-					loading="eager"
-					fetchPriority="high"
-				/>
-				<meta itemProp="contentUrl" content="/austen-right-3.webp"/>
-				<figcaption className="sr-only" itemProp="caption">
-					Emma — watercolor cameo illustration
-				</figcaption>
-			</figure>
-		</article>
-	</RightPage>
-) );
+				<link itemProp="mainEntityOfPage" href="/book/illustration/austen-in-watercolor" />
+				<h2 id="austen-gallery-title" className="sr-only">
+					Austen in Watercolor — Gallery
+				</h2>
+				<figure
+					className="w-36 2xl:w-52"
+					itemProp="associatedMedia"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+				>
+					<img
+						src={slides[0].src}
+						alt={slides[0].alt ?? ""}
+						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						onClick={() => {
+							setIndex(0);
+							open();
+						}}
+					/>
+					<meta itemProp="contentUrl" content={slides[0].src} />
+					<figcaption className="sr-only" itemProp="caption">
+						Pride and Prejudice — watercolor cameo illustration
+					</figcaption>
+				</figure>
+				<figure
+					className="w-36 2xl:w-52"
+					itemProp="associatedMedia"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+				>
+					<img
+						src={slides[1].src}
+						alt={slides[1].alt ?? ""}
+						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						onClick={() => {
+							setIndex(1);
+							open();
+						}}
+					/>
+					<meta itemProp="contentUrl" content={slides[1].src} />
+					<figcaption className="sr-only" itemProp="caption">
+						Sense and Sensibility — watercolor cameo illustration
+					</figcaption>
+				</figure>
+				<figure
+					className="w-36 2xl:w-52"
+					itemProp="associatedMedia"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+				>
+					<img
+						src={slides[2].src}
+						alt={slides[2].alt ?? ""}
+						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						onClick={() => {
+							setIndex(2);
+							open();
+						}}
+					/>
+					<meta itemProp="contentUrl" content={slides[2].src} />
+					<figcaption className="sr-only" itemProp="caption">
+						Emma — watercolor cameo illustration
+					</figcaption>
+				</figure>
+			</article>
+
+			<Lightbox
+				open={opened}
+				close={close}
+				index={index}
+				slides={slides}
+				carousel={{ padding: 24 }}
+				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
+			/>
+		</RightPage>
+	);
+});
 
 export function meta() {
 	const title = "Austen in Watercolor — Jane Austen-Inspired Illustrations | Amna Kolić";
