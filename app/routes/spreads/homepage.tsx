@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { LeftPage, RightPage } from "~/components";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { DModified, Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
@@ -193,7 +193,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 ));
 
 export const Mobile = () => (
-	<main className="relative min-h-svh w-full text-white">
+	<MobileWrapper>
 		<img
 			src="/homepage-right.webp"
 			alt=""
@@ -203,71 +203,9 @@ export const Mobile = () => (
 			fetchPriority="high"
 			decoding="async"
 		/>
-		<div className="relative z-10 px-6 py-10 space-y-8 bg-gradient-to-t from-black/60 to-black/10">
-			<h1 className="sr-only">Amna Kolić — Design portfolio</h1>
-			<div className="font-display leading-none font-normal flex justify-center text-[18vw]">
-				<span className="inline-flex items-baseline [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]">
-					<DModified className="h-[0.8em] w-auto" />
-					ESIGN
-				</span>
-			</div>
-			<div className="space-y-2 text-center font-serif">
-				<p className="text-white text-xl">GRAPHIC DESIGN</p>
-				<p className="text-[#272727] text-xl">ILLUSTRATION</p>
-				<p className="text-white text-xl">PHOTO EDITING</p>
-			</div>
-			<section aria-label="Contents" className="bg-white/10 rounded-2xl p-4 backdrop-blur">
-				<h2 className="font-serif text-2xl mb-3">contents</h2>
-				<ol className="space-y-3">
-					{navSections.map((section) => (
-						<li key={section.title} className="flex items-start gap-4">
-							<span className="tabular-nums font-sans text-2xl">{section.pageNumber}</span>
-							<div className="flex-1">
-								<a href={`/book${section.to}`} className="font-sans text-lg font-black underline">
-									{section.title}
-								</a>
-								<ul className="ml-3">
-									{section.items.map((item) => (
-										<li key={item.to}>
-											<a
-												to={`/book${item.to}`}
-												className="font-serif italic text-base underline/20 hover:underline"
-											>
-												{item.label}
-											</a>
-										</li>
-									))}
-								</ul>
-							</div>
-						</li>
-					))}
-				</ol>
-			</section>
-			<section aria-label="Contact" className="flex flex-col items-center gap-2">
-				<Star className="w-10 h-10" aria-hidden />
-				<h3 className="font-serif text-xl">Let's chat!</h3>
-				<div className="flex items-center gap-2">
-					{contactButtons.map(({ label, to, icon: Icon }) => {
-						const isExternal = to?.startsWith("http");
-						return (
-							<a
-								key={label}
-								href={to || undefined}
-								target={isExternal ? "_blank" : undefined}
-								rel={isExternal ? "noopener noreferrer me" : undefined}
-								aria-label={label}
-								title={label}
-								className="inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md"
-							>
-								<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
-								<span className="sr-only">{label}</span>
-							</a>
-						);
-					})}
-				</div>
-			</section>
+		<div className="relative ">
 		</div>
-	</main>
+	</MobileWrapper>
 );
 
 export function meta() {
