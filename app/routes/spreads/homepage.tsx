@@ -262,7 +262,7 @@ export const Mobile = () => (
 					aria-hidden="true"
 				/>
 				<div className="absolute inset-0 gap-10 flex-col flex items-center justify-center pb-24">
-					<p className="text-white italic text-2xl font-serif text-end leading-tight px-4">
+					<p className="text-white italic text-2xl xs:text-3xl font-serif text-end leading-tight px-4">
 						<span className="not-italic">The DIFFERENT</span>
 						<br />
 						<span className="not-italic">APPROACH</span>
@@ -271,7 +271,7 @@ export const Mobile = () => (
 						<br />
 						with
 					</p>
-					<h2 className="text-white leading-0 text-[4rem] font-logo">
+					<h2 className="text-white leading-0 text-[4rem] xs:text-[5rem] font-logo">
 						AMNA
 					</h2>
 				</div>
