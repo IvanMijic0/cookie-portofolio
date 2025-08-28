@@ -3,6 +3,7 @@ import { AnimatePresence, motion, type Variants, type Transition } from "framer-
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
+import Portal from "../Portal";
 
 type NormalizeFn = (s: string) => string;
 
@@ -24,48 +25,50 @@ const Nav = () => {
 	const baseColor = isHomepage ? "#ffffff" : "#000000";
 
 	return (
-		<>
-			{!isHomepage && (
-				<div className="pointer-events-none fixed inset-x-0 top-0 z-30">
-					<div className="h-14 bg-gradient-to-b from-white/70 via-white/50 to-transparent" />
-				</div>
-			)}
-			<HamburgerButton active={active} setActive={setActive} current={current} />
+		<Portal>
+			<div className="fixed inset-0 z-[2147483647] pointer-events-none">
+				{!isHomepage && (
+					<div className="pointer-events-none fixed inset-x-0 top-0">
+						<div className="h-14 bg-gradient-to-b from-white/70 via-white/50 to-transparent" />
+					</div>
+				)}
 
-			<AnimatePresence>
-				{active && <LinksOverlay current={current} normalize={normalize} />}
-			</AnimatePresence>
-			{isHomepage && (
-				<div className="fixed inset-x-0 top-6 z-40 pointer-events-none">
+				<div className="pointer-events-auto">
+					<HamburgerButton active={active} setActive={setActive} current={current} />
+					<AnimatePresence>
+						{active && <LinksOverlay current={current} normalize={normalize} />}
+					</AnimatePresence>
+				</div>
+				{isHomepage && (
+					<div className="fixed inset-x-0 top-6 pointer-events-none">
+						<motion.div
+							className="mx-auto w-fit flex items-center gap-6 pointer-events-auto"
+							initial={false}
+							animate={{ opacity: active ? 0 : 1, scale: active ? 0.98 : 1 }}
+							transition={{ duration: 0.2, ease: "easeInOut" }}
+						>
+							{contactButtons.map(({ label, to, icon: Icon }) => (
+								<a key={label} href={to} className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md">
+									<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
+									<span className="sr-only">{label}</span>
+								</a>
+							))}
+						</motion.div>
+					</div>
+				)}
+				<div className="fixed right-6 top-4 z-[2147483647]  pointer-events-none">
 					<motion.div
-						className="mx-auto w-fit flex items-center gap-6 pointer-events-auto"
+						className="flex flex-col items-center gap-1 pointer-events-auto"
 						initial={false}
-						animate={{ opacity: active ? 0 : 1, scale: active ? 0.98 : 1 }}
-						transition={{ duration: 0.2, ease: 'easeInOut' }}
-						style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
+						animate={{ color: active ? "#000000" : baseColor }}
+						transition={{ duration: 0.25, ease: "easeInOut" }}
 					>
-						{contactButtons.map(({ label, to, icon: Icon }) => (
-							<a key={label} href={to} className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md">
-								<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
-								<span className="sr-only">{label}</span>
-							</a>
-						))}
+						<Star className="min-w-8 min-h-8 h-8 w-8" />
+						<span className="font-logo">AMNA</span>
 					</motion.div>
 				</div>
-			)}
-
-			<div className="fixed z-40 right-6 top-4">
-				<motion.div
-					className="flex flex-col items-center gap-1"
-					initial={false}
-					animate={{ color: active ? "#000000" : baseColor }}
-					transition={{ duration: 0.25, ease: "easeInOut" }}
-				>
-					<Star className="min-w-8 min-h-8 h-8 w-8" />
-					<span className="font-logo">AMNA</span>
-				</motion.div>
 			</div>
-		</>
+		</Portal>
 	);
 };
 
