@@ -4,6 +4,7 @@ import { DModified, Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
 import { motion } from "framer-motion";
+import { ScreenTextFit } from "~/components/UI";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	const { goToSpread, ready } = useFlipbook();
@@ -123,10 +124,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 						className="font-display leading-0 font-normal flex justify-center text-white text-[8rem] 2xl:text-[10rem]"
 					>
 						<span
-							className="
-                inline-flex items-baseline
-                [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]
-              "
+							className=" inline-flex items-baseline [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]"
 						>
 							<DModified className="h-[0.75em] w-auto" />
 							ESIGN
@@ -194,50 +192,93 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 
 export const Mobile = () => (
 	<MobileWrapper>
-		<img
-			src="/homepage-right.webp"
-			alt=""
-			role="presentation"
-			className="absolute inset-0 w-full h-full object-cover"
-			loading="eager"
-			fetchPriority="high"
-			decoding="async"
-		/>
-		<div className="relative ">
+		<div className="relative h-svh w-full px-6 [overflow:clip]">
+			<img
+				src="/homepage-right.webp"
+				alt=""
+				role="presentation"
+				className="absolute inset-0 w-full h-full object-cover z-0"
+				loading="eager"
+				fetchPriority="high"
+				decoding="async"
+			/>
+
+			<section className="relative flex w-full overflow-hidden flex-col gap-10 xs:gap-20 items-start justify-start pt-24 xs:pt-32 h-screen">
+				<div className="relative z-10 flex flex-col w-full items-start gap-2">
+					<h1 id="home-hero-title" className="sr-only">
+						Amna Kolić — Design portfolio
+					</h1>
+					<div aria-hidden="true" className="font-display w-full leading-0 font-normal flex justify-center text-white">
+						<ScreenTextFit>
+							<span className="inline-flex items-baseline py-1">
+								<DModified className="h-[0.75em] w-auto" />
+								ESIGN
+							</span>
+						</ScreenTextFit>
+					</div>
+					<h2 className="font-display italic tracking-[0.4em] pl-2 text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727] text-2xl">
+						<span aria-hidden="true">portofolio</span>
+						<span className="sr-only">portfolio</span>
+					</h2>
+				</div>
+				<div className="relative z-30">
+					<h3 className="text-white font-serif text-3xl w-[13.3rem]">
+						<span className="flex flex-col">
+							<span>GRAPHIC</span>
+							<span className="w-full flex justify-end">DESIGN</span>
+						</span>
+					</h3>
+					<h3 className="text-[#272727] font-serif text-2xl">ILLUSTRATION</h3>
+					<h3 className="text-white font-serif text-2xl w-[13rem]">
+						<span className="flex flex-col">
+							<span className="w-full flex justify-end">PHOTO</span>
+							<span>EDITING</span>
+						</span>
+					</h3>
+				</div>
+			</section>
+			<img
+				src="/cookie-pose.webp"
+				alt=""
+				role="presentation"
+				className="absolute bottom-0 -right-6 xs:-right-24 max-h-[97vh] max-w-[97vw] xs:max-h-[122vh] xs:max-w-[122vw] object-contain object-bottom-right z-20 pointer-events-none"
+				loading="eager"
+				decoding="async"
+			/>
+			<div
+				className="
+				    absolute bottom-0 right-4 xs:right-0
+				    translate-x-14 translate-y-24
+				    w-[21rem] h-[21rem] xs:w-[26rem] xs:h-[26rem] rounded-full
+				    z-30 overflow-hidden pointer-events-none
+				  "
+			>
+				<div
+					className="
+						  absolute inset-0 rounded-full mix-blend-multiply
+						  bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)]
+						  bg-no-repeat bg-[length:100%_100%]
+						"
+					aria-hidden="true"
+				/>
+				<div className="absolute inset-0 gap-10 flex-col flex items-center justify-center pb-24">
+					<p className="text-white italic text-2xl font-serif text-end leading-tight px-4">
+						<span className="not-italic">The DIFFERENT</span>
+						<br />
+						<span className="not-italic">APPROACH</span>
+						<br />
+						to design
+						<br />
+						with
+					</p>
+					<h2 className="text-white leading-0 text-[4rem] font-logo">
+						AMNA
+					</h2>
+				</div>
+			</div>
 		</div>
 	</MobileWrapper>
 );
-
-export function meta() {
-	const title = "Amna Kolić | Graphic Design, Photography & Illustration Portfolio";
-	const description =
-		"Explore the design portfolio of Amna Kolić, featuring creative work in graphic design, photography, illustration, and visual storytelling.";
-	const url = "/book/homepage";
-	const image = "/homepage-right.webp";
-	const imageAlt = "Stylized 'DESIGN' hero with category list and portrait overlay";
-
-	return [
-		{ title },
-		{ name: "description", content: description },
-		{
-			name: "keywords",
-			content: "graphic design, photography, illustration, portfolio, visual identity, editorial, branding"
-		},
-		{ name: "author", content: "Amna Kolić" },
-		{ name: "robots", content: "index,follow" },
-		{ property: "og:type", content: "website" },
-		{ property: "og:title", content: title },
-		{ property: "og:description", content: description },
-		{ property: "og:url", content: url },
-		{ property: "og:image", content: image },
-		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:locale", content: "en_US" },
-		{ name: "twitter:card", content: "summary_large_image" },
-		{ name: "twitter:title", content: title },
-		{ name: "twitter:description", content: description },
-		{ name: "twitter:image", content: image },
-	];
-}
 
 export const loader = () => null;
 

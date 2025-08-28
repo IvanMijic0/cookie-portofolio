@@ -3,7 +3,6 @@ import { AnimatePresence, motion, type Variants, type Transition } from "framer-
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
-import { clsx } from "yet-another-react-lightbox";
 
 type NormalizeFn = (s: string) => string;
 
@@ -39,7 +38,7 @@ const Nav = () => {
 			{isHomepage && (
 				<div className="fixed inset-x-0 top-6 z-40 pointer-events-none">
 					<motion.div
-						className="mx-auto w-fit flex items-center gap-6 pr-3 pointer-events-auto"
+						className="mx-auto w-fit flex items-center gap-6 pointer-events-auto"
 						initial={false}
 						animate={{ opacity: active ? 0 : 1, scale: active ? 0.98 : 1 }}
 						transition={{ duration: 0.2, ease: 'easeInOut' }}

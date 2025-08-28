@@ -2,10 +2,12 @@ import type { PropsWithChildren } from "react";
 import { Nav } from "./UI";
 
 const MobileWrapper = ({ children }: PropsWithChildren) => (
-	<main className="h-screen w-full">
+	<main className="relative min-h-svh min-w-sm w-full overflow-x-hidden">
 		<Nav />
-		{children}
-	</main>
+		<div className="relative min-h-svh">
+			{children}
+		</div>
+	</main >
 )
 
 export default MobileWrapper;
