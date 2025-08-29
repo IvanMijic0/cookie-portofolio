@@ -66,78 +66,123 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 	</RightPage>
 ));
 
-export const Mobile = () => (
-	<MobileWrapper>
-		<div className="relative h-svh w-full bg-white [overflow:clip]">
-			<div className="relative bg-white">
-				<img
-					src="/photography-intro.webp"
-					alt=""
-					role="presentation"
-					className="block w-full h-auto object-cover"
-					loading="eager"
-					fetchPriority="high"
-				/>
-				<div
-					className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white"
-				/>
-			</div>
+export const Mobile = () => {
+	const ld = {
+		"@context": "https://schema.org",
+		"@type": "WebPage",
+		name: "Photography & Editing",
+		url: "/book/photography",
+		primaryImageOfPage: {
+			"@type": "ImageObject",
+			contentUrl: "/photography-intro.webp",
+		},
+		about: {
+			"@type": "CreativeWork",
+			name: "Photography & Editing",
+			author: { "@type": "Person", name: "Amna Kolić" },
+		},
+	};
 
-			<article
-				className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
-				itemScope
-				itemType="https://schema.org/WebPageSection"
-				aria-labelledby="photography-title"
-			>
-				<h1 id="photography-title" className="sr-only" itemProp="name">
-					Photography &amp; Editing
-				</h1>
-				<div aria-hidden="true">
-					<PTop className="w-full h-auto 2xl:w-auto 2xl:h-auto" />
-				</div>
-				<div className='pb-6 pt-2 text-center space-y-2'>
-					<h2 className="text-[#363636] text-[2.5rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
-						PHOTOGRAPHY
-					</h2>
-					<motion.div
-						className="mx-auto w-fit flex items-center gap-3 pointer-events-auto"
-						initial={false}
-						transition={{ duration: 0.2, ease: "easeInOut" }}
+	return (
+		<MobileWrapper>
+			<div className="relative h-svh w-full bg-white [overflow:clip]">
+				<div className="relative bg-white">
+					<figure
+						itemProp="primaryImageOfPage"
+						itemScope
+						itemType="https://schema.org/ImageObject"
+						className="m-0"
 					>
-						{photographyNavButtons.map(({ label, to }) => (
-							<a key={label} href={to} className="inline-flex text-sm xs:text-base font-serif items-center justify-center bg-[#363636] py-2 px-4 rounded-xl">
-								<span>{label}</span>
-							</a>
-						))}
-					</motion.div>
+						<img
+							src="/photography-intro.webp"
+							alt="Editorial portrait introducing the Photography & Editing section"
+							className="block w-full h-auto object-cover"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+							itemProp="contentUrl"
+						/>
+						<figcaption className="sr-only">
+							Hero image for Photography &amp; Editing
+						</figcaption>
+					</figure>
+					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
 				</div>
-				<div className="flex w-full items-end justify-between  gap-3">
+				<article
+					className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+					itemScope
+					itemType="https://schema.org/WebPageSection"
+					aria-labelledby="photography-title"
+				>
+					<h1 id="photography-title" className="sr-only" itemProp="name">
+						Photography &amp; Editing
+					</h1>
 					<div aria-hidden="true">
-						<PBottom className="w-[11.7rem] leading-0 h-auto" />
+						<PTop className="w-full h-auto 2xl:w-auto 2xl:h-auto" />
 					</div>
-					<div
-						className="min-w-0 xs:text-right text-[#505050] font-serif text-xs">
-						<dl className="space-y-1" itemProp="about" itemScope itemType="https://schema.org/CreativeWork">
-							<div className="flex flex-col xs:flex-row justify-end gap-1">
-								<dt className="font-bold">Model:</dt>
-								<dd itemProp="actor" itemScope itemType="https://schema.org/Person">
-									<span itemProp="name">Elma Rožajac</span>
-								</dd>
-							</div>
-							<div className="flex flex-col xs:flex-row justify-end gap-1">
-								<dt className="font-bold">Photographer:</dt>
-								<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
-									<span itemProp="name">Amna Kolić</span>
-								</dd>
-							</div>
-						</dl>
+					<div className="pb-6 pt-2 text-center space-y-2">
+						<h2 className="text-[#363636] text-[2.5rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
+							PHOTOGRAPHY
+						</h2>
+						<nav
+							aria-label="Photography section navigation"
+							itemScope
+							itemType="https://schema.org/SiteNavigationElement"
+						>
+							<motion.div
+								className="mx-auto w-fit flex items-center gap-3 pointer-events-auto"
+								initial={false}
+								transition={{ duration: 0.2, ease: "easeInOut" }}
+							>
+								{photographyNavButtons.map(({ label, to }) => (
+									<a
+										key={label}
+										href={to}
+										className="inline-flex text-sm xs:text-base font-serif items-center justify-center bg-[#363636] py-2 px-4 rounded-xl"
+										itemProp="url"
+										title={label}
+									>
+										<span itemProp="name">{label}</span>
+									</a>
+								))}
+							</motion.div>
+						</nav>
 					</div>
-				</div>
-			</article>
-
-		</div>
-	</MobileWrapper>
-);
+					<div className="flex w-full items-end justify-between gap-3">
+						<div aria-hidden="true">
+							<PBottom className="w-[11.7rem] leading-0 h-auto" />
+						</div>
+						<div className="min-w-0 xs:text-right text-[#505050] font-serif text-xs">
+							<dl
+								className="space-y-1"
+								itemProp="about"
+								itemScope
+								itemType="https://schema.org/CreativeWork"
+							>
+								<div className="flex flex-col xs:flex-row justify-end gap-1">
+									<dt className="font-bold">Model:</dt>
+									<dd itemProp="actor" itemScope itemType="https://schema.org/Person">
+										<span itemProp="name">Elma Rožajac</span>
+									</dd>
+								</div>
+								<div className="flex flex-col xs:flex-row justify-end gap-1">
+									<dt className="font-bold">Photographer:</dt>
+									<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
+										<span itemProp="name">Amna Kolić</span>
+									</dd>
+								</div>
+							</dl>
+						</div>
+					</div>
+					<script
+						type="application/ld+json"
+						dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
+					/>
+				</article>
+			</div>
+		</MobileWrapper>
+	);
+};
 
 
 export function meta() {
