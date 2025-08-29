@@ -339,7 +339,6 @@ export const Mobile = () => {
 								>
 									<img
 										src="/kreativ-festival-art-direction-right-1.webp"
-										srcSet="/kreativ-festival-art-direction-right-1-800.webp 800w, /kreativ-festival-art-direction-right-1.webp 1200w"
 										sizes="(max-width: 540px) 40vw, 400px"
 										className="object-cover w-full h-full flex-1"
 										loading="lazy"
@@ -365,7 +364,6 @@ export const Mobile = () => {
 								>
 									<img
 										src="/kreativ-festival-art-direction-right-3.webp"
-										srcSet="/kreativ-festival-art-direction-right-3-800.webp 800w, /kreativ-festival-art-direction-right-3.webp 1200w"
 										sizes="(max-width: 540px) 40vw, 400px"
 										className="object-cover w-full h-full flex-1"
 										loading="lazy"
@@ -396,7 +394,6 @@ export const Mobile = () => {
 							>
 								<img
 									src="/kreativ-festival-art-direction-right-2.webp"
-									srcSet="/kreativ-festival-art-direction-right-2-900.webp 900w, /kreativ-festival-art-direction-right-2.webp 1400w"
 									sizes="(max-width: 640px) 55vw, 520px"
 									className="object-contain w-full h-full"
 									loading="lazy"
@@ -481,6 +478,7 @@ export const Mobile = () => {
 		</MobileWrapper>
 	);
 };
+
 export function meta() {
 	const title =
 		"KREATIV Fest – Festival Art Direction & Visual Identity | Kreativ Euphoria — Amna Kolić";

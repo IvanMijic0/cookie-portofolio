@@ -1,12 +1,13 @@
-import { forwardRef, useState } from "react";
-import { LeftPage, RightPage } from "~/components";
+import { forwardRef, useMemo, useState } from "react";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { useDisclosure } from "~/helpers";
-import Lightbox, { type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Lightbox, { isImageSlide, type Slide, type SlideImage } from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
+import { Carousel, ScreenTextFit } from "~/components/UI";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	const slides: SlideImage[] = [
@@ -159,6 +160,199 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 		</article>
 	</RightPage>
 ));
+
+export const Mobile = () => {
+	const [opened, setOpened] = useState(false);
+	const [index, setIndex] = useState(0);
+
+	const doliSlides = useMemo(
+		() => [
+			{
+				src: "/doli-bel-1.webp",
+				alt: "Sjećaš li se Doli Bel? — primary poster with fragmented typography forming a crooked house silhouette on a vivid red background.",
+			},
+			{
+				src: "/doli-bel-left-1.webp",
+				alt: "Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence.",
+			},
+			{
+				src: "/doli-bel-left-2.webp",
+				alt: "Sjećaš li se Doli Bel? — brochure design featuring circular, disoriented layout echoing emotional imbalance.",
+			},
+		],
+		[]
+	);
+
+	const openAt = (i: number) => {
+		setIndex(i);
+		setOpened(true);
+	};
+	const close = () => setOpened(false);
+
+	const slides = [
+		{
+			id: 1,
+			title: "Kreativ Fest Art Direction",
+			src: "/kreativ-festival-art-direction-1.webp",
+			href: "/graphic-design/kreativ-festival-art-direction",
+			alt: "Kreativ Fest art direction poster — bold grunge-inspired textures and expressive typography.",
+		},
+		{
+			id: 2,
+			title: "Chippsters Logo",
+			src: "/chippsters-1.webp",
+			href: "/graphic-design/chippsters-logo",
+			alt: "Chippsters logo design concept — playful wordmark with modern branding aesthetics.",
+		},
+	];
+
+	return (
+		<MobileWrapper>
+			<main
+				className="relative h-svh w-full bg-white"
+				itemScope
+				itemType="https://schema.org/WebPage"
+			>
+				<figure
+					itemProp="primaryImageOfPage"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className="m-0"
+				>
+					<button
+						type="button"
+						onClick={() => openAt(0)}
+						className="block w-full cursor-zoom-in"
+						aria-label="Open hero poster in lightbox"
+						title="View hero poster"
+					>
+						<img
+							src="/doli-bel-1.webp"
+							sizes="100vw"
+							alt="Sjećaš li se Doli Bel? hero poster — fragmented red typography forming a crooked house silhouette."
+							className="block w-full h-auto object-cover"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+							itemProp="contentUrl"
+							width={1600}
+							height={2000}
+						/>
+					</button>
+				</figure>
+
+				<article
+					className="px-6 py-8 z-20 flex items-center gap-4 w-full justify-start flex-col text-[#363636]"
+					itemScope
+					itemType="https://schema.org/WebPageSection"
+					aria-labelledby="graphic-design-title"
+				>
+					<ScreenTextFit>
+						<header>
+							<h1
+								id="graphic-design-title"
+								itemProp="headline name"
+								className="font-display pb-4 w-full text-right italic text-[#363636] leading-18 [-webkit-text-stroke:2px_#363636] [text-stroke:2px_#363636]"
+							>
+								Sjećaš li se <br /> Doli Bel
+							</h1>
+							<meta itemProp="inLanguage" content="en" />
+						</header>
+					</ScreenTextFit>
+
+					<p
+						itemProp="description"
+						className="text-lg italic font-bold pb-4 text-justify font-serif text-[#505050]"
+					>
+						For the stage adaptation of <em>Sjećaš li se Doli Bel?</em> at Kamerni Teatar 55 in Sarajevo, this design reimagines the play’s promotional visuals through symbolic typography, color, and emotional texture.
+					</p>
+
+					<figure
+						itemScope
+						itemType="https://schema.org/ImageObject"
+						className="m-0"
+					>
+						<button
+							type="button"
+							onClick={() => openAt(1)}
+							className="block w-full cursor-zoom-in"
+							aria-label="Open ID badge front in lightbox"
+							title="View ID badge front"
+						>
+							<img
+								src="/doli-bel-left-1.webp"
+								sizes="(max-width: 540px) 40vw, 400px"
+								className="object-cover w-full h-full flex-1"
+								loading="lazy"
+								decoding="async"
+								alt="Sjećaš li se Doli Bel? — ID badge front with red background and white handwritten typography."
+								itemProp="contentUrl"
+								width={1200}
+								height={1600}
+							/>
+						</button>
+						<figcaption className="sr-only" itemProp="caption">
+							ID badge front mockup.
+						</figcaption>
+					</figure>
+
+					<section
+						id="description"
+						aria-label="Project description"
+						className="flex text-sm w-full pt-6 text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
+					>
+						<p className="text-base" itemProp="about">
+							Drawing from the story’s themes of adolescence, loss, and emotional decay,          I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms.
+						</p>
+						<p className="text-base">
+							The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play.
+						</p>
+					</section>
+
+					<section
+						className="flex pt-6 flex-col gap-6 w-full items-center"
+						aria-labelledby="see-more-like-this"
+					>
+						<ScreenTextFit>
+							<h2
+								id="see-more-like-this"
+								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
+							>
+								See more like this
+							</h2>
+						</ScreenTextFit>
+						<Carousel items={slides} loop rounded aria-label="Related works carousel" />
+					</section>
+				</article>
+
+				<Lightbox
+					open={opened}
+					close={close}
+					index={index}
+					slides={doliSlides}
+					plugins={[Fullscreen, Share, Zoom, Download]}
+					controller={{ closeOnBackdropClick: true }}
+					carousel={{ finite: false, imageFit: "contain" }}
+					styles={{ container: { zIndex: 200 } }}
+					render={{
+						slide: ({ slide }) => {
+							if (!isImageSlide(slide)) return null;
+							return (
+								<figure className="mx-auto overflow-hidden rounded-md">
+									<img
+										src={slide.src}
+										alt={slide.alt ?? ""}
+										style={{ width: "100%", height: "auto", display: "block" }}
+									/>
+								</figure>
+							);
+						},
+					}}
+				/>
+			</main>
+		</MobileWrapper>
+	);
+};
 
 export function meta() {
 	const title =
