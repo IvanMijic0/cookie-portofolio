@@ -175,10 +175,6 @@ export const Mobile = () => {
 				src: "/doli-bel-left-1.webp",
 				alt: "Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence.",
 			},
-			{
-				src: "/doli-bel-left-2.webp",
-				alt: "Sjećaš li se Doli Bel? — brochure design featuring circular, disoriented layout echoing emotional imbalance.",
-			},
 		],
 		[]
 	);

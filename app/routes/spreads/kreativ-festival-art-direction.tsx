@@ -255,7 +255,7 @@ export const Mobile = () => {
 			alt:
 				"Chippsters logo concept — playful wordmark with contemporary brand detailing.",
 		},
-	] as const;
+	];
 
 	return (
 		<MobileWrapper>
