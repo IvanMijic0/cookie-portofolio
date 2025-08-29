@@ -1,8 +1,9 @@
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { type Dispatch, type SetStateAction, useState, useEffect } from "react";
 import { AnimatePresence, motion, type Variants, type Transition } from "framer-motion";
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
+import clsx from "clsx";
 import Portal from "../Portal";
 
 type NormalizeFn = (s: string) => string;
@@ -15,6 +16,15 @@ type LinksOverlayProps = {
 const Nav = () => {
 	const [active, setActive] = useState(false);
 	const { pathname } = useLocation();
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const onScroll = () => {
+			setScrolled(window.scrollY > 0);
+		};
+		window.addEventListener("scroll", onScroll);
+		return () => window.removeEventListener("scroll", onScroll);
+	}, []);
 
 	const normalize = (s: string) => s.replace(/\/+$/, "");
 	const current = normalize(pathname);
@@ -27,11 +37,14 @@ const Nav = () => {
 	return (
 		<Portal>
 			<div className="fixed inset-0 z-[2147483647] pointer-events-none">
-				{!isHomepage && (
-					<div className="pointer-events-none fixed inset-x-0 top-0">
-						<div className="h-14 bg-gradient-to-b from-white/70 via-white/50 to-transparent" />
-					</div>
-				)}
+				<div
+					className={clsx(
+						"fixed inset-x-0 top-0 h-20 transition-all duration-300 pointer-events-none",
+						scrolled
+							? "backdrop-blur bg-white/70"
+							: "bg-gradient-to-b from-white/70 via-white/50 to-transparent"
+					)}
+				/>
 
 				<div className="pointer-events-auto">
 					<HamburgerButton active={active} setActive={setActive} current={current} />
@@ -39,6 +52,7 @@ const Nav = () => {
 						{active && <LinksOverlay current={current} normalize={normalize} />}
 					</AnimatePresence>
 				</div>
+
 				{isHomepage && (
 					<div className="fixed inset-x-0 top-6 pointer-events-none">
 						<motion.div
@@ -48,7 +62,11 @@ const Nav = () => {
 							transition={{ duration: 0.2, ease: "easeInOut" }}
 						>
 							{contactButtons.map(({ label, to, icon: Icon }) => (
-								<a key={label} href={to} className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md">
+								<a
+									key={label}
+									href={to}
+									className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md"
+								>
 									<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
 									<span className="sr-only">{label}</span>
 								</a>
@@ -56,7 +74,8 @@ const Nav = () => {
 						</motion.div>
 					</div>
 				)}
-				<div className="fixed right-6 top-4 z-[2147483647]  pointer-events-none">
+
+				<div className="fixed right-6 top-4 z-[2147483647] pointer-events-none">
 					<motion.div
 						className="flex flex-col items-center gap-1 pointer-events-auto"
 						initial={false}

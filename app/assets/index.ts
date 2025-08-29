@@ -1,6 +1,8 @@
 export { default as PTop } from './PTop';
 export { default as PBottom } from './PBottom';
 export { DownUp, StarToDown, UpToStar } from './lottie';
+export { default as ChevronRight } from './ChevronRight';
+export { default as ChevronLeft } from './ChevronLeft';
 export { default as GlassesEmpty } from './GlassesEmpty';
 export { default as GlassesFilled } from './GlassesFilled';
 export { default as DModified } from './DModified';
