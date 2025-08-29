@@ -89,14 +89,14 @@ export const contactButtons = [
 ]
 
 export const photographyNavButtons = [
-	{ label: "Kindness", to: "/graphic-design/kreativ-festival-art-direction" },
-	{ label: "Human Rights", to: "/graphic-design/sjecas-li-se-doli-bel" },
+	{ label: "Kindness", to: "/photography/kill-them-with-kindness" },
+	{ label: "Human Rights", to: "/photography/human-rights" },
 	{ label: "Film Noir", to: "/photography/double-indemnity" },
 ]
 
 export const graphicDesignNavButtons = [
-	{ label: "Kreativ Fest", to: "/photography/kill-them-with-kindness" },
-	{ label: "Doli Bel", to: "/photography/human-rights" },
+	{ label: "Kreativ Fest", to: "/graphic-design/kreativ-festival-art-direction" },
+	{ label: "Doli Bel", to: "/graphic-design/sjecas-li-se-doli-bel" },
 	{ label: "Chippsters", to: "/graphic-design/chippsters-logo" },
 ]
 
