@@ -67,26 +67,10 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 ));
 
 export const Mobile = () => {
-	const ld = {
-		"@context": "https://schema.org",
-		"@type": "WebPage",
-		name: "Photography & Editing",
-		url: "/book/photography",
-		primaryImageOfPage: {
-			"@type": "ImageObject",
-			contentUrl: "/photography-intro.webp",
-		},
-		about: {
-			"@type": "CreativeWork",
-			name: "Photography & Editing",
-			author: { "@type": "Person", name: "Amna Kolić" },
-		},
-	};
-
 	return (
 		<MobileWrapper>
-			<div className="relative h-svh w-full bg-white [overflow:clip]">
-				<div className="relative bg-white">
+			<div className="relative h-svh w-full [overflow:clip]">
+				<div className="relative">
 					<figure
 						itemProp="primaryImageOfPage"
 						itemScope
@@ -120,7 +104,7 @@ export const Mobile = () => {
 					<div aria-hidden="true">
 						<PTop className="w-full h-auto 2xl:w-auto 2xl:h-auto" />
 					</div>
-					<div className="pb-6 pt-2 text-center space-y-2">
+					<div className="pb-6 w-full pt-2 text-center space-y-2">
 						<h2 className="text-[#363636] text-[2.5rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
 							PHOTOGRAPHY
 						</h2>
@@ -130,7 +114,7 @@ export const Mobile = () => {
 							itemType="https://schema.org/SiteNavigationElement"
 						>
 							<motion.div
-								className="mx-auto w-fit flex items-center gap-3 pointer-events-auto"
+								className="mx-auto w-full justify-between flex items-center gap-3 pointer-events-auto"
 								initial={false}
 								transition={{ duration: 0.2, ease: "easeInOut" }}
 							>
@@ -174,10 +158,6 @@ export const Mobile = () => {
 							</dl>
 						</div>
 					</div>
-					<script
-						type="application/ld+json"
-						dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
-					/>
 				</article>
 			</div>
 		</MobileWrapper>
@@ -189,7 +169,7 @@ export function meta() {
 	const title = "Creative Photography & Editing Projects | Amna Kolić Portfolio";
 	const description =
 		"Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives.";
-	const url = "/book/photography";
+	const url = "/photography";
 	const image = "/photography-intro.webp";
 	const imageAlt = "Photography & editing title spread with typographic treatment.";
 

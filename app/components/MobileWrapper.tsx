@@ -2,7 +2,7 @@ import type { PropsWithChildren } from "react";
 import { Nav } from "./UI";
 
 const MobileWrapper = ({ children }: PropsWithChildren) => (
-	<main className="relative min-h-dvh bg-white w-full overflow-x-hidden">
+	<main className="relative min-h-dvh w-full overflow-x-hidden">
 		<Nav />
 		<div className="relative">
 			{children}

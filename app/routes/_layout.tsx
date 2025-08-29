@@ -57,7 +57,7 @@ const DesktopFlipbook = () => {
 
 	const assetsReady = useInitialAssets(FONT_STRINGS, CRITICAL_IMAGES);
 
-	const slug = (location.pathname.replace(/^\/book\//, "") || "homepage") as string;
+	const slug = (location.pathname.replace("/", "") || "homepage") as string;
 	const validatedSlug = (spreads.includes(slug as SpreadKey) ? slug : "homepage") as SpreadKey;
 	const startPage = spreads.indexOf(validatedSlug) * 2;
 
@@ -148,7 +148,7 @@ const DesktopFlipbook = () => {
 		currentPageRef.current = Math.floor(e.data);
 		const idx = Math.floor(e.data / 2);
 		const nextSlug = spreads[idx];
-		if (nextSlug) navigate(`/book/${nextSlug}`, { replace: true });
+		if (nextSlug) navigate(`/${nextSlug}`, { replace: true });
 		window.dispatchEvent(new CustomEvent("bookmark:close"));
 	};
 
@@ -223,7 +223,7 @@ const BookLayout = () => {
 	const isMobile = useIsMobile("(max-width: 1023px)", serverIsMobile);
 	const location = useLocation();
 
-	const slug = location.pathname.replace(/^\/book\//, "") || "homepage";
+	const slug = location.pathname.replace("/", "") || "homepage";
 	const validatedSlug = (spreads.includes(slug as SpreadKey) ? slug : "homepage") as SpreadKey;
 
 	return isMobile ? <MobileSpread slug={validatedSlug} /> : <DesktopFlipbook />;

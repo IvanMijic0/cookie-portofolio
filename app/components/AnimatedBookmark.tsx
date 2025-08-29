@@ -11,67 +11,67 @@ const TRANSITIONS = {
 	"down->up": { data: DownUp, reverse: false },
 } as const;
 
-const AnimatedBookmarkIcon = ( { state, className, size = 70 }: Props ) => {
-	const prev = useRef<State>( state );
-	const lottieRef = useRef<LottieRefCurrentProps>( null );
+const AnimatedBookmarkIcon = ({ state, className, size = 70 }: Props) => {
+	const prev = useRef<State>(state);
+	const lottieRef = useRef<LottieRefCurrentProps>(null);
 
-	const key = `${ prev.current }->${ state }` as keyof typeof TRANSITIONS;
+	const key = `${prev.current}->${state}` as keyof typeof TRANSITIONS;
 	const conf = TRANSITIONS[key];
 
-	const staticPose = useMemo( () => {
+	const staticPose = useMemo(() => {
 		const m: Record<State, { data: any; end: boolean }> = {
 			star: { data: UpToStar, end: true },
 			down: { data: StarToDown, end: true },
 			up: { data: DownUp, end: true },
 		};
 		return m[state];
-	}, [state] );
+	}, [state]);
 
-	useEffect( () => {
+	useEffect(() => {
 		prev.current = state;
-	}, [state] );
+	}, [state]);
 
-	useEffect( () => {
+	useEffect(() => {
 		if (!conf || !lottieRef.current) return;
 		const p = lottieRef.current;
 		p.stop();
-		p.setDirection( conf.reverse ? -1 : 1 );
-		const frames = p.getDuration( true );
+		p.setDirection(conf.reverse ? -1 : 1);
+		const frames = p.getDuration(true);
 		if (frames != null) {
-			conf.reverse ? p.goToAndPlay( frames, true ) : p.goToAndPlay( 0, true );
+			conf.reverse ? p.goToAndPlay(frames, true) : p.goToAndPlay(0, true);
 		}
-	}, [conf?.data, conf?.reverse] );
+	}, [conf?.data, conf?.reverse]);
 
 	if (conf && prev.current !== state) {
 		return (
 			<Lottie
-				key={ key }
-				lottieRef={ lottieRef }
-				animationData={ conf.data }
+				key={key}
+				lottieRef={lottieRef}
+				animationData={conf.data}
 				autoplay
-				loop={ false }
-				className={ className }
-				style={ { width: size, height: size, display: "inline-block" } }
+				loop={false}
+				className={className}
+				style={{ width: size, height: size, display: "inline-block" }}
 			/>
 		);
 	}
 
 	return (
 		<Lottie
-			key={ `static-${ state }` }
-			lottieRef={ lottieRef }
-			animationData={ staticPose.data }
-			autoplay={ false }
-			loop={ false }
-			className={ className }
-			style={ { width: size, height: size, display: "inline-block" } }
-			onDOMLoaded={ () => {
+			key={`static-${state}`}
+			lottieRef={lottieRef}
+			animationData={staticPose.data}
+			autoplay={false}
+			loop={false}
+			className={className}
+			style={{ width: size, height: size, display: "inline-block" }}
+			onDOMLoaded={() => {
 				const p = lottieRef.current;
 				if (!p) return;
-				const frames = p.getDuration( true );
+				const frames = p.getDuration(true);
 				if (frames == null) return;
-				p.goToAndStop( staticPose.end ? frames : 0, true );
-			} }
+				p.goToAndStop(staticPose.end ? frames : 0, true);
+			}}
 		/>
 	);
 }

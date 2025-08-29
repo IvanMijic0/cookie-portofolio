@@ -1,6 +1,6 @@
 import { forwardRef, useMemo, useState } from "react";
 import { Lightbox, type Slide, type SlideImage } from "yet-another-react-lightbox";
-import { LeftPage, RightPage } from "~/components";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { useDisclosure } from "~/helpers";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
@@ -22,7 +22,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			className="absolute px-16 2xl:px-24 py-4 2xl:py-14 inset-0 z-20 flex justify-between flex-col text-white"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
-			itemID="/book/graphic-design/kreativ-festival-art-direction"
+			itemID="/graphic-design/kreativ-festival-art-direction"
 		>
 			<meta itemProp="inLanguage" content="en" />
 			<meta itemProp="genre" content="Art Direction" />
@@ -37,7 +37,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			/>
 			<link
 				itemProp="mainEntityOfPage"
-				href="/book/graphic-design/kreativ-festival-art-direction"
+				href="/graphic-design/kreativ-festival-art-direction"
 			/>
 			<div>
 				<p className="font-serif pt-4 2xl:pt-0 italic text-white font-extralight text-sm 2xl:text-base text-right">
@@ -118,7 +118,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					content="KREATIV fest, art direction, visual identity, David Carson, grunge design, poster design, student project, International Burch University"
 				/>
 				<meta itemProp="dateCreated" content="2024" />
-				<link itemProp="mainEntityOfPage" href="/book/graphic-design/kreativ-festival-art-direction" />
+				<link itemProp="mainEntityOfPage" href="/graphic-design/kreativ-festival-art-direction" />
 				<meta itemProp="name" content="Kreativ Euphoria — KREATIV fest Visual Identity Proposal" />
 				<h1 className="sr-only" itemProp="headline">
 					KREATIV fest — Kreativ Euphoria (Visual Identity Proposal)
@@ -205,12 +205,49 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		</RightPage>
 	);
 });
+
+export const Mobile = () => {
+	return (
+		<MobileWrapper>
+			<div className="relative h-svh w-full [overflow:clip]">
+				<div className="relative">
+					<figure
+						itemProp="primaryImageOfPage"
+						itemScope
+						itemType="https://schema.org/ImageObject"
+						className="m-0"
+					>
+						<img
+							src="/photography-intro.webp"
+							alt="Editorial portrait introducing the Photography & Editing section"
+							className="block w-full h-auto object-cover"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+							itemProp="contentUrl"
+						/>
+					</figure>
+					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
+				</div>
+				<article
+					className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+					itemScope
+					itemType="https://schema.org/WebPageSection"
+					aria-labelledby="photography-title"
+				>
+
+				</article>
+			</div>
+		</MobileWrapper>
+	);
+};
+
 export function meta() {
 	const title =
 		"KREATIV Fest – Festival Art Direction & Visual Identity | Kreativ Euphoria — Amna Kolić";
 	const description =
 		"Festival branding and art direction for KREATIV Fest: a grunge-inspired visual identity with custom logotype, bold typography, and poster system by Amna Kolić.";
-	const url = "/book/graphic-design/kreativ-festival-art-direction";
+	const url = "/graphic-design/kreativ-festival-art-direction";
 	const image = "/kreativ-festival-art-direction-left.webp";
 	const imageAlt =
 		"KREATIV Fest visual identity concept showcasing grunge textures, bold type, and the 'Kreativ Euphoria' logotype.";

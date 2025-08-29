@@ -1,8 +1,10 @@
 import { forwardRef } from "react";
-import { LeftPage, RightPage } from "~/components";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import { graphicDesignNavButtons } from "~/config";
+import { motion } from 'framer-motion';
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => (
+	<LeftPage ref={ref}>
 		<img
 			src="/graphic-design-left.webp"
 			alt=""
@@ -12,10 +14,10 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			fetchPriority="high"
 		/>
 	</LeftPage>
-) );
+));
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<img
 			src="/graphic-design-right.webp"
 			alt=""
@@ -29,17 +31,17 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			className="absolute inset-0 pr-12 2xl:pr-20 pt-28 2xl:pt-36 pb-12 z-20 h-full w-full text-black gap-6"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
-			itemID="/book/graphic-design"
+			itemID="/graphic-design"
 		>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="genre" content="Graphic Design"/>
+			<meta itemProp="inLanguage" content="en" />
+			<meta itemProp="genre" content="Graphic Design" />
 			<meta
 				itemProp="keywords"
 				content="graphic design, branding, editorial design, typography, visual identity, print design, portfolio"
 			/>
-			<meta itemProp="image" content="/graphic-design-right.webp"/>
-			<meta itemProp="image" content="/graphic-design-right-cards.webp"/>
-			<link itemProp="mainEntityOfPage" href="/book/graphic-design"/>
+			<meta itemProp="image" content="/graphic-design-right.webp" />
+			<meta itemProp="image" content="/graphic-design-right-cards.webp" />
+			<link itemProp="mainEntityOfPage" href="/graphic-design" />
 			<div className="contents">
 				<div
 					className="justify-self-center h-full flex flex-col items-center gap-5 2xl:gap-8">
@@ -48,12 +50,12 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 							className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-28 text-[#363636] [-webkit-text-stroke:2px_#363636] [text-stroke:2px_#363636]"
 							itemProp="headline"
 						>
-							GRAPHIC<br/>DESIGN
+							GRAPHIC<br />DESIGN
 						</h1>
 						<p className="sr-only">
-						  <span itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">Amna Kolić</span>
-						  </span>
+							<span itemProp="author" itemScope itemType="https://schema.org/Person">
+								<span itemProp="name">Amna Kolić</span>
+							</span>
 						</p>
 					</header>
 					<section
@@ -68,8 +70,8 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 							essence—inviting you to experience the art behind the visuals.
 						</p>
 						<p className="text-[#505050] font-serif text-xs 2xl:text-sm text-right font-bold">
-							Background photograph: Amna Kolić<br/>
-							Cards photograph: Freepik<br/>
+							Background photograph: Amna Kolić<br />
+							Cards photograph: Freepik<br />
 							Edit &amp; Logos: Amna Kolić
 						</p>
 					</section>
@@ -86,13 +88,117 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			fetchPriority="high"
 		/>
 	</RightPage>
-) );
+));
+
+export const Mobile = () => {
+	return (
+		<MobileWrapper>
+			<main
+				className="relative h-svh w-full [overflow:clip] bg-white"
+				itemScope
+				itemType="https://schema.org/WebPage"
+			>
+				<figure
+					itemProp="primaryImageOfPage"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className="m-0"
+				>
+					<img
+						src="/graphic-design-mobile.webp"
+						srcSet="/graphic-design-mobile-800.webp 800w, /graphic-design-mobile.webp 1600w"
+						sizes="100vw"
+						alt="Graphic Design — full-bleed hero showcasing editorial artwork"
+						className="block h-screen w-full object-cover"
+						loading="eager"
+						fetchPriority="high"
+						decoding="async"
+						itemProp="contentUrl"
+						width={1600}
+						height={2400}
+					/>
+					<meta itemProp="name" content="Graphic Design Hero" />
+					<meta itemProp="encodingFormat" content="image/webp" />
+					<meta itemProp="width" content="1600" />
+					<meta itemProp="height" content="2400" />
+				</figure>
+
+				<article
+					className="absolute inset-0 z-50 flex h-screen flex-col items-center justify-start px-6 pb-8 pt-24 text-white"
+					itemScope
+					itemType="https://schema.org/WebPageSection"
+					aria-labelledby="graphic-design-title"
+				>
+					<header className="w-full text-right">
+						<h1
+							id="graphic-design-title"
+							itemProp="headline name"
+							className="font-display text-[#363636] text-[4.5rem] xs:text-[5.5rem] leading-16 xs:leading-20 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+						>
+							GRAPHIC <br /> DESIGN
+						</h1>
+						<meta itemProp="inLanguage" content="en" />
+					</header>
+
+					<section
+						id="description"
+						aria-label="Section description"
+						className="mt-8 flex w-full flex-col items-end gap-4 text-justify font-serif text-[#505050]"
+					>
+						<p itemProp="description" className="text-lg italic font-bold">
+							Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a   unique    essence   —   inviting    you   to   experience    the   art   behind  the visuals.
+						</p>
+					</section>
+
+					<nav
+						aria-label="Graphic Design section navigation"
+						itemScope
+						itemType="https://schema.org/SiteNavigationElement"
+						className="mt-6 w-full"
+					>
+						<motion.div
+							className="pointer-events-auto mx-auto flex w-full items-center justify-between gap-3"
+							initial={false}
+							transition={{ duration: 0.2, ease: "easeInOut" }}
+						>
+							{graphicDesignNavButtons.map(({ label, to }) => (
+								<a
+									key={label}
+									href={to.replace(/^\/+/, "/")}
+									className="inline-flex items-center justify-center rounded-xl bg-[#363636] px-4 py-2 font-serif text-sm xs:text-base"
+									itemProp="url"
+									title={label}
+								>
+									<span itemProp="name">{label}</span>
+								</a>
+							))}
+						</motion.div>
+					</nav>
+				</article>
+
+				<div className="absolute inset-x-0 bottom-0 z-30 flex justify-center">
+					<img
+						src="/graphic-design-cards.webp"
+						srcSet="/graphic-design-cards-700.webp 700w, /graphic-design-cards.webp 1200w"
+						sizes="(max-width: 420px) 14rem, 92vw"
+						alt="Highlights of recent graphic design projects: identity, editorial, and print cards"
+						className="h-auto w-[14rem] max-w-[14rem] xs:w-[92vw] xs:max-w-[720px] object-contain"
+						loading="lazy"
+						decoding="async"
+						width={1200}
+						height={800}
+					/>
+				</div>
+			</main>
+		</MobileWrapper>
+	);
+};
 
 export function meta() {
 	const title = "Graphic Design – Visual Identity & Branding Projects | Amna Kolić";
 	const description =
 		"Explore graphic design work by Amna Kolić: branding, logo systems, editorial & poster design, and typography-driven visual identities.";
-	const url = "/book/graphic-design";
+	const url = "/graphic-design";
 	const image = "/graphic-design-right.webp";
 	const imageAlt =
 		"Graphic design spread with cards and logos from Amna Kolić’s portfolio.";

@@ -89,9 +89,15 @@ export const contactButtons = [
 ]
 
 export const photographyNavButtons = [
-	{ label: "Kindness", to: "/book/photography/kill-them-with-kindness" },
-	{ label: "Human Rights", to: "/book/photography/human-rights" },
-	{ label: "Film Noir", to: "/book/photography/double-indemnity" },
+	{ label: "Kindness", to: "/graphic-design/kreativ-festival-art-direction" },
+	{ label: "Human Rights", to: "/graphic-design/sjecas-li-se-doli-bel" },
+	{ label: "Film Noir", to: "/photography/double-indemnity" },
+]
+
+export const graphicDesignNavButtons = [
+	{ label: "Kreativ Fest", to: "/photography/kill-them-with-kindness" },
+	{ label: "Doli Bel", to: "/photography/human-rights" },
+	{ label: "Chippsters", to: "/graphic-design/chippsters-logo" },
 ]
 
 export const spreadMap: Record<string, SpreadModule> = {

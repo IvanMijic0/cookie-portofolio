@@ -33,7 +33,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 								</span>
 								<div className="flex flex-col">
 									<a
-										href={`/book${section.to}`}
+										href={`/${section.to}`}
 										onClick={(e) => {
 											if (!ready) return;
 											e.preventDefault();
@@ -47,7 +47,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 										{section.items.map((item) => (
 											<li key={item.to}>
 												<a
-													href={`/book${item.to}`}
+													href={`/${item.to}`}
 													onClick={(e) => {
 														if (!ready) return;
 														e.preventDefault();
@@ -197,7 +197,7 @@ export const Mobile = () => {
 			{
 				"@type": "WebSite",
 				"name": "Amna Kolić — Design Portfolio",
-				"url": "https://your-domain.tld/book/homepage",
+				"url": "https://your-domain.tld/homepage",
 				"inLanguage": "en",
 				"potentialAction": {
 					"@type": "SearchAction",
@@ -229,7 +229,7 @@ export const Mobile = () => {
 				className="relative h-svh w-full px-6 [overflow:clip]"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
-				itemID="/book/homepage"
+				itemID="/homepage"
 			>
 				<img
 					src="/homepage-right.webp"
@@ -241,7 +241,7 @@ export const Mobile = () => {
 					fetchPriority="high"
 					decoding="async"
 				/>
-				<link itemProp="url" href="/book/homepage" />
+				<link itemProp="url" href="/homepage" />
 				<meta itemProp="inLanguage" content="en" />
 				<meta
 					itemProp="name"

@@ -30,19 +30,21 @@ const Nav = () => {
 	const current = normalize(pathname);
 
 	const isHomepage =
-		current === "/book/homepage" || current === "/homepage" || current === "/book";
+		current === "/homepage" || current === "/";
 
 	const baseColor = isHomepage ? "#ffffff" : "#000000";
 
 	return (
 		<Portal>
-			<div className="fixed inset-0 z-[2147483647] pointer-events-none">
+			<div className="fixed inset-0 z-[100] pointer-events-none">
 				<div
 					className={clsx(
 						"fixed inset-x-0 top-0 h-20 transition-all duration-300 pointer-events-none",
 						scrolled
 							? "backdrop-blur bg-white/70"
-							: "bg-gradient-to-b from-white/70 via-white/50 to-transparent"
+							: isHomepage
+								? ""
+								: "bg-gradient-to-b from-white/70 via-white/70 to-transparent"
 					)}
 				/>
 
@@ -75,7 +77,7 @@ const Nav = () => {
 					</div>
 				)}
 
-				<div className="fixed right-6 top-4 z-[2147483647] pointer-events-none">
+				<div className="fixed right-6 top-4 z-[100] pointer-events-none">
 					<motion.div
 						className="flex flex-col items-center gap-1 pointer-events-auto"
 						initial={false}
@@ -121,7 +123,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 
 			<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
 				{navSections.map((section) => {
-					const sectionHref = `/book${section.to}`;
+					const sectionHref = `${section.to}`;
 					const sectionActive = isActiveSection(sectionHref);
 
 					return (
@@ -155,7 +157,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 
 								<motion.ul className="ml-3 space-y-1" variants={subList}>
 									{section.items.map((item) => {
-										const itemHref = `/book${item.to}`;
+										const itemHref = `${item.to}`;
 										const itemActive = isActiveItem(itemHref);
 
 										return (
@@ -196,7 +198,7 @@ const HamburgerButton = ({
 	current: string
 }) => {
 	const isHomepage =
-		current === "/book/homepage" || current === "/homepage" || current === "/book";
+		current === "/homepage" || current === "/homepage" || current === "/";
 
 	const HAMBURGER_VARIANTS = makeHamburgerVariants(!isHomepage);
 
