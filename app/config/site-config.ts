@@ -89,9 +89,9 @@ export const contactButtons = [
 ]
 
 export const photographyNavButtons = [
-	{ label: "Kindness", to: "/photography/kill-them-with-kindness" },
-	{ label: "Human Rights", to: "/photography/human-rights" },
-	{ label: "Film Noir", to: "/photography/double-indemnity" },
+	{ label: "Kindness", to: "/book/photography/kill-them-with-kindness" },
+	{ label: "Human Rights", to: "/book/photography/human-rights" },
+	{ label: "Film Noir", to: "/book/photography/double-indemnity" },
 ]
 
 export const spreadMap: Record<string, SpreadModule> = {

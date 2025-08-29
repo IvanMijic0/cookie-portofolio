@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
-import { LeftPage, RightPage } from "~/components";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => (
+	<LeftPage ref={ref}>
 		<img
 			src="/kill-them-with-kindness-left.webp"
 			alt=""
@@ -13,10 +13,10 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			fetchPriority="high"
 		/>
 	</LeftPage>
-) );
+));
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<img
 			src="/kill-them-with-kindness-right.webp"
 			alt=""
@@ -39,12 +39,12 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 						itemProp="name"
 						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[8rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 					>
-						Kill them<br/> with <br/> Kindness
+						Kill them<br /> with <br /> Kindness
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-						  <span itemProp="name">by Amna Kolić</span>
+							<span itemProp="name">by Amna Kolić</span>
 						</span>
 					</p>
 				</header>
@@ -72,7 +72,43 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</article>
 	</RightPage>
-) );
+));
+
+export const Mobile = () => {
+	return (
+		<MobileWrapper>
+			<div className="relative h-svh w-full bg-white [overflow:clip]">
+				<div className="relative bg-white">
+					<figure
+						itemProp="primaryImageOfPage"
+						itemScope
+						itemType="https://schema.org/ImageObject"
+						className="m-0"
+					>
+						<img
+							src="/photography-intro.webp"
+							alt="Editorial portrait introducing the Photography & Editing section"
+							className="block w-full h-auto object-cover"
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
+							itemProp="contentUrl"
+						/>
+						<figcaption className="sr-only">
+							Hero image for Photography &amp; Editing
+						</figcaption>
+					</figure>
+					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
+				</div>
+				<article
+					className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+				>
+				</article>
+			</div>
+		</MobileWrapper>
+	);
+};
+
 
 export function meta() {
 	const title = "Kill Them with Kindness – Conceptual Photo Series by Amna Kolić";
