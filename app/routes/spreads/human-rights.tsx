@@ -200,14 +200,15 @@ export const Mobile = () => {
 			title: "Kill them with Kindness",
 			src: "/kill-them-with-kindness-1.webp",
 			href: "/photography/kill-them-with-kindness",
+			alt: "Kill Them With Kindness photography series — symbolic still-life promoting empathy and peace over violence."
 		},
 		{
 			id: 2,
 			title: "Double Indemnity",
 			src: "/double-indemnity-left-1.webp",
 			href: "/photography/double-indemnity",
-			alt: "Double Indemnity photo series inspired by classic noir cinema.",
-		},
+			alt: "Double Indemnity photography series — cinematic black-and-white portraits inspired by classic film noir."
+		}
 	];
 
 	return (

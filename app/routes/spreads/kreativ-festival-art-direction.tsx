@@ -1,12 +1,12 @@
 import { forwardRef, useMemo, useState } from "react";
-import { Lightbox, type Slide, type SlideImage } from "yet-another-react-lightbox";
+import { isImageSlide, Lightbox, type Slide, type SlideImage } from "yet-another-react-lightbox";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { useDisclosure } from "~/helpers";
-import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
+import { ScreenTextFit, Carousel } from "~/components/UI";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -191,7 +191,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				controller={{ closeOnBackdropClick: true }}
 				carousel={{ finite: false, imageFit: "cover" }}
 				render={{
-					slide: ({ slide, rect }) => {
+					slide: ({ slide }) => {
 						if (!isSlideImage(slide)) return null;
 						return (
 							<figure className="mx-auto overflow-hidden rounded-lg shadow-lg">
@@ -207,41 +207,280 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 });
 
 export const Mobile = () => {
+	const [opened, setOpened] = useState(false);
+	const [index, setIndex] = useState(0);
+
+	const kreatSlides = useMemo(
+		() => [
+			{
+				src: "/kreativ-festival-art-direction-1.webp",
+				alt: "Kreativ Fest visual identity — hero poster, grunge-inspired layout with bold type and high-contrast textures.",
+			},
+			{
+				src: "/kreativ-festival-art-direction-right-1.webp",
+				alt: "Kreativ Fest ID badge — front side mockup with custom logotype and neon color accents.",
+			},
+			{
+				src: "/kreativ-festival-art-direction-right-3.webp",
+				alt: "Kreativ Fest ID badge — back side mockup with typographic grid and stamp-style marks.",
+			},
+			{
+				src: "/kreativ-festival-art-direction-right-2.webp",
+				alt: "Kreativ Fest program booklet — cover design featuring layered textures and expressive negative space.",
+			},
+		],
+		[]
+	);
+
+	const openAt = (i: number) => {
+		setIndex(i);
+		setOpened(true);
+	};
+	const close = () => setOpened(false);
+
+	const slides = [
+		{
+			id: 1,
+			title: "Sjecas li se Doli Bel?",
+			src: "/doli-bel-1.webp",
+			href: "/graphic-design/sjecas-li-se-doli-bel",
+			alt:
+				"Poster design inspired by the film Sjećaš li se Doli Bel?, cinematic composition with bold graphic typography.",
+		},
+		{
+			id: 2,
+			title: "Chippsters Logo",
+			src: "/chippsters-1.webp",
+			href: "/graphic-design/chippsters-logo",
+			alt:
+				"Chippsters logo concept — playful wordmark with contemporary brand detailing.",
+		},
+	] as const;
+
 	return (
 		<MobileWrapper>
-			<div className="relative h-svh w-full [overflow:clip]">
-				<div className="relative">
-					<figure
-						itemProp="primaryImageOfPage"
-						itemScope
-						itemType="https://schema.org/ImageObject"
-						className="m-0"
+			<main
+				className="relative h-svh w-full bg-white"
+				itemScope
+				itemType="https://schema.org/WebPage"
+			>
+				<figure
+					itemProp="primaryImageOfPage"
+					itemScope
+					itemType="https://schema.org/ImageObject"
+					className="m-0"
+				>
+					<button
+						type="button"
+						onClick={() => openAt(0)}
+						className="block w-full cursor-zoom-in"
+						aria-label="Open hero poster in lightbox"
+						title="View hero poster"
 					>
 						<img
-							src="/photography-intro.webp"
-							alt="Editorial portrait introducing the Photography & Editing section"
+							src="/kreativ-festival-art-direction-1.webp"
+							srcSet="/kreativ-festival-art-direction-1-800.webp 800w, /kreativ-festival-art-direction-1.webp 1600w"
+							sizes="100vw"
+							alt="Kreativ Fest hero poster — expressive grunge art direction."
 							className="block w-full h-auto object-cover"
 							loading="eager"
 							fetchPriority="high"
 							decoding="async"
 							itemProp="contentUrl"
+							width={1600}
+							height={2000}
 						/>
-					</figure>
-					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
-				</div>
+					</button>
+					<figcaption className="sr-only" itemProp="caption">
+						Hero poster for Kreativ Fest visual identity.
+					</figcaption>
+					<meta itemProp="encodingFormat" content="image/webp" />
+					<meta itemProp="width" content="1600" />
+					<meta itemProp="height" content="2000" />
+				</figure>
+
 				<article
-					className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+					className="px-6 py-4 pb-8 z-20 flex items-center gap-3 w-full justify-start flex-col text-[#363636]"
 					itemScope
 					itemType="https://schema.org/WebPageSection"
-					aria-labelledby="photography-title"
+					aria-labelledby="graphic-design-title"
 				>
+					<ScreenTextFit>
+						<header>
+							<h1
+								id="graphic-design-title"
+								itemProp="headline name"
+								className="font-display w-full italic text-[#363636] whitespace-nowrap [-webkit-text-stroke:2px_#363636] [text-stroke:2px_#363636]"
+							>
+								KREATIV fest
+							</h1>
+							<meta itemProp="inLanguage" content="en" />
+						</header>
+					</ScreenTextFit>
 
+					<p
+						itemProp="description"
+						className="text-lg italic font-bold text-justify font-serif text-[#505050]"
+					>
+						Submission for the 2024 Kreativ Fest art direction at International Burch
+						University. A grunge-influenced identity that channels the experimental spirit of
+						David Carson with layered textures, bold typography, and neon accents.
+					</p>
+
+					<div className="flex w-full gap-2 pt-6" itemProp="hasPart">
+						<div className="flex flex-col flex-1 gap-2">
+							<figure itemScope itemType="https://schema.org/ImageObject" className="m-0">
+								<button
+									type="button"
+									onClick={() => openAt(1)}
+									className="block w-full cursor-zoom-in"
+									aria-label="Open ID badge front in lightbox"
+									title="View ID badge front"
+								>
+									<img
+										src="/kreativ-festival-art-direction-right-1.webp"
+										srcSet="/kreativ-festival-art-direction-right-1-800.webp 800w, /kreativ-festival-art-direction-right-1.webp 1200w"
+										sizes="(max-width: 540px) 40vw, 400px"
+										className="object-cover w-full h-full flex-1"
+										loading="lazy"
+										decoding="async"
+										alt="Kreativ Fest ID badge — front side with custom logotype."
+										itemProp="contentUrl"
+										width={1200}
+										height={1600}
+									/>
+								</button>
+								<figcaption className="sr-only" itemProp="caption">
+									ID badge front mockup.
+								</figcaption>
+							</figure>
+
+							<figure itemScope itemType="https://schema.org/ImageObject" className="m-0">
+								<button
+									type="button"
+									onClick={() => openAt(2)}
+									className="block w-full cursor-zoom-in"
+									aria-label="Open ID badge back in lightbox"
+									title="View ID badge back"
+								>
+									<img
+										src="/kreativ-festival-art-direction-right-3.webp"
+										srcSet="/kreativ-festival-art-direction-right-3-800.webp 800w, /kreativ-festival-art-direction-right-3.webp 1200w"
+										sizes="(max-width: 540px) 40vw, 400px"
+										className="object-cover w-full h-full flex-1"
+										loading="lazy"
+										decoding="async"
+										alt="Kreativ Fest ID badge — back side with typographic grid."
+										itemProp="contentUrl"
+										width={1200}
+										height={1600}
+									/>
+								</button>
+								<figcaption className="sr-only" itemProp="caption">
+									ID badge back mockup.
+								</figcaption>
+							</figure>
+						</div>
+
+						<figure
+							itemScope
+							itemType="https://schema.org/ImageObject"
+							className="m-0 flex-[1.3]"
+						>
+							<button
+								type="button"
+								onClick={() => openAt(3)}
+								className="block w-full cursor-zoom-in"
+								aria-label="Open program booklet in lightbox"
+								title="View program booklet"
+							>
+								<img
+									src="/kreativ-festival-art-direction-right-2.webp"
+									srcSet="/kreativ-festival-art-direction-right-2-900.webp 900w, /kreativ-festival-art-direction-right-2.webp 1400w"
+									sizes="(max-width: 640px) 55vw, 520px"
+									className="object-contain w-full h-full"
+									loading="lazy"
+									decoding="async"
+									alt="Kreativ Fest program booklet cover design."
+									itemProp="contentUrl"
+									width={1400}
+									height={1600}
+								/>
+							</button>
+							<figcaption className="sr-only" itemProp="caption">
+								Program booklet cover.
+							</figcaption>
+						</figure>
+					</div>
+
+					<section
+						id="description"
+						aria-label="Project description"
+						className="flex text-sm w-full pt-6 text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
+					>
+						<p className="text-base" itemProp="about">
+							Built around a custom “Kreativ Euphoria” logotype, the identity leverages
+							negative space, stamp-like marks, and ripped-poster textures to express youthful,
+							chaotic energy.
+						</p>
+						<p className="text-base">
+							A vivid palette of neon green, pink, and orange pushes against deep blacks and
+							layered overlays for a tactile, urban look that feels both nostalgic and fresh.
+						</p>
+						<p className="text-base">
+							The system adapts across posters, leaflets, and social media while preserving a
+							cohesive, hand-made aesthetic.
+						</p>
+						<p className="text-base">
+							The concept embraces imperfection and spontaneity — it doesn’t just promote an
+							event; it embodies its energy.
+						</p>
+					</section>
+
+					<section
+						className="flex pt-6 flex-col gap-6 w-full items-center"
+						aria-labelledby="see-more-like-this"
+					>
+						<ScreenTextFit>
+							<h2
+								id="see-more-like-this"
+								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
+							>
+								See more like this
+							</h2>
+						</ScreenTextFit>
+						<Carousel items={slides as any} loop rounded aria-label="Related works carousel" />
+					</section>
 				</article>
-			</div>
+
+				<Lightbox
+					open={opened}
+					close={close}
+					index={index}
+					slides={kreatSlides}
+					plugins={[Fullscreen, Share, Zoom, Download]}
+					controller={{ closeOnBackdropClick: true }}
+					carousel={{ finite: false, imageFit: "contain" }}
+					styles={{ container: { zIndex: 200 } }}
+					render={{
+						slide: ({ slide }) => {
+							if (!isImageSlide(slide)) return null;
+							return (
+								<figure className="mx-auto overflow-hidden rounded-md">
+									<img
+										src={slide.src}
+										alt={slide.alt ?? ""}
+										style={{ width: "100%", height: "auto", display: "block" }}
+									/>
+								</figure>
+							);
+						},
+					}}
+				/>
+			</main>
 		</MobileWrapper>
 	);
 };
-
 export function meta() {
 	const title =
 		"KREATIV Fest – Festival Art Direction & Visual Identity | Kreativ Euphoria — Amna Kolić";

@@ -217,14 +217,15 @@ export const Mobile = () => {
 			title: "Kill them with Kindness",
 			src: "/kill-them-with-kindness-1.webp",
 			href: "/photography/kill-them-with-kindness",
+			alt: "Kill Them With Kindness photography series — symbolic still-life compositions promoting empathy and peace over violence."
 		},
 		{
 			id: 2,
 			title: "Human Rights",
 			src: "/human-rights-left.webp",
 			href: "/photography/human-rights",
-			alt: "Human Rights photo series exploring freedom and equality.",
-		},
+			alt: "Human Rights photography series — conceptual images exploring freedom, equality, and fundamental rights."
+		}
 	];
 
 	return (
