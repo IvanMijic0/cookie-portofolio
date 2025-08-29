@@ -36,7 +36,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				className="absolute px-16 py-24 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
-				itemID="/book/graphic-design/sjecas-li-se-doli-bel"
+				itemID="/graphic-design/sjecas-li-se-doli-bel"
 			>
 				<meta itemProp="inLanguage" content="bs" />
 				<meta itemProp="genre" content="Graphic Design" />
@@ -47,7 +47,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<meta itemProp="name" content="Sjećaš li se Doli Bel — Visual Concept" />
 				<meta itemProp="image" content="/doli-bel-left.webp" />
 				<meta itemProp="image" content="/doli-bel-left-1.webp" />
-				<link itemProp="mainEntityOfPage" href="/book/graphic-design/sjecas-li-se-doli-bel" />
+				<link itemProp="mainEntityOfPage" href="/graphic-design/sjecas-li-se-doli-bel" />
 
 				<div className="flex flex-col items-start justify-between h-full gap-2">
 					<header className="flex flex-col gap-1">
@@ -355,7 +355,7 @@ export function meta() {
 		"Sjećaš li se Doli Bel — Theatre Visual Identity & Poster Design | Amna Kolić";
 	const description =
 		"Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić.";
-	const url = "/book/graphic-design/sjecas-li-se-doli-bel";
+	const url = "/graphic-design/sjecas-li-se-doli-bel";
 	const image = "/doli-bel-right.webp";
 	const imageAlt =
 		"Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout.";

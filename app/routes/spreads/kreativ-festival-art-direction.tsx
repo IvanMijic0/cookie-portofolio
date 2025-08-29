@@ -109,7 +109,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				className="px-14 py-12 grid grid-cols-2 gap-12 w-full h-full"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
-				itemID="/book/graphic-design/kreativ-festival-art-direction"
+				itemID="/graphic-design/kreativ-festival-art-direction"
 			>
 				<meta itemProp="inLanguage" content="en" />
 				<meta itemProp="genre" content="Festival Art Direction" />

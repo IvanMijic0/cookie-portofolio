@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			className="absolute px-12 2xl:px-16 py-20 inset-0 z-10 flex items-end flex-col justify-end text-[#363636] leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
-			itemID="/book/graphic-design/chippsters-logo"
+			itemID="/graphic-design/chippsters-logo"
 		>
 			<meta itemProp="inLanguage" content="en" />
 			<meta itemProp="genre" content="Logo Design" />
@@ -28,7 +28,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 				content="Chippsters, logo, logo design, branding, visual identity, mark, wordmark, portfolio"
 			/>
 			<meta itemProp="image" content="/chippsters-left.webp" />
-			<link itemProp="mainEntityOfPage" href="/book/graphic-design/chippsters-logo" />
+			<link itemProp="mainEntityOfPage" href="/graphic-design/chippsters-logo" />
 			<header className="flex flex-col items-end gap-8 2xl:gap-10">
 				<div>
 					<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
@@ -309,7 +309,7 @@ export function meta() {
 		"Chippsters Logo Design — Tech Brand Visual Identity | Amna Kolić";
 	const description =
 		"Playful yet professional logo for a tech brand—chipmunk + hipster fused into a minimalist C-mark with negative space, clean geometry, and a fresh green gradient. Visual identity by Amna Kolić.";
-	const url = "/book/graphic-design/chippsters-logo";
+	const url = "/graphic-design/chippsters-logo";
 	const image = "/chippsters-right.webp";
 	const imageAlt =
 		"Chippsters logo mockups: circular C mark with a chipmunk silhouette in negative space, set on a soft green gradient.";

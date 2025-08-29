@@ -100,6 +100,12 @@ export const graphicDesignNavButtons = [
 	{ label: "Chippsters", to: "/graphic-design/chippsters-logo" },
 ]
 
+export const illustrationNavButtons = [
+	{ label: "Bosnian Fairy", to: "/illustration/mountain-fairy" },
+	{ label: "Austen Books", to: "/illustration/austen-in-watercolor" },
+	{ label: "Mural", to: "/illustration/mural" },
+]
+
 export const spreadMap: Record<string, SpreadModule> = {
 	"homepage": Homepage,
 	"photography": Photography,
