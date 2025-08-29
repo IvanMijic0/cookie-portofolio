@@ -88,6 +88,12 @@ export const contactButtons = [
 	}
 ]
 
+export const photographyNavButtons = [
+	{ label: "Kindness", to: "/photography/kill-them-with-kindness" },
+	{ label: "Human Rights", to: "/photography/human-rights" },
+	{ label: "Film Noir", to: "/photography/double-indemnity" },
+]
+
 export const spreadMap: Record<string, SpreadModule> = {
 	"homepage": Homepage,
 	"photography": Photography,
@@ -110,4 +116,4 @@ export const TARGET_WIDTH = 864;
 export const TARGET_HEIGHT = 1117;
 export const ASPECT_RATIO = TARGET_WIDTH / TARGET_HEIGHT;
 
-export const spreads = Object.keys( spreadMap ) as SpreadKey[];
+export const spreads = Object.keys(spreadMap) as SpreadKey[];

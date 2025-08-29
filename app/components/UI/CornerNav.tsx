@@ -90,17 +90,17 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 
 	return (
 		<motion.div
-			className="space-y-2 p-12 pl-6 mt-18 md:pl-20"
+			className="space-y-0 xs:space-y-2 overflow-y-auto p-12 pl-6 mt-6 xs:mt-18 md:pl-20"
 			variants={container}
 			initial="hidden"
 			animate="show"
 			exit="hidden"
 		>
-			<motion.h2 className="text-6xl font-serif pb-4" variants={titleV}>
+			<motion.h2 className="text-5xl xs:text-6xl font-serif pb-4" variants={titleV}>
 				contents
 			</motion.h2>
 
-			<motion.ol className="space-y-6" variants={container}>
+			<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
 				{navSections.map((section) => {
 					const sectionHref = `/book${section.to}`;
 					const sectionActive = isActiveSection(sectionHref);
@@ -112,7 +112,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 							variants={row}
 						>
 							<motion.span
-								className="text-right tabular-nums font-sans text-5xl font-light"
+								className="text-right tabular-nums font-sans text-4xl xs:text-5xl font-light"
 								variants={numberV}
 							>
 								{section.pageNumber}
@@ -123,7 +123,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 									variants={titleV}
 									href={sectionHref}
 									className={[
-										"font-sans text-2xl font-black cursor-pointer transition",
+										"font-sans text-xl xs:text-2xl font-black cursor-pointer transition",
 										sectionActive
 											? "text-[#379C8D] underline underline-offset-4 decoration-2"
 											: "hover:opacity-90",
@@ -144,7 +144,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 												<motion.a
 													href={itemHref}
 													className={[
-														"font-serif italic text-lg cursor-pointer transition",
+														"font-serif italic text-md xs:text-lg cursor-pointer transition",
 														itemActive
 															? "text-[#379C8D] underline underline-offset-4 decoration-2"
 															: "hover:opacity-90",

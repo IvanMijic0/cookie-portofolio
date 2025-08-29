@@ -190,95 +190,147 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 	</RightPage>
 ));
 
-export const Mobile = () => (
-	<MobileWrapper>
-		<div className="relative h-svh w-full px-6 [overflow:clip]">
-			<img
-				src="/homepage-right.webp"
-				alt=""
-				role="presentation"
-				className="absolute inset-0 w-full h-full object-cover z-0"
-				loading="eager"
-				fetchPriority="high"
-				decoding="async"
+export const Mobile = () => {
+	const jsonLd = {
+		"@context": "https://schema.org",
+		"@graph": [
+			{
+				"@type": "WebSite",
+				"name": "Amna Kolić — Design Portfolio",
+				"url": "https://your-domain.tld/book/homepage",
+				"inLanguage": "en",
+				"potentialAction": {
+					"@type": "SearchAction",
+					"target": "https://your-domain.tld/search?q={search_term_string}",
+					"query-input": "required name=search_term_string"
+				}
+			},
+			{
+				"@type": "Person",
+				"name": "Amna Kolić",
+				"jobTitle": "Graphic Designer & Illustrator",
+				"url": "https://your-domain.tld/",
+				"sameAs": [
+					"https://www.instagram.com/your-handle",
+					"https://www.linkedin.com/in/your-handle"
+				]
+			}
+		]
+	};
+
+	return (
+		<MobileWrapper>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
 			/>
 
-			<section className="relative flex w-full overflow-hidden flex-col gap-10 xs:gap-20 items-start justify-start pt-24 xs:pt-32 h-screen">
-				<div className="relative z-10 flex flex-col w-full items-start gap-2">
-					<h1 id="home-hero-title" className="sr-only">
-						Amna Kolić — Design portfolio
-					</h1>
-					<div aria-hidden="true" className="font-display w-full leading-0 font-normal flex justify-center text-white">
-						<ScreenTextFit>
-							<span className="inline-flex items-baseline py-1">
-								<DModified className="h-[0.75em] w-auto" />
-								ESIGN
-							</span>
-						</ScreenTextFit>
-					</div>
-					<h2 className="font-display italic tracking-[0.4em] pl-2 text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727] text-2xl">
-						<span aria-hidden="true">portofolio</span>
-						<span className="sr-only">portfolio</span>
-					</h2>
-				</div>
-				<div className="relative z-30">
-					<h3 className="text-white font-serif text-3xl w-[13.3rem]">
-						<span className="flex flex-col">
-							<span>GRAPHIC</span>
-							<span className="w-full flex justify-end">DESIGN</span>
-						</span>
-					</h3>
-					<h3 className="text-[#272727] font-serif text-2xl">ILLUSTRATION</h3>
-					<h3 className="text-white font-serif text-2xl w-[13rem]">
-						<span className="flex flex-col">
-							<span className="w-full flex justify-end">PHOTO</span>
-							<span>EDITING</span>
-						</span>
-					</h3>
-				</div>
-			</section>
-			<img
-				src="/cookie-pose.webp"
-				alt=""
-				role="presentation"
-				className="absolute bottom-0 -right-6 xs:-right-24 max-h-[97vh] max-w-[97vw] xs:max-h-[122vh] xs:max-w-[122vw] object-contain object-bottom-right z-20 pointer-events-none"
-				loading="eager"
-				decoding="async"
-			/>
-			<div
-				className="
-				    absolute bottom-0 right-4 xs:right-0
-				    translate-x-14 translate-y-24
-				    w-[21rem] h-[21rem] xs:w-[26rem] xs:h-[26rem] rounded-full
-				    z-30 overflow-hidden pointer-events-none
-				  "
+			<main
+				className="relative h-svh w-full px-6 [overflow:clip]"
+				itemScope
+				itemType="https://schema.org/CreativeWork"
+				itemID="/book/homepage"
 			>
-				<div
-					className="
-						  absolute inset-0 rounded-full mix-blend-multiply
-						  bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)]
-						  bg-no-repeat bg-[length:100%_100%]
-						"
+				<img
+					src="/homepage-right.webp"
+					alt=""
+					role="presentation"
 					aria-hidden="true"
+					className="absolute inset-0 z-0 h-full w-full object-cover"
+					loading="eager"
+					fetchPriority="high"
+					decoding="async"
 				/>
-				<div className="absolute inset-0 gap-10 flex-col flex items-center justify-center pb-24">
-					<p className="text-white italic text-2xl xs:text-3xl font-serif text-end leading-tight px-4">
-						<span className="not-italic">The DIFFERENT</span>
-						<br />
-						<span className="not-italic">APPROACH</span>
-						<br />
-						to design
-						<br />
-						with
-					</p>
-					<h2 className="text-white leading-0 text-[4rem] xs:text-[5rem] font-logo">
-						AMNA
-					</h2>
+				<link itemProp="url" href="/book/homepage" />
+				<meta itemProp="inLanguage" content="en" />
+				<meta
+					itemProp="name"
+					content="Amna Kolić — Graphic Design, Illustration & Photo Editing"
+				/>
+				<meta
+					itemProp="description"
+					content="Explore the portfolio of Amna Kolić—editorial-inspired graphic design, illustration, and photo editing."
+				/>
+				<meta
+					itemProp="keywords"
+					content="graphic design, illustration, photo editing, portfolio, editorial design, Bosnia designer"
+				/>
+				<meta itemProp="image" content="/homepage-right.webp" />
+				<section
+					className="relative flex h-screen w-full flex-col items-start justify-start gap-10 xs:gap-20 overflow-hidden pt-24 xs:pt-32"
+					aria-labelledby="home-hero-title"
+				>
+					<div className="relative z-10 flex w-full flex-col items-start gap-2">
+						<h1 id="home-hero-title" className="sr-only" itemProp="headline">
+							Amna Kolić — Design portfolio: Graphic Design, Illustration, Photo
+							Editing
+						</h1>
+
+						<div
+							aria-hidden="true"
+							className="font-display flex w-full justify-center font-normal leading-0 text-white"
+						>
+							<ScreenTextFit>
+								<span className="inline-flex items-baseline py-1">
+									<DModified className="h-[0.75em] w-auto" />
+									ESIGN
+								</span>
+							</ScreenTextFit>
+						</div>
+
+						<p className="font-display text-2xl italic tracking-[0.4em] pl-2 text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727]">
+							portfolio
+						</p>
+					</div>
+					<div className="relative z-30">
+						<h2 className="w-[13.3rem] font-serif text-3xl text-white">
+							<span className="flex flex-col">
+								<span>GRAPHIC</span>
+								<span className="flex w-full justify-end">DESIGN</span>
+							</span>
+						</h2>
+						<h2 className="font-serif text-2xl text-[#272727]">ILLUSTRATION</h2>
+						<h2 className="w-[13rem] font-serif text-2xl text-white">
+							<span className="flex flex-col">
+								<span className="flex w-full justify-end">PHOTO</span>
+								<span>EDITING</span>
+							</span>
+						</h2>
+					</div>
+				</section>
+				<img
+					src="/cookie-pose.webp"
+					alt=""
+					role="presentation"
+					aria-hidden="true"
+					className="pointer-events-none absolute bottom-0 -right-6 z-20 max-h-[97vh] max-w-[97vw] object-contain object-bottom-right xs:-right-24 xs:max-h-[122vh] xs:max-w-[122vw]"
+					loading="eager"
+					decoding="async"
+				/>
+				<div
+					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[21rem] w-[21rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"
+					aria-hidden="true"
+				>
+					<div className="absolute inset-0 rounded-full bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)] bg-no-repeat bg-[length:100%_100%] mix-blend-multiply" />
+					<div className="absolute inset-0 flex flex-col items-center justify-center gap-10 pb-24">
+						<p className="px-4 text-end font-serif text-2xl italic leading-tight text-white xs:text-3xl">
+							<span className="not-italic">The DIFFERENT</span>
+							<br />
+							<span className="not-italic">APPROACH</span>
+							<br />
+							to design
+							<br />
+							with
+						</p>
+						<strong className="font-logo text-[4rem] leading-0 text-white xs:text-[5rem]">
+							AMNA
+						</strong>
+					</div>
 				</div>
-			</div>
-		</div>
-	</MobileWrapper>
-);
+			</main>
+		</MobileWrapper>
+	);
+};
 
 export const loader = () => null;
 
