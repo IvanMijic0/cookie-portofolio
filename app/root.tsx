@@ -6,6 +6,9 @@ import type { Route } from "./+types/root";
 import type { ReactNode } from "react";
 import { UIProvider } from "~/context/ui";
 import { FlipbookProvider } from "~/context/flipbook";
+import { useLocation } from "react-router";
+import type { Lang } from "./i18n/i18n";
+import { I18nProvider } from "./context/I18nProvider";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -54,11 +57,13 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App() {
-	return <UIProvider>
-		<FlipbookProvider>
-			<Outlet />
-		</FlipbookProvider>
-	</UIProvider>
+	return (
+		<UIProvider>
+			<FlipbookProvider>
+				<Outlet />
+			</FlipbookProvider>
+		</UIProvider>
+	);
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

@@ -79,9 +79,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 ));
 
 export const Right = forwardRef<HTMLDivElement>((_, ref) => {
-
-	const isSlideImage = (s: Slide): s is SlideImage => "src" in s;
-
 	const slides: SlideImage[] = useMemo(
 		() => [
 			{
@@ -99,9 +96,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		],
 		[]
 	);
-
-	const [opened, { open, close }] = useDisclosure(false);
-	const [index, setIndex] = useState(0);
 
 	return (
 		<RightPage ref={ref} showBookmark>
@@ -156,7 +150,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</div>
 
 				<div className="col-span-1 flex justify-between flex-col py-8 2xl:py-14">
-					{slides.map((s, idx) => (
+					{slides.map((s) => (
 						<figure
 							key={s.src}
 							itemProp="image"
@@ -167,13 +161,9 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 							<img
 								src={s.src}
 								alt={s.alt}
-								className="object-cover w-80 cursor-zoom-in select-none"
+								className="object-cover w-80 select-none"
 								loading="eager"
 								fetchPriority="high"
-								onClick={() => {
-									setIndex(idx);
-									open();
-								}}
 							/>
 							<meta itemProp="contentUrl" content={s.src} />
 							<meta itemProp="caption" content={s.alt} />
@@ -181,27 +171,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					))}
 				</div>
 			</article>
-
-			<Lightbox
-				open={opened}
-				close={close}
-				index={index}
-				slides={slides as Slide[]}
-				plugins={[Fullscreen, Share, Zoom, Download]}
-				controller={{ closeOnBackdropClick: true }}
-				carousel={{ finite: false, imageFit: "cover" }}
-				render={{
-					slide: ({ slide }) => {
-						if (!isSlideImage(slide)) return null;
-						return (
-							<figure className="mx-auto overflow-hidden rounded-lg shadow-lg">
-								<img src={slide.src} alt={slide.alt ?? ""} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-								{slide.alt && <figcaption className="mt-3 text-center text-sm text-white/90">{slide.alt}</figcaption>}
-							</figure>
-						);
-					},
-				}}
-			/>
 		</RightPage>
 	);
 });

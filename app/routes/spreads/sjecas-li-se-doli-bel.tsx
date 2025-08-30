@@ -1,8 +1,6 @@
 import { forwardRef, useMemo, useState } from "react";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { useDisclosure } from "~/helpers";
-import Lightbox, { isImageSlide, type Slide, type SlideImage } from "yet-another-react-lightbox";
-import Captions from "yet-another-react-lightbox/plugins/captions";
+import Lightbox, { isImageSlide, type SlideImage } from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -16,9 +14,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			alt: "Visual detail from the ‘Sjećaš li se Doli Bel’ design concept",
 		},
 	];
-
-	const [opened, { open, close }] = useDisclosure(false);
-	const [index, setIndex] = useState(0);
 
 	return (
 		<LeftPage ref={ref}>
@@ -64,31 +59,16 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 							</span>
 						</p>
 					</header>
-
 					<img
 						src={slides[0].src}
 						alt={slides[0].alt}
-						className="w-64 2xl:w-96 2xl:pb-8 object-cover z-0 cursor-zoom-in select-none"
+						className="w-64 2xl:w-96 2xl:pb-8 object-cover z-0 select-none"
 						loading="eager"
 						fetchPriority="high"
 						itemProp="image"
-						onClick={() => {
-							setIndex(0);
-							open();
-						}}
 					/>
 				</div>
 			</article>
-
-			<Lightbox
-				open={opened}
-				close={close}
-				index={index}
-				slides={slides as Slide[]}
-				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
-				controller={{ closeOnBackdropClick: true }}
-				carousel={{ finite: false }}
-			/>
 		</LeftPage>
 	);
 });

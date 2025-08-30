@@ -5,6 +5,8 @@ import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
 import clsx from "clsx";
 import Portal from "../Portal";
+import { useTranslate } from "~/context/I18nProvider";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 type NormalizeFn = (s: string) => string;
 
@@ -102,6 +104,8 @@ const LinksOverlay = ({ current, normalize }: LinksOverlayProps) => {
 };
 
 const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
+	const { t, makeHref } = useTranslate();
+
 	const isActiveSection = (href: string) => {
 		const h = normalize(href);
 		return current === h || current.startsWith(h + "/");
@@ -122,7 +126,7 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 			</motion.h2>
 
 			<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
-				{navSections.map((section) => {
+				{navSections(t, makeHref).map((section) => {
 					const sectionHref = `${section.to}`;
 					const sectionActive = isActiveSection(sectionHref);
 
@@ -184,6 +188,9 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 					);
 				})}
 			</motion.ol>
+			<div className='pt-1 xs:pt-4'>
+				<LanguageSwitcher />
+			</div>
 		</motion.div>
 	);
 };

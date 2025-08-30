@@ -1,0 +1,215 @@
+{
+  "nav": {
+    "contents": "sadržaj",
+    "home": "POČETNA",
+    "aboutMe": "O meni",
+    "contact": "Kontakt",
+    "photography": "FOTOGRAFIJA",
+    "photographyOne": "Razoružaj ih dobrotom",
+    "photographyTwo": "Ljudska prava",
+    "photographyThree": "Dvostruka obmana",
+    "graphicDesign": "GRAFIČKI DIZAJN",
+    "designOne": "KREATIV festival Art Direkcija",
+    "designTwo": "Sjećaš li se Doli Bel?",
+    "designThree": "Chippsters logo",
+    "illustration": "ILUSTRACIJA",
+    "illustrationOne": "Vila Planinka",
+    "illustrationTwo": "Austen u akvarelu",
+    "illustrationThreeQuotations": "Bosna u srcu Evrope",
+    "illustrationThree": "mural"
+  },
+
+  "info": "autorica Amna Kolić",
+
+  "homepage": {
+    "cta": "Popričajmo!",
+    "title": "DIZAJN",
+    "headlineOne": {
+      "titleOne": "GRAFIČKI",
+      "titleTwo": "DIZAJN"
+    },
+ "meta": {
+      "title": "Amna Kolić | Portfolio grafičkog dizajna, fotografije i ilustracije",
+      "description": "Istražite portfolio Amne Kolić: radovi iz grafičkog dizajna, fotografije i ilustracije.",
+      "keywords": "grafički dizajn, fotografija, ilustracija, portfolio, editorial dizajn, Sarajevo, Bosna i Hercegovina",
+      "ogTitle": "Amna Kolić — Portfolio",
+      "ogDescription": "Projekti grafičkog dizajna, fotografije i ilustracije Amne Kolić."
+    },
+    "headlineTwo": "ILUSTRACIJA",
+    "headlineThree": {
+      "titleOne": "EDITOVANJE",
+      "titleTwo": "FOTOGRAFIJE"
+    },
+    "headlineFour": {
+      "titleOne": "DRUGAČIJI",
+      "titleTwo": "PRISTUP",
+      "titleThree": "dizajnu",
+      "titleFour": "uz",
+      "title": "AMNU"
+    }
+  },
+
+  "photography": {
+    "title": {
+      "titleOne": "Fotografija",
+      "titleTwo": "i editovanje"
+    },
+    "information": "Fotograf"
+  },
+
+  "photographyOne": {
+    "title": {
+      "titleOne": "Razoružaj ih",
+      "titleTwo": "sa",
+      "titleThree": "Dobrotom"
+    },
+    "headText": "Šta kada bi empatija bila češća od sukoba? Šta kada bi ljubaznost — a ne nasilje — bila najglasnija sila u prostoriji? U tom svijetu rat ne bi imao mjesta.",
+    "text": {
+      "textOne": "Vjeran svom nazivu, ovaj projekat donosi upečatljivu vizuelnu poruku: poziv na razoružavanje ne samo fizički, već i emotivno.",
+      "textTwo": "Svaka fotografija je pažljivo inscenirana u studiju pod identičnim osvjetljenjem, a zatim vješto komponovana u Adobe Photoshopu kako bi se stvorile besprijekorne, vizuelno upečatljive priče koje izazivaju našu percepciju snage, mira i čovječnosti."
+    }
+  },
+
+  "photographyTwo": {
+    "title": {
+      "titleOne": "Ljudska",
+      "titleTwo": "Prava"
+    },
+    "headText": "Ova fotografska serija istražuje koncept svjetlosti kao metafore za ljudska prava — vizuelni narativ u kojem osvjetljenje postaje i simbol i poruka.",
+    "text": {
+      "textOne": "Svaki kadar eksperimentiše s kvalitetom, bojom i pravcem svjetlosti kako bi odrazio krhko prisustvo — ili zabrinjavajuće odsustvo — temeljnog prava.",
+      "textTwo": "Igra sjene i svjetlosti nije samo estetska; ona je namjerna. Svaka fotografija predstavlja određeno pravo koje nam polako izmiče, svaka kompozicija je tihi čin otpora.",
+      "textThree": "Od vrha do dna, s lijeva na desno, prikazana prava su: Pravo na izražavanje, Pravo na privatnost, Pravo na odmor, Pravo na vjeru i Pravo na izbor."
+    }
+  },
+
+  "photographyThree": {
+    "title": {
+      "titleOne": "Dvostruka",
+      "titleTwo": "Obmana"
+    },
+    "headText": "U ovom triju crno-bijelih fotografija, klasični film noir oživljava kroz pažljivo rekonstruisane ključne scene iz filma Dvostruka obmana. Više od same posvete, ove slike su vježbe u stvaranju atmosfere — studija svjetla, sjene i emocije, prozor u napetost i eleganciju kinematografije 1940-ih.",
+    "text": "Svaka fotografija je pažljivo osvijetljena i inscenirana da odrazi originalne kadrove, ne samo u kompoziciji već i u emotivnoj teksturi. Svjetlost oblikuje likove, odražavajući moralnu dvosmislenost i eleganciju koja definiše ovaj žanr — i film."
+  },
+
+  "graphicDesign": {
+    "title": {
+      "titleOne": "GRAFIČKI",
+      "titleTwo": "DIZAJN"
+    },
+    "text": "Tamo gdje se kreativnost i namjera isprepliću, dizajni pričaju priče kroz suptilne detalje i profinjenu estetiku. Od elegantnih identiteta do vibrantnih narativa i taktilnih dojmova, svaka kreacija hvata jedinstvenu suštinu — pozivajući vas da doživite umjetnost iza vizuala.",
+    "information": {
+      "informationOne": "Fotografija pozadine",
+      "informationTwo": "Fotografija karti",
+      "informationThree": "Edit & logotipi"
+    }
+  },
+
+  "graphicDesignOne": {
+    "title": {
+      "titleOne": "Prijedlog Art Direkcije Festivala",
+      "titleTwo": "Kreativ Euforija"
+    },
+    "subText": "KREATIV fest 2024. dao je priliku studentima da pokažu svoju kreativnost kroz art direkciju festivala.",
+    "text": {
+      "textOne": "Kao prijava za art direction KREATIV festa 2024. na Internacionalnom Burch Univerzitetu, ovaj prijedlog vizuelnog identiteta snažno se oslanja na grunge estetiku i eksperimentalno naslijeđe Davida Carsona.",
+      "textTwo": "Fokusiran oko prilagođenog logotipa s natpisom “Kreativ Euphoria”, dizajn koristi slova u negativnom prostoru i kompoziciju nalik pečatu kako bi odrazio haotičnu, izražajnu energiju mladih kreativaca.",
+      "textThree": "Vizuelni jezik izgrađen je na kontrastu živopisnih neon zelene, ružičaste i narandžaste boja naspram oštrih crnih slojeva, stvarajući dinamičan, upečatljiv izgled koji djeluje i nostalgično i svježe. Teksture i slojevitost imitiraju pocijepane postere i uličnu umjetnost, dodatno naglašavajući sirovu, urbanu atmosferu.",
+      "textFour": "Kroz postere, letke i društvene mreže, identitet održava dosljedan, taktilni kvalitet dok se prilagođava različitim formatima.",
+      "textFive": "Ovaj koncept slavi nesavršenost, spontanost i moć studentskog izražavanja. On ne promoviše samo događaj — on vizuelno utjelovljuje njegovu energiju, podsjećajući svakog gledaoca: i ti možeš biti kreativan."
+    }
+  },
+
+  "graphicDesignTwo": {
+    "text": {
+      "textOne": "Za scensku adaptaciju Sjećaš li se Doli Bel u Kamernom Teatru 55 u Sarajevu, osmislila sam promotivne vizuale iznova, s konceptom ukorijenjenim u emotivnom simbolizmu i narativnoj dubini.",
+      "textTwo": "Crpeći inspiraciju iz tema priče o adolescenciji, gubitku i emotivnom raspadanju, odabrala sam živopisnu crvenu pozadinu kako bih odrazila intenzitet okruženja likova. Nasuprot tome, bijela rukom pisana tipografija simbolizira nevinost koju svijet oko njih postepeno proždire. Fragmentirani raspored naslova formira oblik nakrivljene kuće, referirajući na skučen i nestabilan prostor u kojem se odvija veći dio priče, od porodičnih domova do hotelskih soba.",
+      "textThree": "Rukom pisano pismo povezuje se s potragom likova za povezanošću i učenjem, posebno kroz odnos između Doli i glavnog junaka. Ono priziva ranjivost i želju za razumijevanjem u svijetu koji djeluje nestabilno. Prateća brošura nastavlja ovu priču vizuelno, s kružnim, dezorijentisanim rasporedom koji odražava emotivne cikluse i osjećaj disbalansa u priči. Ovaj identitet hvata krhku, nesređenu i duboko ljudsku suštinu predstave."
+    }
+  },
+
+  "graphicDesignThree": {
+    "title": "Dizajn i ideja iza istog-",
+    "text": {
+      "textOne": "Logo Chippsters nastao je iz razigrane fuzije vjeverice i hipstera, odražavajući tech kompaniju koja teži da bude i ležerna i progresivna.",
+      "textTwo": "Sa imenom punim karaktera, vizuelni identitet je morao pratiti taj ton — profesionalan, ali pristupačan, čist, ali izražajan. Logo prikazuje vjevericu s kapom i naočalama, vješto oblikovanu u negativnom prostoru podebljanog slova “C”.",
+      "textThree": "Ovaj jednostavan, zaobljeni oblik osigurava svestranost i snažno prepoznavanje brenda, dok lik dodaje šarm i jedinstvenost. Čist kružni oblik daje prilagodljivost, a pojednostavljen dizajn lika osigurava laku prepoznatljivost kroz različite primjene.",
+      "textFour": "Pastelni zeleni gradijent donosi osjećaj svježine i smirene profesionalnosti. Rezultat je upečatljiv, moderan logo koji se ističe u tech industriji sa savršenom ravnotežom zabave i jasnoće."
+    }
+  },
+
+  "illustration": {
+    "title": {
+      "titleOne": "ILUST",
+      "titleTwo": "RACIJA"
+    },
+    "text": "Strast iz djetinjstva pretvorila se u legitimnu vještinu koju svaki biznis može iskoristiti.",
+    "information": "Ilustracija pozadine"
+  },
+
+  "illustrationOne": {
+    "title": {
+      "titleOne": "Vila",
+      "titleTwo": "Planinka"
+    },
+    "text": {
+      "textOne": "Ova digitalna ilustracija prikazuje bosansku planinsku vilu, kao dio tekuće serije posvećene vizualizaciji zaboravljenih likova bosanskog folklora.",
+      "textTwo": "Nastala u Clip Studio Paint programu, ilustracija crpi inspiraciju kako iz prirodnog okruženja tako i iz tradicionalnih opisa ovih mističnih bića.",
+      "textThree": "Odjevena u historijski inspirisane haljine sa zemljanim tonovima i narodnim motivima, vila je okrunjena divljim cvijećem i ukrašena rogovima, što upućuje na njenu mitološku sposobnost da se pretvori u bijelu kozu, njen simbol. Topla šumska pozadina odražava planinski teren za koji se vjeruje da ga nastanjuje, spajajući realizam i fantaziju kako bi bila čvrsto ukorijenjena u svojoj domovini.",
+      "textFour": "Ova serija rođena je iz želje da se ponovo povežemo s dubljom kulturnom prošlošću Bosne i Hercegovine — onom koja seže daleko izvan osmanskih ili savremenih narativa. Velik dio preimperijalne, predmoderne historije Bosne i Hercegovine ostao je zanemaren ili zaboravljen, a ovaj projekat nastoji da mu da novi glas. Svaki lik ima za cilj da oživi stoljećima stare legende, odajući počast bogatstvu naslijeđa koje zaslužuje da bude viđeno, zapamćeno i nanovo osmišljeno."
+    }
+  },
+
+  "illustrationTwo": {
+    "title": {
+      "titleOne": "Austen u",
+      "titleTwo": "akvarelu"
+    },
+    "text": {
+      "textOne": "Ova serija ilustracija inspirisana je emotivnim i tematskim bogatstvom romana Jane Austen: Ponos i predrasude, Razum i osjećaji i Emma.",
+      "textTwo": "Svaka ilustracija hvata emotivnu srž svog romana kroz simbolične kompozicije, uokvirene poput staromodnih broševa kako bi prizvale eleganciju i intimnost tog doba.",
+      "textThree": "U Ponosu i predrasudama, dvije ruke povlače u suprotnim smjerovima — simbolizirajući ponos, pogrešnu prosudbu i konačno pomirenje dviju snažnih volja. Razum i osjećaji prikazuje ženu koja poseže za muškarcem koji je ne drži čvrsto, dok je druga ruka iza nje drži — naglašavajući kontrast između prolazne strasti i postojane ljubavi. U Emmi, heroina je prikazana kako igra šah sa stvarnim ljudima, odražavajući njene dobronamjerne ali pogrešne pokušaje spajanja parova.",
+      "textFour": "Svaka ilustracija ukrašena je cvijećem s posebnim značenjem, odabranim da predstavlja likove i emotivni ton svake priče. Serija spaja vizuelno pripovijedanje i književni simbolizam, nudeći moderno ali s poštovanjem odano priznanje bezvremenskim narativima Jane Austen."
+    }
+  },
+
+  "illustrationThree": {
+    "title": {
+      "titleOne": "Bosna u",
+      "titleTwo": "srcu",
+      "titleThree": "Evrope"
+    },
+    "text": {
+      "textOne": "Napravljeno za konkurs murala Europe House, ovo djelo oživljava temu “Bosna u srcu Evrope” spajajući nacionalni identitet s kontinentalnim jedinstvom.",
+      "textTwo": "U centru, turistkinja odmara ispod drveta dok se poznata sarajevska panorama širi u pejzaž ikoničnih evropskih znamenitosti, stavljajući Bosnu ne na periferiju, već čvrsto u kulturno i geografsko srce Evrope. Golubovi, stalni simbol Sarajeva, prolaze kroz scenu kao glasnici mira, kretanja i povezanosti — naglašavajući ulogu Bosne i Hercegovine kao dio šire evropske zajednice. Snažan žuti akcenat, preuzet i iz zastave Bosne i Hercegovine i iz vizuelnog identiteta Europe House-a, povezuje vizuelne elemente u koherentnu priču.",
+      "textThree": "Donji dio murala namjerno je ostavljen minimalističkim zbog postavljenih klupa u blizini, pozivajući posmatrače da sjednu, razmisle i prihvate zajedničke vrijednosti jedinstva, poštovanja i pripadnosti."
+    }
+  },
+
+  "aboutMe": {
+    "title": {
+      "titleOne": "Um Koji",
+      "titleTwo": "Stoji Iza",
+      "titleThree": "Dizajna"
+    },
+    "text": {
+      "textOne": "Zdravo, ja sam Amna Kolić — grafička i UX/UI dizajnerica iz Bosne i Hercegovine, sa diplomom bakalarata iz Grafičkog dizajna i multimedije na Internacionalnom Burch univerzitetu.",
+      "textTwo": "Moj pristup dizajnu, inspirisan uredničkim stilom, potiče iz dječije ljubavi prema časopisima i vizuelnom pripovijedanju.",
+      "textThree": "Karijeru sam započela kao suosnivačica OverVerse-a, startupa koji spaja slikovnice i interaktivne aplikacije, gdje sam radila na dizajnu, 3D-u, animaciji i još mnogo toga. Danas sam grafička dizajnerica u Beyondu, gdje kreiram reklamne kampanje, vizuale za društvene mreže i velike nacionalne projekte brendiranja, ranije sam sarađivala s Epifrontom i radim freelance poslove.",
+      "textFour": "Bilo da dizajniram za print, digitalne medije ili kampanje, moj fokus je stvaranje vizuala s namjerom i osobnošću. Hajde da oživimo tvoju viziju."
+    }
+  },
+
+  "contact": {
+    "title": {
+      "titleOne": "Bilo da je tradicionalni email, telefonski poziv",
+      "titleTwo": "Instagram ili LinkedIn",
+      "titleThree": "RAZGOV",
+      "titleFour": "ARAJMO"
+    },
+    "text": {
+      "textOne": "Čak i ako je tvoja ideja luckasta, preozbiljna, nesumnjivo nova ili samo običan zahtjev za dizajn brošure, tu sam da saslušam i isporučim s profesionalnim pristupom i otvorenim umom.",
+      "textTwo": "Fotografija koja je korištena generisana je putem ChatGPT-a, a zatim obrađena u Photoshopu da se isprave očigledni nedostaci. Fotografija prikazuje moj lik i ovdje je isključivo u dekorativne i tematski relevantne svrhe."
+    }
+  }
+}

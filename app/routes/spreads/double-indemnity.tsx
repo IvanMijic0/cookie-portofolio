@@ -1,19 +1,16 @@
 import { forwardRef, useMemo, useState } from "react";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import Lightbox, { isImageSlide, type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
-import { useDisclosure } from "~/helpers";
 import { ScreenTextFit, Carousel } from "~/components/UI";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
-	const ASPECT = 4 / 3;
-	const isSlideImage = (s: Slide): s is SlideImage => "src" in s;
 
-	const slides: SlideImage[] = useMemo(
+	const slides = useMemo(
 		() =>
 			Array.from({ length: 6 }).map((_, idx) => ({
 				src: `/double-indemnity-left-${idx + 1}.webp`,
@@ -22,65 +19,21 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 		[]
 	);
 
-	const [opened, { open, close }] = useDisclosure(false);
-	const [index, setIndex] = useState(0);
-
 	return (
 		<LeftPage ref={ref}>
 			<div className="w-full h-full grid grid-cols-2 gap-3">
-				{slides.map((s, idx) => (
+				{slides.map((s) => (
 					<img
 						key={s.src}
 						src={s.src}
 						alt={s.alt ?? ""}
-						className="w-full h-full object-cover z-30 cursor-zoom-in select-none"
+						className="w-full h-full object-cover z-30 select-none"
 						loading="eager"
 						fetchPriority="high"
 						decoding="async"
-						onClick={() => {
-							setIndex(idx);
-							open();
-						}}
 					/>
 				))}
 			</div>
-
-
-			<Lightbox
-				open={opened}
-				close={close}
-				index={index}
-				slides={slides as Slide[]}
-				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
-				controller={{ closeOnBackdropClick: true }}
-				carousel={{ finite: false, imageFit: "cover" }}
-				render={{
-					slide: ({ slide, rect }) => {
-						if (!isSlideImage(slide)) return null;
-
-						const frameWidth = Math.min(rect.width, rect.height * ASPECT);
-						const frameHeight = frameWidth / ASPECT;
-
-						return (
-							<figure
-								style={{ width: frameWidth, height: frameHeight }}
-								className="mx-auto overflow-hidden rounded-lg shadow-lg bg-black/5"
-							>
-								<img
-									src={slide.src}
-									alt={slide.alt ?? ""}
-									style={{ width: "100%", height: "100%", objectFit: "cover" }}
-								/>
-								{slide.alt && (
-									<figcaption className="mt-3 text-center text-sm text-white/90">
-										{slide.alt}
-									</figcaption>
-								)}
-							</figure>
-						);
-					},
-				}}
-			/>
 		</LeftPage>
 	);
 });

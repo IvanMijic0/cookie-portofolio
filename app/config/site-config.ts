@@ -15,6 +15,7 @@ import * as AboutMe from "~/routes/spreads/about-me";
 import * as Contact from "~/routes/spreads/contact";
 import type { NaveSectionItems, SpreadKey, SpreadModule } from "~/types";
 import { Instagram, Linkedin, Mail } from "~/assets";
+import type { useTranslate } from "~/context/I18nProvider";
 
 export const FONT_STRINGS = [
 	`1em "Bodoni Moda"`,
@@ -28,44 +29,49 @@ export const CRITICAL_IMAGES = [
 	"/cookie-pose.webp",
 ];
 
-export const navSections: NaveSectionItems[] = [
+type TFn = ReturnType<typeof useTranslate>["t"];
+
+export const navSections = (t: TFn, makeHref: (p: string) => string) => [
 	{
-		title: "HOME",
-		to: "/homepage",
+		title: t("nav.home"),
+		to: makeHref("/homepage"),
 		pageNumber: 0,
 		items: [
-			{ label: "About me", to: "/about-me" },
-			{ label: "Contact", to: "/contact" },
+			{ label: t("nav.aboutMe"), to: makeHref("/about-me") },
+			{ label: t("nav.contact"), to: makeHref("/contact") },
 		],
 	},
 	{
-		title: "PHOTOGRAPHY",
-		to: "/photography",
+		title: t("nav.photography"),
+		to: makeHref("/photography"),
 		pageNumber: 1,
 		items: [
-			{ label: "Kill them with kindness", to: "/photography/kill-them-with-kindness" },
-			{ label: "Human Rights", to: "/photography/human-rights" },
-			{ label: "Double Indemnity", to: "/photography/double-indemnity" },
+			{ label: t("nav.photographyOne"), to: makeHref("/photography/kill-them-with-kindness") },
+			{ label: t("nav.photographyTwo"), to: makeHref("/photography/human-rights") },
+			{ label: t("nav.photographyThree"), to: makeHref("/photography/double-indemnity") },
 		],
 	},
 	{
-		title: "GRAPHIC DESIGN",
-		to: "/graphic-design",
+		title: t("nav.graphicDesign"),
+		to: makeHref("/graphic-design"),
 		pageNumber: 7,
 		items: [
-			{ label: "KREATIV festival Art Direction", to: "/graphic-design/kreativ-festival-art-direction" },
-			{ label: "Sjećaš li se Doli Bel?", to: "/graphic-design/sjecas-li-se-doli-bel" },
-			{ label: "Chippsters logo", to: "/graphic-design/chippsters-logo" },
+			{ label: t("nav.designOne"), to: makeHref("/graphic-design/kreativ-festival-art-direction") },
+			{ label: t("nav.designTwo"), to: makeHref("/graphic-design/sjecas-li-se-doli-bel") },
+			{ label: t("nav.designThree"), to: makeHref("/graphic-design/chippsters-logo") },
 		],
 	},
 	{
-		title: "ILLUSTRATION",
-		to: "/illustration",
+		title: t("nav.illustration"),
+		to: makeHref("/illustration"),
 		pageNumber: 13,
 		items: [
-			{ label: "Mountain Fairy", to: "/illustration/mountain-fairy" },
-			{ label: "Austen in Watercolor", to: "/illustration/austen-in-watercolor" },
-			{ label: "“Bosnia in the heart of Europe” mural", to: "/illustration/mural" },
+			{ label: t("nav.illustrationOne"), to: makeHref("/illustration/mountain-fairy") },
+			{ label: t("nav.illustrationTwo"), to: makeHref("/illustration/austen-in-watercolor") },
+			{
+				label: `${t("nav.illustrationThreeQuotations")} ${t("nav.illustrationThree")}`,
+				to: makeHref("/illustration/mural"),
+			},
 		],
 	},
 ];

@@ -1,29 +1,52 @@
-import { ASPECT_RATIO, CRITICAL_IMAGES, FONT_STRINGS, spreadMap, spreads, TARGET_HEIGHT, TARGET_WIDTH } from "~/config";
+import {
+	ASPECT_RATIO,
+	CRITICAL_IMAGES,
+	FONT_STRINGS,
+	spreadMap,
+	spreads,
+	TARGET_HEIGHT,
+	TARGET_WIDTH,
+} from "~/config";
 import HTMLFlipBook from "react-pageflip";
-import { useLoaderData, useLocation, useNavigate } from "react-router";
-import { useEffect, useMemo, useRef, useState, type JSX } from "react";
+import {
+	useLoaderData,
+	useLocation,
+	useNavigate,
+	type LoaderFunctionArgs,
+} from "react-router";
+import {
+	useEffect,
+	useMemo,
+	useRef,
+	useState,
+	type JSX,
+} from "react";
 import { useFlipbook } from "~/context/flipbook";
 import { useInitialAssets } from "~/hooks";
 import type { SpreadKey } from "~/types";
-import { type LoaderFunctionArgs } from "react-router";
 import clsx from "clsx";
-
-type PageFlipApi = {
-	flip: (pageIndex: number) => void;
-	turnToPage?: (pageIndex: number) => void;
-};
-
-type FlipBookRef = {
-	pageFlip: () => PageFlipApi | undefined;
-};
-
-type FlipEvent = { data: number };
+import { I18nProvider, useTranslate } from "~/context/I18nProvider";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const ua = request.headers.get("user-agent") ?? "";
 	const serverIsMobile =
-		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
-	return ({ serverIsMobile });
+		/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(
+			ua
+		);
+	return { serverIsMobile };
+}
+
+const LANGS = ["en", "ba"] as const;
+type Lang = (typeof LANGS)[number];
+
+function parsePathname(pathname: string): { lang: Lang; slug: SpreadKey } {
+	const parts = pathname.split("/").filter(Boolean);
+	const maybeLang = parts[0];
+	const hasLang = LANGS.includes(maybeLang as Lang);
+	const lang = (hasLang ? maybeLang : "en") as Lang;
+	const slugParts = hasLang ? parts.slice(1) : parts;
+	const slug = (slugParts.join("/") || "homepage") as SpreadKey;
+	return { lang, slug };
 }
 
 const useIsMobile = (query = "(max-width: 1023px)", initial = false) => {
@@ -41,6 +64,10 @@ const useIsMobile = (query = "(max-width: 1023px)", initial = false) => {
 	return matches;
 };
 
+type PageFlipApi = { flip: (pageIndex: number) => void; turnToPage?: (pageIndex: number) => void };
+type FlipBookRef = { pageFlip: () => PageFlipApi | undefined };
+type FlipEvent = { data: number };
+
 const DesktopFlipbook = () => {
 	const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
 		width: TARGET_WIDTH,
@@ -57,7 +84,7 @@ const DesktopFlipbook = () => {
 
 	const assetsReady = useInitialAssets(FONT_STRINGS, CRITICAL_IMAGES);
 
-	const slug = (location.pathname.replace("/", "") || "homepage") as string;
+	const { slug } = parsePathname(location.pathname);
 	const validatedSlug = (spreads.includes(slug as SpreadKey) ? slug : "homepage") as SpreadKey;
 	const startPage = spreads.indexOf(validatedSlug) * 2;
 
@@ -120,8 +147,9 @@ const DesktopFlipbook = () => {
 	}, [startPage]);
 
 	useEffect(() => {
-		const toPageIndex = (s: string): number => {
-			const clean = s.replace(/^\/+/, "") as SpreadKey;
+		const toPageIndex = (pathLike: string): number => {
+			const { slug } = parsePathname(pathLike.startsWith("/") ? pathLike : `/${pathLike}`);
+			const clean = slug as SpreadKey;
 			const i = spreads.includes(clean) ? spreads.indexOf(clean) : -1;
 			return i >= 0 ? i * 2 : 0;
 		};
@@ -148,7 +176,10 @@ const DesktopFlipbook = () => {
 		currentPageRef.current = Math.floor(e.data);
 		const idx = Math.floor(e.data / 2);
 		const nextSlug = spreads[idx];
-		if (nextSlug) navigate(`/${nextSlug}`, { replace: true });
+
+		const lang = localStorage.getItem('lang');
+
+		if (nextSlug) navigate(`/${lang}/${nextSlug}`, { replace: true });
 		window.dispatchEvent(new CustomEvent("bookmark:close"));
 	};
 
@@ -193,6 +224,7 @@ const DesktopFlipbook = () => {
 		</div>
 	);
 };
+
 const MobileSpread = ({ slug }: { slug: SpreadKey }) => {
 	const mod = spreadMap[slug] as any;
 	const Mobile = mod?.Mobile;
@@ -223,10 +255,14 @@ const BookLayout = () => {
 	const isMobile = useIsMobile("(max-width: 1023px)", serverIsMobile);
 	const location = useLocation();
 
-	const slug = location.pathname.replace("/", "") || "homepage";
+	const { lang, slug } = parsePathname(location.pathname);
 	const validatedSlug = (spreads.includes(slug as SpreadKey) ? slug : "homepage") as SpreadKey;
 
-	return isMobile ? <MobileSpread slug={validatedSlug} /> : <DesktopFlipbook />;
+	return (
+		<I18nProvider lang={lang}>
+			{isMobile ? <MobileSpread slug={validatedSlug} /> : <DesktopFlipbook />}
+		</I18nProvider>
+	);
 };
 
 export default BookLayout;

@@ -1,9 +1,8 @@
 import { forwardRef, useMemo, useState } from "react";
-import Lightbox, { isImageSlide, type Slide, type SlideImage } from "yet-another-react-lightbox";
+import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Captions, Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { Carousel, ScreenTextFit } from "~/components/UI";
-import { useDisclosure } from "~/helpers";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -20,11 +19,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 ));
 
 export const Right = forwardRef<HTMLDivElement>((_, ref) => {
-	const isSlideImage = (s: Slide): s is SlideImage => "src" in s;
-
-	const ASPECT = 3 / 4;
-
-
 	const slides = useMemo(
 		() =>
 			Array.from({ length: 4 }).map((_, idx) => ({
@@ -34,9 +28,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		[]
 	);
 
-	const [opened, { open, close }] = useDisclosure(false);
-	const [index, setIndex] = useState(0);
-
 	return (
 		<RightPage ref={ref} showBookmark>
 			<aside
@@ -44,19 +35,15 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				aria-label="Human Rights series thumbnails"
 			>
 				<div className="flex h-full flex-col">
-					{slides.map((s, idx) => (
+					{slides.map((s) => (
 						<img
 							key={s.src}
 							src={s.src}
 							alt={s.alt}
-							className="h-1/4 w-full z-30 object-cover cursor-zoom-in select-none"
+							className="h-1/4 w-full z-30 object-cover select-none"
 							loading="eager"
 							fetchPriority="high"
 							decoding="async"
-							onClick={() => {
-								setIndex(idx);
-								open();
-							}}
 						/>
 					))}
 				</div>
@@ -113,40 +100,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					</p>
 				</section>
 			</article>
-			<Lightbox
-				open={opened}
-				close={close}
-				index={index}
-				slides={slides as Slide[]}
-				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
-				controller={{ closeOnBackdropClick: true }}
-				carousel={{ finite: false, imageFit: "cover" }} render={{
-					slide: ({ slide, rect }) => {
-						const frameWidth = Math.min(rect.width, rect.height * ASPECT);
-						const frameHeight = frameWidth / ASPECT;
-
-						if (!isSlideImage(slide)) return null;
-
-						return (
-							<figure
-								style={{ width: frameWidth, height: frameHeight }}
-								className="mx-auto overflow-hidden rounded-lg shadow-lg bg-black/5"
-							>
-								<img
-									src={slide.src}
-									alt={slide.alt ?? ""}
-									style={{ width: "100%", height: "100%", objectFit: "cover" }}
-								/>
-								{slide.alt && (
-									<figcaption className="mt-3 text-center text-sm text-white/90">
-										{slide.alt}
-									</figcaption>
-								)}
-							</figure>
-						);
-					},
-				}}
-			/>
 		</RightPage>
 	);
 });

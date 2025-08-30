@@ -1,8 +1,6 @@
 import { forwardRef, useMemo, useState } from "react";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { useDisclosure } from "~/helpers";
-import Lightbox, { isImageSlide, type Slide, type SlideImage } from "yet-another-react-lightbox";
-import Captions from "yet-another-react-lightbox/plugins/captions";
+import Lightbox, { isImageSlide, type SlideImage } from "yet-another-react-lightbox";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
@@ -135,9 +133,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		[]
 	);
 
-	const [opened, { open, close }] = useDisclosure(false);
-	const [index, setIndex] = useState(0);
-
 	return (
 		<RightPage ref={ref} showBookmark>
 			<img
@@ -176,14 +171,10 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					<img
 						src={slides[0].src}
 						alt={slides[0].alt ?? ""}
-						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						className="object-cover z-0 w-full select-none"
 						loading="eager"
 						fetchPriority="high"
 						decoding="async"
-						onClick={() => {
-							setIndex(0);
-							open();
-						}}
 					/>
 					<meta itemProp="contentUrl" content={slides[0].src} />
 					<figcaption className="sr-only" itemProp="caption">
@@ -199,14 +190,10 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					<img
 						src={slides[1].src}
 						alt={slides[1].alt ?? ""}
-						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						className="object-cover z-0 w-full select-none"
 						loading="eager"
 						fetchPriority="high"
 						decoding="async"
-						onClick={() => {
-							setIndex(1);
-							open();
-						}}
 					/>
 					<meta itemProp="contentUrl" content={slides[1].src} />
 					<figcaption className="sr-only" itemProp="caption">
@@ -222,14 +209,10 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					<img
 						src={slides[2].src}
 						alt={slides[2].alt ?? ""}
-						className="object-cover z-0 w-full cursor-zoom-in select-none"
+						className="object-cover z-0 w-full select-none"
 						loading="eager"
 						fetchPriority="high"
 						decoding="async"
-						onClick={() => {
-							setIndex(2);
-							open();
-						}}
 					/>
 					<meta itemProp="contentUrl" content={slides[2].src} />
 					<figcaption className="sr-only" itemProp="caption">
@@ -237,15 +220,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					</figcaption>
 				</figure>
 			</article>
-
-			<Lightbox
-				open={opened}
-				close={close}
-				index={index}
-				slides={slides}
-				carousel={{ padding: 24 }}
-				plugins={[Captions, Fullscreen, Share, Zoom, Download]}
-			/>
 		</RightPage>
 	);
 });
