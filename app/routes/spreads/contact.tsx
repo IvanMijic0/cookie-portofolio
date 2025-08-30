@@ -1,8 +1,11 @@
-import { forwardRef } from "react";
+import { forwardRef, useMemo, useState } from "react";
 import { CModified } from "~/assets";
-import { LeftPage, RightPage } from "~/components";
+import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { motion } from "framer-motion";
 import { contactButtons } from "~/config";
+import { ScreenTextFit } from "~/components/UI";
+import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
+import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -107,26 +110,169 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 					Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind.
 				</p>
 			</div>
-			<script
-				type="application/ld+json"
-				dangerouslySetInnerHTML={{
-					__html: JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "ContactPage",
-						"@id": "/contact",
-						name: "Contact Amna Kolić",
-						mainEntity: {
-							"@type": "Person",
-							name: "Amna Kolić",
-							jobTitle: "Graphic Designer",
-							url: "/",
-						},
-					}),
-				}}
-			/>
 		</article>
 	</RightPage>
 ));
+
+export const Mobile = () => {
+	const [opened, setOpened] = useState(false);
+	const [index, setIndex] = useState(0);
+
+	const aboutSlides = useMemo(
+		() => [
+			{
+				src: "/contact.webp",
+				alt: "Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait.",
+			},
+		],
+		[]
+	);
+
+	const openAt = (i: number) => {
+		setIndex(i);
+		setOpened(true);
+	};
+	const close = () => setOpened(false);
+
+	return (
+		<MobileWrapper>
+			<div className="relative w-full">
+				<article
+					itemScope
+					itemType="https://schema.org/Person"
+					className="relative z-10 px-6 pb-8 pt-24 flex items-center justify-start gap-8 flex-col text-[#363636]"
+					aria-labelledby="about-title"
+				>
+					<section
+						id="description"
+						aria-label="About Amna Kolić"
+						className="text-xl xs:text-2xl w-full text-[#505050] font-serif justify-start text-center"
+					>
+						<p itemProp="description" className="font-bold italic">
+							Be it traditional email, phonecall, Instagram or LinkedIn
+						</p>
+						<meta itemProp="jobTitle" content="Graphic Designer & UX/UI Designer" />
+						<meta itemProp="name" content="Amna Kolić" />
+						<meta itemProp="nationality" content="Bosnia and Herzegovina" />
+						<meta itemProp="knowsLanguage" content="en" />
+					</section>
+
+					<header className="w-full">
+						<ScreenTextFit>
+							<h1
+								id="about-title"
+								itemProp="name"
+								className="font-display text-center leading-17 text-[3.7rem] xs:text-[4.4rem] [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+							>
+								LET’S CHAT
+							</h1>
+						</ScreenTextFit>
+						<meta itemProp="inLanguage" content="en" />
+					</header>
+
+					<nav
+						aria-label="Contact methods"
+						itemScope
+						itemType="https://schema.org/SiteNavigationElement"
+						className="w-full"
+					>
+						<div className="flex items-center justify-between w-full gap-2">
+							{contactButtons.map(({ label, to, icon: Icon }) => {
+								const isExternal = to?.startsWith("http");
+								const isEmail = to?.startsWith("mailto:");
+								return (
+									<motion.a
+										key={label}
+										href={to || undefined}
+										target={isExternal ? "_blank" : undefined}
+										rel={isExternal ? "noopener noreferrer me" : "me"}
+										aria-label={label}
+										title={label}
+										itemProp={isEmail ? "email" : "sameAs"}
+										whileHover={{ scale: 1.05, rotate: -1 }}
+										whileTap={{ scale: 0.95, rotate: 1 }}
+										transition={{ type: "spring", stiffness: 300, damping: 15 }}
+										className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg"
+									>
+										<Icon className="h-10 w-10" color="white" aria-hidden />
+										<span className="sr-only">{label}</span>
+									</motion.a>
+								);
+							})}
+						</div>
+					</nav>
+
+					<figure
+						itemProp="image"
+						itemScope
+						itemType="https://schema.org/ImageObject"
+						className="w-full pb-2"
+					>
+						<button
+							type="button"
+							onClick={() => openAt(0)}
+							className="block w-full cursor-zoom-in"
+							aria-label="Open portrait in lightbox"
+							title="View portrait"
+						>
+							<img
+								src="/contact.webp"
+								sizes="(max-width: 640px) 100vw, 640px"
+								alt="Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait."
+								width={1600}
+								height={2000}
+								className="object-cover w-full h-auto"
+								loading="eager"
+								decoding="async"
+								itemProp="contentUrl"
+							/>
+						</button>
+						<figcaption className="sr-only" itemProp="caption">
+							Portrait of Amna Kolić for professional inquiries.
+						</figcaption>
+					</figure>
+
+					<section
+						id="description-cta"
+						aria-label="Work together"
+						className="text-sm w-full text-[#505050] font-serif justify-start text-justify"
+					>
+						<p className="text-base">
+							Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind.
+						</p>
+					</section>
+				</article>
+			</div>
+
+			<Lightbox
+				open={opened}
+				close={close}
+				index={index}
+				slides={aboutSlides}
+				plugins={[Fullscreen, Share, Zoom, Download]}
+				controller={{ closeOnBackdropClick: true }}
+				styles={{ container: { zIndex: 200 } }}
+				carousel={{ finite: false, imageFit: "cover" }}
+				render={{
+					slide: ({ slide }) => {
+						if (!isImageSlide(slide)) return null;
+						return (
+							<figure className="mx-auto overflow-hidden rounded-lg shadow-lg bg-black/5">
+								<img
+									src={slide.src}
+									alt={slide.alt ?? ""}
+									style={{ width: "100%", height: "100%", objectFit: "cover" }}
+									loading="lazy"
+								/>
+
+							</figure>
+						);
+					},
+				}}
+			/>
+		</MobileWrapper>
+	);
+};
 
 export function meta() {
 	const title = "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio";
