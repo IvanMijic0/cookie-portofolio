@@ -1,8 +1,8 @@
 import { forwardRef } from "react";
 import { LeftPage, RightPage } from "~/components";
 
-export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<LeftPage ref={ ref }>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => (
+	<LeftPage ref={ref}>
 		<img
 			src="/mural-left.webp"
 			alt="Page background"
@@ -14,19 +14,19 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			className="absolute px-12 2xl:px-16 gap-4 2xl:gap-0 py-12 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/VisualArtwork"
-			itemID="/book/illustration/mural"
+			itemID="/illustration/mural"
 			aria-labelledby="mural-title"
 		>
-			<meta itemProp="inLanguage" content="en"/>
-			<meta itemProp="artMedium" content="Digital painting"/>
-			<meta itemProp="artform" content="Illustration"/>
+			<meta itemProp="inLanguage" content="en" />
+			<meta itemProp="artMedium" content="Digital painting" />
+			<meta itemProp="artform" content="Illustration" />
 			<meta
 				itemProp="keywords"
 				content="Europe House mural, Bosnia in the Heart of Europe, mural concept, Sarajevo, Bosnian identity, European unity, cultural heritage, public art"
 			/>
-			<meta itemProp="image" content="/mural-left.webp"/>
-			<meta itemProp="image" content="/mural-right.webp"/>
-			<link itemProp="mainEntityOfPage" href="/book/illustration/mural"/>
+			<meta itemProp="image" content="/mural-left.webp" />
+			<meta itemProp="image" content="/mural-right.webp" />
+			<link itemProp="mainEntityOfPage" href="/illustration/mural" />
 
 			<header className="flex flex-col items-start gap-8">
 				<div>
@@ -74,10 +74,10 @@ export const Left = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			</div>
 		</article>
 	</LeftPage>
-) );
+));
 
-export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
-	<RightPage ref={ ref } showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => (
+	<RightPage ref={ref} showBookmark>
 		<img
 			src="/mural-right.webp"
 			alt="Page background"
@@ -87,13 +87,13 @@ export const Right = forwardRef<HTMLDivElement>( ( _, ref ) => (
 			itemProp="image"
 		/>
 	</RightPage>
-) );
+));
 
 export function meta() {
 	const title = "Europe House Mural: Bosnia in the Heart of Europe | Amna Kolić";
 	const description =
 		"Mural concept that merges Bosnian identity with European unity—Sarajevo motifs, iconic landmarks, and bold yellow accents evoke connection, movement, and a shared future.";
-	const url = "/book/illustration/mural";
+	const url = "/illustration/mural";
 	const imagePrimary = "/mural-left.webp";
 	const imageAlt = "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.";
 

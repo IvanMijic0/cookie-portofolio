@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			className="absolute px-20 w-2/3 inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-center pb-12 2xl:pb-11 leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/ContactPage"
-			itemID="/book/contact"
+			itemID="/contact"
 			aria-labelledby="contact-h1"
 		>
 			<h1 id="contact-h1" className="sr-only" itemProp="name">
@@ -113,7 +113,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 					__html: JSON.stringify({
 						"@context": "https://schema.org",
 						"@type": "ContactPage",
-						"@id": "/book/contact",
+						"@id": "/contact",
 						name: "Contact Amna Kolić",
 						mainEntity: {
 							"@type": "Person",
@@ -132,7 +132,7 @@ export function meta() {
 	const title = "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio";
 	const description =
 		"Reach out to Amna Kolić for freelance design inquiries, collaboration, or just to chat about your next creative project.";
-	const url = "/book/contact";
+	const url = "/contact";
 	const image = "/contact-right.webp";
 
 	return [
