@@ -129,10 +129,10 @@ export const Mobile = () => {
 	const slides = [
 		{
 			id: 1,
-			title: "Austen in Watercolor",
+			title: "austen in watercolor",
 			src: "/austen-right-1.webp",
 			href: "/illustration/austen-in-watercolor",
-			alt: "Austen in Watercolor — delicate portrait illustration inspired by Jane Austen novels, rendered in soft washes of color.",
+			alt: "austen in watercolor — delicate portrait illustration inspired by jane austen novels, rendered in soft washes of color.",
 		},
 		{
 			id: 2,

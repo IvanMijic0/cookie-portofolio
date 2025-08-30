@@ -164,7 +164,6 @@ export const Mobile = () => {
 	);
 };
 
-
 export function meta() {
 	const title = "Creative Photography & Editing Projects | Amna Kolić Portfolio";
 	const description =
