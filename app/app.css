@@ -67,6 +67,8 @@
     --font-logo: "Athene Voyage", "Libre Bodoni", Georgia, serif;
     --breakpoint-xxs: 280px; 
     --breakpoint-xs:  400px; 
+    --breakpoint-3xl: 1940px;
+    --breakpoint-4xl: 2560px;
 }
 
 h1 {
