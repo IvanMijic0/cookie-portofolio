@@ -44,17 +44,17 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute px-12 py-10 2xl:py-14 inset-0 z-20 flex flex-col items-center h-full"
+			className="absolute px-20 w-full py-10 2xl:py-14 inset-0 z-20 flex flex-col items-end h-full"
 			aria-labelledby="ktwk-title"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 		>
-			<div className="flex flex-col justify-start 2xl:gap-6 gap-16 h-full text-right">
+			<div className="flex flex-col justify-between gap-4 h-full text-right">
 				<header>
 					<h1
 						id="ktwk-title"
 						itemProp="name"
-						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[7rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[6.2rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 					>
 						{t("photographyOne.title.titleOne", "Kill them")}
 						<br /> {t("photographyOne.title.titleTwo", "with")} <br />{" "}
@@ -71,19 +71,19 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					aria-label="Project description"
 					className="flex text-sm 2xl:text-base text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 				>
-					<p itemProp="description" className="w-64 2xl:w-[19rem] text-base 2xl:text-lg font-bold italic">
+					<p itemProp="description" className="w-64 2xl:w-[24rem] text-base 2xl:text-lg font-bold italic">
 						{t(
 							"photographyOne.headText",
 							"What if empathy were more common than conflict? What if kindness—not violence—was the loudest force in the room? In that world, war would have no place."
 						)}
 					</p>
-					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
+					<p className="w-64 2xl:w-[24rem] text-sm 2xl:text-base">
 						{t(
 							"photographyOne.text.textOne",
 							"True to its name, this project delivers a striking visual message: a call to disarm not just physically, but emotionally."
 						)}
 					</p>
-					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
+					<p className="w-64 2xl:w-[24rem] text-sm 2xl:text-base">
 						{t(
 							"photographyOne.text.textTwo",
 							"Each photo was meticulously staged in the studio under identical lighting, then artfully composited in Adobe Photoshop to create seamless, visually arresting narratives that challenge our perception of strength, peace, and humanity."

@@ -24,7 +24,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute px-20 w-2/3 top-[calc(50%_-_13.5rem)] 3xl:top-[calc(50%_-_12.5rem)] inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-start leading-[0.8]"
+			className="absolute px-20 w-2/3 top-[calc(50%_-_13.5rem)] 4xl:top-[calc(50%_-_12.5rem)] inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-start leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/ContactPage"
 			itemID="/contact"
@@ -47,7 +47,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				itemScope
 				itemType="https://schema.org/Person"
 			>
-				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[6rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
+				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[5.5rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
 					{t("contact.title.titleThree", "LET'S")}
 				</h2>
 				<div className="flex items-center justify-between w-[75%] gap-2">
@@ -94,7 +94,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		/>
 
 		<article
-			className="absolute bottom-0 top-[calc(50%_-_10rem)]  right-0 left-auto w-2/3 z-10 px-20 flex flex-col items-end justify-start gap-8 leading-[0.8]"
+			className="absolute bottom-0 top-[calc(50%_-_10rem)] right-0 left-auto w-2/3 z-10 px-20 flex flex-col items-end justify-start gap-8 leading-[0.8]"
 			aria-labelledby="contact-chat-title"
 		>
 			<div className="w-full text-center">
@@ -103,7 +103,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</p>
 			</div>
 
-			<h2 id="contact-chat-title" className="font-display font-bold flex w-full justify-center text-[#363636] text-[6rem] 2xl:text-[6rem]">
+			<h2 id="contact-chat-title" className="font-display font-bold flex w-full justify-center text-[#363636] text-[6rem] 2xl:text-[5.5rem]">
 				<span className="inline-flex items-baseline gap-1">
 					{t("contact.title.titleFour", "CHAT").startsWith("C") ? (
 						<>
