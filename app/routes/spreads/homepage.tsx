@@ -52,12 +52,12 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 										{section.items.map((item) => (
 											<li key={item.to}>
 												<a
-													href={`${item.to}`}
+													href={item.to}
 													onClick={(e) => {
 														if (!ready) return;
 														if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 														e.preventDefault();
-														goToSpread(section.to);
+														goToSpread(item.to);
 													}}
 													className="font-serif italic text-md 2xl:text-lg cursor-pointer hover:opacity-90 transition"
 												>
