@@ -6,12 +6,20 @@ import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
 import { Carousel, ScreenTextFit } from "~/components/UI";
+import { useTranslate } from "~/context/I18nProvider";
+import type { MetaFunction } from "react-router";
+import { translate, type Lang } from "~/i18n/i18n";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
 	const slides: SlideImage[] = [
 		{
 			src: "/doli-bel-left-1.webp",
-			alt: "Visual detail from the ‘Sjećaš li se Doli Bel’ design concept",
+			alt: t(
+				"graphicDesignTwo.slides.detail",
+				"Visual detail from the ‘Sjećaš li se Doli Bel’ design concept"
+			),
 		},
 	];
 
@@ -33,15 +41,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				itemType="https://schema.org/CreativeWork"
 				itemID="/graphic-design/sjecas-li-se-doli-bel"
 			>
-				<meta itemProp="inLanguage" content="bs" />
-				<meta itemProp="genre" content="Graphic Design" />
-				<meta
-					itemProp="keywords"
-					content="Sjećaš li se Doli Bel, Doli Bel, graphic design, poster, editorial, visual identity, Bosnian design"
-				/>
-				<meta itemProp="name" content="Sjećaš li se Doli Bel — Visual Concept" />
-				<meta itemProp="image" content="/doli-bel-left.webp" />
-				<meta itemProp="image" content="/doli-bel-left-1.webp" />
 				<link itemProp="mainEntityOfPage" href="/graphic-design/sjecas-li-se-doli-bel" />
 
 				<div className="flex flex-col items-start justify-between h-full gap-2">
@@ -50,12 +49,18 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 							className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 							itemProp="headline"
 						>
-							Sjećaš<br />li se<br />Doli<br />Bel
+							{t("graphicDesignTwo.title.titleOne", "Sjećaš")}
+							<br />
+							{t("graphicDesignTwo.title.titleTwo", "li se")}
+							<br />
+							{t("graphicDesignTwo.title.titleThree", "Doli")}
+							<br />
+							{t("graphicDesignTwo.title.titleFour", "Bel")}
 						</h1>
 						<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
-							<span className="sr-only">Project by </span>
+							<span className="sr-only">{t("common.by", "Project by")} </span>
 							<span itemProp="author" itemScope itemType="https://schema.org/Person">
-								<span itemProp="name">by Amna Kolić</span>
+								<span itemProp="name">{t("common.byName", "by Amna Kolić")}</span>
 							</span>
 						</p>
 					</header>
@@ -73,8 +78,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	);
 });
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<img
 			src="/doli-bel-right.webp"
 			alt=""
@@ -91,15 +98,9 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			itemID="/book/graphic-design/sjecas-li-se-doli-bel"
 		>
 			<h2 className="sr-only" itemProp="headline">
-				Sjećaš li se Doli Bel — Visual Identity for Stage Adaptation
+				{t("graphicDesignTwo.meta.simpleName", "Sjećaš li se Doli Bel")} —{" "}
+				{t("graphicDesignTwo.meta.subhead", "Visual Identity for Stage Adaptation")}
 			</h2>
-			<meta itemProp="inLanguage" content="en" />
-			<meta itemProp="genre" content="Graphic Design" />
-			<meta
-				itemProp="keywords"
-				content="Sjećaš li se Doli Bel, Doli Bel, poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design"
-			/>
-			<meta itemProp="image" content="/doli-bel-right.webp" />
 			<link
 				itemProp="mainEntityOfPage"
 				href="/book/graphic-design/sjecas-li-se-doli-bel"
@@ -118,30 +119,32 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 				className="w-72 2xl:w-[20rem] text-justify text-base 2xl:text-lg font-bold italic"
 				itemProp="description"
 			>
-				For the stage adaptation of Sjećaš li se Doli Bel at Kamerni Teatar 55 in Sarajevo, I reimagined the
-				promotional visuals with a concept rooted in emotional symbolism and narrative depth.
+				{t(
+					"graphicDesignTwo.text.textOne",
+					"For the stage adaptation of Sjećaš li se Doli Bel at Kamerni Teatar 55 in Sarajevo, I reimagined the promotional visuals with a concept rooted in emotional symbolism and narrative depth."
+				)}
 			</p>
 
 			<p className="w-72 2xl:w-[20rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
-				Drawing from the story’s themes of adolescence, loss, and emotional decay, I chose a vivid red
-				background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten
-				typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title
-				layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story
-				takes place, from family homes to hotel rooms.
+				{t(
+					"graphicDesignTwo.text.textTwo",
+					"Drawing from the story’s themes of adolescence, loss, and emotional decay, I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms."
+				)}
 			</p>
 
 			<p className="w-72 2xl:w-[20rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
-				The handwritten typeface ties into the characters’ search for connection and learning, especially
-				through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for
-				understanding in a world that feels unstable. The accompanying brochure continues this narrative
-				visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of
-				imbalance. This identity captures the fragile, messy, and deeply human essence of the play.
+				{t(
+					"graphicDesignTwo.text.textThree",
+					"The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play."
+				)}
 			</p>
 		</article>
 	</RightPage>
-));
+});
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -149,14 +152,20 @@ export const Mobile = () => {
 		() => [
 			{
 				src: "/doli-bel-1.webp",
-				alt: "Sjećaš li se Doli Bel? — primary poster with fragmented typography forming a crooked house silhouette on a vivid red background.",
+				alt: t(
+					"graphicDesignTwo.slides.hero",
+					"Sjećaš li se Doli Bel? — primary poster with fragmented typography forming a crooked house silhouette on a vivid red background."
+				),
 			},
 			{
 				src: "/doli-bel-left-1.webp",
-				alt: "Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence.",
+				alt: t(
+					"graphicDesignTwo.slides.idFront",
+					"Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence."
+				),
 			},
 		],
-		[]
+		[t]
 	);
 
 	const openAt = (i: number) => {
@@ -168,17 +177,23 @@ export const Mobile = () => {
 	const slides = [
 		{
 			id: 1,
-			title: "Kreativ Fest Art Direction",
+			title: t("graphicDesign.meta.shortOne", "Kreativ Fest"),
 			src: "/kreativ-festival-art-direction-1.webp",
-			href: "/graphic-design/kreativ-festival-art-direction",
-			alt: "Kreativ Fest art direction poster — bold grunge-inspired textures and expressive typography.",
+			href: makeHref("/graphic-design/kreativ-festival-art-direction"),
+			alt: t(
+				"graphicDesignTwo.related.kreativ",
+				"Kreativ Fest art direction poster — bold grunge-inspired textures and expressive typography."
+			),
 		},
 		{
 			id: 2,
-			title: "Chippsters Logo",
+			title: t("graphicDesign.meta.shortThree", "Chippsters"),
 			src: "/chippsters-1.webp",
-			href: "/graphic-design/chippsters-logo",
-			alt: "Chippsters logo design concept — playful wordmark with modern branding aesthetics.",
+			href: makeHref("/graphic-design/chippsters-logo"),
+			alt: t(
+				"graphicDesignTwo.related.chippsters",
+				"Chippsters logo design concept — playful wordmark with modern branding aesthetics."
+			),
 		},
 	];
 
@@ -199,13 +214,16 @@ export const Mobile = () => {
 						type="button"
 						onClick={() => openAt(0)}
 						className="block w-full cursor-zoom-in"
-						aria-label="Open hero poster in lightbox"
-						title="View hero poster"
+						aria-label={t("graphicDesignTwo.aria.openHero", "Open hero poster in lightbox")}
+						title={t("graphicDesignTwo.aria.viewHero", "View hero poster")}
 					>
 						<img
 							src="/doli-bel-1.webp"
 							sizes="100vw"
-							alt="Sjećaš li se Doli Bel? hero poster — fragmented red typography forming a crooked house silhouette."
+							alt={t(
+								"graphicDesignTwo.slides.heroShort",
+								"Sjećaš li se Doli Bel? hero poster — fragmented red typography forming a crooked house silhouette."
+							)}
 							className="block w-full h-auto object-cover"
 							loading="eager"
 							fetchPriority="high"
@@ -230,7 +248,8 @@ export const Mobile = () => {
 								itemProp="headline name"
 								className="font-display pb-4 w-full text-right italic text-[#363636] leading-18 [-webkit-text-stroke:2px_#363636] [text-stroke:2px_#363636]"
 							>
-								Sjećaš li se <br /> Doli Bel
+								{t("graphicDesignTwo.title.mobileLineOne", "Sjećaš li se")} <br />{" "}
+								{t("graphicDesignTwo.title.mobileLineTwo", "Doli Bel")}
 							</h1>
 							<meta itemProp="inLanguage" content="en" />
 						</header>
@@ -240,7 +259,10 @@ export const Mobile = () => {
 						itemProp="description"
 						className="text-lg italic font-bold pb-4 text-justify font-serif text-[#505050]"
 					>
-						For the stage adaptation of <em>Sjećaš li se Doli Bel?</em> at Kamerni Teatar 55 in Sarajevo, this design reimagines the play’s promotional visuals through symbolic typography, color, and emotional texture.
+						{t(
+							"graphicDesignTwo.mobileIntro",
+							"For the stage adaptation of “Sjećaš li se Doli Bel?” at Kamerni Teatar 55 in Sarajevo, this design reimagines the play’s promotional visuals through symbolic typography, color, and emotional texture."
+						)}
 					</p>
 
 					<figure
@@ -252,8 +274,8 @@ export const Mobile = () => {
 							type="button"
 							onClick={() => openAt(1)}
 							className="block w-full cursor-zoom-in"
-							aria-label="Open ID badge front in lightbox"
-							title="View ID badge front"
+							aria-label={t("graphicDesignTwo.aria.openIdFront", "Open ID badge front in lightbox")}
+							title={t("graphicDesignTwo.aria.viewIdFront", "View ID badge front")}
 						>
 							<img
 								src="/doli-bel-left-1.webp"
@@ -261,14 +283,17 @@ export const Mobile = () => {
 								className="object-cover w-full h-full flex-1"
 								loading="lazy"
 								decoding="async"
-								alt="Sjećaš li se Doli Bel? — ID badge front with red background and white handwritten typography."
+								alt={t(
+									"graphicDesignTwo.slides.idFrontShort",
+									"Sjećaš li se Doli Bel? — ID badge front with red background and white handwritten typography."
+								)}
 								itemProp="contentUrl"
 								width={1200}
 								height={1600}
 							/>
 						</button>
 						<figcaption className="sr-only" itemProp="caption">
-							ID badge front mockup.
+							{t("graphicDesignTwo.fig.idFront", "ID badge front mockup.")}
 						</figcaption>
 					</figure>
 
@@ -278,11 +303,13 @@ export const Mobile = () => {
 						className="flex text-sm w-full pt-6 text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 					>
 						<p className="text-base" itemProp="about">
-							Drawing from the story’s themes of adolescence, loss, and emotional decay,          I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms.
+
+							{t("graphicDesignTwo.text.textTwo")}
+
 						</p>
-						<p className="text-base">
-							The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play.
-						</p>
+
+						<p className="text-base">{t("graphicDesignTwo.text.textThree")}</p>
+
 					</section>
 
 					<section
@@ -294,7 +321,7 @@ export const Mobile = () => {
 								id="see-more-like-this"
 								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
 							>
-								See more like this
+								{t("shared.seeMoreLikeThis", "See more like this")}
 							</h2>
 						</ScreenTextFit>
 						<Carousel items={slides} loop rounded aria-label="Related works carousel" />
@@ -330,47 +357,51 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title =
-		"Sjećaš li se Doli Bel — Theatre Visual Identity & Poster Design | Amna Kolić";
-	const description =
-		"Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fb?: string) => translate(lang, `graphicDesignTwo.meta.${k}`, fb);
+
+	const title = t(
+		"title",
+		"Sjećaš li se Doli Bel — Theatre Visual Identity & Poster Design | Amna Kolić"
+	);
+	const description = t(
+		"description",
+		"Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić."
+	);
 	const url = "/graphic-design/sjecas-li-se-doli-bel";
 	const image = "/doli-bel-right.webp";
-	const imageAlt =
-		"Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout.";
+	const imageAlt = t(
+		"imageAlt",
+		"Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout."
+	);
 
 	return [
 		{ title },
 		{ name: "description", content: description },
-		{
-			name: "keywords",
-			content:
-				"Sjećaš li se Doli Bel, Doli Bel, theatre poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design, Bosnian design, editorial, typography"
-		},
+		{ name: "keywords", content: t("keywords", "Sjećaš li se Doli Bel, Doli Bel, theatre poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design, Bosnian design, editorial, typography") },
 		{ name: "author", content: "Amna Kolić" },
 		{ name: "robots", content: "index,follow" },
 		{ property: "og:type", content: "article" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:site_name", content: t("siteName", "Amna Kolić Portfolio") },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
 		{ property: "og:image:type", content: "image/webp" },
-		{ property: "og:locale", content: "en_US" },
-		{ property: "og:locale:alternate", content: "bs_BA" },
-		{ property: "article:section", content: "Graphic Design" },
-		{ property: "article:tag", content: "Theatre Poster" },
-		{ property: "article:tag", content: "Visual Identity" },
-		{ property: "article:tag", content: "Bosnian Design" },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: t("section", "Graphic Design") },
+		{ property: "article:tag", content: t("tag1", "Theatre Poster") },
+		{ property: "article:tag", content: t("tag2", "Visual Identity") },
+		{ property: "article:tag", content: t("tag3", "Bosnian Design") },
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

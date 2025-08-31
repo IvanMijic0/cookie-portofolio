@@ -2,6 +2,9 @@ import { forwardRef } from "react";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { graphicDesignNavButtons } from "~/config";
 import { motion } from 'framer-motion';
+import { useTranslate } from "~/context/I18nProvider";
+import type { MetaFunction } from "react-router";
+import { translate, type Lang } from "~/i18n/i18n";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -16,8 +19,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	</LeftPage>
 ));
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<img
 			src="/graphic-design-right.webp"
 			alt=""
@@ -50,7 +55,9 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 							className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-28 text-[#363636] [-webkit-text-stroke:2px_#363636] [text-stroke:2px_#363636]"
 							itemProp="headline"
 						>
-							GRAPHIC<br />DESIGN
+							{t("graphicDesign.title.titleOne", "GRAPHIC")}
+							<br />
+							{t("graphicDesign.title.titleTwo", "DESIGN")}
 						</h1>
 						<p className="sr-only">
 							<span itemProp="author" itemScope itemType="https://schema.org/Person">
@@ -63,16 +70,17 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 						itemProp="description"
 					>
 						<p className="w-56 font-bold 2xl:w-[19rem] italic text-justify text-base 2xl:text-lg">
-							Where creativity and intention intertwine, designs unfold stories through subtle details and
-							refined aesthetics.
-							From elegant identities to vibrant narratives and tactile impressions, each creation
-							captures a unique
-							essence—inviting you to experience the art behind the visuals.
+							{t(
+								"graphicDesign.text",
+								"Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a unique essence—inviting you to experience the art behind the visuals."
+							)}
 						</p>
 						<p className="text-[#505050] font-serif text-xs 2xl:text-sm text-right font-bold">
-							Background photograph: Amna Kolić<br />
-							Cards photograph: Freepik<br />
-							Edit &amp; Logos: Amna Kolić
+							{t("graphicDesign.information.informationOne", "Background photograph")}: Amna Kolić
+							<br />
+							{t("graphicDesign.information.informationTwo", "Cards photograph")}: Freepik
+							<br />
+							{t("graphicDesign.information.informationThree", "Edit & Logos")}: Amna Kolić
 						</p>
 					</section>
 				</div>
@@ -88,9 +96,11 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			fetchPriority="high"
 		/>
 	</RightPage>
-));
+});
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	return (
 		<MobileWrapper>
 			<main
@@ -117,10 +127,6 @@ export const Mobile = () => {
 						width={1600}
 						height={2400}
 					/>
-					<meta itemProp="name" content="Graphic Design Hero" />
-					<meta itemProp="encodingFormat" content="image/webp" />
-					<meta itemProp="width" content="1600" />
-					<meta itemProp="height" content="2400" />
 				</figure>
 
 				<article
@@ -133,9 +139,10 @@ export const Mobile = () => {
 						<h1
 							id="graphic-design-title"
 							itemProp="headline name"
-							className="font-display text-[#363636] text-[4.5rem] xs:text-[5.5rem] leading-16 xs:leading-20 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+							className="font-display text-[#363636] text-[4rem] xs:text-[5rem] leading-16 xs:leading-20 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
 						>
-							GRAPHIC <br /> DESIGN
+							{t("graphicDesign.title.titleOne", "GRAPHIC")} <br />
+							{t("graphicDesign.title.titleTwo", "DESIGN")}
 						</h1>
 						<meta itemProp="inLanguage" content="en" />
 					</header>
@@ -146,7 +153,10 @@ export const Mobile = () => {
 						className="mt-8 flex w-full flex-col items-end gap-4 text-justify font-serif text-[#505050]"
 					>
 						<p itemProp="description" className="text-lg italic font-bold">
-							Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a   unique    essence   —   inviting    you   to   experience    the   art   behind  the visuals.
+							{t(
+								"graphicDesign.text",
+								"Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a unique essence—inviting you to experience the art behind the visuals."
+							)}
 						</p>
 					</section>
 
@@ -161,7 +171,7 @@ export const Mobile = () => {
 							initial={false}
 							transition={{ duration: 0.2, ease: "easeInOut" }}
 						>
-							{graphicDesignNavButtons.map(({ label, to }) => (
+							{graphicDesignNavButtons(t, makeHref).map(({ label, to }) => (
 								<a
 									key={label}
 									href={to.replace(/^\/+/, "/")}
@@ -194,27 +204,46 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Graphic Design – Visual Identity & Branding Projects | Amna Kolić";
-	const description =
-		"Explore graphic design work by Amna Kolić: branding, logo systems, editorial & poster design, and typography-driven visual identities.";
+
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params?.lang === "ba" ? "ba" : "en";
+	const tMeta = (k: string, fb?: string) => translate(lang, `graphicDesign.meta.${k}`, fb);
+
+	const title = translate(
+		lang,
+		"graphicDesign.meta.title",
+		"Graphic Design – Visual Identity & Branding Projects | Amna Kolić"
+	);
+	const description = translate(
+		lang,
+		"graphicDesign.meta.description",
+		"Explore graphic design work by Amna Kolić: branding, logo systems, editorial & poster design, and typography-driven visual identities."
+	);
+
 	const url = "/graphic-design";
 	const image = "/graphic-design-right.webp";
-	const imageAlt =
-		"Graphic design spread with cards and logos from Amna Kolić’s portfolio.";
+	const imageAlt = translate(
+		lang,
+		"graphicDesign.meta.imageAlt",
+		"Graphic design spread with cards and logos from Amna Kolić’s portfolio."
+	);
+	const siteName = translate(lang, "photographyTwo.meta.siteName", "Amna Kolić Portfolio");
 
 	return [
 		{ title },
 		{ name: "description", content: description },
 		{
 			name: "keywords",
-			content:
+			content: translate(
+				lang,
+				"graphicDesign.meta.keywords",
 				"graphic design, branding, visual identity, logo design, editorial design, poster design, typography, portfolio, Amna Kolić"
+			),
 		},
 		{ name: "author", content: "Amna Kolić" },
 		{ name: "robots", content: "index,follow" },
 		{ property: "og:type", content: "article" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:site_name", content: siteName },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
@@ -223,19 +252,19 @@ export function meta() {
 		{ property: "og:image:type", content: "image/webp" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
-		{ property: "og:locale", content: "en_US" },
-		{ property: "article:section", content: "Graphic Design" },
-		{ property: "article:author", content: "Amna Kolić" },
-		{ property: "article:tag", content: "Branding" },
-		{ property: "article:tag", content: "Visual Identity" },
-		{ property: "article:tag", content: "Logo Design" },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: translate(lang, "graphicDesign.meta.section", "Graphic Design") },
+		{ property: "article:author", content: translate(lang, "photographyTwo.meta.author", "Amna Kolić") },
+		{ property: "article:tag", content: tMeta("shortOne", "Kreativ Fest") },
+		{ property: "article:tag", content: tMeta("shortTwo", "Doli Bel") },
+		{ property: "article:tag", content: tMeta("shortThree", "Chippsters") },
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

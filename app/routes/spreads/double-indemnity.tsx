@@ -7,16 +7,20 @@ import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
 import { ScreenTextFit, Carousel } from "~/components/UI";
+import { useTranslate } from "~/context/I18nProvider";
+import type { MetaFunction } from "react-router";
+import { translate, type Lang } from "~/i18n/i18n";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
 
 	const slides = useMemo(
 		() =>
 			Array.from({ length: 6 }).map((_, idx) => ({
 				src: `/double-indemnity-left-${idx + 1}.webp`,
-				alt: `Double Indemnity series photo ${idx + 1} of 6`,
+				alt: t(`photographyThree.slides.grid.${idx + 1}`, `Double Indemnity series photo ${idx + 1} of 6`)
 			})),
-		[]
+		[t]
 	);
 
 	return (
@@ -38,8 +42,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	);
 });
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<article
 			className="absolute p-12 inset-0 z-20 flex items-center flex-col justify-between text-black"
 			itemScope
@@ -47,25 +53,20 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			itemID="/photography/double-indemnity"
 		>
 			<link itemProp="url" href="/photography/double-indemnity" />
-			<meta itemProp="name" content="Double Indemnity" />
-			<meta
-				itemProp="description"
-				content="A trio of black-and-white photographs that revive classic film noir through meticulous recreations of key scenes from Double Indemnity—studies in light, shadow, and emotion."
-			/>
-			<meta itemProp="genre" content="Photography, Film noir recreation" />
-			<meta itemProp="inLanguage" content="en" />
-			<div className="flex h-full justify-between flex-col items-end gap-5 2xl:gap-8">
+			<div className="flex h-full justify-start flex-col items-end gap-8 2xl:gap-12">
 				<header className="flex flex-col gap-8">
 					<h1
 						className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 text-[#363636] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline"
 					>
-						Double<br />Indemnity
+						{t("photographyThree.title.titleOne", "Double")}
+						<br />
+						{t("photographyThree.title.titleTwo", "Indemnity")}
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
-						<span className="sr-only">Project by </span>
+						<span className="sr-only">{t("common.by", "Project by")} </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">by Amna Kolić</span>
+							<span itemProp="name">{t("common.byName", "by Amna Kolić")}</span>
 						</span>
 					</p>
 				</header>
@@ -74,22 +75,23 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 						className="w-72 2xl:w-[19rem] text-justify text-base 2xl:text-lg font-bold italic"
 						itemProp="abstract"
 					>
-						In this trio of black-and-white photographs, classic film noir is brought back to life
-						through meticulous recreations of key scenes from <em>Double Indemnity</em>. More than
-						homage, these images are exercises in atmosphere — a study in light, shadow, and
-						emotion, a window into the tension and elegance of 1940s cinema.
+						{t(
+							"photographyThree.headText",
+							"In this trio of black-and-white photographs, classic film noir is brought back to life through meticulous recreations of key scenes from Double Indemnity. More than homage, these images are exercises in atmosphere — a study in light, shadow, and emotion, a window into the tension and elegance of 1940s cinema."
+						)}
 					</p>
 
 					<p className="w-72 2xl:w-[19rem] text-justify text-sm 2xl:text-base">
-						Every photograph was carefully lit and staged to mirror the original stills, not only in
-						composition but in emotional texture. The light carves out character, echoing the moral
-						ambiguity and elegance that define the genre — and the film.
+						{t(
+							"photographyThree.text",
+							"Every photograph was carefully lit and staged to mirror the original stills, not only in composition but in emotional texture. The light carves out character, echoing the moral ambiguity and elegance that define the genre — and the film."
+						)}
 					</p>
 				</section>
 			</div>
 		</article>
 	</RightPage>
-));
+});
 
 const ASPECT = 1600 / 2000;
 
@@ -119,45 +121,29 @@ const Thumb = ({
 );
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
 	const diSlides = useMemo(
-		() => [
-			{
-				src: "/double-indemnity-left-1.webp",
-				alt:
-					"Double Indemnity still: Phyllis and Walter framed in a doorway, classic noir lighting and tension.",
-			},
-			{
-				src: "/double-indemnity-left-2.webp",
-				alt:
-					"Phyllis and Walter close framing at the door, crisp suits and stark shadows.",
-			},
-			{
-				src: "/double-indemnity-left-3.webp",
-				alt:
-					"Phyllis behind the wheel, headlights carving her face with dramatic contrast.",
-			},
-			{
-				src: "/double-indemnity-left-4.webp",
-				alt:
-					"Phyllis in soft focus, a cool stare that underlines the film’s moral ambiguity.",
-			},
-			{
-				src: "/double-indemnity-left-5.webp",
-				alt:
-					"Phyllis on the phone, brimmed hat and hard edges—tight composition, deep shadows.",
-			},
-			{
-				src: "/double-indemnity-left-6.webp",
-				alt:
-					"Walter on the phone, hat brim cutting across his eyes; smoke and shadow set the mood.",
-			},
-		],
-		[]
+		() =>
+			Array.from({ length: 6 }).map((_, i) => ({
+				src: `/double-indemnity-left-${i + 1}.webp`,
+				alt: t(
+					`photographyThree.slides.grid.${i + 1}`,
+					[
+						"Double Indemnity still: Phyllis and Walter framed in a doorway, classic noir lighting and tension.",
+						"Phyllis and Walter close framing at the door, crisp suits and stark shadows.",
+						"Phyllis behind the wheel, headlights carving her face with dramatic contrast.",
+						"Phyllis in soft focus, a cool stare underlining the film’s moral ambiguity.",
+						"Phyllis on the phone—brimmed hat, tight composition, deep shadows.",
+						"Walter on the phone—hat brim across his eyes; smoke and shadow set the mood.",
+					][i]
+				),
+			})),
+		[t]
 	);
-
 	const openAt = (i: number) => {
 		setIndex(i);
 		setOpened(true);
@@ -167,18 +153,24 @@ export const Mobile = () => {
 	const slides = [
 		{
 			id: 1,
-			title: "Kill them with Kindness",
+			title: t("nav.photographyOne", "Kill them with kindness"),
 			src: "/kill-them-with-kindness-1.webp",
-			href: "/photography/kill-them-with-kindness",
-			alt: "Kill Them With Kindness photography series — symbolic still-life compositions promoting empathy and peace over violence."
+			href: makeHref("/photography/kill-them-with-kindness"),
+			alt: t(
+				"photographyOne.slides.primary",
+				"Primary poster: a symbolic still-life that frames empathy as strength."
+			),
 		},
 		{
 			id: 2,
-			title: "Human Rights",
+			title: t("nav.photographyTwo", "Human Rights"),
 			src: "/human-rights-left.webp",
-			href: "/photography/human-rights",
-			alt: "Human Rights photography series — conceptual images exploring freedom, equality, and fundamental rights."
-		}
+			href: makeHref("/photography/human-rights"),
+			alt: t(
+				"photographyTwo.slides.poster",
+				"Human Rights series poster: still-life composition where light symbolizes the presence of rights."
+			),
+		},
 	];
 
 	return (
@@ -195,7 +187,9 @@ export const Mobile = () => {
 							itemProp="name headline"
 							className="font-display text-end leading-22 text-[5rem] xs:text-[5.5rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						>
-							Double<br /> Indemnity
+							{t("photographyThree.title.titleOne", "Double")}
+							<br />
+							{t("photographyThree.title.titleTwo", "Indemnity")}
 						</h1>
 						<meta itemProp="inLanguage" content="en" />
 					</header>
@@ -204,12 +198,18 @@ export const Mobile = () => {
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
 								src="/double-indemnity-left-1.webp"
-								alt="Phyllis and Walter framed in a doorway."
+								alt={t(
+									"photographyThree.slides.grid.1",
+									"Double Indemnity still: Phyllis and Walter framed in a doorway, classic noir lighting and tension."
+								)}
 								onClick={() => openAt(0)}
 							/>
 							<Thumb
 								src="/double-indemnity-left-2.webp"
-								alt="Close doorway framing with noir contrast."
+								alt={t(
+									"photographyThree.slides.grid.2",
+									"Phyllis and Walter close framing at the door, crisp suits and stark shadows."
+								)}
 								onClick={() => openAt(1)}
 							/>
 						</div>
@@ -217,12 +217,18 @@ export const Mobile = () => {
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
 								src="/double-indemnity-left-3.webp"
-								alt="Phyllis driving; headlight chiaroscuro."
+								alt={t(
+									"photographyThree.slides.grid.3",
+									"Phyllis behind the wheel, headlights carving her face with dramatic contrast."
+								)}
 								onClick={() => openAt(2)}
 							/>
 							<Thumb
 								src="/double-indemnity-left-4.webp"
-								alt="Phyllis soft focus portrait."
+								alt={t(
+									"photographyThree.slides.grid.4",
+									"Phyllis in soft focus, a cool stare underlining the film’s moral ambiguity."
+								)}
 								onClick={() => openAt(3)}
 							/>
 						</div>
@@ -230,12 +236,18 @@ export const Mobile = () => {
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
 								src="/double-indemnity-left-5.webp"
-								alt="Phyllis on the phone, hat brim shadow."
+								alt={t(
+									"photographyThree.slides.grid.5",
+									"Phyllis on the phone—brimmed hat, tight composition, deep shadows."
+								)}
 								onClick={() => openAt(4)}
 							/>
 							<Thumb
 								src="/double-indemnity-left-6.webp"
-								alt="Walter on the phone, smoke and shadow."
+								alt={t(
+									"photographyThree.slides.grid.6",
+									"Walter on the phone—hat brim across his eyes; smoke and shadow set the mood."
+								)}
 								onClick={() => openAt(5)}
 							/>
 						</div>
@@ -247,12 +259,16 @@ export const Mobile = () => {
 						className="flex text-sm 2xl:text-base w-full text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 					>
 						<p itemProp="description" className="text-lg font-bold italic">
-							Classic film noir revived through meticulous recreations of key scenes from <em>Double Indemnity</em>.
-							A study in light, shadow, and tension that channels the elegance and moral ambiguity of 1940s cinema.
+							{t(
+								"photographyThree.headText",
+								"In this trio of black-and-white photographs, classic film noir is brought back to life through meticulous recreations of key scenes from Double Indemnity. More than homage, these images are exercises in atmosphere — a study in light, shadow, and emotion, a window into the tension and elegance of 1940s cinema."
+							)}
 						</p>
 						<p className="text-base" itemProp="about">
-							Each photograph mirrors the original stills in composition and emotional texture. Light sculpts the
-							characters; darkness frames consequence—the visual language that defines the genre.
+							{t(
+								"photographyThree.text",
+								"Every photograph was carefully lit and staged to mirror the original stills, not only in composition but in emotional texture. The light carves out character, echoing the moral ambiguity and elegance that define the genre — and the film."
+							)}
 						</p>
 					</section>
 
@@ -262,7 +278,7 @@ export const Mobile = () => {
 								id="see-more-like-this"
 								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
 							>
-								See more like this
+								{t("shared.seeMoreLikeThis", "See more like this")}
 							</h2>
 						</ScreenTextFit>
 						<Carousel items={slides} loop rounded aria-label="Related works carousel" />
@@ -296,11 +312,6 @@ export const Mobile = () => {
 									alt={slide.alt ?? ""}
 									style={{ width: "100%", height: "100%", objectFit: "cover" }}
 								/>
-								{slide.alt && (
-									<figcaption className="mt-3 text-center text-sm text-white/90">
-										{slide.alt}
-									</figcaption>
-								)}
 							</figure>
 						);
 					},
@@ -310,27 +321,41 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Double Indemnity – Film Noir Photo Series by Amna Kolić";
-	const description =
-		"A trio of black-and-white photographs reimagining Double Indemnity—meticulous lighting, composition, and mood that revive classic film noir.";
-	const url = "/photography/double-indemnity";
-	const image = "/double-indemnity-left-1.webp";
-	const imageAlt =
-		"Black-and-white film-noir style photograph from the Double Indemnity series.";
+
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params?.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fb?: string) => translate(lang, `photographyThree.meta.${k}`, fb);
+
+	const title = t(
+		"title",
+		"Double Indemnity – Film Noir Photo Series by Amna Kolić"
+	);
+	const description = t(
+		"description",
+		"A trio of black-and-white photographs reimagining Double Indemnity—meticulous lighting, composition, and mood that revive classic film noir."
+	);
+	const url = `/photography/double-indemnity`;
+	const image = `/double-indemnity-left-1.webp`;
+	const imageAlt = t(
+		"imageAlt",
+		"Black-and-white film-noir style photograph from the Double Indemnity series."
+	);
+	const siteName = translate(lang, "photographyTwo.meta.siteName", "Amna Kolić Portfolio");
 
 	return [
 		{ title },
 		{ name: "description", content: description },
 		{
 			name: "keywords",
-			content:
+			content: t(
+				"keywords",
 				"film noir photography, Double Indemnity, black and white photography, studio lighting, cinematic portrait, photo series, Amna Kolić"
+			),
 		},
 		{ name: "author", content: "Amna Kolić" },
 		{ name: "robots", content: "index,follow" },
 		{ property: "og:type", content: "article" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:site_name", content: siteName },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
@@ -339,9 +364,9 @@ export function meta() {
 		{ property: "og:image:type", content: "image/webp" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
-		{ property: "og:locale", content: "en_US" },
-		{ property: "article:section", content: "Photography" },
-		{ property: "article:author", content: "Amna Kolić" },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: translate(lang, "photographyTwo.meta.section", "Photography") },
+		{ property: "article:author", content: translate(lang, "photographyTwo.meta.author", "Amna Kolić") },
 		{ property: "article:tag", content: "Film Noir" },
 		{ property: "article:tag", content: "Black and White" },
 		{ property: "article:tag", content: "Studio Lighting" },
@@ -351,7 +376,7 @@ export function meta() {
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

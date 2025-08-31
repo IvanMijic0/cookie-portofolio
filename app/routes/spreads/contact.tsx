@@ -6,12 +6,17 @@ import { contactButtons } from "~/config";
 import { ScreenTextFit } from "~/components/UI";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
+import { useTranslate } from "~/context/I18nProvider";
+import type { MetaFunction } from "react-router";
+import { translate, type Lang } from "~/i18n/i18n";
 
-export const Left = forwardRef<HTMLDivElement>((_, ref) => (
-	<LeftPage ref={ref}>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <LeftPage ref={ref}>
 		<img
 			src="/contact-left.webp"
-			alt=""
+			alt={t("contact.meta.imageAlt", "Contact page decorative background.")}
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
@@ -26,26 +31,24 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			aria-labelledby="contact-h1"
 		>
 			<h1 id="contact-h1" className="sr-only" itemProp="name">
-				Contact Amna Kolić
+				{t("contact.meta.simpleName", "Contact")}
 			</h1>
 
 			<div className="w-full text-center">
 				<p className="font-serif font-bold italic text-xl 2xl:text-2xl">
-					Be it traditional email, phonecall,
+					{t("contact.title.titleOne", "Be it traditional email, phonecall,")}
 				</p>
 			</div>
 
 			<section
-				aria-label="Contact"
+				aria-label={t("contact.a11y.section", "Contact")}
 				className="flex flex-col items-center justify-center w-full gap-6"
 				itemProp="mainEntity"
 				itemScope
 				itemType="https://schema.org/Person"
 			>
-				<meta itemProp="name" content="Amna Kolić" />
-				<meta itemProp="jobTitle" content="Graphic Designer" />
 				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[7rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
-					LET'S
+					{t("contact.title.titleThree", "LET'S")}
 				</h2>
 				<div className="flex items-center justify-between w-[75%] gap-2">
 					{contactButtons.map(({ label, to, icon: Icon }) => {
@@ -74,13 +77,15 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			</section>
 		</article>
 	</LeftPage>
-));
+});
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<img
 			src="/contact-right.webp"
-			alt=""
+			alt={t("contact.meta.imageAlt", "Contact page decorative background.")}
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
@@ -94,27 +99,42 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 		>
 			<div className="w-full text-center">
 				<p className="font-serif font-bold italic text-[#505050] text-xl 2xl:text-2xl">
-					Instagram or LinkedIn,
+					{t("contact.title.titleTwo", "Instagram or LinkedIn,")}
 				</p>
 			</div>
 
 			<h2 id="contact-chat-title" className="font-display font-bold flex w-full justify-center text-[#363636] text-[6rem] 2xl:text-[7rem]">
 				<span className="inline-flex items-baseline gap-1">
-					<CModified className="h-[0.77em] w-auto flex-none" />
-					<span className="[-webkit-text-stroke:0.5px_#363636]">HAT</span>
+					{t("contact.title.titleFour", "CHAT").startsWith("C") ? (
+						<>
+							<CModified className="h-[0.77em] w-auto flex-none" />
+							<span className="[-webkit-text-stroke:0.5px_#363636]">
+								{t("contact.title.titleFour", "CHAT").slice(1)}
+							</span>
+						</>
+					) : (
+						<span className="[-webkit-text-stroke:0.5px_#363636]">
+							{t("contact.title.titleFour", "CHAT")}
+						</span>
+					)}
 				</span>
 			</h2>
 
 			<div className="w-full text-center">
 				<p className="text-[#505050] font-serif leading-6 2xl:leading-7 text-base 2xl:text-lg text-justify">
-					Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind.
+					{t(
+						"contact.text.textOne",
+						"Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind."
+					)}
 				</p>
 			</div>
 		</article>
 	</RightPage>
-));
+});
 
 export const Mobile = () => {
+	const { t } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -122,10 +142,13 @@ export const Mobile = () => {
 		() => [
 			{
 				src: "/contact.webp",
-				alt: "Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait.",
+				alt: t(
+					"contact.alts.mobileHero",
+					"Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait."
+				),
 			},
 		],
-		[]
+		[t]
 	);
 
 	const openAt = (i: number) => {
@@ -145,16 +168,15 @@ export const Mobile = () => {
 				>
 					<section
 						id="description"
-						aria-label="About Amna Kolić"
+						aria-label={t("contact.a11y.topLine", "Contact intro")}
 						className="text-xl xs:text-2xl w-full text-[#505050] font-serif justify-start text-center"
 					>
 						<p itemProp="description" className="font-bold italic">
-							Be it traditional email, phonecall, Instagram or LinkedIn
+							{t(
+								"contact.mobile.lead",
+								"Be it traditional email, phonecall, Instagram or LinkedIn"
+							)}
 						</p>
-						<meta itemProp="jobTitle" content="Graphic Designer & UX/UI Designer" />
-						<meta itemProp="name" content="Amna Kolić" />
-						<meta itemProp="nationality" content="Bosnia and Herzegovina" />
-						<meta itemProp="knowsLanguage" content="en" />
 					</section>
 
 					<header className="w-full">
@@ -162,9 +184,9 @@ export const Mobile = () => {
 							<h1
 								id="about-title"
 								itemProp="name"
-								className="font-display text-center leading-17 text-[3.7rem] xs:text-[4.4rem] [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+								className="font-display text-center leading-17 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
 							>
-								LET’S CHAT
+								{t("contact.title.titleThree", "LET’S")}{t("contact.title.titleFour", "CHAT")}
 							</h1>
 						</ScreenTextFit>
 						<meta itemProp="inLanguage" content="en" />
@@ -212,13 +234,13 @@ export const Mobile = () => {
 							type="button"
 							onClick={() => openAt(0)}
 							className="block w-full cursor-zoom-in"
-							aria-label="Open portrait in lightbox"
-							title="View portrait"
+							aria-label={t("contact.a11y.openPortrait", "Open portrait in lightbox")}
+							title={t("contact.a11y.viewPortrait", "View portrait")}
 						>
 							<img
 								src="/contact.webp"
 								sizes="(max-width: 640px) 100vw, 640px"
-								alt="Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait."
+								alt={t("contact.alts.mobileHero", "Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait.")}
 								width={1600}
 								height={2000}
 								className="object-cover w-full h-auto"
@@ -228,7 +250,7 @@ export const Mobile = () => {
 							/>
 						</button>
 						<figcaption className="sr-only" itemProp="caption">
-							Portrait of Amna Kolić for professional inquiries.
+							{t("contact.a11y.caption", "Portrait of Amna Kolić for professional inquiries.")}
 						</figcaption>
 					</figure>
 
@@ -238,7 +260,16 @@ export const Mobile = () => {
 						className="text-sm w-full text-[#505050] font-serif justify-start text-justify"
 					>
 						<p className="text-base">
-							Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind.
+							{t(
+								"contact.text.textOne",
+								"Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind."
+							)}
+						</p>
+						<p className="text-xs opacity-80 mt-3">
+							{t(
+								"contact.text.textTwo",
+								"Photograph used was generated by ChatGPT, then photoshopped to fix the obvious issues. The photo shows my own likeness and is here purely for the decorative and relevance purposes."
+							)}
 						</p>
 					</section>
 				</article>
@@ -273,31 +304,56 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio";
-	const description =
-		"Reach out to Amna Kolić for freelance design inquiries, collaboration, or just to chat about your next creative project.";
-	const url = "/contact";
-	const image = "/contact-right.webp";
+
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params?.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fallback?: string) => translate(lang, `contact.meta.${k}`, fallback);
+
+	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
+	const url = `${BASE_URL}/${lang}/contact`;
+	const image = `${BASE_URL}/contact-right.webp`;
+
+	const title = t("title", "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio");
+	const description = t(
+		"description",
+		"Reach out to Amna Kolić for freelance design inquiries, collaboration, or just to chat about your next creative project."
+	);
+	const imageAlt = t("imageAlt", "Contact page decorative background.");
+	const keywords = t(
+		"keywords",
+		"contact, hire graphic designer, UX/UI designer, collaboration, branding, editorial design, portfolio"
+	);
+
+	const siteName = translate(lang, "common.siteName", "Amna Kolić Portfolio");
+	const section = translate(lang, "sections.contact", "Contact");
 
 	return [
 		{ title },
 		{ name: "description", content: description },
-		{ name: "robots", content: "index,follow" },
+		{ name: "keywords", content: keywords },
 		{ name: "author", content: "Amna Kolić" },
-		{ name: "og:type", content: "website" },
-		{ name: "og:title", content: title },
-		{ name: "og:description", content: description },
-		{ name: "og:url", content: url },
-		{ name: "og:image", content: image },
-		{ name: "og:locale", content: "en_US" },
+		{ name: "robots", content: "index,follow" },
+
+		{ property: "og:type", content: "website" },
+		{ property: "og:site_name", content: siteName },
+		{ property: "og:title", content: title },
+		{ property: "og:description", content: description },
+		{ property: "og:url", content: url },
+		{ property: "og:image", content: image },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: section },
+
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
-		{ tagName: "link", rel: "canonical", href: url } as any,
+		{ name: "twitter:image:alt", content: imageAlt },
+
+		{ rel: "canonical", href: url } as any,
 	];
-}
+};
+
 
 export const loader = () => null;
 

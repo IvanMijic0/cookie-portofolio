@@ -1,10 +1,14 @@
 import { forwardRef } from "react";
+import type { MetaFunction } from "react-router";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { motion } from 'framer-motion';
 import { illustrationNavButtons } from "~/config";
+import { useTranslate } from "~/context/I18nProvider";
+import { translate, type Lang } from "~/i18n/i18n";
 
-export const Left = forwardRef<HTMLDivElement>((_, ref) => (
-	<LeftPage ref={ref}>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return < LeftPage ref={ref} >
 		<img
 			src="/illustration-left.webp"
 			alt=""
@@ -20,26 +24,20 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			itemType="https://schema.org/CreativeWork"
 			itemID="/illustration"
 		>
-			<meta itemProp="inLanguage" content="en" />
-			<meta itemProp="genre" content="Illustration" />
-			<meta
-				itemProp="keywords"
-				content="illustration, digital illustration, editorial illustration, character design, concept art, portfolio"
-			/>
-			<meta itemProp="image" content="/illustration-left.webp" />
 			<link itemProp="mainEntityOfPage" href="/illustration" />
-			<meta itemProp="name" content="Illustration" />
 			<header className="flex flex-col items-start gap-4">
 				<div>
 					<h1
 						className="text-[6rem] text-left 2xl:text-[8rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1.76px_#363636] [text-stroke:1.76px_#363636]"
 						itemProp="headline"
 					>
-						ILLUST<br />RATION
+						{t("illustration.title.titleOne", "ILLUST")}
+						<br />
+						{t("illustration.title.titleTwo", "RATION")}
 					</h1>
 					<p className="sr-only">
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">Amna Kolić</span>
+							<span itemProp="name">{t("common.byName", "by Amna Kolić")}</span>
 						</span>
 					</p>
 				</div>
@@ -49,17 +47,21 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 						className="font-serif text-base 2xl:text-lg text-left leading-6 italic font-bold"
 						itemProp="description"
 					>
-						Passion from an early age turned into a refined illustration skill that any business can
-						utilize.
+						{t(
+							"illustration.text",
+							"Passion from an early age turned into a legitimate skill that any business can utilize"
+						)}
 					</p>
 				</div>
 			</header>
 		</article>
-	</LeftPage>
-));
+	</LeftPage >
+});
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<img
 			src="/illustration-right.webp"
 			className="w-full h-full object-cover z-0"
@@ -76,20 +78,13 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			itemType="https://schema.org/CreativeWork"
 			itemID="/book/illustration"
 		>
-			<meta itemProp="inLanguage" content="en" />
-			<meta itemProp="genre" content="Illustration" />
-			<meta
-				itemProp="keywords"
-				content="illustration, digital illustration, watercolor, concept art, editorial illustration, character design, portfolio"
-			/>
-			<meta itemProp="image" content="/illustration-right.webp" />
 			<link itemProp="mainEntityOfPage" href="/book/illustration" />
-			<meta itemProp="name" content="Illustration — Background & Credits" />
 			<h2 className="sr-only" itemProp="headline">
 				Illustration — Background & Credits
 			</h2>
 			<p className="font-serif font-bold text-sm" itemProp="creditText">
-				Background illustration: Amna Kolić
+				{t("illustration.information", "Background illustration")}
+				:&nbsp;Amna Kolić
 			</p>
 			<p className="sr-only">
 				<span itemProp="author" itemScope itemType="https://schema.org/Person">
@@ -98,9 +93,11 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			</p>
 		</article>
 	</RightPage>
-));
+});
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	return (
 		<MobileWrapper>
 			<main
@@ -108,13 +105,6 @@ export const Mobile = () => {
 				itemScope
 				itemType="https://schema.org/WebPage"
 			>
-				<meta itemProp="inLanguage" content="en" />
-				<meta itemProp="name" content="Illustration — AMNA" />
-				<meta
-					itemProp="description"
-					content="Passion from an early age turned into a legitimate skill that any business can utilize"
-				/>
-
 				<figure
 					itemProp="primaryImageOfPage"
 					itemScope
@@ -124,7 +114,10 @@ export const Mobile = () => {
 					<img
 						src="/illustration-1.webp"
 						sizes="100vw"
-						alt="Graphic Design — full-bleed hero showcasing editorial artwork"
+						alt={t(
+							"illustration.meta.imageAlt",
+							"Illustration background artwork by Amna Kolić featuring detailed, painterly textures."
+						)}
 						className="block h-full w-full object-contain object-right-bottom"
 						loading="eager"
 						fetchPriority="high"
@@ -134,12 +127,8 @@ export const Mobile = () => {
 						height={2400}
 					/>
 					<figcaption className="sr-only" itemProp="caption">
-						Full-bleed illustration hero artwork positioned bottom-right.
+						{t("illustration.fig.hero", "Full-bleed illustration hero artwork positioned bottom-right.")}
 					</figcaption>
-					<meta itemProp="url" content="/illustration-1.webp" />
-					<meta itemProp="encodingFormat" content="image/webp" />
-					<meta itemProp="width" content="1600" />
-					<meta itemProp="height" content="2400" />
 				</figure>
 
 				<article
@@ -155,18 +144,22 @@ export const Mobile = () => {
 							id="graphic-design-title"
 							itemProp="headline name"
 							className="font-display text-[#363636] text-[4.5rem] xs:text-[5.5rem] leading-16 xs:leading-20 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+							aria-label={t("illustration.title.combined", "Illustration")}
 						>
-							ILLUST <br /> RATION
+							{t("illustration.title.titleOne", "ILLUST")} <br /> {t("illustration.title.titleTwo", "RATION")}
 						</h1>
 					</header>
 
 					<section
 						id="description"
-						aria-label="Section description"
+						aria-label={t("illustration.aria.sectionDescription", "Section description")}
 						className="mt-6 flex w-full flex-col items-end gap-4 text-justify font-serif text-[#505050]"
 					>
 						<p itemProp="description" className="text-lg italic font-bold">
-							Passion from an early age turned into a legitimate skill that any business can utilize
+							{t(
+								"illustration.text",
+								"Passion from an early age turned into a legitimate skill that any business can utilize"
+							)}
 						</p>
 					</section>
 
@@ -177,7 +170,7 @@ export const Mobile = () => {
 						className="mt-6 w-full"
 					>
 						<ul className="pointer-events-auto mx-auto flex w-full items-center justify-between gap-3">
-							{illustrationNavButtons.map(({ label, to }) => (
+							{illustrationNavButtons(t, makeHref).map(({ label, to }) => (
 								<li key={label} className="list-none">
 									<a
 										href={to.replace(/^\/+/, "/")}
@@ -198,41 +191,40 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title =
-		"Illustration Portfolio — Watercolor, Digital & Concept Art | Amna Kolić";
-	const description =
-		"Explore illustration projects by Amna Kolić: watercolor, digital painting, character and concept art—blending literature, folklore, and modern visual storytelling.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fb?: string) => translate(lang, k, fb);
+
+	const title = t(
+		"illustration.meta.title",
+		"Illustration Portfolio — Watercolor, Digital & Concept Art | Amna Kolić"
+	);
+	const description = t(
+		"illustration.meta.description",
+		"Explore illustration projects by Amna Kolić: watercolor, digital painting, character and concept art—blending literature, folklore, and modern visual storytelling."
+	);
 	const url = "/illustration";
 	const image = "/illustration-right.webp";
-	const imageAlt =
-		"Illustration background artwork by Amna Kolić featuring detailed, painterly textures.";
+	const imageAlt = t(
+		"illustration.meta.imageAlt",
+		"Illustration background artwork by Amna Kolić featuring detailed, painterly textures."
+	);
 
 	return [
 		{ title },
 		{ name: "description", content: description },
-		{
-			name: "keywords",
-			content: "illustration, digital illustration, concept art, watercolor, character design, editorial illustration, visual storytelling, portfolio, Amna Kolić"
-		},
 		{ name: "author", content: "Amna Kolić" },
-		{ name: "robots", content: "index,follow" },
-		{ property: "og:type", content: "website" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
-		{ property: "og:locale", content: "en_US" },
-		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

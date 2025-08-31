@@ -50,8 +50,16 @@
   },
 
   "photography": {
+ "meta": {
+    "title": "Creative Photography & Editing Projects | Amna Kolić Portfolio",
+    "description": "Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives.",
+    "imageAlt": "Photography & editing title spread with typographic treatment.",
+    "shortOne": "Kindness",
+    "shortTwo": "Human Rights",
+    "shortThree": "Film Noir"
+  },
     "title": {
-      "titleOne": "Photography",
+      "titleOne": "PHOTOGRAPHY",
       "titleTwo": "and editing"
     },
     "information": "Photographer"
@@ -67,98 +75,365 @@
     "text": {
       "textOne": "True to its name, this project delivers a striking visual message: a call to disarm not just physically, but emotionally.",
       "textTwo": "Each photo was meticulously staged in the studio under identical lighting, then artfully composited in Adobe Photoshop to create seamless, visually arresting narratives that challenge our perception of strength, peace, and humanity."
+    },
+   "slides": {
+      "primary": "Primary poster: a symbolic still-life that frames empathy as strength.",
+      "primaryCaption": "Kill Them With Kindness – primary poster artwork.",
+      "primaryAria": "Open image: Primary poster",
+      "bouquet": "Bouquet study juxtaposing tenderness and tension.",
+      "bouquetCaption": "Bouquet Study.",
+      "bouquetAria": "Open image: Bouquet study",
+      "roseGrenade": "Rose & Grenade still-life emphasizing peace over power.",
+      "roseGrenadeCaption": "Rose & Grenade.",
+      "roseGrenadeAria": "Open image: Rose & Grenade"
+    },
+    "meta": {
+      "title": "Kill Them with Kindness – Conceptual Photo Series by Amna Kolić",
+      "description": "A conceptual photo series using staged lighting and compositing to present empathy as resistance. Explore the visual narrative and process behind each image.",
+      "imageAlt": "Conceptual portrait from the ‘Kill Them with Kindness’ photo series.",
+      "keywords": "conceptual photography, photo series, studio lighting, compositing, visual storytelling, anti-war art, empathy in art, editorial photography, portfolio"
     }
   },
 
-  "photographyTwo": {
+ "photographyTwo": {
     "title": {
       "titleOne": "Human",
-      "titleTwo": "Rights"
+      "titleTwo": "Rights",
+      "combined": "Human Rights"
     },
+    "thumbsAria": "Human Rights series thumbnails",
+    "aria": {
+      "description": "Project description",
+      "openPoster": "Open image: Human Rights poster",
+      "openExpress": "Open image: Right to Express",
+      "openPrivacy": "Open image: Right to Privacy",
+      "openRest": "Open image: Right to Rest",
+      "openReligion": "Open image: Right to Religion"
+    },
+    "fig": { "poster": "Human Rights — primary poster artwork." },
     "headText": "This photo series explores the concept of light as a metaphor for human rights — a visual narrative where illumination becomes both symbol and statement.",
     "text": {
       "textOne": "Each frame experiments with the quality, color, and direction of light to reflect the fragile presence — or troubling absence — of a fundamental right.",
       "textTwo": "The interplay of shadow and brightness isn't just aesthetic; it's intentional. Every photo stands for a specific right slowly slipping from our grasp, each composition a quiet act of resistance.",
       "textThree": "From top to bottom, left to right, the rights portrayed are: the Right to Express, the Right to Privacy, the Right to Rest, the Right to Religion, and the Right to Choose."
-    }
-  },
-
-  "photographyThree": {
-    "title": {
-      "titleOne": "Double",
-      "titleTwo": "Indemnity"
     },
-    "headText": "In this trio of black-and-white photographs, classic film noir is brought back to life through meticulous recreations of key scenes from Double Indemnity. More than homage, these images are exercises in atmosphere — a study in light, shadow, and emotion, a window into the tension and elegance of 1940s cinema.",
-    "text": "Every photograph was carefully lit and staged to mirror the original stills, not only in composition but in emotional texture. The light carves out character, echoing the moral ambiguity and elegance that define the genre — and the film."
-  },
-
-  "graphicDesign": {
-    "title": {
-      "titleOne": "GRAPHIC",
-      "titleTwo": "DESIGN"
+    "slides": {
+      "poster": "Human Rights series poster: still-life composition where light symbolizes the presence of rights.",
+      "express": "Right to Express: directional light highlighting a solitary subject to suggest voice and visibility.",
+      "privacy": "Right to Privacy: obscured shapes and controlled shadows imply concealment and protection.",
+      "rest": "Right to Rest: softened light and quiet negative space evoke restoration and pause.",
+      "religion": "Right to Religion: a focused beam suggests contemplation, conviction, and freedom of worship.",
+      "grid": {
+        "1": "Human Rights series photo 1 of 4",
+        "2": "Human Rights series photo 2 of 4",
+        "3": "Human Rights series photo 3 of 4",
+        "4": "Human Rights series photo 4 of 4"
+      }
     },
-    "text": "Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a unique essence—inviting you to experience the art behind the visuals.",
-    "information": {
-      "informationOne": "Background photograph",
-      "informationTwo": "Cards photograph",
-      "informationThree": "Edit & Logos"
+    "meta": {
+      "simpleName": "Human Rights",
+      "title": "Human Rights – Conceptual Photo Series by Amna Kolić",
+      "description": "A conceptual photo series where light and shadow symbolize the fragility of human rights. Explore the narrative and studio process behind each image.",
+      "imageAlt": "Conceptual photograph from the Human Rights series, using light as metaphor.",
+      "keywords": "human rights photography, conceptual photography, studio lighting, visual metaphor, editorial photography, photo series, portfolio, Amna Kolić",
+      "siteName": "Amna Kolić Portfolio",
+      "genre": "Photography",
+      "author": "Amna Kolić",
+      "section": "Photography"
     }
   },
 
-  "graphicDesignOne": {
-    "title": {
-      "titleOne": "Festival Art Direction Proposal",
-      "titleTwo": "Kreativ Euporia"
+"photographyThree": {
+    "title": { "titleOne": "Double", "titleTwo": "Indemnity" },
+"headText": "In this trio of black-and-white photographs, classic film noir is brought back to life through meticulous recreations of key scenes from Double Indemnity. More than homage, these images are exercises in atmosphere — a study in light, shadow, and emotion, a window into the tension and elegance of 1940s cinema.",
+    "text": "Every photograph was carefully lit and staged to mirror the original stills, not only in composition but in emotional texture. The light carves out character, echoing the moral ambiguity and elegance that define the genre — and the film.",
+    "slides": {
+      "grid": {
+        "1": "Double Indemnity still: Phyllis and Walter framed in a doorway, classic noir lighting and tension.",
+        "2": "Phyllis and Walter close framing at the door, crisp suits and stark shadows.",
+        "3": "Phyllis behind the wheel, headlights carving her face with dramatic contrast.",
+        "4": "Phyllis in soft focus, a cool stare underlining the film’s moral ambiguity.",
+        "5": "Phyllis on the phone—brimmed hat, tight composition, deep shadows.",
+        "6": "Walter on the phone—hat brim across his eyes; smoke and shadow set the mood."
+      }
     },
-    "subText": "2024. KREATIV fest gave the opportunity to the students to showcase their creativity through art direction of the festival.",
-    "text": {
-      "textOne": "As a submission for the 2024 Kreativ Fest art direction at International Burch University, this visual identity proposal draws heavily from grunge aesthetics and the experimental legacy of David Carson.",
-      "textTwo": "Centered around a custom logotype reading “Kreativ Euphoria,” the design uses negative-space lettering and a stamp-like composition to reflect the chaotic, expressive energy of young creatives.",
-      "textThree": "The visual language is built on a contrast of vivid neon green, pink, and orange against stark black overlays, creating a dynamic, high-impact look that feels both nostalgic and fresh. The textures and layering mimic ripped posters and street art, reinforcing a raw, urban atmosphere.",
-      "textFour": "Across posters, leaflets, and social media, the identity maintains a consistent, tactile quality while adapting to different formats.",
-      "textFive": "This concept celebrates imperfection, spontaneity, and the power of student expression. It doesn’t just promote an event—it visually embodies its energy, reminding every viewer: you can be kreativ too."
+    "meta": {
+      "simpleName": "Double Indemnity",
+      "title": "Double Indemnity – Film Noir Photo Series by Amna Kolić",
+      "description": "A trio of black-and-white photographs reimagining Double Indemnity—meticulous lighting, composition, and mood that revive classic film noir.",
+      "imageAlt": "Black-and-white film-noir style photograph from the Double Indemnity series.",
+      "keywords": "film noir photography, Double Indemnity, black and white photography, studio lighting, cinematic portrait, photo series, Amna Kolić"
     }
   },
 
-  "graphicDesignTwo": {
-    "text": {
-      "textOne": "For the stage adaptation of Sjećaš li se Doli Bel at Kamerni Teatar 55 in Sarajevo, I reimagined the promotional visuals with a concept rooted in emotional symbolism and narrative depth.",
-      "textTwo": "Drawing from the story’s themes of adolescence, loss, and emotional decay, I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms.",
-      "textThree": "The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play."
+"graphicDesign": {
+  "title": {
+    "titleOne": "GRAPHIC",
+    "titleTwo": "DESIGN"
+  },
+  "meta": {
+    "title": "Graphic Design – Visual Identity & Branding Projects | Amna Kolić",
+    "description": "Explore graphic design work by Amna Kolić: branding, logo systems, editorial & poster design, and typography-driven visual identities.",
+    "imageAlt": "Graphic design spread with cards and logos from Amna Kolić’s portfolio.",
+    "keywords": "graphic design, branding, visual identity, logo design, editorial design, poster design, typography, portfolio, Amna Kolić",
+    "section": "Graphic Design",
+    "siteName": "Amna Kolić Portfolio",
+    "author": "Amna Kolić",
+
+    "shortOne": "Kreativ Fest",
+    "shortTwo": "Doli Bel",
+    "shortThree": "Chippsters"
+  },
+  "text": "Where creativity and intention intertwine, designs unfold stories through subtle details and refined aesthetics. From elegant identities to vibrant narratives and tactile impressions, each creation captures a unique essence—inviting you to experience the art behind the visuals.",
+  "information": {
+    "informationOne": "Background photograph",
+    "informationTwo": "Cards photograph",
+    "informationThree": "Edit & Logos"
+  }
+},
+
+"graphicDesignOne": {
+  "title": {
+    "titleOne": "Festival Art Direction Proposal",
+    "titleBrand": "KREATIV fest",
+    "titleTwo": "Kreativ Euphoria"
+  },
+  "subText": "KREATIV fest gave the opportunity to the students to showcase their creativity through art direction of the festival.",
+  "mobileIntro": "Submission for the 2024 Kreativ Fest art direction at International Burch University. A grunge-influenced identity that channels the experimental spirit of David Carson with layered textures, bold typography, and neon accents.",
+ "text": {
+    "textOne": "As a submission for the 2024 Kreativ Fest art direction at International Burch University, this visual identity proposal draws heavily from grunge aesthetics and the experimental legacy of David Carson.",
+    "textTwo": "Centered around a custom logotype reading “Kreativ Euphoria,” the design uses negative-space lettering and a stamp-like composition to reflect the chaotic, expressive energy of young creatives.",
+    "textThree": "The visual language is built on a contrast of vivid neon green, pink, and orange against stark black overlays, creating a dynamic, high-impact look that feels both nostalgic and fresh. The textures and layering mimic ripped posters and street art, reinforcing a raw, urban atmosphere.",
+    "textFour": "Across posters, leaflets, and social media, the identity maintains a consistent, tactile quality while adapting to different formats.",
+    "textFive": "This concept celebrates imperfection, spontaneity, and the power of student expression. It doesn’t just promote an event—it visually embodies its energy, reminding every viewer: you can be kreativ too."
+  },
+  "short": {
+    "textTwo": "Built around a custom “Kreativ Euphoria” logotype, the identity leverages negative space, stamp-like marks, and ripped-poster textures to express youthful, chaotic energy.",
+    "textThree": "A vivid palette of neon green, pink, and orange pushes against deep blacks and layered overlays for a tactile, urban look that feels both nostalgic and fresh.",
+    "textFour": "The system adapts across posters, leaflets, and social media while preserving a cohesive, hand-made aesthetic.",
+    "textFive": "The concept embraces imperfection and spontaneity — it doesn’t just promote an event; it embodies its energy."
+  },
+  "slides": {
+    "grid": {
+      "1": "KREATIV fest visual identity poster — variant 1",
+      "2": "KREATIV fest visual identity poster — variant 2",
+      "3": "KREATIV fest visual identity poster — variant 3"
     }
   },
-
-  "graphicDesignThree": {
-    "title": "Design and the idea behind it-",
-    "text": {
-      "textOne": "The Chippsters logo was born from a playful fusion of chipmunk and hipster, reflecting a tech company that aims to be both casual and forward-thinking.",
-      "textTwo": "With a name full of personality, the visual identity needed to match, professional yet approachable, clean but expressive. The logo features a chipmunk wearing a beanie and glasses, cleverly formed in the negative space of a bold letter “C.”",
-      "textThree": "This simple, rounded shape ensures versatility and strong brand recognition, while the character adds charm and uniqueness. The clean circular shape ensures versatility, while the simplified character design keeps it easily recognizable across applications.",
-      "textFour": "A pastel green gradient brings a sense of freshness and calm professionalism. The result is a memorable, modern logo that stands out in the tech space with just the right balance of fun and clarity."
-    }
+  "mobileSlides": {
+    "hero": "Kreativ Fest visual identity — hero poster, grunge-inspired layout with bold type and high-contrast textures.",
+    "heroAlt": "Kreativ Fest hero poster — expressive grunge art direction.",
+    "heroCaption": "Hero poster for Kreativ Fest visual identity.",
+    "idFront": "Kreativ Fest ID badge — front side mockup with custom logotype and neon color accents.",
+    "idFrontAlt": "Kreativ Fest ID badge — front side with custom logotype.",
+    "idFrontCaption": "ID badge front mockup.",
+    "idBack": "Kreativ Fest ID badge — back side mockup with typographic grid and stamp-style marks.",
+    "idBackAlt": "Kreativ Fest ID badge — back side with typographic grid.",
+    "idBackCaption": "ID badge back mockup.",
+    "booklet": "Kreativ Fest program booklet — cover design featuring layered textures and expressive negative space.",
+    "bookletAlt": "Kreativ Fest program booklet cover design.",
+    "bookletCaption": "Program booklet cover."
   },
-
-  "illustration": {
-    "title": {
-      "titleOne": "ILLUST",
-      "titleTwo": "RATION"
-    },
-    "text": "Passion from an early age turned into a leigitimate skill that any business can utilize",
-    "information": "Background illustration"
+  "aria": {
+    "body": "Project description",
+    "openHero": "Open hero poster in lightbox",
+    "viewHero": "View hero poster",
+    "openIdFront": "Open ID badge front in lightbox",
+    "viewIdFront": "View ID badge front",
+    "openIdBack": "Open ID badge back in lightbox",
+    "viewIdBack": "View ID badge back",
+    "openBooklet": "Open program booklet in lightbox",
+    "viewBooklet": "View program booklet"
   },
-
-  "illustrationOne": {
-    "title": {
-      "titleOne": "Mountain",
-      "titleTwo": "Fairy"
-    },
-    "text": {
-      "textOne": "This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore.",
-      "textTwo": "Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and traditional descriptions of these mystical beings.",
-      "textThree": "Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat, her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending realism and fantasy to root her firmly in her homeland.",
-      "textFour": "This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains overlooked or forgotten, and this project seeks to give it a new voice. Each character, aims to breathe life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen, remembered, and reimagined."
-    }
+  "related": {
+    "doliBelAlt": "Poster design inspired by the film Sjećaš li se Doli Bel?, cinematic composition with bold graphic typography.",
+    "chippstersAlt": "Chippsters logo concept — playful wordmark with contemporary brand detailing."
   },
+  "meta": {
+    "simpleName": "KREATIV fest — Festival Art Direction Proposal (Kreativ Euphoria)",
+    "title": "KREATIV Fest – Festival Art Direction & Visual Identity | Kreativ Euphoria — Amna Kolić",
+    "description": "Festival branding and art direction for KREATIV Fest: a grunge-inspired visual identity with custom logotype, bold typography, and poster system by Amna Kolić.",
+    "imageAlt": "KREATIV Fest visual identity concept showcasing grunge textures, bold type, and the 'Kreativ Euphoria' logotype.",
+    "keywords": "KREATIV Fest, art direction, festival branding, visual identity, poster design, typography, David Carson, grunge design, student project, International Burch University, Kreativ Euphoria",
+    "section": "Graphic Design",
+    "siteName": "Amna Kolić Portfolio",
+    "author": "Amna Kolić"
+  }
+},
+
+"graphicDesignTwo": {
+  "title": {
+    "titleOne": "Sjećaš",
+    "titleTwo": "li se",
+    "titleThree": "Doli",
+    "titleFour": "Bel",
+    "mobileLineOne": "Sjećaš li se",
+    "mobileLineTwo": "Doli Bel"
+  },
+  "mobileIntro": "For the stage adaptation of “Sjećaš li se Doli Bel?” at Kamerni Teatar 55 in Sarajevo, this design reimagines the play’s promotional visuals through symbolic typography, color, and emotional texture.",
+  "text": {
+    "textOne": "For the stage adaptation of Sjećaš li se Doli Bel at Kamerni Teatar 55 in Sarajevo, I reimagined the promotional visuals with a concept rooted in emotional symbolism and narrative depth.",
+    "textTwo": "Drawing from the story’s themes of adolescence, loss, and emotional decay, I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms.",
+    "textThree": "The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play."
+  },
+  "slides": {
+    "detail": "Visual detail from the ‘Sjećaš li se Doli Bel’ design concept",
+    "hero": "Sjećaš li se Doli Bel? — primary poster with fragmented typography forming a crooked house silhouette on a vivid red background.",
+    "heroShort": "Sjećaš li se Doli Bel? hero poster — fragmented red typography forming a crooked house silhouette.",
+    "idFront": "Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence.",
+    "idFrontShort": "Sjećaš li se Doli Bel? — ID badge front with red background and white handwritten typography."
+  },
+  "fig": { "idFront": "ID badge front mockup." },
+  "aria": {
+    "description": "Project description",
+    "openHero": "Open hero poster in lightbox",
+    "viewHero": "View hero poster",
+    "openIdFront": "Open ID badge front in lightbox",
+    "viewIdFront": "View ID badge front"
+  },
+  "related": {
+    "kreativ": "Kreativ Fest art direction poster — bold grunge-inspired textures and expressive typography.",
+    "chippsters": "Chippsters logo design concept — playful wordmark with modern branding aesthetics."
+  },
+  "meta": {
+    "simpleName": "Sjećaš li se Doli Bel",
+    "subhead": "Visual Identity for Stage Adaptation",
+    "title": "Sjećaš li se Doli Bel — Theatre Visual Identity & Poster Design | Amna Kolić",
+    "description": "Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić.",
+    "imageAlt": "Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout.",
+    "keywords": "Sjećaš li se Doli Bel, Doli Bel, theatre poster, stage adaptation, Kamerni Teatar 55, Sarajevo, visual identity, graphic design, Bosnian design, editorial, typography",
+    "siteName": "Amna Kolić Portfolio",
+    "section": "Graphic Design",
+    "tag1": "Theatre Poster",
+    "tag2": "Visual Identity",
+    "tag3": "Bosnian Design"
+  }
+},
+
+"graphicDesignThree": {
+  "heading": {
+    "titleOne": "Chipp",
+    "titleTwo": "sters",
+    "titleThree": "Logo",
+    "mobile": "Chippsters",
+    "logo": "Logo"
+  },
+  "strapline": "Design and the idea behind it—",
+  "text": {
+    "textOne": "The Chippsters logo was born from a playful fusion of chipmunk and hipster, reflecting a tech company that aims to be both casual and forward-thinking.",
+    "textTwo": "With a name full of personality, the visual identity needed to match, professional yet approachable, clean but expressive. The logo features a chipmunk wearing a beanie and glasses, cleverly formed in the negative space of a bold letter “C.”",
+    "textThree": "This simple, rounded shape ensures versatility and strong brand recognition, while the character adds charm and uniqueness. The clean circular shape ensures versatility, while the simplified character design keeps it easily recognizable across applications.",
+    "textFour": "A pastel green gradient brings a sense of freshness and calm professionalism. The result is a memorable, modern logo that stands out in the tech space with just the right balance of fun and clarity."
+  },
+  "slides": {
+    "hero": "Chippsters logo concept — modern circular emblem with playful negative-space chipmunk design.",
+    "heroShort": "Chippsters logo concept — circular emblem with modern, playful character design.",
+    "mockup": "Chippsters logo mockups: circular C mark with chipmunk-in-negative-space on green gradient applications.",
+    "mockupShort": "Chippsters logo mockup — bold letter C with chipmunk character in negative space, beanie and glasses included.",
+    "mockupAlt": "Chippsters logo mockup — bold C letterform with chipmunk silhouette."
+  },
+  "fig": { "mockup": "Chippsters logo mockup." },
+  "aria": {
+    "description": "Project description",
+    "openHero": "Open Chippsters logo in lightbox",
+    "viewHero": "View Chippsters logo",
+    "openMockup": "Open Chippsters logo mockup in lightbox",
+    "viewMockup": "View Chippsters logo mockup"
+  },
+  "related": {
+    "kreativ": "Kreativ Fest art direction poster — bold grunge-inspired textures and expressive typography.",
+    "doli": "Poster design inspired by the film Sjećaš li se Doli Bel?, cinematic composition with bold graphic typography."
+  },
+  "meta": {
+    "simpleName": "Chippsters Logo",
+    "title": "Chippsters Logo Design — Tech Brand Visual Identity | Amna Kolić",
+    "description": "Playful yet professional logo for a tech brand—chipmunk + hipster fused into a minimalist C-mark with negative space, clean geometry, and a fresh green gradient. Visual identity by Amna Kolić.",
+    "imageAlt": "Chippsters logo mockups: circular C mark with a chipmunk silhouette in negative space, set on a soft green gradient.",
+    "keywords": "Chippsters, logo design, tech brand logo, mascot logo, negative space logo, branding, visual identity, wordmark, brand mark, minimalist logo, green gradient, portfolio, Amna Kolić",
+    "siteName": "Amna Kolić Portfolio",
+    "section": "Graphic Design",
+    "tag1": "Logo Design",
+    "tag2": "Branding",
+    "tag3": "Negative Space"
+  }
+},
+
+"illustration": {
+  "title": {
+    "titleOne": "ILLUST",
+    "titleTwo": "RATION",
+    "combined": "Illustration"
+  },
+  "meta": {
+    "title": "Illustration Portfolio — Watercolor, Digital & Concept Art | Amna Kolić",
+    "description": "Explore illustration projects by Amna Kolić: watercolor, digital painting, character and concept art—blending literature, folklore, and modern visual storytelling.",
+    "imageAlt": "Illustration background artwork by Amna Kolić featuring detailed, painterly textures.",
+    "keywords": "illustration, digital illustration, concept art, watercolor, character design, editorial illustration, visual storytelling, portfolio, Amna Kolić",
+    "shortOne": "Bosnian Fairy",
+    "shortTwo": "Austen Books",
+    "shortThree": "Mural",
+    "siteName": "Amna Kolić Portfolio"
+  },
+  "fig": { "hero": "Full-bleed illustration hero artwork positioned bottom-right." },
+  "aria": {
+    "sectionDescription": "Section description",
+    "nav": "Illustration section navigation"
+  },
+  "text": "Passion from an early age turned into a legitimate skill that any business can utilize",
+  "information": "Background illustration"
+},
+
+"illustrationOne": {
+  "title": {
+    "titleOne": "Mountain",
+    "titleTwo": "Fairy"
+  },
+  "slides": {
+    "hero": "Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting.",
+    "heroCaption": "Mountain Fairy digital illustration hero artwork.",
+    "heroAria": "Open image: Mountain Fairy poster",
+    "heroTitle": "View Mountain Fairy poster"
+  },
+  "text": {
+    "textOne": "This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore.",
+    "textTwo": "Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and traditional descriptions of these mystical beings.",
+    "textThree": "Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat, her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending realism and fantasy to root her firmly in her homeland.",
+    "textFour": "This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains overlooked or forgotten, and this project seeks to give it a new voice. Each character, aims to breathe life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen, remembered, and reimagined."
+  },
+  "meta": {
+    "simpleName": "Mountain Fairy",
+    "title": "Bosnian Mountain Fairy — Digital Illustration | Amna Kolić",
+    "description": "Folklore-inspired concept art of the Bosnian mountain fairy (planinska vila), rendered in digital paint and rooted in cultural heritage.",
+    "imageAlt": "Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting.",
+    "keywords": "Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage, Clip Studio Paint, Amna Kolić"
+  }
+},
+
+"illustrationTwo": {
+  "title": {
+    "titleOne": "Mountain",
+    "titleTwo": "Fairy"
+  },
+  "slides": {
+    "hero": "Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting.",
+    "heroCaption": "Mountain Fairy digital illustration hero artwork.",
+    "heroAria": "Open image: Mountain Fairy poster",
+    "heroTitle": "View Mountain Fairy poster"
+  },
+  "text": {
+    "textOne": "This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore.",
+    "textTwo": "Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and traditional descriptions of these mystical beings.",
+    "textThree": "Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat, her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending realism and fantasy to root her firmly in her homeland.",
+    "textFour": "This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains overlooked or forgotten, and this project seeks to give it a new voice. Each character, aims to breathe life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen, remembered, and reimagined."
+  },
+  "meta": {
+    "simpleName": "Mountain Fairy",
+    "title": "Bosnian Mountain Fairy — Digital Illustration | Amna Kolić",
+    "description": "Folklore-inspired concept art of the Bosnian mountain fairy (planinska vila), rendered in digital paint and rooted in cultural heritage.",
+    "imageAlt": "Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting.",
+    "keywords": "Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage, Clip Studio Paint, Amna Kolić"
+  }
+},
 
   "illustrationTwo": {
     "title": {
@@ -170,10 +445,38 @@
       "textTwo": "Each piece captures the emotional core of its novel through symbolic compositions, framed like vintage cameos to evoke the era’s elegance and intimacy.",
       "textThree": "In Pride and Prejudice, two hands pull in opposite directions—symbolizing pride, misjudgment, and the eventual reconciliation of two strong wills. Sense and Sensibility shows a woman reaching for a man who doesn’t hold her firmly, while another hand behind her does—highlighting the contrast between fleeting passion and steady love. In Emma, the heroine is depicted playing chess with real people, reflecting her well-meaning but misguided attempts at matchmaking.",
       "textFour": "Every piece is adorned with meaningful flowers, chosen to represent the characters and emotional tone of each story. The series blends visual storytelling and literary symbolism, offering a modern yet respectful homage to Austen’s timeless narratives."
+    },
+    "slides": {
+      "grid": {
+        "1": "Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice.",
+        "2": "Watercolor cameo illustration inspired by Sense and Sensibility.",
+        "3": "Watercolor cameo illustration inspired by Emma."
+      },
+      "mobile": {
+        "1": "Pride and Prejudice — two hands pulling in opposite directions, symbolizing pride, misjudgment, and reconciliation.",
+        "2": "Sense and Sensibility — a woman reaches for a man who doesn’t hold her firmly, while a steadier hand supports from behind.",
+        "3": "Emma — the heroine plays chess with real people, alluding to her well-meaning yet misguided matchmaking."
+      },
+      "openAria": "Open illustration",
+      "openTitle": "View illustration"
+    },
+    "related": {
+      "mountainFairy": "Mountain Fairy — Bosnian planinska vila illustrated with wildflowers and horns in a warm forest.",
+      "mural": "Bosnia in the Heart of Europe — mural artwork blending cultural heritage and contemporary design."
+    },
+    "meta": {
+      "simpleName": "Austen in Watercolor",
+      "title": "Austen in Watercolor — Jane Austen-Inspired Illustrations | Amna Kolić",
+      "description": "Watercolor illustration series inspired by Pride and Prejudice, Sense and Sensibility, and Emma—literary symbolism meets contemporary visual storytelling.",
+      "imageAlt1": "Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice",
+      "imageAlt2": "Austen in Watercolor — series cover illustration",
+      "keywords": "Jane Austen, watercolor illustration, Pride and Prejudice, Sense and Sensibility, Emma, literary art, concept illustration, portfolio",
+      "siteName": "Amna Kolić Portfolio",
+      "section": "Illustration"
     }
   },
 
-  "illustrationThree": {
+"illustrationThree": {
     "title": {
       "titleOne": "Bosnia in",
       "titleTwo": "the heart",
@@ -182,11 +485,57 @@
     "text": {
       "textOne": "Created for the Europe House mural contest, this work brings the theme “Bosnia in the Heart of Europe” to life by merging national identity with continental unity.",
       "textTwo": "At the center, a tourist rests beneath a tree as Sarajevo’s familiar skyline unfolds into a sweeping panorama of iconic European landmarks, placing Bosnia not on the periphery, but firmly in Europe’s cultural and geographical heart. Pigeons, a recurring symbol of Sarajevo, traverse the scene as messengers of peace, movement, and connection—reinforcing Bosnia’s role as part of the wider European community. A bold yellow accent, taken from both the Bosnian flag and Europe House identity, ties the visual elements together into a cohesive narrative.",
-      "textThree": "The lower part of the mural was intentionally kept minimal due to the placement of nearby seating, inviting viewers to sit, reflect, and embrace the shared values of unity, respect, and belonging."
+      "textThree": "The lower part of the mural was intentionally kept minimal due to the placement of nearby seating, inviting viewers to sit, reflect, and embrace the shared values of unity, respect, and belonging.",
+      "textOneMobile": "Created for the Europe House mural contest, this piece visualizes the theme “Bosnia in the Heart of Europe” by blending identity with continental unity. At the center sits a tourist beneath a tree."
+    },
+    "slides": {
+      "grid": {
+        "1": "Bosnia in the Heart of Europe — foreground figure beneath a tree with Sarajevo in the background, opening into European landmarks.",
+        "2": "Bosnia in the Heart of Europe — pigeons in flight connect Sarajevo motifs with iconic European architecture across the scene."
+      },
+      "mobile": {
+        "1": "Sarajevo foreground opens into European landmarks; unity across the continent.",
+        "2": "Pigeons as messengers linking Sarajevo’s symbols with Europe’s cultural heritage."
+      },
+      "openAria": "Open mural artwork",
+      "openTitle": "View mural"
+    },
+    "captions": {
+      "panel1": "Mural panel 1 — Sarajevo meets Europe.",
+      "panel2": "Mural panel 2 — Pigeons as messengers across borders."
+    },
+    "mobile": {
+      "textA": "The view opens up from Sarajevo’s familiar cityscape into a panoramic sweep of iconic European landmarks, positioning Bosnia not at the edge, but firmly within the cultural and geographical heart of Europe. The presence of pigeons, a recurring symbol of Sarajevo, connects the different elements as they fly across borders, cities, and monuments—serving as visual messengers of movement, peace, and connection.",
+      "textB": "A bold yellow accent runs throughout the mural, referencing both the Bosnian flag and the Europe House visual identity. This shared color creates unity and draws the eye across the scene, tying disparate symbols into a single cohesive narrative.",
+      "textC": "The mural’s lower area was kept minimal due to nearby seating, inviting everyone to sit, relax, and focus on what matters—mutual respect and love."
+    },
+    "related": {
+      "mountainFairy": "Mountain Fairy — Bosnian planinska vila illustrated with wildflowers and horns in a warm forest.",
+      "austenWatercolor": "Austen in Watercolor — literary symbolism meets contemporary visual storytelling."
+    },
+    "meta": {
+      "simpleName": "Bosnia in the Heart of Europe",
+      "title": "Europe House Mural: Bosnia in the Heart of Europe | Amna Kolić",
+      "description": "Mural concept that merges Bosnian identity with European unity—Sarajevo motifs, iconic landmarks, and bold yellow accents evoke connection, movement, and a shared future.",
+      "imageAlt": "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.",
+      "keywords": "Europe House mural, Bosnia in the Heart of Europe, mural design, Sarajevo, Bosnian identity, European unity, public art, cultural heritage, illustration, digital painting",
+      "siteName": "Amna Kolić Portfolio",
+      "section": "Illustration"
     }
   },
+  "common": {
+    "by": "Project by",
+    "byName": "by Amna Kolić",
+    "projectDescription": "Project description",
+    "panel": "panel",
+    "seeMoreLikeThis": "See more like this",
+    "siteName": "Amna Kolić Portfolio"
+  },
+  "sections": {
+    "illustration": "Illustration"
+  },
 
-  "aboutMe": {
+"aboutMe": {
     "title": {
       "titleOne": "The Mind",
       "titleTwo": "Behind",
@@ -196,20 +545,89 @@
       "textOne": "Hi, I’m Amna Kolić—a Bosnia-based graphic and UX/UI designer with a BA in Graphic Design and Multimedia from International Burch University.",
       "textTwo": "My editorial-inspired approach to design comes from a childhood love of magazines and visual storytelling.",
       "textThree": "I started my career as co-founder of OverVerse, a startup merging picture books with interactive apps, where I worked across design, 3D, animation, and more. Today, I’m a graphic designer at Beyond, creating ad campaigns, social media visuals, and major national branding projects, while also collaborating with Epifront and taking on freelance work.",
-      "textFour": "Whether designing for print, digital, or campaigns, my focus is creating visuals with purpose and personality. Let’s bring your vision to life. "
+      "textFour": "Whether designing for print, digital, or campaigns, my focus is creating visuals with purpose and personality. Let’s bring your vision to life."
+    },
+    "mobile": {
+      "lead": "Hi, I’m Amna Kolić, a Bosnia-based graphic designer, UX/UI designer, and an artist with a Bachelor of Arts in Graphic Design and Multimedia from the International Burch University.",
+      "knowsAbout": "As a kid, I was obsessed with magazines—the layouts, the rhythm of the pages, the way design could shape how you feel while flipping through a story. That fascination stuck with me, and it’s a huge reason why I’ve chosen to design my portfolio with the spirit of an editorial spread.",
+      "oververse": "I’ve been working professionally since my second year of university, when I co-founded OverVerse, a startup built with two colleagues that aimed to merge traditional picture books with interactive mobile experiences for preschoolers. I wore many hats there: graphic designer, UX/UI designer, 3D modeler, animator, texturer, and even voice actor—learning to move fluidly between disciplines while staying grounded in storytelling and design clarity.",
+      "beyondEpifront": "Since then, I’ve worked with the public relations and communications agency Beyond (since April 2024) as their graphic designer, and collaborated with the IT company Epifront as a graphic designer and illustrator.",
+      "freelance": "Along the way, I’ve taken on a range of freelance and side projects that helped me grow, experiment, and eventually find the niche I feel most connected to: visual storytelling with purpose and personality.",
+      "hobbies": "When I’m not designing, you’ll likely find me hiking, sewing, or baking—still creating, just with different tools.",
+      "contact": "If you think we’d make a great team, feel free to reach out—I’d love to hear from you and see how we can bring your vision to life, together."
+    },
+    "a11y": {
+      "openAria": "Open portrait in lightbox",
+      "openTitle": "View portrait",
+      "figureCaption": "Portrait of Amna Kolić."
+    },
+    "alts": {
+      "leftImage": "Portrait of Amna Kolić",
+      "mobileHero": "Amna Kolić — Bosnia-based graphic designer and artist."
+    },
+    "meta": {
+      "simpleName": "About Amna Kolić",
+      "title": "About Amna Kolić – Graphic Designer, UX/UI & Visual Artist",
+      "description": "Learn about Amna Kolić, a Bosnia-based graphic & UX/UI designer and visual artist blending branding, editorial design, photography, and illustration.",
+      "imageAlt": "Portrait of Amna Kolić, graphic and UX/UI designer.",
+      "keywords": "Amna Kolić, graphic designer, UX/UI designer, visual artist, Bosnia, branding, editorial design, portfolio",
+      "siteName": "Amna Kolić Portfolio",
+      "section": "About",
+      "profile": {
+        "firstName": "Amna",
+        "lastName": "Kolić"
+      }
     }
   },
 
-  "contact": {
+ "contact": {
     "title": {
-      "titleOne": "Be it traditional email, phonecall",
-      "titleTwo": "Instagram or LinkedIn",
-      "titleThree": "LET'S",
+      "titleOne": "Be it traditional email, phonecall,",
+      "titleTwo": "Instagram or LinkedIn,",
+      "titleThree": "LET'S ",
       "titleFour": "CHAT"
     },
     "text": {
       "textOne": "Even if your idea is silly, overly serious, undeniably new or just a plain old brochure design request, I’m here to listen and deliver with a professional approach and an open mind.",
-      "textTwo": "Photograph used was generated by ChatGPT, then photoshopped to fix the obvious issues.\nThe photo shows my own likeness and is here purely for the decorative and relevance purposes."
+      "textTwo": "Photograph used was generated by ChatGPT, then photoshopped to fix the obvious issues. The photo shows my own likeness and is here purely for the decorative and relevance purposes."
+    },
+    "mobile": {
+      "lead": "Be it traditional email, phonecall, Instagram or LinkedIn"
+    },
+    "alts": {
+      "mobileHero": "Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait."
+    },
+    "a11y": {
+      "section": "Contact",
+      "topLine": "Contact intro",
+      "methods": "Contact methods",
+      "openPortrait": "Open portrait in lightbox",
+      "viewPortrait": "View portrait",
+      "caption": "Portrait of Amna Kolić for professional inquiries.",
+      "cta": "Work together"
+    },
+    "meta": {
+      "simpleName": "Contact",
+      "title": "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio",
+      "description": "Reach out to Amna Kolić for freelance design inquiries, collaboration, or just to chat about your next creative project.",
+      "imageAlt": "Contact page decorative background.",
+      "keywords": "contact, hire graphic designer, UX/UI designer, collaboration, branding, editorial design, portfolio",
+      "siteName": "Amna Kolić Portfolio",
+      "section": "Contact",
+      "jobTitle": "Graphic Designer",
+      "jobTitleFull": "Graphic Designer & UX/UI Designer",
+      "nationality": "Bosnia and Herzegovina"
     }
+  },
+
+"shared": {
+    "seeMoreLikeThis": "See more like this"
+  },
+"common": {
+    "by": "Project by",
+    "byName": "by Amna Kolić",
+    "langCode": "en",
+    "seeMore": "See more like this",
+    "relatedWorks": "Related works carousel"
   }
 }

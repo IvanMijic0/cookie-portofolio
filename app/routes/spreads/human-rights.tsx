@@ -1,8 +1,11 @@
 import { forwardRef, useMemo, useState } from "react";
+import type { MetaFunction } from "react-router";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Captions, Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { Carousel, ScreenTextFit } from "~/components/UI";
+import { useTranslate } from "~/context/I18nProvider";
+import { translate, type Lang } from "~/i18n/i18n";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -19,6 +22,8 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 ));
 
 export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
 	const slides = useMemo(
 		() =>
 			Array.from({ length: 4 }).map((_, idx) => ({
@@ -56,47 +61,36 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				itemID="/human-rights"
 			>
 				<link itemProp="url" href="/human-rights" />
-				<meta itemProp="name" content="Human Rights" />
-				<meta
-					itemProp="description"
-					content="A photo series exploring light as a metaphor for human rights—each frame reflecting the presence or absence of fundamental freedoms."
-				/>
-				<meta itemProp="genre" content="Photography" />
-				<meta
-					itemProp="keywords"
-					content="human rights, photography, visual narrative, light, portfolio, Amna Kolić"
-				/>
 				<header className="flex flex-col items-start gap-5 2xl:gap-8">
 					<h1
 						className="text-[6rem] 2xl:text-[8rem] leading-22 2xl:leading-30 text-[#363636] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline"
 					>
-						Human Rights
+						{t("photographyTwo.title.titleOne", "Human")}{" "}
+						{t("photographyTwo.title.titleTwo", "Rights")}
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">by Amna Kolić</span>
+							<span itemProp="name">{t("info", "by Amna Kolić")}</span>
 						</span>
 					</p>
 				</header>
 				<section className="flex flex-col w-full font-serif justify-start text-[#505050] gap-4">
 					<p className="w-72 2xl:w-[21rem] text-base 2xl:text-lg font-bold italic" itemProp="abstract">
-						This photo series explores the concept of light as a metaphor for human rights — a
-						visual narrative where illumination becomes both symbol and statement.
+						{t(
+							"photographyTwo.headText",
+							"This photo series explores the concept of light as a metaphor for human rights — a visual narrative where illumination becomes both symbol and statement."
+						)}
 					</p>
 					<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
-						Each frame experiments with the quality, color, and direction of light to reflect the
-						fragile presence — or troubling absence — of a fundamental right.
+						{t("photographyTwo.text.textOne")}
 					</p>
 					<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
-						The interplay of shadow and brightness isn't just aesthetic; it's intentional. Every
-						photo stands for a specific right slowly slipping from our grasp, each composition a
-						quiet act of resistance.
+						{t("photographyTwo.text.textTwo")}
 					</p>
 					<p className="w-72 2xl:w-[21rem] text-sm 2xl:text-base">
-						From top to bottom, left to right, the rights portrayed are: the Right to Express, the
-						Right to Privacy, the Right to Rest, the Right to Religion, and the Right to Choose.
+						{t("photographyTwo.text.textThree")}
 					</p>
 				</section>
 			</article>
@@ -107,6 +101,8 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 const ASPECT = 1600 / 2000;
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -114,31 +110,29 @@ export const Mobile = () => {
 		() => [
 			{
 				src: "/human-rights-left.webp",
-				alt:
-					"Human Rights series poster: still-life composition where light symbolizes the presence of rights.",
+				alt: t(
+					"photographyTwo.slides.poster",
+					"Human Rights series poster: still-life composition where light symbolizes the presence of rights."
+				),
 			},
 			{
 				src: "/human-rights-1.webp",
-				alt:
-					"Right to Express: directional light highlighting a solitary subject to suggest voice and visibility.",
+				alt: t("photographyTwo.slides.express", "Right to Express: directional light highlighting a solitary subject to suggest voice and visibility."),
 			},
 			{
 				src: "/human-rights-2.webp",
-				alt:
-					"Right to Privacy: obscured shapes and controlled shadows imply concealment and protection.",
+				alt: t("photographyTwo.slides.privacy", "Right to Privacy: obscured shapes and controlled shadows imply concealment and protection."),
 			},
 			{
 				src: "/human-rights-3.webp",
-				alt:
-					"Right to Rest: softened light and quiet negative space evoke restoration and pause.",
+				alt: t("photographyTwo.slides.rest", "Right to Rest: softened light and quiet negative space evoke restoration and pause."),
 			},
 			{
 				src: "/human-rights-4.webp",
-				alt:
-					"Right to Religion: a focused beam suggests contemplation, conviction, and freedom of worship.",
+				alt: t("photographyTwo.slides.religion", "Right to Religion: a focused beam suggests contemplation, conviction, and freedom of worship."),
 			},
 		],
-		[]
+		[t]
 	);
 
 	const openAt = (i: number) => {
@@ -150,18 +144,24 @@ export const Mobile = () => {
 	const slides = [
 		{
 			id: 1,
-			title: "Kill them with Kindness",
+			title: t("nav.photographyOne", "Kill them with kindness"),
 			src: "/kill-them-with-kindness-1.webp",
-			href: "/photography/kill-them-with-kindness",
-			alt: "Kill Them With Kindness photography series — symbolic still-life promoting empathy and peace over violence."
+			href: makeHref("/photography/kill-them-with-kindness"),
+			alt: t(
+				"photographyOne.meta.imageAlt",
+				"Kill Them With Kindness — symbolic still-life promoting empathy and peace over violence."
+			),
 		},
 		{
 			id: 2,
-			title: "Double Indemnity",
+			title: t("nav.photographyThree", "Double Indemnity"),
 			src: "/double-indemnity-left-1.webp",
-			href: "/photography/double-indemnity",
-			alt: "Double Indemnity photography series — cinematic black-and-white portraits inspired by classic film noir."
-		}
+			href: makeHref("/photography/double-indemnity"),
+			alt: t(
+				"photographyThree.meta.imageAlt",
+				"Double Indemnity — cinematic portraits inspired by classic film noir."
+			),
+		},
 	];
 
 	return (
@@ -178,7 +178,9 @@ export const Mobile = () => {
 							itemProp="name headline"
 							className="font-display text-end leading-22 text-[5rem] xs:text-[6rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						>
-							Human<br /> Rights
+							{t("photographyTwo.title.titleOne", "Human")}
+							<br />
+							{t("photographyTwo.title.titleTwo", "Rights")}
 						</h1>
 						<meta itemProp="inLanguage" content="en" />
 					</header>
@@ -189,7 +191,7 @@ export const Mobile = () => {
 								type="button"
 								onClick={() => openAt(0)}
 								className="block w-full cursor-zoom-in"
-								aria-label="Open image: Human Rights poster"
+								aria-label={t("photographyTwo.aria.openPoster", "Open image: Human Rights poster")}
 							>
 								<img
 									src="/human-rights-left.webp"
@@ -201,12 +203,15 @@ export const Mobile = () => {
 									decoding="async"
 									fetchPriority="high"
 									itemProp="image"
-									alt="Human Rights series poster: still-life composition where light symbolizes the presence of rights."
+									alt={t(
+										"photographyTwo.slides.poster",
+										"Human Rights series poster: still-life composition where light symbolizes the presence of rights."
+									)}
 								/>
 							</button>
-							<figcaption className="sr-only">
-								Human Rights — primary poster artwork.
-							</figcaption>
+
+							<figcaption className="sr-only">{t("photographyTwo.fig.poster", "Human Rights — primary poster artwork.")}</figcaption>
+
 						</figure>
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<figure className="w-1/2 min-w-0">
@@ -214,7 +219,7 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(1)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Right to Express"
+									aria-label={t("photographyTwo.aria.openExpress", "Open image: Right to Express")}
 								>
 									<img
 										src="/human-rights-1.webp"
@@ -224,7 +229,7 @@ export const Mobile = () => {
 										className="object-contain w-full h-auto"
 										loading="lazy"
 										decoding="async"
-										alt="Right to Express: directional light highlighting a solitary subject to suggest voice and visibility."
+										alt={t("photographyTwo.slides.express")}
 									/>
 								</button>
 							</figure>
@@ -233,7 +238,7 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(2)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Right to Privacy"
+									aria-label={t("photographyTwo.aria.openPrivacy", "Open image: Right to Privacy")}
 								>
 									<img
 										src="/human-rights-2.webp"
@@ -243,7 +248,7 @@ export const Mobile = () => {
 										className="object-contain w-full h-auto"
 										loading="lazy"
 										decoding="async"
-										alt="Right to Privacy: obscured shapes and controlled shadows imply concealment and protection."
+										alt={t("photographyTwo.slides.privacy")}
 									/>
 								</button>
 							</figure>
@@ -254,7 +259,7 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(3)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Right to Rest"
+									aria-label={t("photographyTwo.aria.openRest", "Open image: Right to Rest")}
 								>
 									<img
 										src="/human-rights-3.webp"
@@ -264,7 +269,7 @@ export const Mobile = () => {
 										className="object-contain w-full h-auto"
 										loading="lazy"
 										decoding="async"
-										alt="Right to Rest: softened light and quiet negative space evoke restoration and pause."
+										alt={t("photographyTwo.slides.rest")}
 									/>
 								</button>
 							</figure>
@@ -274,7 +279,7 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(4)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Right to Religion"
+									aria-label={t("photographyTwo.aria.openReligion", "Open image: Right to Religion")}
 								>
 									<img
 										src="/human-rights-4.webp"
@@ -284,7 +289,7 @@ export const Mobile = () => {
 										className="object-contain w-full h-auto"
 										loading="lazy"
 										decoding="async"
-										alt="Right to Religion: a focused beam suggests contemplation, conviction, and freedom of worship."
+										alt={t("photographyTwo.slides.religion")}
 									/>
 								</button>
 							</figure>
@@ -292,25 +297,20 @@ export const Mobile = () => {
 					</div>
 					<section
 						id="description"
-						aria-label="Project description"
+						aria-label={t("photographyTwo.aria.description", "Project description")}
 						className="flex text-sm 2xl:text-base w-full text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 					>
 						<p itemProp="description" className="text-lg font-bold italic">
-							This photo series explores the concept of light as a metaphor for human rights — a
-							visual narrative where illumination becomes both symbol and statement.
+							{t("photographyTwo.headText")}
 						</p>
 						<p className="text-base" itemProp="about">
-							Each frame experiments with the quality, color, and direction of light to reflect the
-							fragile presence — or troubling absence — of a fundamental right.
+							{t("photographyTwo.text.textOne")}
 						</p>
 						<p className="text-base">
-							The interplay of shadow and brightness isn't just aesthetic; it's intentional. Every
-							photo stands for a specific right slowly slipping from our grasp, each composition a
-							quiet act of resistance.
+							{t("photographyTwo.text.textTwo")}
 						</p>
 						<p className="text-base">
-							From top to bottom, left to right, the rights portrayed are: the Right to Express, the
-							Right to Privacy, the Right to Rest, the Right to Religion, and the Right to Choose.
+							{t("photographyTwo.text.textThree")}
 						</p>
 					</section>
 					<section className="flex flex-col gap-6 w-full items-center" aria-labelledby="see-more-like-this">
@@ -319,7 +319,7 @@ export const Mobile = () => {
 								id="see-more-like-this"
 								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
 							>
-								See more like this
+								{t("shared.seeMoreLikeThis", "See more like this")}
 							</h2>
 						</ScreenTextFit>
 						<Carousel items={slides} loop rounded aria-label="Related works carousel" />
@@ -366,26 +366,30 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Human Rights – Conceptual Photo Series by Amna Kolić";
-	const description =
-		"A conceptual photo series where light and shadow symbolize the fragility of human rights. Explore the narrative and studio process behind each image.";
-	const url = "/photography/human-rights";
-	const image = "/human-rights-left.webp";
-	const imageAlt = "Conceptual photograph from the Human Rights series, using light as metaphor.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params?.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fallback?: string) => translate(lang, `photographyTwo.meta.${k}`, fallback);
+
+	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
+	const url = `${BASE_URL}/${lang}/photography/human-rights`;
+	const image = `${BASE_URL}/human-rights-left.webp`;
+
+	const title = t("title", "Human Rights – Conceptual Photo Series by Amna Kolić");
+	const description = t(
+		"description",
+		"A conceptual photo series where light and shadow symbolize the fragility of human rights. Explore the narrative and studio process behind each image."
+	);
+	const imageAlt = t("imageAlt", "Conceptual photograph from the Human Rights series, using light as metaphor.");
 
 	return [
 		{ title },
 		{ name: "description", content: description },
-		{
-			name: "keywords",
-			content:
-				"human rights photography, conceptual photography, studio lighting, visual metaphor, editorial photography, photo series, portfolio, Amna Kolić"
-		},
-		{ name: "author", content: "Amna Kolić" },
+		{ name: "keywords", content: t("keywords", "human rights photography, conceptual photography, studio lighting, visual metaphor, editorial photography, photo series, portfolio, Amna Kolić") },
+		{ name: "author", content: t("author", "Amna Kolić") },
 		{ name: "robots", content: "index,follow" },
+
 		{ property: "og:type", content: "article" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
+		{ property: "og:site_name", content: t("siteName", "Amna Kolić Portfolio") },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
@@ -394,19 +398,17 @@ export function meta() {
 		{ property: "og:image:type", content: "image/webp" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
-		{ property: "og:locale", content: "en_US" },
-		{ property: "article:section", content: "Photography" },
-		{ property: "article:author", content: "Amna Kolić" },
-		{ property: "article:tag", content: "Conceptual Photography" },
-		{ property: "article:tag", content: "Visual Metaphor" },
-		{ property: "article:tag", content: "Studio Lighting" },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: t("section", "Photography") },
+		{ property: "article:author", content: t("author", "Amna Kolić") },
+
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

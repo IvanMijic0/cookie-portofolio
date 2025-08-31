@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { DModified, Star } from "~/assets";
-import { contactButtons, navSections } from "~/config";
+import { BASE_URL, contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
 import { motion } from "framer-motion";
 import { LanguageSwitcher, ScreenTextFit } from "~/components/UI";
@@ -327,12 +327,11 @@ export const meta: MetaFunction = ({ params, location }) => {
 	const t = (k: string, fallback?: string) =>
 		translate(lang, `homepage.meta.${k}`, fallback);
 
-	const baseUrl = "https://your-domain.tld";
 	const pathNoLang =
 		location.pathname.replace(/^\/(en|ba)(?=\/|$)/, "") || "/homepage";
-	const pageUrl = `${baseUrl}/${lang}${pathNoLang}`;
+	const pageUrl = `${BASE_URL}/${lang}${pathNoLang}`;
 	const ogLocale = lang === "ba" ? "bs_BA" : "en_US";
-	const ogImg = `${baseUrl}/og/homepage-og.jpg`;
+	const ogImg = `${BASE_URL}/og/homepage-og.jpg`;
 
 	return [
 		{ title: t("title") },
@@ -341,9 +340,9 @@ export const meta: MetaFunction = ({ params, location }) => {
 		{ name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
 
 		{ tagName: "link", rel: "canonical", href: pageUrl },
-		{ tagName: "link", rel: "alternate", href: `${baseUrl}/en${pathNoLang}`, hrefLang: "en" },
-		{ tagName: "link", rel: "alternate", href: `${baseUrl}/ba${pathNoLang}`, hrefLang: "bs-BA" },
-		{ tagName: "link", rel: "alternate", href: `${baseUrl}/en${pathNoLang}`, hrefLang: "x-default" },
+		{ tagName: "link", rel: "alternate", href: `${BASE_URL}/en${pathNoLang}`, hrefLang: "en" },
+		{ tagName: "link", rel: "alternate", href: `${BASE_URL}/ba${pathNoLang}`, hrefLang: "bs-BA" },
+		{ tagName: "link", rel: "alternate", href: `${BASE_URL}/en${pathNoLang}`, hrefLang: "x-default" },
 
 		{ property: "og:type", content: "website" },
 		{ property: "og:site_name", content: "Amna Kolić" },

@@ -1,11 +1,16 @@
 import { forwardRef, useMemo, useState } from "react";
+import type { MetaFunction } from "react-router";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
 import { Carousel, ScreenTextFit } from "~/components/UI";
+import { useTranslate } from "~/context/I18nProvider";
+import { translate, type Lang } from "~/i18n/i18n";
 
-export const Left = forwardRef<HTMLDivElement>((_, ref) => (
-	<LeftPage ref={ref}>
+export const Left = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <LeftPage ref={ref}>
 		<img
 			src="/mountain-fairy-left.webp"
 			alt=""
@@ -22,15 +27,6 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			itemID="/illustration/mountain-fairy"
 			aria-labelledby="mountain-fairy-title"
 		>
-			<meta itemProp="inLanguage" content="en" />
-			<meta itemProp="genre" content="Illustration" />
-			<meta
-				itemProp="keywords"
-				content="Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage"
-			/>
-			<meta itemProp="artMedium" content="Digital painting" />
-			<meta itemProp="image" content="/mountain-fairy-left.webp" />
-			<meta itemProp="image" content="/mountain-fairy-right.webp" />
 			<link itemProp="mainEntityOfPage" href="/illustration/mountain-fairy" />
 
 			<header className="flex flex-col items-start gap-6">
@@ -40,40 +36,42 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 						className="text-[6rem] text-left tracking-wider 2xl:text-[8rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline name"
 					>
-						Mountain Fairy
+						{t("illustrationOne.title.titleOne", "Mountain")}<br />
+						{t("illustrationOne.title.titleTwo", "Fairy")}
 					</h1>
 				</div>
 				<p className="font-serif italic font-extralight text-sm 2xl:text-base text-right">
-					<span className="sr-only">Project by </span>
+					<span className="sr-only">{t("common.by", "Project by")} </span>
 					<span itemProp="author" itemScope itemType="https://schema.org/Person">
-						<span itemProp="name">by Amna Kolić</span>
+						<span itemProp="name">{t("common.byName", "by Amna Kolić")}</span>
 					</span>
 				</p>
 			</header>
 			<p className="text-base font-serif 2xl:text-lg font-bold italic text-justify" itemProp="description">
-				This digital illustration depicts the Bosnian mountain fairy, or <em>planinska vila</em>, as part of an
-				ongoing series dedicated to visualizing forgotten figures of Bosnian folklore.
-			</p>
+				{t(
+					"illustrationOne.text.textOne",
+					"This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore."
+				)}			</p>
 			<p className="text-sm 2xl:text-base font-serif text-justify" itemProp="artworkSurface">
-				Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and
-				traditional descriptions of these mystical beings.
+				{t(
+					"illustrationOne.text.textTwo",
+					"Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and traditional descriptions of these mystical beings."
+				)}
 			</p>
 			<p className="text-sm 2xl:text-base font-serif text-justify" itemProp="articleBody">
-				Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with
-				wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat,
-				her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending
-				realism and fantasy to root her firmly in her homeland.
-			</p>
+				{t(
+					"illustrationOne.text.textThree",
+					"Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat, her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending realism and fantasy to root her firmly in her homeland."
+				)}			</p>
 			<p className="text-sm 2xl:text-base font-serif text-justify" itemProp="articleBody">
-				This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far
-				beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains
-				overlooked or forgotten, and this project seeks to give it a new voice. Each character aims to breathe
-				life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen,
-				remembered, and reimagined.
+				{t(
+					"illustrationOne.text.textFour",
+					"This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains overlooked or forgotten, and this project seeks to give it a new voice. Each character, aims to breathe life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen, remembered, and reimagined."
+				)}
 			</p>
 		</article>
 	</LeftPage>
-));
+});
 
 export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 	<RightPage ref={ref} showBookmark>
@@ -107,6 +105,8 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 const ASPECT = 1600 / 2000;
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -114,10 +114,13 @@ export const Mobile = () => {
 		() => [
 			{
 				src: "/mountain-fairy-right.webp",
-				alt: "Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting.",
+				alt: t(
+					"illustrationOne.slides.hero",
+					"Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting."
+				),
 			},
 		],
-		[]
+		[t]
 	);
 
 	const openAt = (i: number) => {
@@ -126,22 +129,30 @@ export const Mobile = () => {
 	};
 	const close = () => setOpened(false);
 
+
 	const slides = [
 		{
 			id: 1,
-			title: "austen in watercolor",
+			title: t("illustration.meta.shortTwo", "Austen Books"),
 			src: "/austen-right-1.webp",
-			href: "/illustration/austen-in-watercolor",
-			alt: "austen in watercolor — delicate portrait illustration inspired by jane austen novels, rendered in soft washes of color.",
+			href: makeHref("/illustration/austen-in-watercolor"),
+			alt: t(
+				"illustrationTwo.slides.hero",
+				"Austen in Watercolor — delicate portrait illustration inspired by Jane Austen novels, rendered in soft washes of color."
+			),
 		},
 		{
 			id: 2,
-			title: "Bosnia in the Heart of Europe",
+			title: t("illustration.meta.shortThree", "Mural"),
 			src: "/mural.webp",
-			href: "/photography/mural",
-			alt: "Bosnia in the Heart of Europe — mural artwork blending cultural heritage and contemporary design.",
+			href: makeHref("/illustration/mural"),
+			alt: t(
+				"illustrationThree.meta.imageAlt",
+				"Bosnia in the Heart of Europe — mural artwork blending cultural heritage and contemporary design."
+			),
 		},
 	];
+
 
 	return (
 		<MobileWrapper>
@@ -155,9 +166,9 @@ export const Mobile = () => {
 						<h1
 							id="ktwk-title"
 							itemProp="name headline"
-							className="font-display text-start leading-22 text-[5rem] xs:text-[6rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+							className="font-display text-start leading-22 text-[4.7rem] xs:text-[5.5rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						>
-							Mountain <br /> Fairy
+							{t("illustrationOne.title.titleOne", "Mountain")}<br />{t("illustrationOne.title.titleTwo", "Fairy")}
 						</h1>
 						<meta itemProp="inLanguage" content="en" />
 					</header>
@@ -171,12 +182,16 @@ export const Mobile = () => {
 							type="button"
 							onClick={() => openAt(0)}
 							className="block w-full cursor-zoom-in"
-							aria-label="Open image: Mountain Fairy poster"
+							aria-label={t("illustrationOne.slides.heroAria", "Open image: Mountain Fairy poster")}
+							title={t("illustrationOne.slides.heroTitle", "View Mountain Fairy poster")}
 						>
 							<img
 								src="/mountain-fairy-right.webp"
 								sizes="(max-width: 640px) 100vw, 640px"
-								alt="Mountain Fairy — symbolic still-life illustration portraying empathy as strength, rooted in Bosnian folklore."
+								alt={t(
+									"illustrationOne.slides.hero",
+									"Mountain Fairy — symbolic still-life illustration portraying empathy as strength, rooted in Bosnian folklore."
+								)}
 								width={1600}
 								height={2000}
 								className="object-cover w-full h-auto"
@@ -187,41 +202,38 @@ export const Mobile = () => {
 							/>
 						</button>
 						<figcaption className="sr-only" itemProp="caption">
-							Mountain Fairy digital illustration hero artwork.
+							{t("illustrationOne.slides.heroCaption", "Mountain Fairy digital illustration hero artwork.")}
 						</figcaption>
 					</figure>
 
 					<section
 						id="description"
-						aria-label="Project description"
+						aria-label={t("photographyTwo.aria.description", "Project description")}
 						className="flex text-sm 2xl:text-base w-full text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 					>
 						<p itemProp="description" className="text-lg font-bold italic">
-							This digital illustration depicts the Bosnian mountain fairy, or
-							planinska vila, as part of an ongoing series dedicated to
-							visualizing forgotten figures of Bosnian folklore.
+							{t(
+								"illustrationOne.text.textOne",
+								"This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore."
+							)}
 						</p>
 						<p className="text-base" itemProp="about">
-							Created in Clip Studio Paint, the artwork draws directly from both
-							environmental inspiration and traditional descriptions of these
-							mystical beings.
+							{t(
+								"illustrationOne.text.textTwo",
+								"Created in Clip Studio Paint, the artwork draws directly from both environmental inspiration and traditional descriptions of these mystical beings."
+							)}
 						</p>
 						<p className="text-base">
-							Dressed in historically inspired garments with earthy tones and
-							folk motifs, the fairy is crowned with wildflowers and adorned with
-							horns, a nod to her mythological ability to transform into a white
-							goat, her symbol. The warm forest backdrop echoes the mountainous
-							terrain she is said to inhabit, blending realism and fantasy to
-							root her firmly in her homeland.
+							{t(
+								"illustrationOne.text.textThree",
+								"Dressed in historically inspired garments with earthy tones and folk motifs, the fairy is crowned with wildflowers and adorned with horns, a nod to her mythological ability to transform into a white goat, her symbol. The warm forest backdrop echoes the mountainous terrain she is said to inhabit, blending realism and fantasy to root her firmly in her homeland."
+							)}
 						</p>
 						<p className="text-base">
-							This series was born from a desire to reconnect with Bosnia’s
-							deeper cultural past—one that extends far beyond Ottoman or
-							modern-day narratives. Much of the pre-imperial, pre-modern history
-							of Bosnia remains overlooked or forgotten, and this project seeks
-							to give it a new voice. Each character aims to breathe life back
-							into centuries-old legends, honoring the richness of a heritage
-							that deserves to be seen, remembered, and reimagined.
+							{t(
+								"illustrationOne.text.textFour",
+								"This series was born from a desire to reconnect with Bosnia’s deeper cultural past—one that extends far beyond Ottoman or modern-day narratives. Much of the pre-imperial, pre-modern history of Bosnia remains overlooked or forgotten, and this project seeks to give it a new voice. Each character, aims to breathe life back into centuries-old legends, honoring the richness of a heritage that deserves to be seen, remembered, and reimagined."
+							)}
 						</p>
 					</section>
 
@@ -234,7 +246,7 @@ export const Mobile = () => {
 								id="see-more-like-this"
 								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
 							>
-								See more like this
+								{t("shared.seeMoreLikeThis", "See more like this")}
 							</h2>
 						</ScreenTextFit>
 
@@ -292,32 +304,53 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Bosnian Mountain Fairy — Digital Illustration | Amna Kolić";
-	const description =
-		"Folklore-inspired concept art of the Bosnian mountain fairy (planinska vila), rendered in digital paint and rooted in cultural heritage.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fallback?: string) =>
+		translate(lang, `illustrationOne.meta.${k}`, fallback);
+
+	const title = t(
+		"title",
+		"Bosnian Mountain Fairy — Digital Illustration | Amna Kolić"
+	);
+	const description = t(
+		"description",
+		"Folklore-inspired concept art of the Bosnian mountain fairy (planinska vila), rendered in digital paint and rooted in cultural heritage."
+	);
 	const url = "/illustration/mountain-fairy";
 	const image = "/mountain-fairy-right.webp";
-	const keywords =
-		"Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage, Clip Studio Paint, Amna Kolić";
+	const imageAlt = t(
+		"imageAlt",
+		"Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting."
+	);
+	const keywords = t(
+		"keywords",
+		"Bosnian folklore, mountain fairy, planinska vila, digital illustration, concept art, cultural heritage, Clip Studio Paint, Amna Kolić"
+	);
 
 	return [
 		{ title },
 		{ name: "description", content: description },
 		{ name: "keywords", content: keywords },
+		{ name: "author", content: "Amna Kolić" },
+		{ name: "robots", content: "index,follow" },
 		{ property: "og:type", content: "article" },
+		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
-		{ property: "og:locale", content: "en_US" },
+		{ property: "og:image:alt", content: imageAlt },
+		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
+		{ property: "article:section", content: "Illustration" },
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
-		{ rel: "canonical", href: url },
+		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

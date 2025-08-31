@@ -9,6 +9,10 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
+import { useTranslate } from "~/context/I18nProvider";
+import type { MetaFunction } from "react-router";
+import { translate, type Lang } from "~/i18n/i18n";
+import { BASE_URL } from "~/config";
 
 
 
@@ -26,8 +30,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	</LeftPage>
 ));
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<img
 			src="/kill-them-with-kindness-right.webp"
 			alt=""
@@ -50,12 +56,14 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 						itemProp="name"
 						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[8rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 					>
-						Kill them<br /> with <br /> Kindness
+						{t("photographyOne.title.titleOne", "Kill them")}
+						<br /> {t("photographyOne.title.titleTwo", "with")} <br />{" "}
+						{t("photographyOne.title.titleThree", "Kindness")}
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
 						<span className="sr-only">Project by </span>
 						<span itemProp="author" itemScope itemType="https://schema.org/Person">
-							<span itemProp="name">by Amna Kolić</span>
+							<span itemProp="name">{t("info", "by Amna Kolić")}</span>
 						</span>
 					</p>
 				</header>
@@ -64,30 +72,33 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 					className="flex text-sm 2xl:text-base text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 				>
 					<p itemProp="description" className="w-64 2xl:w-[19rem] text-base 2xl:text-lg font-bold italic">
-						What if empathy were more common than conflict? What if kindness—not violence—was the loudest
-						force
-						in the room? In that world, war would have no place.
+						{t(
+							"photographyOne.headText",
+							"What if empathy were more common than conflict? What if kindness—not violence—was the loudest force in the room? In that world, war would have no place."
+						)}
 					</p>
 					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
-						True to its name, this project delivers a striking visual message: a call to disarm not just
-						physically, but emotionally.
+						{t(
+							"photographyOne.text.textOne",
+							"True to its name, this project delivers a striking visual message: a call to disarm not just physically, but emotionally."
+						)}
 					</p>
 					<p className="w-64 2xl:w-[19rem] text-sm 2xl:text-base">
-						Each photo was meticulously staged in the studio under identical lighting, then artfully
-						composited
-						in Adobe Photoshop to create seamless, visually arresting narratives that challenge our
-						perception
-						of strength, peace, and humanity.
-					</p>
+						{t(
+							"photographyOne.text.textTwo",
+							"Each photo was meticulously staged in the studio under identical lighting, then artfully composited in Adobe Photoshop to create seamless, visually arresting narratives that challenge our perception of strength, peace, and humanity."
+						)}					</p>
 				</section>
 			</div>
 		</article>
 	</RightPage>
-));
+});
 
 const ASPECT = 1600 / 2000;
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
 
@@ -95,18 +106,21 @@ export const Mobile = () => {
 		() => [
 			{
 				src: "/kill-them-with-kindness-1.webp",
-				alt: "Primary poster: a symbolic still-life that frames empathy as strength.",
+				alt: t(
+					"photographyOne.slides.primary",
+					"Primary poster: a symbolic still-life that frames empathy as strength."
+				),
 			},
 			{
 				src: "/kill-them-with-kindness-2.webp",
-				alt: "Bouquet study juxtaposing tenderness and tension.",
+				alt: t("photographyOne.slides.bouquet", "Bouquet study juxtaposing tenderness and tension."),
 			},
 			{
 				src: "/kill-them-with-kindness-3.webp",
-				alt: "Rose & Grenade still-life emphasizing peace over power.",
+				alt: t("photographyOne.slides.roseGrenade", "Rose & Grenade still-life emphasizing peace over power."),
 			},
 		],
-		[]
+		[t]
 	);
 
 	const openAt = (i: number) => {
@@ -118,17 +132,17 @@ export const Mobile = () => {
 	const slides = [
 		{
 			id: 1,
-			title: "Human Rights",
+			title: t("nav.photographyTwo", "Human Rights"),
 			src: "/human-rights-left.webp",
-			href: "/photography/human-rights",
-			alt: "Human Rights photo series exploring freedom and equality.",
+			href: makeHref("/photography/human-rights"),
+			alt: t("photographyTwo.meta.imageAlt", "Human Rights photo series exploring freedom and equality."),
 		},
 		{
 			id: 2,
-			title: "Double Indemnity",
+			title: t("nav.photographyThree", "Double Indemnity"),
 			src: "/double-indemnity-left-1.webp",
-			href: "/photography/double-indemnity",
-			alt: "Double Indemnity photo series inspired by classic noir cinema.",
+			href: makeHref("/photography/double-indemnity"),
+			alt: t("photographyThree.meta.imageAlt", "Double Indemnity photo series inspired by classic noir cinema."),
 		},
 	];
 
@@ -144,9 +158,11 @@ export const Mobile = () => {
 						<h1
 							id="ktwk-title"
 							itemProp="name headline"
-							className="font-display text-end leading-22 text-[5rem] xs:text-[6rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+							className="font-display text-end leading-24 text-[4.6rem] xs:text-[5.5rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						>
-							Kill them<br /> with <br /> Kindness
+							{t("photographyOne.title.titleOne", "Kill them")}
+							<br /> {t("photographyOne.title.titleTwo", "with")} <br />{" "}
+							{t("photographyOne.title.titleThree", "Kindness")}
 						</h1>
 						<meta itemProp="inLanguage" content="en" />
 					</header>
@@ -157,13 +173,16 @@ export const Mobile = () => {
 								type="button"
 								onClick={() => openAt(0)}
 								className="block w-full cursor-zoom-in"
-								aria-label="Open image: Primary poster"
+								aria-label={t("photographyOne.slides.primaryAria", "Open image: Primary poster")}
 							>
 								<img
 									src="/kill-them-with-kindness-1.webp"
 									srcSet="/kill-them-with-kindness-1@800.webp 800w, /kill-them-with-kindness-1.webp 1600w"
 									sizes="(max-width: 640px) 100vw, 640px"
-									alt="Primary poster: a symbolic still-life that frames empathy as strength."
+									alt={t(
+										"photographyOne.slides.primary",
+										"Primary poster: a symbolic still-life that frames empathy as strength."
+									)}
 									width={1600}
 									height={2000}
 									className="object-cover w-full h-auto"
@@ -174,7 +193,7 @@ export const Mobile = () => {
 								/>
 							</button>
 							<figcaption className="sr-only">
-								Kill Them With Kindness – primary poster artwork.
+								{t("photographyOne.slides.primaryCaption", "Kill Them With Kindness – primary poster artwork.")}
 							</figcaption>
 						</figure>
 
@@ -184,7 +203,7 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(1)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Bouquet study"
+									aria-label={t("photographyOne.slides.bouquetAria", "Open image: Bouquet study")}
 								>
 									<img
 										src="/kill-them-with-kindness-2.webp"
@@ -198,7 +217,7 @@ export const Mobile = () => {
 										decoding="async"
 									/>
 								</button>
-								<figcaption className="sr-only">Bouquet Study.</figcaption>
+								<figcaption className="sr-only">{t("photographyOne.slides.bouquetCaption", "Bouquet Study.")}</figcaption>
 							</figure>
 
 							<figure className="w-1/2 min-w-0">
@@ -206,13 +225,13 @@ export const Mobile = () => {
 									type="button"
 									onClick={() => openAt(2)}
 									className="block w-full cursor-zoom-in"
-									aria-label="Open image: Rose & Grenade"
+									aria-label={t("photographyOne.slides.roseGrenadeAria", "Open image: Rose & Grenade")}
 								>
 									<img
 										src="/kill-them-with-kindness-3.webp"
 										srcSet="/kill-them-with-kindness-3@600.webp 600w, /kill-them-with-kindness-3.webp 1200w"
 										sizes="(max-width: 640px) 50vw, 320px"
-										alt="Rose & Grenade still-life emphasizing peace over power."
+										alt={t("photographyOne.slides.roseGrenade", "Rose & Grenade still-life emphasizing peace over power.")}
 										width={1200}
 										height={1600}
 										className="object-contain w-full h-auto"
@@ -220,7 +239,9 @@ export const Mobile = () => {
 										decoding="async"
 									/>
 								</button>
-								<figcaption className="sr-only">Rose & Grenade.</figcaption>
+								<figcaption className="sr-only">
+									{t("photographyOne.slides.roseGrenadeCaption", "Rose & Grenade.")}
+								</figcaption>
 							</figure>
 						</div>
 					</div>
@@ -231,17 +252,22 @@ export const Mobile = () => {
 						className="flex text-sm 2xl:text-base w-full text-[#505050] font-serif justify-start text-justify items-end gap-4 flex-col"
 					>
 						<p itemProp="description" className="text-lg font-bold italic">
-							What if empathy were more common than conflict? What if kindness—not violence—was the loudest
-							force in the room? In that world, war would have no place.
+							{t(
+								"photographyOne.headText",
+								"What if empathy were more common than conflict? What if kindness—not violence—was the loudest force in the room? In that world, war would have no place."
+							)}
 						</p>
 						<p className="text-base" itemProp="about">
-							True to its name, this project delivers a striking visual message: a call to disarm not just
-							physically, but emotionally.
+							{t(
+								"photographyOne.text.textOne",
+								"True to its name, this project delivers a striking visual message: a call to disarm not just physically, but emotionally."
+							)}
 						</p>
 						<p className="text-base">
-							Each photo was meticulously staged in the studio under identical lighting, then artfully composited
-							in Adobe Photoshop to create seamless, visually arresting narratives that challenge our perception
-							of strength, peace, and humanity.
+							{t(
+								"photographyOne.text.textTwo",
+								"Each photo was meticulously staged in the studio under identical lighting, then artfully composited in Adobe Photoshop to create seamless, visually arresting narratives that challenge our perception of strength, peace, and humanity."
+							)}
 						</p>
 					</section>
 
@@ -251,7 +277,7 @@ export const Mobile = () => {
 								id="see-more-like-this"
 								className="font-display text-[#363636] text-left [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636] text-2xl"
 							>
-								See more like this
+								{t("shared.seeMoreLikeThis", "See more like this")}
 							</h2>
 						</ScreenTextFit>
 
@@ -304,24 +330,42 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Kill Them with Kindness – Conceptual Photo Series by Amna Kolić";
-	const description =
-		"A conceptual photo series using staged lighting and compositing to present empathy as resistance. Explore the visual narrative and process behind each image.";
-	const url = "/photography/kill-them-with-kindness";
-	const image = "/kill-them-with-kindness-right.webp";
-	const imageAlt = "Conceptual portrait from the ‘Kill Them with Kindness’ photo series.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fb?: string) => translate(lang, `photographyOne.meta.${k}`, fb);
+
+	const title = t(
+		"title",
+		"Kill Them with Kindness – Conceptual Photo Series by Amna Kolić"
+	);
+	const description = t(
+		"description",
+		"A conceptual photo series using staged lighting and compositing to present empathy as resistance. Explore the visual narrative and process behind each image."
+	);
+
+	const urlPath = `/${lang}/photography/kill-them-with-kindness`;
+	const url = `${BASE_URL}${urlPath}`;
+	const image = `${BASE_URL}/kill-them-with-kindness-right.webp`;
+	const imageAlt = t(
+		"imageAlt",
+		"Conceptual portrait from the ‘Kill Them with Kindness’ photo series."
+	);
+
+	const locale = lang === "ba" ? "bs_BA" : "en_US";
 
 	return [
 		{ title },
 		{ name: "description", content: description },
 		{
 			name: "keywords",
-			content:
+			content: t(
+				"keywords",
 				"conceptual photography, photo series, studio lighting, compositing, visual storytelling, anti-war art, empathy in art, editorial photography, portfolio"
+			),
 		},
 		{ name: "author", content: "Amna Kolić" },
 		{ name: "robots", content: "index,follow" },
+
 		{ property: "og:type", content: "article" },
 		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
 		{ property: "og:title", content: title },
@@ -332,19 +376,17 @@ export function meta() {
 		{ property: "og:image:type", content: "image/webp" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
-		{ property: "og:locale", content: "en_US" },
+		{ property: "og:locale", content: locale },
 		{ property: "article:section", content: "Photography" },
 		{ property: "article:author", content: "Amna Kolić" },
-		{ property: "article:tag", content: "Conceptual Photography" },
-		{ property: "article:tag", content: "Studio Lighting" },
-		{ property: "article:tag", content: "Compositing" },
+
 		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

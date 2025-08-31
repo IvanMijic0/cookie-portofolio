@@ -1,8 +1,11 @@
 import { forwardRef } from "react";
 import { PBottom, PTop } from "~/assets";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { photographyNavButtons } from "~/config";
+import { BASE_URL, photographyNavButtons } from "~/config";
 import { motion } from 'framer-motion';
+import { useTranslate } from "~/context/I18nProvider";
+import { translate, type Lang } from "~/i18n/i18n";
+import type { MetaFunction } from "react-router";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
@@ -18,8 +21,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	</LeftPage>
 ));
 
-export const Right = forwardRef<HTMLDivElement>((_, ref) => (
-	<RightPage ref={ref} showBookmark>
+export const Right = forwardRef<HTMLDivElement>((_, ref) => {
+	const { t } = useTranslate();
+
+	return <RightPage ref={ref} showBookmark>
 		<article
 			className="absolute px-12 pb-8 2xl:py-12 inset-0 z-20 flex items-start justify-between flex-col text-white"
 			itemScope
@@ -27,17 +32,18 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			aria-labelledby="photography-title"
 		>
 			<h1 id="photography-title" className="sr-only" itemProp="name">
-				Photography &amp; Editing
+				{t("photography.title.titleOne", "Photography")} &amp;{" "}
+				{t("photography.title.titleTwo", "Editing")}
 			</h1>
 			<div aria-hidden="true">
 				<PTop className="w-[30rem] h-[30rem] 2xl:w-auto 2xl:h-auto" />
 			</div>
-			<div className="flex  justify-center items-end pl-14 flex-col" aria-hidden="true">
+			<div className="flex gap-2 justify-center items-end pl-14 flex-col" aria-hidden="true">
 				<h2 className="text-[#363636] text-[3.4rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
-					PHOTOGRAPHY
+					{t("photography.title.titleOne", "PHOTOGRAPHY")}
 				</h2>
 				<p className="text-3xl 2xl:text-5xl text-[#505050] tracking-[1rem] 2xl:tracking-[0.45em] font-display italic [-webkit-text-stroke:1px_#505050] [text-stroke:1px_#505050]">
-					and editing
+					{t("photography.title.titleTwo", "and editing")}
 				</p>
 			</div>
 			<div className="flex w-full items-end justify-between gap-3">
@@ -54,7 +60,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 							</dd>
 						</div>
 						<div className="flex justify-end gap-1">
-							<dt className="font-bold">Photographer:</dt>
+							<dt>{t("photography.information", "Photographer")}:</dt>
 							<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
 								<span itemProp="name">Amna Kolić</span>
 							</dd>
@@ -64,9 +70,11 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			</div>
 		</article>
 	</RightPage>
-));
+});
 
 export const Mobile = () => {
+	const { t, makeHref } = useTranslate();
+
 	return (
 		<MobileWrapper>
 			<div className="relative h-svh w-full [overflow:clip]">
@@ -106,7 +114,7 @@ export const Mobile = () => {
 					</div>
 					<div className="pb-6 w-full pt-2 text-center space-y-2">
 						<h2 className="text-[#363636] text-[2.5rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
-							PHOTOGRAPHY
+							{t("photography.title.titleOne", "PHOTOGRAPHY")}
 						</h2>
 						<nav
 							aria-label="Photography section navigation"
@@ -118,7 +126,7 @@ export const Mobile = () => {
 								initial={false}
 								transition={{ duration: 0.2, ease: "easeInOut" }}
 							>
-								{photographyNavButtons.map(({ label, to }) => (
+								{photographyNavButtons(t, makeHref).map(({ label, to }) => (
 									<a
 										key={label}
 										href={to}
@@ -150,7 +158,7 @@ export const Mobile = () => {
 									</dd>
 								</div>
 								<div className="flex flex-col xs:flex-row justify-end gap-1">
-									<dt className="font-bold">Photographer:</dt>
+									<dt>{t("photography.information", "Photographer")}:</dt>
 									<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
 										<span itemProp="name">Amna Kolić</span>
 									</dd>
@@ -164,43 +172,41 @@ export const Mobile = () => {
 	);
 };
 
-export function meta() {
-	const title = "Creative Photography & Editing Projects | Amna Kolić Portfolio";
-	const description =
-		"Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives.";
-	const url = "/photography";
-	const image = "/photography-intro.webp";
-	const imageAlt = "Photography & editing title spread with typographic treatment.";
+export const meta: MetaFunction = ({ params }) => {
+	const lang: Lang = params.lang === "ba" ? "ba" : "en";
+	const t = (k: string, fallback?: string) =>
+		translate(lang, `photography.meta.${k}`, fallback);
+
+	const title = t(
+		"title",
+		"Creative Photography & Editing Projects | Amna Kolić Portfolio"
+	);
+	const description = t(
+		"description",
+		"Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives."
+	);
+	const url = `${BASE_URL}/${lang}/photography`;
+	const image = `${BASE_URL}/photography-intro.webp`;
+	const imageAlt = t(
+		"imageAlt",
+		"Photography & editing title spread with typographic treatment."
+	);
 
 	return [
 		{ title },
 		{ name: "description", content: description },
-		{
-			name: "keywords",
-			content: "photography, photo editing, studio lighting, compositing, editorial photography, visual storytelling, portfolio"
-		},
 		{ name: "author", content: "Amna Kolić" },
-		{ name: "robots", content: "index,follow" },
-		{ property: "og:type", content: "article" },
-		{ property: "og:site_name", content: "Amna Kolić Portfolio" },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
-		{ property: "og:image:width", content: "1200" },
-		{ property: "og:image:height", content: "630" },
-		{ property: "og:locale", content: "en_US" },
-		{ property: "article:section", content: "Photography" },
-		{ property: "article:author", content: "Amna Kolić" },
-		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },
 		{ name: "twitter:image:alt", content: imageAlt },
 	];
-}
+};
 
 export const loader = () => null;
 

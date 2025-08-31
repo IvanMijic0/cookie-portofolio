@@ -15,6 +15,16 @@ type LinksOverlayProps = {
 	normalize: NormalizeFn;
 };
 
+const switcherV = {
+	hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
+	show: {
+		opacity: 1,
+		y: 0,
+		filter: "blur(0px)",
+		transition: { type: "spring", stiffness: 320, damping: 24 }
+	}
+};
+
 const Nav = () => {
 	const [active, setActive] = useState(false);
 	const { pathname } = useLocation();
@@ -188,9 +198,15 @@ const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 					);
 				})}
 			</motion.ol>
-			<div className='pt-1 xs:pt-4'>
+			<motion.div
+				className="pt-1 xs:pt-4"
+				variants={switcherV as Variants}
+				layout
+				whileHover={{ scale: 1.01 }}
+				whileTap={{ scale: 0.99 }}
+			>
 				<LanguageSwitcher />
-			</div>
+			</motion.div>
 		</motion.div>
 	);
 };

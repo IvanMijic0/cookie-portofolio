@@ -94,23 +94,23 @@ export const contactButtons = [
 	}
 ]
 
-export const photographyNavButtons = [
-	{ label: "Kindness", to: "/photography/kill-them-with-kindness" },
-	{ label: "Human Rights", to: "/photography/human-rights" },
-	{ label: "Film Noir", to: "/photography/double-indemnity" },
-]
+export const photographyNavButtons = (t: TFn, makeHref: (p: string) => string) => [
+	{ label: t("photography.meta.shortOne"), to: makeHref("/photography/kill-them-with-kindness") },
+	{ label: t("photography.meta.shortTwo"), to: makeHref("/photography/human-rights") },
+	{ label: t("photography.meta.shortThree"), to: makeHref("/photography/double-indemnity") },
+];
 
-export const graphicDesignNavButtons = [
-	{ label: "Kreativ Fest", to: "/graphic-design/kreativ-festival-art-direction" },
-	{ label: "Doli Bel", to: "/graphic-design/sjecas-li-se-doli-bel" },
-	{ label: "Chippsters", to: "/graphic-design/chippsters-logo" },
-]
+export const graphicDesignNavButtons = (t: TFn, makeHref: (p: string) => string) => [
+	{ label: t("graphicDesign.meta.shortOne"), to: makeHref("/graphic-design/kreativ-festival-art-direction") },
+	{ label: t("graphicDesign.meta.shortTwo"), to: makeHref("/graphic-design/sjecas-li-se-doli-bel") },
+	{ label: t("graphicDesign.meta.shortThree"), to: makeHref("/graphic-design/chippsters-logo") },
+];
 
-export const illustrationNavButtons = [
-	{ label: "Bosnian Fairy", to: "/illustration/mountain-fairy" },
-	{ label: "Austen Books", to: "/illustration/austen-in-watercolor" },
-	{ label: "Mural", to: "/illustration/mural" },
-]
+export const illustrationNavButtons = (t: TFn, makeHref: (p: string) => string) => [
+	{ label: t("illustration.meta.shortOne"), to: makeHref("/illustration/mountain-fairy") },
+	{ label: t("illustration.meta.shortTwo"), to: makeHref("/illustration/austen-in-watercolor") },
+	{ label: t("illustration.meta.shortThree"), to: makeHref("/illustration/mural") },
+];
 
 export const spreadMap: Record<string, SpreadModule> = {
 	"homepage": Homepage,
