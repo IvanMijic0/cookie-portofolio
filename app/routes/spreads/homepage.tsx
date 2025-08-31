@@ -236,7 +236,7 @@ export const Mobile = () => {
 				/>
 				<link itemProp="url" href="/homepage" />
 				<section
-					className="relative flex h-screen w-full flex-col items-start justify-start gap-10 xs:gap-20 overflow-hidden pt-24 xs:pt-32"
+					className="relative flex h-screen w-full flex-col items-start justify-start gap-8 xs:gap-20 overflow-hidden pt-24 xs:pt-32"
 					aria-labelledby="home-hero-title"
 				>
 					<div className="relative z-10 flex w-full flex-col items-start gap-2">
@@ -290,14 +290,14 @@ export const Mobile = () => {
 					decoding="async"
 				/>
 				<div
-					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[21rem] w-[21rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"
+					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[24rem] w-[24rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"
 					aria-hidden="true"
 				>
 					<div className="absolute inset-0 rounded-full bg-[linear-gradient(to_right,rgba(0,0,0,0.65)_0%,rgba(0,0,0,0.35)_80%,rgba(0,0,0,0)_100%)] bg-no-repeat bg-[length:100%_100%] mix-blend-multiply" />
 
 					<div className="absolute inset-0 flex flex-col items-center justify-end gap-10 pb-28">
 						<div className="px-4 text-end">
-							<p className="text-white italic text-3xl 2xl:text-4xl font-serif leading-tight">
+							<p className="text-white italic text-2xl xs:text-2xl font-serif leading-tight">
 								<span className="not-italic">
 									{t("homepage.headlineFour.titleOne", "The DIFFERENT")}
 								</span>
