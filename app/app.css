@@ -171,3 +171,7 @@ h1 {
     -webkit-user-select: text !important;
     user-select: text !important;
 }
+
+article {
+  --hero-y: 48%;
+}

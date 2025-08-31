@@ -24,7 +24,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute px-20 w-2/3 inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-center pb-12 2xl:pb-11 leading-[0.8]"
+			className="absolute px-20 w-2/3 top-[calc(50%_-_13.8rem)] inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-start leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/ContactPage"
 			itemID="/contact"
@@ -94,7 +94,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 		/>
 
 		<article
-			className="absolute top-0 bottom-0 right-0 left-auto w-2/3 z-10 px-20 flex flex-col items-end justify-center gap-8 leading-[0.8]"
+			className="absolute bottom-0 top-[calc(50%_-_10rem)]  right-0 left-auto w-2/3 z-10 px-20 flex flex-col items-end justify-start gap-8 leading-[0.8]"
 			aria-labelledby="contact-chat-title"
 		>
 			<div className="w-full text-center">
@@ -119,7 +119,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					)}
 				</span>
 			</h2>
-
 			<div className="w-full text-center">
 				<p className="text-[#505050] font-serif leading-6 2xl:leading-7 text-base 2xl:text-lg text-justify">
 					{t(
