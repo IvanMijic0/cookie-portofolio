@@ -82,13 +82,15 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 					</h3>
 					<div className="flex items-center gap-2">
 						{contactButtons.map(({ label, to, icon: Icon }) => {
-							const isExternal = to?.startsWith("http");
+							if (!to) return null;
+
+							const isExternal = to.startsWith("http");
 							return (
 								<motion.a
 									key={label}
-									href={to || undefined}
+									href={to}
 									target={isExternal ? "_blank" : undefined}
-									rel={isExternal ? "noopener noreferrer me" : undefined}
+									rel={isExternal ? "noopener noreferrer me" : "me"}
 									aria-label={label}
 									title={label}
 									whileHover={{ scale: 1.05, rotate: -1 }}

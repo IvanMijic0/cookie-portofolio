@@ -25,7 +25,7 @@ import { useFlipbook } from "~/context/flipbook";
 import { useInitialAssets } from "~/hooks";
 import type { SpreadKey } from "~/types";
 import clsx from "clsx";
-import { I18nProvider, useTranslate } from "~/context/I18nProvider";
+import { I18nProvider } from "~/context/I18nProvider";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const ua = request.headers.get("user-agent") ?? "";
@@ -120,6 +120,7 @@ const DesktopFlipbook = () => {
 				if (height < 850) return 0.04;
 				if (height < 950) return 0.05;
 				if (height < 1100) return 0.06;
+				if (height < 2600) return 0.14;
 				return 0.1;
 			})();
 
