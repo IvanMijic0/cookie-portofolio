@@ -142,7 +142,7 @@ export const Mobile = () => {
 					</div>
 					<div className="flex w-full items-end justify-between gap-3">
 						<div aria-hidden="true">
-							<PBottom className="w-[11.7rem] leading-0 h-auto" />
+							<PBottom className="w-[10rem] xs:w-[11.7rem] leading-0 h-auto" />
 						</div>
 						<div className="min-w-0 xs:text-right text-[#505050] font-serif text-xs">
 							<dl
@@ -151,14 +151,14 @@ export const Mobile = () => {
 								itemScope
 								itemType="https://schema.org/CreativeWork"
 							>
-								<div className="flex flex-col xs:flex-row justify-end gap-1">
+								<div className="flex flex-row justify-end gap-1">
 									<dt className="font-bold">Model:</dt>
 									<dd itemProp="actor" itemScope itemType="https://schema.org/Person">
 										<span itemProp="name">Elma Rožajac</span>
 									</dd>
 								</div>
 								<div className="flex flex-col xs:flex-row justify-end gap-1">
-									<dt>{t("photography.information", "Photographer")}:</dt>
+									<dt className='font-bold'>{t("photography.information", "Photographer")}:</dt>
 									<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
 										<span itemProp="name">Amna Kolić</span>
 									</dd>

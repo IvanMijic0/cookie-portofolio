@@ -177,7 +177,6 @@ export const Mobile = () => {
 							>
 								<img
 									src="/kill-them-with-kindness-1.webp"
-									srcSet="/kill-them-with-kindness-1@800.webp 800w, /kill-them-with-kindness-1.webp 1600w"
 									sizes="(max-width: 640px) 100vw, 640px"
 									alt={t(
 										"photographyOne.slides.primary",
@@ -207,7 +206,6 @@ export const Mobile = () => {
 								>
 									<img
 										src="/kill-them-with-kindness-2.webp"
-										srcSet="/kill-them-with-kindness-2@600.webp 600w, /kill-them-with-kindness-2.webp 1200w"
 										sizes="(max-width: 640px) 50vw, 320px"
 										alt="Bouquet study juxtaposing tenderness and tension."
 										width={1200}
@@ -229,7 +227,6 @@ export const Mobile = () => {
 								>
 									<img
 										src="/kill-them-with-kindness-3.webp"
-										srcSet="/kill-them-with-kindness-3@600.webp 600w, /kill-them-with-kindness-3.webp 1200w"
 										sizes="(max-width: 640px) 50vw, 320px"
 										alt={t("photographyOne.slides.roseGrenade", "Rose & Grenade still-life emphasizing peace over power.")}
 										width={1200}

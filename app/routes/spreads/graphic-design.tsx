@@ -116,7 +116,6 @@ export const Mobile = () => {
 				>
 					<img
 						src="/graphic-design-mobile.webp"
-						srcSet="/graphic-design-mobile-800.webp 800w, /graphic-design-mobile.webp 1600w"
 						sizes="100vw"
 						alt="Graphic Design — full-bleed hero showcasing editorial artwork"
 						className="block h-screen w-full object-cover"
@@ -189,7 +188,6 @@ export const Mobile = () => {
 				<div className="absolute inset-x-0 bottom-0 z-30 flex justify-center">
 					<img
 						src="/graphic-design-cards.webp"
-						srcSet="/graphic-design-cards-700.webp 700w, /graphic-design-cards.webp 1200w"
 						sizes="(max-width: 420px) 14rem, 92vw"
 						alt="Highlights of recent graphic design projects: identity, editorial, and print cards"
 						className="h-auto w-[14rem] max-w-[14rem] xs:w-[92vw] xs:max-w-[720px] object-contain"

@@ -189,7 +189,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 });
 
 export const Mobile = () => {
-	const { t } = useTranslate();
+	const { t, makeHref } = useTranslate();
 
 	const [opened, setOpened] = useState(false);
 	const [index, setIndex] = useState(0);
@@ -233,7 +233,7 @@ export const Mobile = () => {
 			id: 1,
 			title: t("illustrationOne.title.titleOne", "Mountain") + " " + t("illustrationOne.title.titleTwo", "Fairy"),
 			src: "/mountain-fairy-right.webp",
-			href: "/illustration/mountain-fairy",
+			href: makeHref ? makeHref("/illustration/mountain-fairy") : "/illustration/mountain-fairy",
 			alt: t(
 				"illustrationTwo.related.mountainFairy",
 				"Mountain Fairy — Bosnian planinska vila illustrated with wildflowers and horns in a warm forest."
@@ -243,7 +243,7 @@ export const Mobile = () => {
 			id: 2,
 			title: t("illustrationThree.title.titleOne", "Bosnia in") + " " + t("illustrationThree.title.titleThree", "of Europe"),
 			src: "/mural.webp",
-			href: "/photography/mural",
+			href: makeHref ? makeHref("/illustration/mural") : "/illustration/mural",
 			alt: t(
 				"illustrationTwo.related.mural",
 				"Bosnia in the Heart of Europe — mural artwork blending cultural heritage and contemporary design."
