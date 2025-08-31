@@ -23,7 +23,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				loading="eager"
 				fetchPriority="high"
 			/>
-			<div className="absolute inset-0 z-20 px-16 py-10 2xl:py-16 flex flex-col justify-between">
+			<div className="absolute inset-0 z-20 px-16 py-10 2xl:py-16 flex flex-col justify1-between">
 				<nav aria-label="Table of contents" className="text-[#272727]">
 					<h2 className="text-5xl font-serif pb-4">{t("nav.contents", "contents")}</h2>
 					<ol className="space-y-6">
@@ -37,9 +37,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 								</span>
 								<div className="flex flex-col">
 									<a
-										href={`/${section.to}`}
+										href={section.to}
 										onClick={(e) => {
 											if (!ready) return;
+											if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 											e.preventDefault();
 											goToSpread(section.to);
 										}}
@@ -51,11 +52,12 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 										{section.items.map((item) => (
 											<li key={item.to}>
 												<a
-													href={`/${item.to}`}
+													href={`${item.to}`}
 													onClick={(e) => {
 														if (!ready) return;
+														if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
 														e.preventDefault();
-														goToSpread(item.to);
+														goToSpread(section.to);
 													}}
 													className="font-serif italic text-md 2xl:text-lg cursor-pointer hover:opacity-90 transition"
 												>
@@ -264,23 +266,29 @@ export const Mobile = () => {
 							portfolio
 						</p>
 					</div>
+
 					<div className="relative z-30">
-						<h3 className="w-[13.3rem] font-serif text-3xl text-white">
+						<h2 className="w-[13.3rem] font-serif text-3xl text-white">
 							<span className="flex flex-col">
 								<span>{t("homepage.headlineOne.titleOne", "GRAPHIC")}</span>
-								<span className="flex w-full justify-end">{t("homepage.headlineOne.titleTwo", "DESIGN")}
+								<span className="flex w-full justify-end">
+									{t("homepage.headlineOne.titleTwo", "DESIGN")}
 								</span>
 							</span>
-						</h3>
-						<h3 className="font-serif text-2xl text-[#272727]">
+						</h2>
+
+						<h2 className="font-serif text-2xl text-[#272727]">
 							{t("homepage.headlineTwo", "ILLUSTRATION")}
-						</h3>
-						<h3 className="w-[13rem] font-serif text-2xl text-white">
+						</h2>
+
+						<h2 className="w-[13rem] font-serif text-2xl text-white">
 							<span className="flex flex-col">
-								<span className="flex w-full justify-end">{t("homepage.headlineThree.titleOne", "PHOTO")}</span>
+								<span className="flex w-full justify-end">
+									{t("homepage.headlineThree.titleOne", "PHOTO")}
+								</span>
 								<span>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
 							</span>
-						</h3>
+						</h2>
 					</div>
 				</section>
 				<img
@@ -291,6 +299,7 @@ export const Mobile = () => {
 					className="pointer-events-none absolute bottom-0 -right-6 z-20 max-h-[97vh] max-w-[97vw] object-contain object-bottom-right xs:-right-24 xs:max-h-[122vh] xs:max-w-[122vw]"
 					loading="eager"
 					decoding="async"
+					fetchPriority="high"
 				/>
 				<div
 					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[24rem] w-[24rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"

@@ -24,7 +24,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute px-20 w-2/3 top-[calc(50%_-_13.2rem)] 3xl:top-[calc(50%_-_12.5rem)] inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-start leading-[0.8]"
+			className="absolute px-20 w-2/3 top-[calc(50%_-_13.5rem)] 3xl:top-[calc(50%_-_12.5rem)] inset-0 z-10 text-[#505050] flex items-start gap-12 flex-col justify-start leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/ContactPage"
 			itemID="/contact"

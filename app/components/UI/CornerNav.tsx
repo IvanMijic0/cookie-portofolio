@@ -239,6 +239,7 @@ const HamburgerButton = ({
 				animate={active ? "open" : "closed"}
 				onClick={() => setActive(pv => !pv)}
 				className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all hover:bg-black/20"
+				aria-label={active ? "Close navigation menu" : "Open navigation menu"}
 			>
 				<motion.span
 					variants={HAMBURGER_VARIANTS.top}

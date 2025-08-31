@@ -79,11 +79,12 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 										<li key={section.title}>
 											<a
 												onClick={(e) => {
+													if (!ready) return;
 													e.preventDefault();
-													if (ready) goToSpread(section.to);
-													setOpen(false);
+													goToSpread(section.to);
 												}}
 												className="block cursor-pointer font-sans font-extrabold uppercase tracking-wide text-md mb-2 hover:opacity-90"
+												href={section.to}
 											>
 												{section.title}
 											</a>
@@ -91,10 +92,11 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 												{section.items.map((item) => (
 													<li key={item.to}>
 														<a
+															href={item.to}
 															onClick={(e) => {
+																if (!ready) return;
 																e.preventDefault();
-																if (ready) goToSpread(item.to);
-																setOpen(false);
+																goToSpread(section.to);
 															}}
 															className="block cursor-pointer text-sm font-serif italic text-white/90 hover:text-white transition"
 														>
