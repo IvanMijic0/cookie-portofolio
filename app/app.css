@@ -66,7 +66,7 @@
     --font-display: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
     --font-logo: "Athene Voyage", "Libre Bodoni", Georgia, serif;
     --breakpoint-xxs: 280px; 
-    --breakpoint-xs:  380px; 
+    --breakpoint-xs:  400px; 
 }
 
 h1 {
