@@ -21,7 +21,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute px-12 2xl:px-16 gap-4 2xl:gap-0 w-11/12 2xl:w-[80%] py-12 inset-0 z-10 flex items-start flex-col justify-between text-[#363636] leading-[0.8]"
+			className="absolute px-12 2xl:px-16 gap-4 2xl:gap-0 w-11/12 2xl:w-[98%] py-12 inset-0 z-10 flex items-start flex-col justify-between text-[#363636] leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/VisualArtwork"
 			itemID="/illustration/mountain-fairy"
@@ -47,7 +47,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 					</span>
 				</p>
 			</header>
-			<p className="text-base font-serif 2xl:text-lg font-bold italic  text-justify" itemProp="description">
+			<p className="text-base font-serif 2xl:text-lg font-bold italic text-justify" itemProp="description">
 				{t(
 					"illustrationOne.text.textOne",
 					"This digital illustration depicts the Bosnian mountain fairy, or planinska vila, as part of an ongoing series dedicated to visualizing forgotten figures of Bosnian folklore."

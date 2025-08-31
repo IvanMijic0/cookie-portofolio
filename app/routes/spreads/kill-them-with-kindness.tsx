@@ -49,7 +49,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 		>
-			<div className="flex flex-col justify-start 2xl:gap-20 gap-16 h-full text-right">
+			<div className="flex flex-col justify-start 2xl:gap-6 gap-16 h-full text-right">
 				<header>
 					<h1
 						id="ktwk-title"

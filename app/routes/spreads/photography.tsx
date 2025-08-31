@@ -36,22 +36,22 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				{t("photography.title.titleTwo", "Editing")}
 			</h1>
 			<div aria-hidden="true">
-				<PTop className="w-[30rem] h-[30rem] 2xl:w-auto 2xl:h-auto" />
+				<PTop className="w-[30rem] h-[30rem] 2xl:w-full 2xl:h-full" />
 			</div>
 			<div className="flex gap-2 justify-center items-end pl-14 flex-col" aria-hidden="true">
-				<h2 className="text-[#363636] text-[3.4rem] leading-12 2xl:text-[4.8rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
+				<h2 className="text-[#363636] text-[3.4rem] leading-12 2xl:text-[4rem] font-display [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]">
 					{t("photography.title.titleOne", "PHOTOGRAPHY")}
 				</h2>
-				<p className="text-3xl 2xl:text-5xl text-[#505050] tracking-[1rem] 2xl:tracking-[0.45em] font-display italic [-webkit-text-stroke:1px_#505050] [text-stroke:1px_#505050]">
+				<p className="text-3xl 2xl:text-4xl text-[#505050] tracking-[1rem] 2xl:tracking-[0.45em] font-display italic [-webkit-text-stroke:1px_#505050] [text-stroke:1px_#505050]">
 					{t("photography.title.titleTwo", "and editing")}
 				</p>
 			</div>
 			<div className="flex w-full items-end justify-between gap-3">
 				<div aria-hidden="true">
-					<PBottom className="shrink-0 w-60 2xl:w-80" />
+					<PBottom className="shrink-0 w-60 2xl:w-[calc(100%-1rem)]" />
 				</div>
 				<div
-					className="min-w-0 text-right text-[#505050] font-serif text-xs 2xl:text-base pr-4 sm:pr-6 xl:pr-12 2xl:pr-[5rem]">
+					className="min-w-0 text-right text-[#505050] font-serif text-xs 2xl:text-base pr-4 sm:pr-6">
 					<dl className="space-y-1" itemProp="about" itemScope itemType="https://schema.org/CreativeWork">
 						<div className="flex justify-end gap-1">
 							<dt className="font-bold">Model:</dt>
@@ -60,7 +60,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 							</dd>
 						</div>
 						<div className="flex justify-end gap-1">
-							<dt>{t("photography.information", "Photographer")}:</dt>
+							<dt className='font-bold'>{t("photography.information", "Photographer")}:</dt>
 							<dd itemProp="creator" itemScope itemType="https://schema.org/Person">
 								<span itemProp="name">Amna Kolić</span>
 							</dd>
@@ -101,7 +101,7 @@ export const Mobile = () => {
 					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
 				</div>
 				<article
-					className="absolute px-6 pb-8 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+					className="absolute px-6 pb-8 py-4 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
 					itemScope
 					itemType="https://schema.org/WebPageSection"
 					aria-labelledby="photography-title"

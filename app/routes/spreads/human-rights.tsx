@@ -55,7 +55,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			</aside>
 
 			<article
-				className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex justify-start gap-12 2xl:gap-16 items-center"
+				className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex gap-4 justify-between items-center"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
 				itemID="/human-rights"

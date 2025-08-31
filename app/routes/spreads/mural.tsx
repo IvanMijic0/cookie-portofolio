@@ -26,11 +26,11 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			aria-labelledby="mural-title"
 		>
 			<link itemProp="mainEntityOfPage" href="/illustration/mural" />
-			<header className="flex flex-col items-start gap-8">
+			<header className="flex flex-col items-start gap-4">
 				<div>
 					<h1
 						id="mural-title"
-						className="text-[6rem] text-left tracking-wider 2xl:text-[7rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+						className="text-[6rem] text-left tracking-wider 2xl:text-[6rem] leading-22 2xl:leading-22 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline name"
 					>
 						{t("illustrationThree.title.titleOne", "Bosnia in")}{" "}
@@ -45,7 +45,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 					</span>
 				</p>
 			</header>
-			<div className="flex 2xl:pt-8 flex-col gap-4 2xl:gap-8 justify-start w-[84%] 2xl:w-[80%]">
+			<div className="flex 2xl:pt-8 flex-col gap-4 2xl:gap-6 justify-start w-[84%] 2xl:w-[90%]">
 				<p
 					className="text-base font-serif leading-5 2xl:leading-6 2xl:text-lg font-bold italic text-justify"
 					itemProp="description"

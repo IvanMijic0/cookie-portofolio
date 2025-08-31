@@ -95,7 +95,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<RightPage ref={ref} showBookmark>
 			<article
-				className="px-14 py-12 grid grid-cols-2 gap-12 w-full h-full"
+				className="px-14 py-6 grid grid-cols-2 gap-12 w-full h-full"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
 				itemID="/graphic-design/kreativ-festival-art-direction"
@@ -132,12 +132,6 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 						{t(
 							"graphicDesignOne.text.textFour",
 							"Across posters, leaflets, and social media, the identity maintains a consistent, tactile quality while adapting to different formats."
-						)}
-					</p>
-					<p className="text-xs 2xl:text-base">
-						{t(
-							"graphicDesignOne.text.textFive",
-							"This concept celebrates imperfection, spontaneity, and the power of student expression. It doesn’t just promote an event—it visually embodies its energy, reminding every viewer: you can be kreativ too."
 						)}
 					</p>
 				</div>

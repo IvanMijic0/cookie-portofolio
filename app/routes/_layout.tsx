@@ -108,21 +108,21 @@ const DesktopFlipbook = () => {
 				if (width < 1024) return 0.02;
 				if (width < 1280) return 0.03;
 				if (width < 1536) return 0.08;
-				if (width < 1650) return 0.1;
+				if (width < 1650) return 0.01;
 				if (width < 1720) return 0.05;
-				if (width < 1840) return 0.1;
-				if (height < 2000) return 0.3;
+				if (width < 1840) return 0.01;
+				if (height < 2000) return 0.02;
 				return 0.12;
 			})();
 
 			const marginY = (() => {
-				if (height < 600) return 0.02;
-				if (height < 720) return 0.03;
-				if (height < 850) return 0.04;
-				if (height < 950) return 0.05;
+				if (height < 600) return 0.01;
+				if (height < 720) return 0.01;
+				if (height < 850) return 0.01;
+				if (height < 950) return 0.01;
 				if (height < 1100) return 0.01;
-				if (height < 2000) return 0.04;
-				return 0.1;
+				if (height < 2000) return 0.01;
+				return 0.02;
 			})();
 
 			const availableWidth = Math.max(0, width * (1 - marginX * 2));

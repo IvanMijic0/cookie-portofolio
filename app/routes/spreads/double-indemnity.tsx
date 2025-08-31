@@ -53,7 +53,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			itemID="/photography/double-indemnity"
 		>
 			<link itemProp="url" href="/photography/double-indemnity" />
-			<div className="flex h-full justify-start flex-col items-end gap-8 2xl:gap-12">
+			<div className="flex h-full justify-between flex-col items-end gap-4">
 				<header className="flex flex-col gap-8">
 					<h1
 						className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 text-[#363636] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"

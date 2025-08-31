@@ -36,7 +36,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			/>
 
 			<article
-				className="absolute px-16 py-24 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
+				className="absolute px-16 py-20 inset-0 z-10 flex items-start flex-col justify-start text-[#363636] leading-[0.8]"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
 				itemID="/graphic-design/sjecas-li-se-doli-bel"
@@ -46,7 +46,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<div className="flex flex-col items-start justify-between h-full gap-2">
 					<header className="flex flex-col gap-1">
 						<h1
-							className="text-[6rem] text-right 2xl:text-[8rem] leading-22 2xl:leading-30 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+							className="text-[6rem] text-right 2xl:text-[7rem] leading-22 2xl:leading-24 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 							itemProp="headline"
 						>
 							{t("graphicDesignTwo.title.titleOne", "Sjećaš")}
@@ -67,7 +67,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 					<img
 						src={slides[0].src}
 						alt={slides[0].alt}
-						className="w-64 2xl:w-96 2xl:pb-8 object-cover z-0 select-none"
+						className="w-64 2xl:w-80 2xl:pb-8 object-cover z-0 select-none"
 						loading="eager"
 						fetchPriority="high"
 						itemProp="image"
@@ -92,7 +92,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			fetchPriority="high"
 		/>
 		<article
-			className="absolute font-serif px-16 2xl:px-24 pt-28 inset-0 z-10 flex items-end flex-col gap-4 justify-start text-[#505050] leading-[0.8]"
+			className="absolute font-serif px-16 2xl:pl-24 pt-28 inset-0 z-10 flex items-end flex-col gap-4 justify-start text-[#505050] leading-[0.6]"
 			itemScope
 			itemType="https://schema.org/CreativeWork"
 			itemID="/book/graphic-design/sjecas-li-se-doli-bel"
@@ -116,7 +116,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				<meta itemProp="address" content="Sarajevo, Bosnia and Herzegovina" />
 			</span>
 			<p
-				className="w-72 2xl:w-[20rem] text-justify text-base 2xl:text-lg font-bold italic"
+				className="w-72 2xl:w-[22rem] text-justify text-base 2xl:text-lg font-bold italic"
 				itemProp="description"
 			>
 				{t(
@@ -125,14 +125,14 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				)}
 			</p>
 
-			<p className="w-72 2xl:w-[20rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
+			<p className="w-72 2xl:w-[22rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
 				{t(
 					"graphicDesignTwo.text.textTwo",
 					"Drawing from the story’s themes of adolescence, loss, and emotional decay, I chose a vivid red background to reflect the intensity of the characters’ surroundings. In contrast, white handwritten typography symbolizes innocence that is gradually consumed by the world around it. The fragmented title layout forms a crooked house shape, referencing the confined and unstable spaces where much of the story takes place, from family homes to hotel rooms."
 				)}
 			</p>
 
-			<p className="w-72 2xl:w-[20rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
+			<p className="w-72 2xl:w-[22rem] text-justify text-sm 2xl:text-base" itemProp="articleBody">
 				{t(
 					"graphicDesignTwo.text.textThree",
 					"The handwritten typeface ties into the characters’ search for connection and learning, especially through the relationship between Doli and the protagonist. It evokes both vulnerability and a desire for understanding in a world that feels unstable. The accompanying brochure continues this narrative visually, with a circular, disoriented layout that mirrors the story’s emotional cycles and sense of imbalance. This identity captures the fragile, messy,  and deeply human essence of the play."

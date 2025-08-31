@@ -13,7 +13,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<article
-			className="absolute px-12 2xl:px-16 gap-6 2xl:gap-10 py-16 inset-0 z-10 flex items-center flex-col justify-start text-[#363636] leading-[0.8]"
+			className="absolute px-12 2xl:px-16 gap-6 2xl:gap-8 py-16 inset-0 z-10 flex items-center flex-col justify-start text-[#363636] leading-[0.8]"
 			itemScope
 			itemType="https://schema.org/AboutPage"
 			itemID="/about-me"
@@ -35,7 +35,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			<div aria-hidden="true">
 				<Star />
 			</div>
-			<div className="flex flex-col gap-4 w-5/6" itemProp="mainEntity">
+			<div className="flex flex-col gap-4 w-full" itemProp="mainEntity">
 				<p className="first-letter:float-left first-letter:mr-1 first-letter:mt-1 first-letter:text-[4rem] first-letter:leading-[0.8] font-serif leading-5 first-letter:font-serif first-letter:font-[400] first-letter:text-[#363636] text-justify">
 					{t(
 						"aboutMe.text.textOne",

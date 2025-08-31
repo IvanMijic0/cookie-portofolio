@@ -45,11 +45,10 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<div>
 					<h1
 						id="austen-watercolor-title"
-						className="text-[6rem] text-left tracking-widest 2xl:text-[7rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+						className="text-[6rem] text-left tracking-widest 2xl:text-[6rem] leading-22 2xl:leading-24 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline name"
 					>
-						{t("illustrationTwo.title.titleOne", "Austen in")}
-						{" "}
+						{t("illustrationTwo.title.titleOne", "Austen in")} {" "}
 						{t("illustrationTwo.title.titleTwo", "watercolor")}
 					</h1>
 				</div>
@@ -57,7 +56,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			<div className="flex pt-5 pr-5 items-start flex-col justify-start gap-3 2xl:gap-8">
 				<div className="flex justify-between items-start w-full">
 					<p
-						className="text-base w-[75%] 2xl:w-[70%] font-serif 2xl:text-lg font-bold italic text-justify"
+						className="text-base w-[75%] 2xl:w-[88%] font-serif 2xl:text-lg font-bold italic text-justify"
 						itemProp="description"
 					>
 						{t(
@@ -75,7 +74,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				</div>
 
 				<p
-					className="text-sm w-[75%] 2xl:w-[70%] 2xl:text-base font-serif text-justify"
+					className="text-sm w-[75%] 2xl:w-[80%] 2xl:text-base font-serif text-justify"
 					itemProp="artworkSurface"
 				>
 					{t(
@@ -85,7 +84,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				</p>
 
 				<p
-					className="text-sm w-[75%] 2xl:w-[70%] 2xl:text-base font-serif text-justify"
+					className="text-sm w-[75%] 2xl:w-[80%] 2xl:text-base font-serif text-justify"
 					itemProp="articleBody"
 				>
 					{t(
@@ -95,7 +94,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				</p>
 
 				<p
-					className="text-sm w-[75%] 2xl:w-[70%] 2xl:text-base font-serif text-justify"
+					className="text-sm w-[75%] 2xl:w-[80%] 2xl:text-base font-serif text-justify"
 					itemProp="articleBody"
 				>
 					{t(
