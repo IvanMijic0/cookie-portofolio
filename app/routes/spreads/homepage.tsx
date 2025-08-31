@@ -23,7 +23,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				loading="eager"
 				fetchPriority="high"
 			/>
-			<div className="absolute inset-0 z-20 px-16 py-10 2xl:py-16 flex flex-col justify1-between">
+			<div className="absolute inset-0 z-20 px-16 py-10 2xl:py-16 flex flex-col justify-between">
 				<nav aria-label="Table of contents" className="text-[#272727]">
 					<h2 className="text-5xl font-serif pb-4">{t("nav.contents", "contents")}</h2>
 					<ol className="space-y-6">
