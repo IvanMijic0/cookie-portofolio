@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useState, useEffect } from "react";
-import { AnimatePresence, motion, type Variants, type Transition } from "framer-motion";
+import { AnimatePresence, motion, type Variants, type Transition, useReducedMotion, MotionConfig } from "framer-motion";
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
@@ -113,101 +113,100 @@ const LinksOverlay = ({ current, normalize }: LinksOverlayProps) => {
 	);
 };
 
-const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
+
+export const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 	const { t, makeHref } = useTranslate();
 
 	const isActiveSection = (href: string) => {
 		const h = normalize(href);
 		return current === h || current.startsWith(h + "/");
 	};
-
 	const isActiveItem = (href: string) => normalize(href) === current;
 
 	return (
-		<motion.div
-			className="space-y-0 xs:space-y-2 overflow-y-auto p-12 pl-6 mt-6 xs:mt-18 md:pl-20"
-			variants={container}
-			initial="hidden"
-			animate="show"
-			exit="hidden"
-		>
-			<motion.h2 className="text-5xl xs:text-6xl font-serif pb-4" variants={titleV}>
-				contents
-			</motion.h2>
-
-			<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
-				{navSections(t, makeHref).map((section) => {
-					const sectionHref = `${section.to}`;
-					const sectionActive = isActiveSection(sectionHref);
-
-					return (
-						<motion.li
-							key={section.title}
-							className="grid grid-cols-[2ch_1fr] items-start gap-12"
-							variants={row}
-						>
-							<motion.span
-								className="text-right tabular-nums font-sans text-4xl xs:text-5xl font-light"
-								variants={numberV}
-							>
-								{section.pageNumber}
-							</motion.span>
-
-							<div className="flex flex-col gap-1">
-								<motion.a
-									variants={titleV}
-									href={sectionHref}
-									className={[
-										"font-sans text-xl xs:text-2xl font-black cursor-pointer transition",
-										sectionActive
-											? "text-[#379C8D] underline underline-offset-4 decoration-2"
-											: "hover:opacity-90",
-									].join(" ")}
-									whileHover={{ x: 2 }}
-									whileTap={{ scale: 0.98 }}
-								>
-									{section.title}
-								</motion.a>
-
-								<motion.ul className="ml-3 space-y-1" variants={subList}>
-									{section.items.map((item) => {
-										const itemHref = `${item.to}`;
-										const itemActive = isActiveItem(itemHref);
-
-										return (
-											<motion.li key={item.to} variants={subItem}>
-												<motion.a
-													href={itemHref}
-													className={[
-														"font-serif italic text-md xs:text-lg cursor-pointer transition",
-														itemActive
-															? "text-[#379C8D] underline underline-offset-4 decoration-2"
-															: "hover:opacity-90",
-													].join(" ")}
-													whileHover={{ x: 2 }}
-													whileTap={{ scale: 0.98 }}
-												>
-													{item.label}
-												</motion.a>
-											</motion.li>
-										);
-									})}
-								</motion.ul>
-							</div>
-						</motion.li>
-					);
-				})}
-			</motion.ol>
+		<MotionConfig reducedMotion="user">
 			<motion.div
-				className="pt-1 xs:pt-4"
-				variants={switcherV as Variants}
-				layout
-				whileHover={{ scale: 1.01 }}
-				whileTap={{ scale: 0.99 }}
+				className="space-y-0 xs:space-y-2 overflow-y-auto p-12 pl-6 mt-6 xs:mt-10 md:pl-20"
+				variants={container}
+				initial="hidden"
+				animate="show"
+				exit="hidden"
 			>
-				<LanguageSwitcher />
+				<div className="flex w-full justify-between items-start">
+					<motion.h2 className="text-5xl xs:text-6xl font-serif pb-4" variants={titleV}>
+						contents
+					</motion.h2>
+
+					<motion.div
+						className="pt-1 xs:pt-4"
+						variants={titleV}
+					>
+						<LanguageSwitcher />
+					</motion.div>
+				</div>
+
+				<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
+					{navSections(t, makeHref).map((section) => {
+						const sectionHref = `${section.to}`;
+						const sectionActive = isActiveSection(sectionHref);
+
+						return (
+							<motion.li
+								key={section.title}
+								layout="position"
+								className="grid grid-cols-[2ch_1fr] items-start gap-12"
+								variants={row}
+							>
+								<motion.span
+									className="text-right tabular-nums font-sans text-4xl xs:text-5xl font-light transform-gpu"
+									variants={numberV}
+								>
+									{section.pageNumber}
+								</motion.span>
+
+								<div className="flex flex-col gap-1">
+									<motion.a
+										variants={titleV}
+										href={sectionHref}
+										className={[
+											"font-sans text-xl xs:text-2xl font-black cursor-pointer transition-colors transform-gpu",
+											sectionActive
+												? "text-[#379C8D] underline underline-offset-4 decoration-2"
+												: "hover:opacity-90"
+										].join(" ")}
+									>
+										{section.title}
+									</motion.a>
+
+									<motion.ul className="ml-3 space-y-1" variants={subList}>
+										{section.items.map((item) => {
+											const itemHref = `${item.to}`;
+											const itemActive = isActiveItem(itemHref);
+
+											return (
+												<motion.li key={item.to} variants={subItem} layout="position">
+													<motion.a
+														href={itemHref}
+														className={[
+															"font-serif italic text-md xs:text-lg cursor-pointer transition-colors transform-gpu",
+															itemActive
+																? "text-[#379C8D] underline underline-offset-4 decoration-2"
+																: "hover:opacity-90"
+														].join(" ")}
+													>
+														{item.label}
+													</motion.a>
+												</motion.li>
+											);
+										})}
+									</motion.ul>
+								</div>
+							</motion.li>
+						);
+					})}
+				</motion.ol>
 			</motion.div>
-		</motion.div>
+		</MotionConfig>
 	);
 };
 
@@ -239,6 +238,7 @@ const HamburgerButton = ({
 				animate={active ? "open" : "closed"}
 				onClick={() => setActive(pv => !pv)}
 				className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all hover:bg-black/20"
+
 				aria-label={active ? "Close navigation menu" : "Open navigation menu"}
 			>
 				<motion.span
