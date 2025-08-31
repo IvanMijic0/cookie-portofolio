@@ -155,7 +155,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 						<h3 className="text-white font-serif text-2xl 2xl:text-3xl w-[13.3rem] 2xl:w-[16.3rem]">
 							<span className="flex flex-col">
 								<span>{t("homepage.headlineOne.titleOne", "GRAPHIC")}</span>
-								<span className="w-full flex justify-end">
+								<span className="w-full flex italic justify-end">
 									{t("homepage.headlineOne.titleTwo", "DESIGN")}
 								</span>
 							</span>
@@ -168,7 +168,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 								<span className="w-full flex justify-end">
 									{t("homepage.headlineThree.titleOne", "PHOTO")}
 								</span>
-								<span>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
+								<span className='italic'>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
 							</span>
 						</h3>
 					</div>
@@ -271,7 +271,7 @@ export const Mobile = () => {
 						<h2 className="w-[13.3rem] font-serif text-3xl text-white">
 							<span className="flex flex-col">
 								<span>{t("homepage.headlineOne.titleOne", "GRAPHIC")}</span>
-								<span className="flex w-full justify-end">
+								<span className="flex w-full justify-end italic">
 									{t("homepage.headlineOne.titleTwo", "DESIGN")}
 								</span>
 							</span>
@@ -286,7 +286,7 @@ export const Mobile = () => {
 								<span className="flex w-full justify-end">
 									{t("homepage.headlineThree.titleOne", "PHOTO")}
 								</span>
-								<span>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
+								<span className='italic'>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
 							</span>
 						</h2>
 					</div>
