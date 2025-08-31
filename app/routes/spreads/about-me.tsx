@@ -23,7 +23,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<div>
 					<h1
 						id="about-title"
-						className="text-[5rem] text-center tracking-wider 2xl:text-[7rem] leading-18 2xl:leading-28 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
+						className="text-[5rem] text-center tracking-wider 2xl:text-[6rem] leading-18 2xl:leading-28 [-webkit-text-stroke:1px_#363636] [text-stroke:1px_#363636]"
 						itemProp="headline"
 					>
 						{t("aboutMe.title.titleOne", "The Mind")}<br />

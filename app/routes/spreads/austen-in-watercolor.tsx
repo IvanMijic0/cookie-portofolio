@@ -45,7 +45,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<div>
 					<h1
 						id="austen-watercolor-title"
-						className="text-[6rem] text-left tracking-widest 2xl:text-[8rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+						className="text-[6rem] text-left tracking-widest 2xl:text-[7rem] leading-22 2xl:leading-28 [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline name"
 					>
 						{t("illustrationTwo.title.titleOne", "Austen in")}
