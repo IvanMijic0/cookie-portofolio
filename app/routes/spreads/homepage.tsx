@@ -296,7 +296,7 @@ export const Mobile = () => {
 					alt=""
 					role="presentation"
 					aria-hidden="true"
-					className="pointer-events-none absolute bottom-0 z-20 w-[calc(100vw-5.5rem)] xs:w-[calc(100vw-1rem)] object-contain object-bottom-right right-0"
+					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
 					loading="eager"
 					decoding="async"
 					fetchPriority="high"
