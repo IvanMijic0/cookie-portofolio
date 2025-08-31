@@ -76,7 +76,7 @@ h1 {
 @layer base {
     html {
         @apply font-sans antialiased bg-white;
-    
+	}
 
     .serif, .article {
         @apply font-serif;
