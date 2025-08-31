@@ -179,6 +179,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				className="absolute bottom-0 right-0 w-[calc(100%-11rem)] object-contain z-20 pointer-events-none"
 				loading="eager"
 				decoding="async"
+				fetchPriority="high"
 			/>
 			<div
 				className="absolute -bottom-24 -right-12 w-[26rem] h-[26rem] 2xl:w-[33.5rem] 2xl:h-[33.5rem] rounded-full z-30 pointer-events-none isolate">
