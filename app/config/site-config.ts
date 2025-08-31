@@ -77,22 +77,10 @@ export const navSections = (t: TFn, makeHref: (p: string) => string) => [
 ];
 
 export const contactButtons = [
-	{
-		label: "Instagram",
-		to: 'https://www.instagram.com/_amnacreates_/',
-		icon: Instagram
-	},
-	{
-		label: 'LinkedIn',
-		to: 'https://www.linkedin.com/in/amna-kolic/',
-		icon: Linkedin
-	},
-	{
-		label: "Email",
-		to: "mailto:amna.kolic1@gmail.com",
-		icon: Mail
-	}
-]
+	{ label: "Instagram", to: "https://www.instagram.com/_amnacreates_/", icon: Instagram },
+	{ label: "LinkedIn", to: "https://www.linkedin.com/in/amna-kolic/", icon: Linkedin },
+	{ label: "Email", to: "mailto:amna.kolic1@gmail.com", icon: Mail },
+];
 
 export const photographyNavButtons = (t: TFn, makeHref: (p: string) => string) => [
 	{ label: t("photography.meta.shortOne"), to: makeHref("/photography/kill-them-with-kindness") },

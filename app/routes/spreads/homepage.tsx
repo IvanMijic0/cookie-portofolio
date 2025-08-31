@@ -86,19 +86,21 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 						{contactButtons.map(({ label, to, icon: Icon }) => {
 							if (!to) return null;
 
-							const isExternal = to.startsWith("http");
 							return (
 								<motion.a
 									key={label}
 									href={to}
-									target={isExternal ? "_blank" : undefined}
-									rel={isExternal ? "noopener noreferrer me" : "me"}
+									target="_blank"
+									rel="noopener noreferrer"
 									aria-label={label}
 									title={label}
+									onClick={(e) => {
+										e.stopPropagation();
+									}}
+									className="pointer-events-auto z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg"
 									whileHover={{ scale: 1.05, rotate: -1 }}
 									whileTap={{ scale: 0.95, rotate: 1 }}
 									transition={{ type: "spring", stiffness: 300, damping: 15 }}
-									className="z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg"
 								>
 									<Icon className="h-6 w-6 text-[#379C8D] 2xl:w-7 2xl:h-7" aria-hidden />
 									<span className="sr-only">{label}</span>

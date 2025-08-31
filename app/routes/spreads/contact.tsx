@@ -10,6 +10,14 @@ import { useTranslate } from "~/context/I18nProvider";
 import type { MetaFunction } from "react-router";
 import { translate, type Lang } from "~/i18n/i18n";
 
+
+const isExternalUrl = (url: string) => {
+	return /^https?:\/\//i.test(url);
+}
+const isMailto = (url: string) => {
+	return /^mailto:/i.test(url);
+}
+
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	const { t } = useTranslate();
 
@@ -50,7 +58,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[5.5rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
 					{t("contact.title.titleThree", "LET'S")}
 				</h2>
-				<div className="flex items-center justify-between w-[75%] gap-2">
+				<div className="flex items-center justify-between w-[80%] gap-2">
 					{contactButtons.map(({ label, to, icon: Icon }) => {
 						const isExternal = to?.startsWith("http");
 						const isEmail = to?.startsWith("mailto:");
@@ -66,7 +74,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 								whileHover={{ scale: 1.05, rotate: -1 }}
 								whileTap={{ scale: 0.95, rotate: 1 }}
 								transition={{ type: "spring", stiffness: 300, damping: 15 }}
-								className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-2 shadow-md hover:shadow-lg"
+								className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg"
 							>
 								<Icon className="h-6 w-6 2xl:w-8 2xl:h-8" color="white" aria-hidden />
 								<span className="sr-only">{label}</span>
@@ -199,21 +207,25 @@ export const Mobile = () => {
 					>
 						<div className="flex items-center justify-between w-full gap-2">
 							{contactButtons.map(({ label, to, icon: Icon }) => {
-								const isExternal = to?.startsWith("http");
-								const isEmail = to?.startsWith("mailto:");
+								const external = isExternalUrl(to);
+								const mail = isMailto(to);
+
 								return (
 									<motion.a
 										key={label}
-										href={to || undefined}
-										target={isExternal ? "_blank" : undefined}
-										rel={isExternal ? "noopener noreferrer me" : "me"}
+										href={to}
+										target={external ? "_blank" : undefined}
+										rel={external ? "noopener noreferrer" : undefined}
 										aria-label={label}
 										title={label}
-										itemProp={isEmail ? "email" : "sameAs"}
-										whileHover={{ scale: 1.05, rotate: -1 }}
-										whileTap={{ scale: 0.95, rotate: 1 }}
-										transition={{ type: "spring", stiffness: 300, damping: 15 }}
-										className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg"
+										itemProp={mail ? "email" : "sameAs"}
+										onClick={(e) => {
+											e.stopPropagation();
+										}}
+										whileHover={{ scale: 1.03, rotate: -1 }}
+										whileTap={{ scale: 0.97, rotate: 1 }}
+										transition={{ type: "spring", stiffness: 250, damping: 18 }}
+										className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg pointer-events-auto"
 									>
 										<Icon className="h-10 w-10" color="white" aria-hidden />
 										<span className="sr-only">{label}</span>
