@@ -230,7 +230,7 @@ export const Mobile = () => {
 				itemID="/homepage"
 			>
 				<img
-					src="/homepage-right.webp"
+					src="/homepage.webp"
 					alt=""
 					role="presentation"
 					aria-hidden="true"
@@ -292,11 +292,11 @@ export const Mobile = () => {
 					</div>
 				</section>
 				<img
-					src="/cookie-pose.webp"
+					src="/cookie-pose-mobile.webp"
 					alt=""
 					role="presentation"
 					aria-hidden="true"
-					className="pointer-events-none absolute bottom-0 -right-6 z-20 max-h-[97vh] max-w-[97vw] object-contain object-bottom-right xs:-right-24 xs:max-h-[122vh] xs:max-w-[122vw]"
+					className="pointer-events-none absolute bottom-0  z-20 max-h-[97vh] max-w-[97vw] object-contain object-bottom-right right-0 xs:max-h-[122vh] xs:max-w-[122vw]"
 					loading="eager"
 					decoding="async"
 					fetchPriority="high"
