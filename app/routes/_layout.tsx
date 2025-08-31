@@ -121,7 +121,7 @@ const DesktopFlipbook = () => {
 				if (height < 850) return 0.01;
 				if (height < 950) return 0.01;
 				if (height < 1100) return 0.01;
-				if (height < 2000) return 0.01;
+				if (height < 2000) return 0.05;
 				return 0.02;
 			})();
 
