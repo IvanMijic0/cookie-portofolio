@@ -6,33 +6,21 @@ import type { Route } from "./+types/root";
 import type { ReactNode } from "react";
 import { UIProvider } from "~/context/ui";
 import { FlipbookProvider } from "~/context/flipbook";
-import { useLocation } from "react-router";
-import type { Lang } from "./i18n/i18n";
-import { I18nProvider } from "./context/I18nProvider";
+
+import appCssUrl from "./app.css?url";
+import lightboxCssUrl from "yet-another-react-lightbox/styles.css?url";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "preconnect", href: "https://fonts.googleapis.com" },
-	{
-		rel: "preconnect",
-		href: "https://fonts.gstatic.com",
-		crossOrigin: "anonymous",
-	},
+	{ rel: "preload", as: "style", href: appCssUrl, crossOrigin: "anonymous" },
+	{ rel: "stylesheet", href: appCssUrl },
+
+	{ rel: "preload", as: "style", href: lightboxCssUrl, crossOrigin: "anonymous" },
+	{ rel: "stylesheet", href: lightboxCssUrl },
+
 	{ rel: "preload", as: "font", href: "/fonts/bodoni-moda.woff2", type: "font/woff2", crossOrigin: "anonymous" },
-	{
-		rel: "preload",
-		as: "font",
-		href: "/fonts/bodoni-moda-italic.woff2",
-		type: "font/woff2",
-		crossOrigin: "anonymous"
-	},
+	{ rel: "preload", as: "font", href: "/fonts/bodoni-moda-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/libre-bodoni.woff2", type: "font/woff2", crossOrigin: "anonymous" },
-	{
-		rel: "preload",
-		as: "font",
-		href: "/fonts/libre-bodoni-italic.woff2",
-		type: "font/woff2",
-		crossOrigin: "anonymous"
-	},
+	{ rel: "preload", as: "font", href: "/fonts/libre-bodoni-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/roboto.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/roboto-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/athene-voyage.woff2", type: "font/woff2", crossOrigin: "anonymous" },
@@ -44,6 +32,8 @@ export function Layout({ children }: { children: ReactNode }) {
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<meta name="color-scheme" content="light" />
+				<meta name="theme-color" content="#ffffff" />
 				<Meta />
 				<Links />
 			</head>
