@@ -1,0 +1,13 @@
+{
+  "name": "image-service",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "sharp": "^0.33.4"
+  }
+}
