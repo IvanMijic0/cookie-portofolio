@@ -47,7 +47,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				itemScope
 				itemType="https://schema.org/Person"
 			>
-				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[7rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
+				<h2 className="font-display font-bold text-[#363636] text-[6rem] 2xl:text-[6rem] [-webkit-text-stroke:0.5px_#363636] leading-24">
 					{t("contact.title.titleThree", "LET'S")}
 				</h2>
 				<div className="flex items-center justify-between w-[75%] gap-2">
@@ -103,7 +103,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</p>
 			</div>
 
-			<h2 id="contact-chat-title" className="font-display font-bold flex w-full justify-center text-[#363636] text-[6rem] 2xl:text-[7rem]">
+			<h2 id="contact-chat-title" className="font-display font-bold flex w-full justify-center text-[#363636] text-[6rem] 2xl:text-[6rem]">
 				<span className="inline-flex items-baseline gap-1">
 					{t("contact.title.titleFour", "CHAT").startsWith("C") ? (
 						<>

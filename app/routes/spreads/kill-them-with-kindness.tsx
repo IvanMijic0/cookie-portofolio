@@ -54,7 +54,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					<h1
 						id="ktwk-title"
 						itemProp="name"
-						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[8rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
+						className="font-display leading-22 2xl:leading-28 text-[#363636] text-[6rem] 2xl:text-[7rem] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 					>
 						{t("photographyOne.title.titleOne", "Kill them")}
 						<br /> {t("photographyOne.title.titleTwo", "with")} <br />{" "}
