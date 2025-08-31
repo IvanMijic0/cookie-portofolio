@@ -96,7 +96,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 															onClick={(e) => {
 																if (!ready) return;
 																e.preventDefault();
-																goToSpread(section.to);
+																goToSpread(item.to);
 															}}
 															className="block cursor-pointer text-sm font-serif italic text-white/90 hover:text-white transition"
 														>
