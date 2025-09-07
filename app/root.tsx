@@ -61,7 +61,9 @@ export const meta: MetaFunction = ({ location }) => {
 	const base = "https://amnakolic.com";
 	const canonical = base + location.pathname + (location.pathname.endsWith("/") ? "" : "");
 	return [
-		{ title: "Amna Kolić — Portfolio" }, { name: "og:url", content: canonical },
+		{ title: "Amna Kolić — Portfolio" }, {
+			name: "og:url", content: canonical
+		},
 		{ tagName: "link", rel: "canonical", href: canonical },
 	];
 };

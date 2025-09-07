@@ -1,6 +1,9 @@
 import { index, route, type RouteConfig } from "@react-router/dev/routes";
 
 export default [
+	route("sitemap.xml", "routes/sitemap.xml.ts"),
+	route("robots.txt", "routes/robots.txt.ts"),
+
 	index("routes/index.tsx"),
 
 	route(":lang", "routes/_layout.tsx", [
