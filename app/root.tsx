@@ -9,6 +9,7 @@ import { FlipbookProvider } from "~/context/flipbook";
 
 import appCssUrl from "./app.css?url";
 import lightboxCssUrl from "yet-another-react-lightbox/styles.css?url";
+import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
 	{ rel: "preload", as: "style", href: appCssUrl, crossOrigin: "anonymous" },
@@ -55,6 +56,15 @@ export default function App() {
 		</UIProvider>
 	);
 }
+
+export const meta: MetaFunction = ({ location }) => {
+	const base = "https://amnakolic.com";
+	const canonical = base + location.pathname + (location.pathname.endsWith("/") ? "" : "");
+	return [
+		{ title: "Amna Kolić — Portfolio" }, { name: "og:url", content: canonical },
+		{ tagName: "link", rel: "canonical", href: canonical },
+	];
+};
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	let message = "Oops!";
