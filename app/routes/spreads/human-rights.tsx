@@ -55,18 +55,18 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			</aside>
 
 			<article
-				className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex gap-4 justify-between items-center"
+				className="absolute flex-col px-12 py-10 2xl:py-12 inset-0 z-20 flex gap-4 justify-between items-start"
 				itemScope
 				itemType="https://schema.org/CreativeWork"
 				itemID="/human-rights"
 			>
 				<link itemProp="url" href="/human-rights" />
-				<header className="flex flex-col items-start gap-5 2xl:gap-8">
+				<header className="flex flex-col items-star justify-start gap-5">
 					<h1
 						className="text-[6rem] 2xl:text-[8rem] leading-22 2xl:leading-30 text-[#363636] [-webkit-text-stroke:1px_#363636] italic [text-stroke:1px_#363636]"
 						itemProp="headline"
 					>
-						{t("photographyTwo.title.titleOne", "Human")}{" "}
+						{t("photographyTwo.title.titleOne", "Human")}<br />
 						{t("photographyTwo.title.titleTwo", "Rights")}
 					</h1>
 					<p className="font-serif italic text-[#505050] font-extralight text-sm 2xl:text-base text-right">
@@ -94,7 +94,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					</p>
 				</section>
 			</article>
-		</RightPage>
+		</RightPage >
 	);
 });
 

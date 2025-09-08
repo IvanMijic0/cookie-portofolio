@@ -4,7 +4,6 @@ import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { Star } from "~/assets";
 import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { ScreenTextFit } from "~/components/UI";
 import { useTranslate } from "~/context/I18nProvider";
 import { translate, type Lang } from "~/i18n/i18n";
 
