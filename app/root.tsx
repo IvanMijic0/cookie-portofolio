@@ -7,18 +7,17 @@ import type { ReactNode } from "react";
 import { UIProvider } from "~/context/ui";
 import { FlipbookProvider } from "~/context/flipbook";
 
-import appCssUrl from "./app.css?url";
-import lightboxCssUrl from "yet-another-react-lightbox/styles.css?url";
 import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "preload", as: "style", href: appCssUrl, crossOrigin: "anonymous" },
-	{ rel: "stylesheet", href: appCssUrl },
-
-	{ rel: "preload", as: "style", href: lightboxCssUrl, crossOrigin: "anonymous" },
-	{ rel: "stylesheet", href: lightboxCssUrl },
-
-	{ rel: "preload", as: "font", href: "/fonts/bodoni-moda.woff2", type: "font/woff2", crossOrigin: "anonymous" },
+	{ rel: "stylesheet", href: "yet-another-react-lightbox/styles.css" },
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/bodoni-moda.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+	},
 	{ rel: "preload", as: "font", href: "/fonts/bodoni-moda-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/libre-bodoni.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 	{ rel: "preload", as: "font", href: "/fonts/libre-bodoni-italic.woff2", type: "font/woff2", crossOrigin: "anonymous" },
