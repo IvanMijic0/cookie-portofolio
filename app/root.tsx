@@ -1,3 +1,4 @@
+import "./app.css";
 import "yet-another-react-lightbox/styles.css";
 
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
