@@ -14,7 +14,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			alt=""
 			aria-hidden="true"
 			role="presentation"
-			className="object-cover"
+			className="object-cover w-screen h-screen"
 			loading="eager"
 			fetchPriority="high"
 		/>
