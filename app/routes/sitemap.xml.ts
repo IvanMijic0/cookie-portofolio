@@ -1,48 +1,55 @@
-import type { LoaderFunctionArgs } from "react-router";
-
-export const loader = async ({ request }: LoaderFunctionArgs) => {
-	const origin = new URL(request.url).origin;
+export const loader = async () => {
+	const CANONICAL_ORIGIN = (
+		import.meta.env.VITE_BASE_URL ||
+		"https://amnakolic.com"
+	).replace(/\/$/, "");
 
 	const langs = [
 		{ code: "en", hreflang: "en" },
 		{ code: "bs", hreflang: "bs" },
-	];
+	] as const;
 
 	const paths = [
-		"/homepage",
-		"/photography",
-		"/photography/kill-them-with-kindness",
-		"/photography/human-rights",
-		"/photography/double-indemnity",
-		"/graphic-design",
-		"/graphic-design/kreativ-festival-art-direction",
-		"/graphic-design/sjecas-li-se-doli-bel",
-		"/graphic-design/chippsters-logo",
-		"/illustration",
-		"/illustration/mountain-fairy",
-		"/illustration/austen-in-watercolor",
-		"/illustration/mural",
-		"/about-me",
-		"/contact",
+		"",
+		"photography",
+		"photography/kill-them-with-kindness",
+		"photography/human-rights",
+		"photography/double-indemnity",
+		"graphic-design",
+		"graphic-design/kreativ-festival-art-direction",
+		"graphic-design/sjecas-li-se-doli-bel",
+		"graphic-design/chippsters-logo",
+		"illustration",
+		"illustration/mountain-fairy",
+		"illustration/austen-in-watercolor",
+		"illustration/mural",
+		"about-me",
+		"contact",
 	];
+
+	const isoNow = new Date().toISOString();
 
 	const entries: string[] = [];
 	for (const p of paths) {
-		for (const lang of langs) {
-			const loc = `${origin}/${lang.code}${p}`;
-			const alternates = langs
-				.map(
-					(alt) =>
-						`<xhtml:link rel="alternate" hreflang="${alt.hreflang}" href="${origin}/${alt.code}${p}" />`
-				)
-				.join("");
+		const urlFor = (lang: string) =>
+			`${CANONICAL_ORIGIN}${p ? `/${lang}/${p}` : `/${lang}`}`;
+
+		for (const { code } of langs) {
+			const alternates =
+				langs
+					.map(({ hreflang, code: alt }) =>
+						`<xhtml:link rel="alternate" hreflang="${hreflang}" href="${urlFor(alt)}" />`
+					)
+					.join("") +
+				`<xhtml:link rel="alternate" hreflang="x-default" href="${urlFor("en")}" />`;
 
 			entries.push(
 				`<url>
-  <loc>${loc}</loc>
+  <loc>${urlFor(code)}</loc>
   ${alternates}
-  <changefreq>monthly</changefreq>
-  <priority>${p === "/homepage" ? "1.0" : "0.7"}</priority>
+  <lastmod>${isoNow}</lastmod>
+  <changefreq>${p === "" ? "weekly" : "monthly"}</changefreq>
+  <priority>${p === "" ? "1.0" : "0.7"}</priority>
 </url>`
 			);
 		}
@@ -56,7 +63,7 @@ ${entries.join("\n")}
 
 	return new Response(xml, {
 		headers: {
-			"Content-Type": "application/xml",
+			"Content-Type": "application/xml; charset=UTF-8",
 			"Cache-Control": "public, max-age=3600",
 		},
 	});

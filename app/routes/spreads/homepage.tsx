@@ -82,20 +82,27 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 					<h3 className="font-serif text-white text-xl 2xl:text-2xl">
 						{t("homepage.cta", "Let's chat!")}
 					</h3>
+
 					<div className="flex items-center gap-2">
 						{contactButtons.map(({ label, to, icon: Icon }) => {
+							const isMailto = to.startsWith("mailto:");
+
 							if (!to) return null;
 
 							return (
 								<motion.a
 									key={label}
 									href={to}
-									target="_blank"
-									rel="noopener noreferrer"
+									target={isMailto ? undefined : "_blank"}
+									rel={isMailto ? undefined : "noopener noreferrer"}
 									aria-label={label}
 									title={label}
 									onClick={(e) => {
 										e.stopPropagation();
+										if (isMailto) {
+											e.preventDefault();
+											window.location.assign(to);
+										}
 									}}
 									className="pointer-events-auto z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg"
 									whileHover={{ scale: 1.05, rotate: -1 }}
