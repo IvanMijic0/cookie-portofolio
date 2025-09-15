@@ -26,7 +26,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<article
-			className="absolute px-12 pb-8 2xl:py-12 inset-0 z-20 flex items-start justify-between flex-col text-white"
+			className="absolute px-12 pb-10 2xl:py-12 inset-0 z-20 flex items-start justify-between flex-col text-white"
 			itemScope
 			itemType="https://schema.org/WebPageSection"
 			aria-labelledby="photography-title"
@@ -77,7 +77,7 @@ export const Mobile = () => {
 
 	return (
 		<MobileWrapper>
-			<div className="relative h-svh w-full [overflow:clip]">
+			<div className="relative h-svh w-full">
 				<div className="relative">
 					<figure
 						itemProp="primaryImageOfPage"
@@ -101,7 +101,7 @@ export const Mobile = () => {
 					<div className="pointer-events-none absolute inset-x-0 -bottom-0 h-14 bg-gradient-to-b from-transparent via-white/80 to-white" />
 				</div>
 				<article
-					className="absolute px-6 pb-8 py-4 2xl:py-12 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
+					className="absolute px-6 pb-14 py-4 inset-0 z-20 flex items-center h-screen justify-end flex-col text-white"
 					itemScope
 					itemType="https://schema.org/WebPageSection"
 					aria-labelledby="photography-title"
