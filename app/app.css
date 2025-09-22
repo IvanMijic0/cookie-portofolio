@@ -4,143 +4,144 @@
 @source inline("bg-primary text-center md:grid-cols-3");
 
 @font-face {
-    font-family: "Bodoni Moda";
-    font-style: normal;
-    font-weight: 400 900;
-    font-display: swap;
-    src: url("/fonts/bodoni-moda.woff2") format("woff2");
+	font-family: "Bodoni Moda";
+	font-style: normal;
+	font-weight: 400 900;
+	font-display: swap;
+	src: url("/fonts/bodoni-moda.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Bodoni Moda";
-    font-style: italic;
-    font-weight: 400 900;
-    font-display: swap;
-    src: url("/fonts/bodoni-moda-italic.woff2") format("woff2");
+	font-family: "Bodoni Moda";
+	font-style: italic;
+	font-weight: 400 900;
+	font-display: swap;
+	src: url("/fonts/bodoni-moda-italic.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Libre Bodoni";
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url("/fonts/libre-bodoni.woff2") format("woff2");
+	font-family: "Libre Bodoni";
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/libre-bodoni.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Libre Bodoni";
-    font-style: italic;
-    font-weight: 400 700;
-    font-display: swap;
-    src: url("/fonts/libre-bodoni-italic.woff2") format("woff2");
+	font-family: "Libre Bodoni";
+	font-style: italic;
+	font-weight: 400 700;
+	font-display: swap;
+	src: url("/fonts/libre-bodoni-italic.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 100 900;
-    font-stretch: 75% 125%;
-    font-display: swap;
-    src: url("/fonts/roboto.woff2") format("woff2");
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	src: url("/fonts/roboto.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Roboto";
-    font-style: italic;
-    font-weight: 100 900;
-    font-stretch: 75% 125%;
-    font-display: swap;
-    src: url("/fonts/roboto-italic.woff2") format("woff2");
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	src: url("/fonts/roboto-italic.woff2") format("woff2");
 }
 
 @font-face {
-    font-family: "Athene Voyage";
-    font-style: italic;
-    font-weight: 100 900;
-    font-stretch: 75% 125%;
-    font-display: swap;
-    src: url("/fonts/athene-voyage.woff2") format("woff2");
+	font-family: "Athene Voyage";
+	font-style: italic;
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-display: swap;
+	src: url("/fonts/athene-voyage.woff2") format("woff2");
 }
 
 @theme {
-    --color-primary: oklch(0.7 0.15 25);
-    --font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Arial, "Noto Sans", "Liberation Sans", sans-serif;
-    --font-serif: "Libre Bodoni", Georgia, "Times New Roman", serif;
-    --font-display: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
-    --font-logo: "Athene Voyage", "Libre Bodoni", Georgia, serif;
-    --breakpoint-xxs: 280px; 
-    --breakpoint-xs:  400px; 
+	--color-primary: oklch(0.7 0.15 25);
+	--font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+		Arial, "Noto Sans", "Liberation Sans", sans-serif;
+	--font-serif: "Libre Bodoni", Georgia, "Times New Roman", serif;
+	--font-display: "Bodoni Moda", "Libre Bodoni", Georgia, serif;
+	--font-logo: "Athene Voyage", "Libre Bodoni", Georgia, serif;
+	--breakpoint-xxs: 280px;
+	--breakpoint-xs: 400px;
 }
 
 h1 {
-    font-family: "Bodoni Moda", Serif, serif;
+	font-family: "Bodoni Moda", Serif, serif;
 }
 
 @layer base {
-    html {
-        @apply font-sans antialiased bg-white;
+	html {
+		@apply font-sans antialiased bg-white;
 	}
 
-    .serif, .article {
-        @apply font-serif;
-    }
+	.serif,
+	.article {
+		@apply font-serif;
+	}
 }
 
 .flip-book {
-    display: flex !important;
+	display: flex !important;
 }
 
 .page {
-    position: relative;
-    color: #000;
-    background: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 6px;
-    box-shadow: 0 32px 90px rgba(0, 0, 0, .48),
-    0 12px 36px rgba(0, 0, 0, .28),
-    0 1px 8px rgba(0, 0, 0, .24);
-    overflow: hidden;
-    isolation: isolate;
-    contain: layout paint;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+	position: relative;
+	color: #000;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 6px;
+	box-shadow: 0 32px 90px rgba(0, 0, 0, .48),
+		0 12px 36px rgba(0, 0, 0, .28),
+		0 1px 8px rgba(0, 0, 0, .24);
+	overflow: hidden;
+	isolation: isolate;
+	contain: layout paint;
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 
 .page::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-    box-shadow: inset 0 0 26px rgba(0, 0, 0, .18);
+	content: "";
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 2;
+	box-shadow: inset 0 0 26px rgba(0, 0, 0, .18);
 }
 
 .page--left::before,
 .page--right::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 64px;
-    pointer-events: none;
-    z-index: 3;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 64px;
+	pointer-events: none;
+	z-index: 3;
 }
 
 .page--left::before {
-    right: -1px;
-    background: linear-gradient(to left,
-    rgba(0, 0, 0, .20) 0%,
-    rgba(0, 0, 0, 0) 60%);
+	right: -1px;
+	background: linear-gradient(to left,
+			rgba(0, 0, 0, .20) 0%,
+			rgba(0, 0, 0, 0) 60%);
 }
 
 .page--right::before {
-    left: -1px;
-    background: linear-gradient(to right,
-    rgba(0, 0, 0, .20) 0%,
-    rgba(0, 0, 0, 0) 60%);
+	left: -1px;
+	background: linear-gradient(to right,
+			rgba(0, 0, 0, .20) 0%,
+			rgba(0, 0, 0, 0) 60%);
 }
 
 .stf__item,
@@ -148,8 +149,8 @@ h1 {
 .stf__page,
 .stf__parent canvas,
 .flip-book {
-    will-change: transform;
-    transform: translateZ(0);
+	will-change: transform;
+	transform: translateZ(0);
 }
 
 .page,
@@ -158,11 +159,11 @@ h1 {
 .page--right,
 .page--left::before,
 .page--right::before {
-    will-change: transform, opacity;
+	will-change: transform, opacity;
 }
 
 .bookmark-button {
-    touch-action: none;
+	touch-action: none;
 }
 
 .readonly .stf__parent,
@@ -172,6 +173,6 @@ h1 {
 .readonly .stf__page,
 .readonly .page,
 .readonly .page * {
-    -webkit-user-select: text !important;
-    user-select: text !important;
+	-webkit-user-select: text !important;
+	user-select: text !important;
 }
