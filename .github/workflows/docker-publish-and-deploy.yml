@@ -67,3 +67,5 @@ jobs:
           GHCR_USER: ${{ secrets.GHCR_USER }}
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
           APP_DIR: ${{ secrets.APP_DIR }}
+
+
