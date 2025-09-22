@@ -51,9 +51,19 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
+          envs: GHCR_USER,GHCR_TOKEN,APP_DIR
           script: |
-            set -e
-            cd ${{ secrets.APP_DIR }}
+            set -euo pipefail
+
+            echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
+
+            cd "${APP_DIR}"
+            
             docker compose pull
             docker compose up -d --remove-orphans
+
             docker system prune -f
+        env:
+          GHCR_USER: ${{ secrets.GHCR_USER }}
+          GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
+          APP_DIR: ${{ secrets.APP_DIR }}
