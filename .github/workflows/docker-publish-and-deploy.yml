@@ -68,4 +68,3 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
           APP_DIR: ${{ secrets.APP_DIR }}
 
-
