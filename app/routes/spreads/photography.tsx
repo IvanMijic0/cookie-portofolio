@@ -179,28 +179,31 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const title = t(
 		"title",
-		"Creative Photography & Editing Projects | Amna Kolić Portfolio"
+		"Conceptual & Editorial Photography | Amna Kolić Portfolio"
 	);
 	const description = t(
 		"description",
-		"Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives."
+		"Explore concept-driven and editorial photography by Amna Kolić — combining studio lighting, compositing, and photo editing to create powerful visual narratives from Sarajevo, Bosnia and Herzegovina."
 	);
 	const url = `${BASE_URL}/${lang}/photography`;
 	const image = `${BASE_URL}/photography-intro.webp`;
 	const imageAlt = t(
 		"imageAlt",
-		"Photography & editing title spread with typographic treatment."
+		"Editorial and conceptual photography title spread with refined typography."
 	);
 
 	return [
 		{ title },
 		{ name: "description", content: description },
 		{ name: "author", content: "Amna Kolić" },
+		{ property: "og:type", content: "website" },
+		{ property: "og:site_name", content: "Portfolio Amna Kolić" },
 		{ property: "og:title", content: title },
 		{ property: "og:description", content: description },
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
+		{ name: "twitter:card", content: "summary_large_image" },
 		{ name: "twitter:title", content: title },
 		{ name: "twitter:description", content: description },
 		{ name: "twitter:image", content: image },

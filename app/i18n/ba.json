@@ -51,9 +51,9 @@
 
   "photography": {
  "meta": {
-    "title": "Creative Photography & Editing Projects | Amna Kolić Portfolio",
-    "description": "Discover concept-driven photography by Amna Kolić—editorial, symbolic, and digitally enhanced visual narratives.",
-    "imageAlt": "Photography & editing title spread with typographic treatment.",
+    "title": "Kreativna fotografija i editovanje | Portfolio Amne Kolić",
+    "description": "Istražite konceptualnu i editorial fotografiju Amne Kolić — studijsko osvjetljenje, kompoziting i digitalno uređene vizuelne narative.",
+    "imageAlt": "Naslovna stranica fotografije i editovanja sa tipografskim tretmanom.",
     "shortOne": "Dobrota",
     "shortTwo": "Ljudska prava",
     "shortThree": "Film Noir"
@@ -87,14 +87,13 @@
       "roseGrenadeCaption": "Ruža i bomba.",
       "roseGrenadeAria": "Otvori sliku: Ruža i bomba"
     },
-    "meta": {
-      "title": "Ubite ih dobrotom — Konceptualna foto-serija Amne Kolić",
+"meta": {
+      "title": "Razoružaj ih sa Dobrotom — Konceptualna foto-serija Amne Kolić",
       "description": "Konceptualna foto-serija koja kroz studijsko osvjetljenje i kompoziting prikazuje empatiju kao otpor. Istražite vizuelnu priču i proces iza svake fotografije.",
-      "imageAlt": "Konceptualni portret iz foto-serije ‘Ubite ih dobrotom’.",
+      "imageAlt": "Konceptualni portret iz foto-serije ‘Razoružaj ih sa Dobrotom’.",
       "keywords": "konceptualna fotografija, foto-serija, studijsko osvjetljenje, kompoziting, vizuelno pripovijedanje, antiratna umjetnost, empatija u umjetnosti, editorial fotografija, portfolio"
-    }
+    },
   },
-
   "photographyTwo": {
     "title": {
       "titleOne": "Ljudska",
@@ -157,15 +156,14 @@
         "6": "Volter na telefonu—obod šešira prekriva oči; dim i sjena grade raspoloženje."
       }
     },
-    "meta": {
-      "simpleName": "Dvostruka odšteta",
-      "title": "Dvostruka odšteta – Foto serija u duhu film noira | Amna Kolić",
-      "description": "Tri crno-bijele fotografije koje reinterpretiraju Dvostruku odštetu—precizno svjetlo, kompozicija i atmosfera oživljavaju klasični film noir.",
-      "imageAlt": "Crno-bijela fotografija u noir stilu iz serije Dvostruka odšteta.",
-      "keywords": "film noir fotografija, Dvostruka odšteta, crno-bijela fotografija, studijsko svjetlo, filmski portret, foto serija, Amna Kolić"
-    }
+"meta": {
+      "simpleName": "Dvostruka obmana",
+      "title": "Dvostruka obmana – Foto serija u duhu film noira | Amna Kolić",
+      "description": "Tri crno-bijele fotografije koje reinterpretiraju Dvostruku obmanu—precizno svjetlo, kompozicija i atmosfera oživljavaju klasični film noir.",
+      "imageAlt": "Crno-bijela fotografija u noir stilu iz serije Dvostruka obmana.",
+      "keywords": "film noir fotografija, Dvostruka obmana, crno-bijela fotografija, studijsko svjetlo, filmski portret, foto serija, Amna Kolić"
+    },
   }, 
-
 "graphicDesign": {
   "title": {
     "titleOne": "GRAFIČKI",
@@ -260,7 +258,6 @@
     "author": "Amna Kolić"
   }
 },
-
 "graphicDesignTwo": {
   "title": {
     "titleOne": "Sjećaš",
