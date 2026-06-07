@@ -270,7 +270,7 @@ export const Mobile = () => {
 							</ScreenTextFit>
 						</div>
 
-						<p className="font-display text-2xl italic tracking-[0.4em] pl-2 text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727]">
+						<p className="font-display text-2xl tracking-[0.4em] pl-2 text-[#272727] [-webkit-text-stroke:1px_#272727] [text-stroke:1px_#272727]">
 							portfolio
 						</p>
 					</div>
@@ -279,7 +279,7 @@ export const Mobile = () => {
 						<h2 className="w-[13.3rem] font-serif text-3xl text-white">
 							<span className="flex flex-col">
 								<span>{t("homepage.headlineOne.titleOne", "GRAPHIC")}</span>
-								<span className="flex w-full justify-end italic">
+								<span className="flex w-full justify-end">
 									{t("homepage.headlineOne.titleTwo", "DESIGN")}
 								</span>
 							</span>
@@ -294,7 +294,7 @@ export const Mobile = () => {
 								<span className="flex w-full justify-end">
 									{t("homepage.headlineThree.titleOne", "PHOTO")}
 								</span>
-								<span className='italic'>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
+								<span>{t("homepage.headlineThree.titleTwo", "EDITING")}</span>
 							</span>
 						</h2>
 					</div>
@@ -317,12 +317,12 @@ export const Mobile = () => {
 
 					<div className="absolute inset-0 flex flex-col items-center justify-end gap-10 pb-28">
 						<div className="px-4 text-end">
-							<p className="text-white italic text-2xl xs:text-2xl font-serif leading-tight">
-								<span className="not-italic">
+							<p className="text-white text-2xl xs:text-2xl font-serif leading-tight">
+								<span>
 									{t("homepage.headlineFour.titleOne", "The DIFFERENT")}
 								</span>
 								<br />
-								<span className="not-italic">
+								<span>
 									{t("homepage.headlineFour.titleTwo", "APPROACH")}
 								</span>
 								<br />

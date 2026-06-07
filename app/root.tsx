@@ -31,22 +31,6 @@ export const links: Route.LinksFunction = () => [
 	{
 		rel: "preload",
 		as: "font",
-		href: "/fonts/bodoni-moda-italic.woff2",
-		type: "font/woff2",
-		crossOrigin: "anonymous",
-		media: "(max-width: 1023px)",
-	},
-	{
-		rel: "preload",
-		as: "font",
-		href: "/fonts/libre-bodoni-italic.woff2",
-		type: "font/woff2",
-		crossOrigin: "anonymous",
-		media: "(max-width: 1023px)",
-	},
-	{
-		rel: "preload",
-		as: "font",
 		href: "/fonts/athene-voyage.woff2",
 		type: "font/woff2",
 		crossOrigin: "anonymous",
