@@ -1,19 +1,21 @@
 # --- deps
-FROM node:20-alpine AS deps
+FROM node:22-alpine AS deps
 WORKDIR /app
+ENV NO_UPDATE_NOTIFIER=true
 COPY package*.json ./
 RUN npm ci
 
 # --- build
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /app
+ENV NO_UPDATE_NOTIFIER=true
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # Build both client + server (React Router build)
 RUN npm run build
 
 # --- runtime (SSR)
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 # If your server reads PORT/HOST, set them here
