@@ -15,7 +15,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			aria-hidden="true"
 			role="presentation"
 			className="object-cover w-screen h-screen"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 	</LeftPage>
@@ -89,7 +89,7 @@ export const Mobile = () => {
 							src="/photography-intro.webp"
 							alt="Editorial portrait introducing the Photography & Editing section"
 							className="block w-full h-auto object-cover"
-							loading="eager"
+							loading="lazy"
 							fetchPriority="high"
 							decoding="async"
 							itemProp="contentUrl"

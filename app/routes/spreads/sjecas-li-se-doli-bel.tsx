@@ -31,7 +31,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 				role="presentation"
 				aria-hidden="true"
 				className="w-full h-full object-cover z-0"
-				loading="eager"
+				loading="lazy"
 				fetchPriority="high"
 			/>
 
@@ -68,7 +68,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 						src={slides[0].src}
 						alt={slides[0].alt}
 						className="w-64 2xl:w-80 2xl:pb-8 object-cover z-0 select-none"
-						loading="eager"
+						loading="lazy"
 						fetchPriority="high"
 						itemProp="image"
 					/>
@@ -88,7 +88,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -225,7 +225,7 @@ export const Mobile = () => {
 								"Sjećaš li se Doli Bel? hero poster — fragmented red typography forming a crooked house silhouette."
 							)}
 							className="block w-full h-auto object-cover"
-							loading="eager"
+							loading="lazy"
 							fetchPriority="high"
 							decoding="async"
 							itemProp="contentUrl"

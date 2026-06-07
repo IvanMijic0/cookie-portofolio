@@ -72,7 +72,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			src="/about-me.webp"
 			alt={t("aboutMe.alts.leftImage", "Portrait of Amna Kolić")}
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 			itemProp="image"
 		/>
@@ -145,7 +145,7 @@ export const Mobile = () => {
 								width={1600}
 								height={2000}
 								className="object-cover w-full h-auto"
-								loading="eager"
+								loading="lazy"
 								decoding="async"
 								itemProp="contentUrl"
 							/>

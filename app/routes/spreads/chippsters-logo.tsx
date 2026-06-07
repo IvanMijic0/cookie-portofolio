@@ -15,7 +15,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -103,7 +103,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 					"Chippsters logo mockups: circular C mark with chipmunk-in-negative-space on green gradient applications."
 				)}
 				className="w-full h-1/2 2xl:w-full 2xl:h-full object-cover z-0"
-				loading="eager"
+				loading="lazy"
 				fetchPriority="high"
 				itemProp="image"
 			/>
@@ -201,7 +201,7 @@ export const Mobile = () => {
 								"Chippsters logo concept — circular emblem with modern, playful character design."
 							)}
 							className="block w-full h-auto object-cover"
-							loading="eager"
+							loading="lazy"
 							fetchPriority="high"
 							decoding="async"
 							itemProp="contentUrl"

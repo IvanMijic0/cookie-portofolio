@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 		/>
 		<article
 			className="absolute px-16 2xl:px-24 py-4 2xl:py-14 inset-0 z-20 flex justify-between flex-col text-white"
@@ -149,7 +149,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 								src={s.src}
 								alt={s.alt}
 								className="object-cover w-80 select-none"
-								loading="eager"
+								loading="lazy"
 								fetchPriority="high"
 							/>
 							<meta itemProp="contentUrl" content={s.src} />
@@ -242,7 +242,7 @@ export const Mobile = () => {
 							sizes="100vw"
 							alt={t("graphicDesignOne.mobileSlides.heroAlt", "Kreativ Fest hero poster — expressive grunge art direction.")}
 							className="block w-full h-auto object-cover"
-							loading="eager"
+							loading="lazy"
 							fetchPriority="high"
 							decoding="async"
 							itemProp="contentUrl"

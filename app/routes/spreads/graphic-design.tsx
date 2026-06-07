@@ -13,7 +13,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 			alt=""
 			className="w-full h-full object-cover z-0"
 			aria-hidden="true"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 	</LeftPage>
@@ -29,7 +29,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 		/>
 
 		<article
@@ -92,7 +92,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			aria-hidden="true"
 			role="presentation"
 			className="absolute bottom-0 left-0 max-h-full max-w-[40%] object-contain z-20 pointer-events-none"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 	</RightPage>
@@ -119,7 +119,7 @@ export const Mobile = () => {
 						sizes="100vw"
 						alt="Graphic Design — full-bleed hero showcasing editorial artwork"
 						className="block h-screen w-full object-cover"
-						loading="eager"
+						loading="lazy"
 						fetchPriority="high"
 						decoding="async"
 						itemProp="contentUrl"

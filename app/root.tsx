@@ -10,9 +10,9 @@ import { FlipbookProvider } from "~/context/flipbook";
 import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp" },
-	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp" },
-	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp" },
+	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp", fetchpriority: "high" } as any,
+	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "high" } as any,
 	{
 		rel: "preload",
 		as: "font",
@@ -20,7 +20,6 @@ export const links: Route.LinksFunction = () => [
 		type: "font/woff2",
 		crossOrigin: "anonymous",
 	},
-	{ rel: "preload", as: "font", href: "/fonts/roboto.woff2", type: "font/woff2", crossOrigin: "anonymous" },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {

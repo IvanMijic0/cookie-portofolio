@@ -185,7 +185,7 @@ export const Mobile = () => {
 									width={1600}
 									height={2000}
 									className="object-cover w-full h-auto"
-									loading="eager"
+									loading="lazy"
 									decoding="async"
 									fetchPriority="high"
 									itemProp="image"

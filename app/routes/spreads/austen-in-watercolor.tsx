@@ -20,7 +20,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -145,7 +145,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				role="presentation"
 				aria-hidden="true"
 				className="w-full h-full object-cover z-0"
-				loading="eager"
+				loading="lazy"
 				fetchPriority="high"
 			/>
 
@@ -172,7 +172,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 							src={s.src}
 							alt={s.alt}
 							className="object-cover z-0 w-full select-none"
-							loading="eager"
+							loading="lazy"
 							fetchPriority="high"
 							decoding="async"
 						/>
@@ -265,7 +265,7 @@ export const Mobile = () => {
 						sizes="100vw"
 						alt={t("illustrationTwo.meta.imageAlt", "Austen in Watercolor — editorial hero illustration background")}
 						className="w-full h-full object-cover opacity-80"
-						loading="eager"
+						loading="lazy"
 						fetchPriority="high"
 						decoding="async"
 						itemProp="contentUrl"
@@ -308,7 +308,7 @@ export const Mobile = () => {
 										width={1600}
 										height={2000}
 										className="object-cover w-full h-auto"
-										loading="eager"
+										loading="lazy"
 										decoding="async"
 										itemProp="contentUrl"
 									/>

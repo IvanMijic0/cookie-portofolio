@@ -32,7 +32,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 						src={s.src}
 						alt={s.alt ?? ""}
 						className="w-full h-full object-cover z-30 select-none"
-						loading="eager"
+						loading="lazy"
 						fetchPriority="high"
 						decoding="async"
 					/>

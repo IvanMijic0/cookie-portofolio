@@ -15,7 +15,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -68,7 +68,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			alt=""
 			role="presentation"
 			aria-hidden="true"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 
@@ -119,7 +119,7 @@ export const Mobile = () => {
 							"Illustration background artwork by Amna Kolić featuring detailed, painterly textures."
 						)}
 						className="block h-full w-full object-contain object-right-bottom"
-						loading="eager"
+						loading="lazy"
 						fetchPriority="high"
 						decoding="async"
 						itemProp="contentUrl"

@@ -17,7 +17,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -81,7 +81,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 			role="presentation"
 			aria-hidden="true"
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -195,7 +195,7 @@ export const Mobile = () => {
 								width={1600}
 								height={2000}
 								className="object-cover w-full h-auto"
-								loading="eager"
+								loading="lazy"
 								decoding="async"
 								fetchPriority="high"
 								itemProp="image"

@@ -15,7 +15,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 			src="/mural-left.webp"
 			alt={t("illustrationThree.meta.imageAlt", "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.")}
 			className="w-full h-full object-cover z-0"
-			loading="eager"
+			loading="lazy"
 			fetchPriority="high"
 		/>
 		<article
@@ -87,7 +87,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				src="/mural-right.webp"
 				alt={t("illustrationThree.meta.imageAlt", "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.")}
 				className="w-full h-full object-cover z-0"
-				loading="eager"
+				loading="lazy"
 				fetchPriority="high"
 				itemProp="image"
 			/>
@@ -205,7 +205,7 @@ export const Mobile = () => {
 									width={1600}
 									height={2000}
 									className="object-cover w-full h-auto"
-									loading="eager"
+									loading="lazy"
 									decoding="async"
 									itemProp="contentUrl"
 								/>
@@ -233,7 +233,7 @@ export const Mobile = () => {
 									width={1600}
 									height={2000}
 									className="object-cover w-full h-auto"
-									loading="eager"
+									loading="lazy"
 									decoding="async"
 									itemProp="contentUrl"
 								/>
