@@ -3,7 +3,7 @@ FROM node:22-alpine AS deps
 WORKDIR /app
 ENV NO_UPDATE_NOTIFIER=true
 COPY package*.json ./
-RUN npm ci
+RUN npm install -g npm@11.16.0 && npm ci
 
 # --- build
 FROM node:22-alpine AS build
