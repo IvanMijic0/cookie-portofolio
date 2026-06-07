@@ -1,10 +1,13 @@
 import { forwardRef } from "react";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { DModified, Star } from "~/assets";
 import { BASE_URL, contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
 import { motion } from "framer-motion";
-import { LanguageSwitcher, ScreenTextFit } from "~/components/UI";
+import ScreenTextFit from "~/components/UI/ScreenTextFit";
+import LanguageSwitcher from "~/components/UI/LanguageSwitcher";
 import { useTranslate } from "~/context/I18nProvider";
 import type { MetaFunction } from "react-router";
 import { translate, type Lang } from "~/i18n/i18n";

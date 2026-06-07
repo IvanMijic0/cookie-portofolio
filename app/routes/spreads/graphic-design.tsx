@@ -1,5 +1,7 @@
 import { forwardRef } from "react";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { graphicDesignNavButtons } from "~/config";
 import { motion } from 'framer-motion';
 import { useTranslate } from "~/context/I18nProvider";

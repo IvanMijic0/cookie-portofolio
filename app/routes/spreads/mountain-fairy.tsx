@@ -2,8 +2,11 @@ import { forwardRef, useMemo, useState } from "react";
 import type { MetaFunction } from "react-router";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { Carousel, ScreenTextFit } from "~/components/UI";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
+import Carousel from "~/components/UI/Carousel";
+import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import { useTranslate } from "~/context/I18nProvider";
 import { translate, type Lang } from "~/i18n/i18n";
 

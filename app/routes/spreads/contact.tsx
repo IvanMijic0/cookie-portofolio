@@ -1,9 +1,11 @@
 import { forwardRef, useMemo, useState } from "react";
 import { CModified } from "~/assets";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { motion } from "framer-motion";
 import { contactButtons } from "~/config";
-import { ScreenTextFit } from "~/components/UI";
+import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { useTranslate } from "~/context/I18nProvider";

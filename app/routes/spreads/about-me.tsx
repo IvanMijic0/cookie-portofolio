@@ -3,7 +3,9 @@ import type { MetaFunction } from "react-router";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { Star } from "~/assets";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { useTranslate } from "~/context/I18nProvider";
 import { translate, type Lang } from "~/i18n/i18n";
 

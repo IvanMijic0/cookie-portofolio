@@ -1,12 +1,15 @@
 import { forwardRef, useMemo, useState } from "react";
 import { isImageSlide, Lightbox, type Slide, type SlideImage } from "yet-another-react-lightbox";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { useDisclosure } from "~/helpers";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Download from "yet-another-react-lightbox/plugins/download";
-import { ScreenTextFit, Carousel } from "~/components/UI";
+import Carousel from "~/components/UI/Carousel";
+import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import { useTranslate } from "~/context/I18nProvider";
 
 export const Left = forwardRef<HTMLDivElement>((_, ref) => {

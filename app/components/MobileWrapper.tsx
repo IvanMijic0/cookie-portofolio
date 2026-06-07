@@ -1,6 +1,6 @@
 import React, { Suspense, type PropsWithChildren } from "react";
 
-const LazyNav = React.lazy(() => import("./UI").then(m => ({ default: m.Nav })));
+const LazyNav = React.lazy(() => import("./UI/CornerNav"));
 
 const MobileWrapper = ({ children }: PropsWithChildren) => (
 	<main className="relative min-h-dvh w-full overflow-x-hidden">

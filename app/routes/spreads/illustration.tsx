@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import type { MetaFunction } from "react-router";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
 import { illustrationNavButtons } from "~/config";
 import { useTranslate } from "~/context/I18nProvider";
 import { translate, type Lang } from "~/i18n/i18n";

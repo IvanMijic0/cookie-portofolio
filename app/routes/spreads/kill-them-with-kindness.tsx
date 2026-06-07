@@ -1,6 +1,9 @@
 import { forwardRef } from "react";
-import { LeftPage, MobileWrapper, RightPage } from "~/components";
-import { Carousel, ScreenTextFit } from "~/components/UI";
+import LeftPage from "~/components/LeftPage";
+import RightPage from "~/components/RightPage";
+import MobileWrapper from "~/components/MobileWrapper";
+import Carousel from "~/components/UI/Carousel";
+import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import { useState, useMemo } from "react";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";

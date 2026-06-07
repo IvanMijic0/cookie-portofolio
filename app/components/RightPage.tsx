@@ -1,10 +1,10 @@
 import { motion, type Variants } from "framer-motion";
 import { forwardRef, useContext, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, } from "react";
-import { AnimatedBookmarkIcon } from "~/components";
+import AnimatedBookmarkIcon from "~/components/AnimatedBookmark";
 import { useFlipbook } from "~/context/flipbook";
 import { navSections } from "~/config";
 import { useTranslate } from "~/context/I18nProvider";
-import { LanguageSwitcher } from "./UI";
+import LanguageSwitcher from "./UI/LanguageSwitcher";
 import { PageContext } from "~/context/page";
 
 type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
