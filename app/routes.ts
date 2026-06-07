@@ -7,7 +7,7 @@ export default [
 	index("routes/index.tsx"),
 
 	route(":lang", "routes/_layout.tsx", [
-		route(null, "routes/spreads/redirect-to-homepage.tsx"),
+		index("routes/spreads/redirect-to-homepage.tsx"),
 
 		route("homepage", "routes/spreads/homepage.tsx"),
 

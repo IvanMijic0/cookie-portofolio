@@ -1,18 +1,4 @@
-import * as Homepage from "~/routes/spreads/homepage";
-import * as Photography from "~/routes/spreads/photography";
-import * as KillThemWithKindness from "~/routes/spreads/kill-them-with-kindness";
-import * as HumanRights from "~/routes/spreads/human-rights";
-import * as DoubleIndemnity from "~/routes/spreads/double-indemnity";
-import * as GraphicDesign from "~/routes/spreads/graphic-design";
-import * as KreativFestivalArtDirection from "~/routes/spreads/kreativ-festival-art-direction";
-import * as SjecasLiSeDoliBel from "~/routes/spreads/sjecas-li-se-doli-bel";
-import * as ChippstersLogo from "~/routes/spreads/chippsters-logo";
-import * as Illustration from "~/routes/spreads/illustration";
-import * as MountainFairy from "~/routes/spreads/mountain-fairy";
-import * as AustenInWatercolor from "~/routes/spreads/austen-in-watercolor";
-import * as Mural from "~/routes/spreads/mural";
-import * as AboutMe from "~/routes/spreads/about-me";
-import * as Contact from "~/routes/spreads/contact";
+import React from "react";
 import type { NaveSectionItems, SpreadKey, SpreadModule } from "~/types";
 import { Instagram, Linkedin, Mail } from "~/assets";
 import type { useTranslate } from "~/context/I18nProvider";
@@ -100,22 +86,28 @@ export const illustrationNavButtons = (t: TFn, makeHref: (p: string) => string) 
 	{ label: t("illustration.meta.shortThree"), to: makeHref("/illustration/mural") },
 ];
 
+const lazySpread = (importFn: () => Promise<any>): SpreadModule => ({
+	Left: React.lazy(() => importFn().then(m => ({ default: m.Left }))),
+	Right: React.lazy(() => importFn().then(m => ({ default: m.Right }))),
+	Mobile: React.lazy(() => importFn().then(m => ({ default: m.Mobile || (() => null) })))
+});
+
 export const spreadMap: Record<string, SpreadModule> = {
-	"homepage": Homepage,
-	"photography": Photography,
-	"photography/kill-them-with-kindness": KillThemWithKindness,
-	"photography/human-rights": HumanRights,
-	"photography/double-indemnity": DoubleIndemnity,
-	"graphic-design": GraphicDesign,
-	"graphic-design/kreativ-festival-art-direction": KreativFestivalArtDirection,
-	"graphic-design/sjecas-li-se-doli-bel": SjecasLiSeDoliBel,
-	"graphic-design/chippsters-logo": ChippstersLogo,
-	"illustration": Illustration,
-	"illustration/mountain-fairy": MountainFairy,
-	"illustration/austen-in-watercolor": AustenInWatercolor,
-	"illustration/mural": Mural,
-	"about-me": AboutMe,
-	"contact": Contact,
+	"homepage": lazySpread(() => import("~/routes/spreads/homepage")),
+	"photography": lazySpread(() => import("~/routes/spreads/photography")),
+	"photography/kill-them-with-kindness": lazySpread(() => import("~/routes/spreads/kill-them-with-kindness")),
+	"photography/human-rights": lazySpread(() => import("~/routes/spreads/human-rights")),
+	"photography/double-indemnity": lazySpread(() => import("~/routes/spreads/double-indemnity")),
+	"graphic-design": lazySpread(() => import("~/routes/spreads/graphic-design")),
+	"graphic-design/kreativ-festival-art-direction": lazySpread(() => import("~/routes/spreads/kreativ-festival-art-direction")),
+	"graphic-design/sjecas-li-se-doli-bel": lazySpread(() => import("~/routes/spreads/sjecas-li-se-doli-bel")),
+	"graphic-design/chippsters-logo": lazySpread(() => import("~/routes/spreads/chippsters-logo")),
+	"illustration": lazySpread(() => import("~/routes/spreads/illustration")),
+	"illustration/mountain-fairy": lazySpread(() => import("~/routes/spreads/mountain-fairy")),
+	"illustration/austen-in-watercolor": lazySpread(() => import("~/routes/spreads/austen-in-watercolor")),
+	"illustration/mural": lazySpread(() => import("~/routes/spreads/mural")),
+	"about-me": lazySpread(() => import("~/routes/spreads/about-me")),
+	"contact": lazySpread(() => import("~/routes/spreads/contact")),
 };
 
 export const TARGET_WIDTH = 864;

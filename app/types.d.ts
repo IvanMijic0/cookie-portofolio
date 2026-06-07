@@ -1,4 +1,4 @@
-import type { ForwardRefExoticComponent, RefAttributes } from "react";
+import type { ComponentType } from "react";
 import type { MetaFunction } from "react-router";
 import { spreadMap } from "~/config";
 
@@ -6,9 +6,10 @@ type MetaEntry = Partial<{ title: string; name: string; content: string }>;
 
 
 export type SpreadModule = {
-	Left: ForwardRefExoticComponent<RefAttributes<HTMLDivElement>>;
-	Right: ForwardRefExoticComponent<RefAttributes<HTMLDivElement>>;
+	Left: ComponentType<any>;
+	Right: ComponentType<any>;
 	meta?: MetaFunction | (() => MetaEntry[]);
+	Mobile?: ComponentType<any>;
 };
 
 type SpreadKey = keyof typeof spreadMap;

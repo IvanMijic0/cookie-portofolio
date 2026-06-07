@@ -17,20 +17,17 @@ function ScreenFitText({ children, minPx = 8, maxPx = 512 }: ScreenFitTextProps)
 		const containerWidth = container.clientWidth;
 		if (containerWidth <= 0) return;
 
-		text.style.fontSize = `${minPx}px`;
+		// Set a baseline font size to measure the text's width
+		const measureSize = 100;
+		text.style.fontSize = `${measureSize}px`;
+		const measuredWidth = text.scrollWidth;
 
-		let lo = minPx;
-		let hi = maxPx;
-		while (lo <= hi) {
-			const mid = Math.floor((lo + hi) / 2);
-			text.style.fontSize = `${mid}px`;
-			if (text.scrollWidth <= containerWidth) {
-				lo = mid + 1;
-			} else {
-				hi = mid - 1;
-			}
+		if (measuredWidth > 0) {
+			// Calculate target font size proportionally and clamp it
+			const calculatedSize = (containerWidth / measuredWidth) * measureSize;
+			const finalSize = Math.min(maxPx, Math.max(minPx, calculatedSize));
+			text.style.fontSize = `${finalSize}px`;
 		}
-		text.style.fontSize = `${hi}px`;
 	};
 
 	useLayoutEffect(() => {

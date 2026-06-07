@@ -19,6 +19,9 @@ import {
 	useMemo,
 	useRef,
 	useState,
+	Suspense,
+	forwardRef,
+	type ComponentType,
 	type JSX,
 } from "react";
 import { useFlipbook } from "~/context/flipbook";
@@ -68,6 +71,17 @@ type PageFlipApi = { flip: (pageIndex: number) => void; turnToPage?: (pageIndex:
 type FlipBookRef = { pageFlip: () => PageFlipApi | undefined };
 type FlipEvent = { data: number };
 
+const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; isRight?: boolean }>(
+	({ Component, isRight }, ref) => {
+		return (
+			<Suspense fallback={<div ref={ref} className={clsx("page bg-white", isRight ? "page--right" : "page--left")} />}>
+				<Component ref={ref} />
+			</Suspense>
+		);
+	}
+);
+FlipPage.displayName = "FlipPage";
+
 const DesktopFlipbook = () => {
 	const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
 		width: TARGET_WIDTH,
@@ -91,9 +105,10 @@ const DesktopFlipbook = () => {
 	const allPages = useMemo<JSX.Element[]>(() => {
 		return spreads.flatMap((key) => {
 			const mod = spreadMap[key];
-			const Left = mod.Left;
-			const Right = mod.Right;
-			return [<Left key={`${key}-left`} />, <Right key={`${key}-right`} />];
+			return [
+				<FlipPage key={`${key}-left`} Component={mod.Left} />,
+				<FlipPage key={`${key}-right`} Component={mod.Right} isRight />
+			];
 		});
 	}, []);
 
@@ -234,7 +249,9 @@ const MobileSpread = ({ slug }: { slug: SpreadKey }) => {
 	if (Mobile) {
 		return (
 			<div className="min-h-svh w-full overflow-y-auto">
-				<Mobile />
+				<Suspense fallback={<div className="min-h-svh w-full bg-white flex items-center justify-center">Loading...</div>}>
+					<Mobile />
+				</Suspense>
 			</div>
 		);
 	}
@@ -245,8 +262,12 @@ const MobileSpread = ({ slug }: { slug: SpreadKey }) => {
 	return (
 		<div className="min-h-svh w-full overflow-y-auto bg-white">
 			<div className="mx-auto max-w-screen-lg px-4 py-6 space-y-6">
-				<Left />
-				<Right />
+				<Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-lg" />}>
+					<Left />
+				</Suspense>
+				<Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-lg" />}>
+					<Right />
+				</Suspense>
 			</div>
 		</div>
 	);

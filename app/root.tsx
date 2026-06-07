@@ -10,6 +10,9 @@ import { FlipbookProvider } from "~/context/flipbook";
 import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
+	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp" },
+	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp" },
+	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp" },
 	{
 		rel: "preload",
 		as: "font",
