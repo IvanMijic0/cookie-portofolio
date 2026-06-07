@@ -6,7 +6,7 @@ export const loader = async () => {
 
 	const langs = [
 		{ code: "en", hreflang: "en" },
-		{ code: "bs", hreflang: "bs" },
+		{ code: "ba", hreflang: "bs" },
 	] as const;
 
 	const paths = [

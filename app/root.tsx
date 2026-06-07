@@ -1,6 +1,6 @@
 import "./app.css";
 
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useParams } from "react-router";
 import type { Route } from "./+types/root";
 import type { ReactNode } from "react";
 import { UIProvider } from "~/context/ui";
@@ -13,7 +13,6 @@ export const links: Route.LinksFunction = () => [
 	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
-	{ rel: "preload", as: "image", href: "/homepage.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
 	{
 		rel: "preload",
 		as: "font",
@@ -31,8 +30,11 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: ReactNode }) {
+	const params = useParams();
+	const lang = params.lang === "ba" ? "bs" : (params.lang || "en");
+
 	return (
-		<html lang="en">
+		<html lang={lang}>
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />

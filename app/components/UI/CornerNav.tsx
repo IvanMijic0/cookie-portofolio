@@ -30,7 +30,11 @@ type NavProps = {
 };
 
 const Nav = ({ initialActive = false }: NavProps) => {
-	const [active, setActive] = useState(initialActive);
+	// Always start closed so Framer Motion has a rendered closed-state to
+	// animate FROM. Then flip open on the next frame if the caller wanted
+	// the menu open immediately (e.g. when the user clicked the static
+	// hamburger placeholder before CornerNav had loaded).
+	const [active, setActive] = useState(false);
 	const { pathname } = useLocation();
 	const [scrolled, setScrolled] = useState(false);
 
@@ -41,6 +45,15 @@ const Nav = ({ initialActive = false }: NavProps) => {
 		window.addEventListener("scroll", onScroll);
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
+
+	// Defer the open-on-mount to the next frame so Framer Motion registers
+	// the closed state first, then animates to open.
+	useEffect(() => {
+		if (initialActive) {
+			const raf = requestAnimationFrame(() => setActive(true));
+			return () => cancelAnimationFrame(raf);
+		}
+	}, [initialActive]);
 
 	const normalize = (s: string) => s.replace(/\/+$/, "");
 	const current = normalize(pathname);
@@ -231,32 +244,34 @@ const HamburgerButton = ({
 	return (
 		<>
 			<motion.div
-				initial={false}
 				animate={active ? "open" : "closed"}
+				initial="closed"
 				variants={UNDERLAY_VARIANTS}
 				style={{ top: 0, left: 0, transformOrigin: "left top" }}
 				className="fixed z-10 bg-transparent"
 			/>
 			<motion.button
-				initial={false}
 				animate={active ? "open" : "closed"}
+				initial="closed"
 				onClick={() => setActive(pv => !pv)}
 				className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all hover:bg-black/20"
-
 				aria-label={active ? "Close navigation menu" : "Open navigation menu"}
 			>
 				<motion.span
 					variants={HAMBURGER_VARIANTS.top}
+					initial="initial"
 					className="absolute block h-[1px] w-10"
 					style={{ y: "-50%", left: "50%", x: "-50%" }}
 				/>
 				<motion.span
 					variants={HAMBURGER_VARIANTS.middle}
+					initial="initial"
 					className="absolute block h-[1px] w-10"
 					style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
 				/>
 				<motion.span
 					variants={HAMBURGER_VARIANTS.bottom}
+					initial="initial"
 					className="absolute block h-[1px] w-5"
 					style={{ x: "-150%", y: "50%" }}
 				/>
@@ -323,14 +338,18 @@ const makeHamburgerVariants = (forceBlack: boolean): Record<"top" | "middle" | "
 	const closedColor = forceBlack ? "#000" : "#fff";
 	return {
 		top: {
+			// Static start state — straight bar at 35%, correct color
+			initial: { rotate: "0deg", top: "35%", backgroundColor: closedColor },
 			open: { rotate: ["0deg", "0deg", "45deg"], top: ["35%", "50%", "50%"], backgroundColor: openColor },
 			closed: { rotate: ["45deg", "0deg", "0deg"], top: ["50%", "50%", "35%"], backgroundColor: closedColor },
 		},
 		middle: {
+			initial: { rotate: "0deg", backgroundColor: closedColor },
 			open: { rotate: ["0deg", "0deg", "-45deg"], backgroundColor: openColor },
 			closed: { rotate: ["-45deg", "0deg", "0deg"], backgroundColor: closedColor },
 		},
 		bottom: {
+			initial: { rotate: "0deg", bottom: "35%", left: "calc(50% + 10px)", backgroundColor: closedColor },
 			open: { rotate: ["0deg", "0deg", "45deg"], bottom: ["35%", "50%", "50%"], left: "74.5%", backgroundColor: openColor },
 			closed: { rotate: ["45deg", "0deg", "0deg"], bottom: ["50%", "50%", "35%"], left: "calc(50% + 10px)", backgroundColor: closedColor },
 		},
