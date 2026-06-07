@@ -7,31 +7,25 @@ const LazyNav = React.lazy(() => import("./UI/CornerNav"));
 const MobileWrapper = ({ children }: PropsWithChildren) => {
 	const { pathname } = useLocation();
 	const [loadNav, setLoadNav] = useState(false);
+	const [openMenuOnLoad, setOpenMenuOnLoad] = useState(false);
 
 	useEffect(() => {
-		let idleId: number | undefined;
-		let timeoutId: number | undefined;
+		if (typeof window === "undefined") return;
 
-		const load = () => setLoadNav(true);
+		const triggerLoad = () => {
+			setLoadNav(true);
+		};
 
-		if (typeof window !== "undefined") {
-			const win = window as any;
-			if (typeof win.requestIdleCallback === "function") {
-				idleId = win.requestIdleCallback(() => {
-					timeoutId = setTimeout(load, 200) as any;
-				});
-			} else {
-				timeoutId = setTimeout(load, 500) as any;
-			}
-		}
+		const activityEvents = ["touchstart", "mouseover", "scroll", "wheel"];
+		const listener = () => {
+			triggerLoad();
+			activityEvents.forEach(e => window.removeEventListener(e, listener));
+		};
+
+		activityEvents.forEach(e => window.addEventListener(e, listener, { passive: true }));
 
 		return () => {
-			if (idleId && typeof window !== "undefined" && "cancelIdleCallback" in window) {
-				window.cancelIdleCallback(idleId);
-			}
-			if (timeoutId) {
-				window.clearTimeout(timeoutId);
-			}
+			activityEvents.forEach(e => window.removeEventListener(e, listener));
 		};
 	}, []);
 
@@ -43,7 +37,7 @@ const MobileWrapper = ({ children }: PropsWithChildren) => {
 		<main className="relative min-h-dvh w-full overflow-x-hidden">
 			{loadNav ? (
 				<Suspense fallback={<div className="h-20 w-full" />}>
-					<LazyNav />
+					<LazyNav initialActive={openMenuOnLoad} />
 				</Suspense>
 			) : (
 				// Placeholder header to match closed state layout
@@ -62,6 +56,10 @@ const MobileWrapper = ({ children }: PropsWithChildren) => {
 							className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all"
 							aria-label="Open navigation menu"
 							style={{ color: baseColor }}
+							onClick={() => {
+								setOpenMenuOnLoad(true);
+								setLoadNav(true);
+							}}
 						>
 							<span
 								className="absolute block h-[1px] w-10"

@@ -25,8 +25,12 @@ const switcherV = {
 	}
 };
 
-const Nav = () => {
-	const [active, setActive] = useState(false);
+type NavProps = {
+	initialActive?: boolean;
+};
+
+const Nav = ({ initialActive = false }: NavProps) => {
+	const [active, setActive] = useState(initialActive);
 	const { pathname } = useLocation();
 	const [scrolled, setScrolled] = useState(false);
 
