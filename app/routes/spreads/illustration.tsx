@@ -228,7 +228,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const Illustration = () => null;
-export default Illustration;
+export default Mobile;

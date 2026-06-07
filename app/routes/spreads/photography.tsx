@@ -213,7 +213,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const Photography = () => null;
-export default Photography;
+export default Mobile;

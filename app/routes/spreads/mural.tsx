@@ -371,7 +371,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const Mural = () => null;
-export default Mural;
+export default Mobile;

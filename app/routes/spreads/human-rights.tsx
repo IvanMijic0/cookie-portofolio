@@ -414,7 +414,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const HumanRights = () => null;
-export default HumanRights;
+export default Mobile;

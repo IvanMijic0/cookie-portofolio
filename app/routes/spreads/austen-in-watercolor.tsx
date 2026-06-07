@@ -454,7 +454,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const AustenInWatercolor = () => null;
-export default AustenInWatercolor;
+export default Mobile;

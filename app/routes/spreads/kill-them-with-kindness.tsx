@@ -388,7 +388,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const KillThemWithKindness = () => null;
-export default KillThemWithKindness;
+export default Mobile;

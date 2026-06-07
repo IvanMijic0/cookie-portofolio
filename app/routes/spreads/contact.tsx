@@ -369,7 +369,4 @@ export const meta: MetaFunction = ({ params }) => {
 };
 
 
-export 
-
-const Contact = () => null;
-export default Contact;
+export default Mobile;

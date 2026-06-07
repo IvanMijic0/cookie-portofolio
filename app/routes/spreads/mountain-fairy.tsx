@@ -356,7 +356,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const MountainFairy = () => null;
-export default MountainFairy;
+export default Mobile;

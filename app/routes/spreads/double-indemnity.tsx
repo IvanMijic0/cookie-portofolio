@@ -382,7 +382,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const DoubleIndemnity = () => null;
-export default DoubleIndemnity;
+export default Mobile;

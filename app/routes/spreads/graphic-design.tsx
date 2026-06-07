@@ -266,7 +266,4 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export 
-
-const GraphicDesign = () => null;
-export default GraphicDesign;
+export default Mobile;

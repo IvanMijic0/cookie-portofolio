@@ -381,7 +381,4 @@ export const meta: MetaFunction = ({ params, location }) => {
 	];
 };
 
-export 
-
-const Homepage = () => null;
-export default Homepage;
+export default Mobile;

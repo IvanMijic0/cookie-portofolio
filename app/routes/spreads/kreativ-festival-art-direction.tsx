@@ -494,7 +494,4 @@ export function meta() {
 	];
 }
 
-export 
-
-const KreativFestivalArtDirection = () => null;
-export default KreativFestivalArtDirection
+export default Mobile;

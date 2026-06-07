@@ -363,7 +363,4 @@ export function meta() {
 	];
 }
 
-export 
-
-const ChippstersLogo = () => null;
-export default ChippstersLogo;
+export default Mobile;
