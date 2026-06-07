@@ -10,7 +10,6 @@ import { FlipbookProvider } from "~/context/flipbook";
 import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "stylesheet", href: "yet-another-react-lightbox/styles.css" },
 	{
 		rel: "preload",
 		as: "font",
