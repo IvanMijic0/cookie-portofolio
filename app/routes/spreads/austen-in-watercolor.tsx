@@ -3,6 +3,7 @@ import LeftPage from "~/components/LeftPage";
 import RightPage from "~/components/RightPage";
 import MobileWrapper from "~/components/MobileWrapper";
 import Lightbox, { isImageSlide, type SlideImage } from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";

@@ -1,19 +1,13 @@
-import { motion, type Variants } from "framer-motion";
-import { forwardRef, useContext, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, } from "react";
-import AnimatedBookmarkIcon from "~/components/AnimatedBookmark";
+import { forwardRef, useContext, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, lazy, Suspense } from "react";
 import { useFlipbook } from "~/context/flipbook";
 import { navSections } from "~/config";
 import { useTranslate } from "~/context/I18nProvider";
 import LanguageSwitcher from "./UI/LanguageSwitcher";
 import { PageContext } from "~/context/page";
 
-type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
+const AnimatedBookmarkIcon = lazy(() => import("~/components/AnimatedBookmark"));
 
-const variants: Variants = {
-	hidden: { y: "-92.2%" },
-	peek: { y: "-86.5%" },
-	open: { y: "0%" },
-};
+type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
 
 const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 	({ children, showBookmark = true }, ref) => {
@@ -25,7 +19,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 
 		const bookmarkRef = useRef<HTMLDivElement>(null);
 
-		const state: keyof typeof variants = open ? "open" : hovered ? "peek" : "hidden";
+		const state: "open" | "peek" | "hidden" = open ? "open" : hovered ? "peek" : "hidden";
 
 		const stopBubble = (e: SyntheticEvent) => {
 			e.stopPropagation();
@@ -41,26 +35,20 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 			<>
 				{children}
 				{showBookmark && (
-					<motion.div
+					<div
 						ref={bookmarkRef}
-						className="absolute top-0 left-4 h-[45rem] w-[13rem] z-50 pointer-events-auto"
-						variants={variants}
-						animate={state}
-						initial="hidden"
-						transition={{
-							type: "spring",
-							stiffness: 400,
-							damping: state === "hidden" ? 48 : 32,
-							mass: 0.8,
-						}}
-						onHoverStart={() => !open && setHovered(true)}
-						onHoverEnd={() => setHovered(false)}
+						className="absolute top-0 left-4 h-[45rem] w-[13rem] z-50 pointer-events-auto transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.1)]"
+						onMouseEnter={() => !open && setHovered(true)}
+						onMouseLeave={() => setHovered(false)}
 						onMouseDownCapture={stopBubble}
 						onPointerDownCapture={stopBubble}
 						onTouchStartCapture={stopBubble}
 						onTouchMoveCapture={stopBubble}
 						onTouchEndCapture={stopBubble}
-						style={{ touchAction: "none" }}
+						style={{
+							touchAction: "none",
+							transform: open ? "translateY(0%)" : hovered ? "translateY(-86.5%)" : "translateY(-92.2%)"
+						}}
 					>
 						<div
 							className="
@@ -125,12 +113,14 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 									});
 								}}
 							>
-								<AnimatedBookmarkIcon
-									state={open ? "up" : hovered ? "down" : "star"}
-								/>
+								<Suspense fallback={null}>
+									<AnimatedBookmarkIcon
+										state={open ? "up" : hovered ? "down" : "star"}
+									/>
+								</Suspense>
 							</button>
 						</div>
-					</motion.div>
+					</div>
 				)}
 			</>
 		);

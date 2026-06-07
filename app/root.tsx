@@ -1,5 +1,4 @@
 import "./app.css";
-import "yet-another-react-lightbox/styles.css";
 
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, } from "react-router";
 import type { Route } from "./+types/root";
@@ -10,13 +9,29 @@ import { FlipbookProvider } from "~/context/flipbook";
 import type { MetaFunction } from "react-router";
 
 export const links: Route.LinksFunction = () => [
-	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp", fetchpriority: "high" } as any,
-	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high" } as any,
-	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "high" } as any,
+	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
+	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
+	{ rel: "preload", as: "image", href: "/homepage.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
 	{
 		rel: "preload",
 		as: "font",
 		href: "/fonts/bodoni-moda.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+	},
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/libre-bodoni.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+	},
+	{
+		rel: "preload",
+		as: "font",
+		href: "/fonts/athene-voyage.woff2",
 		type: "font/woff2",
 		crossOrigin: "anonymous",
 	},

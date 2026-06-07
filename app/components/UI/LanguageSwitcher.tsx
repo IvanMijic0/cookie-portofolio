@@ -1,9 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router";
-import { motion, type Transition } from "framer-motion";
 import clsx from "clsx";
-
-const spring: Transition = { type: "spring", stiffness: 500, damping: 32, mass: 0.6 };
 
 type Props = {
 	isBookmark?: boolean;
@@ -71,16 +68,13 @@ const LanguageSwitcher = ({ isBookmark = false }: Props) => {
 			<div className="col-span-1 flex justify-center">
 				<Btn code="ba" label="BA" />
 			</div>
-			<motion.span
+			<span
 				aria-hidden
 				className={clsx(
-					"pointer-events-none absolute bottom-[3px] xs:-bottom-[1px] h-[3px] rounded",
+					"pointer-events-none absolute bottom-[3px] xs:-bottom-[1px] h-[3px] rounded transition-transform duration-300 ease-out",
 					isBookmark ? "bg-white" : "bg-[#272727]"
 				)}
-				initial={false}
-				style={{ width: "33.3333%" }}
-				animate={{ x: lang === "en" ? "0%" : "200%" }}
-				transition={spring}
+				style={{ width: "33.3333%", transform: lang === "en" ? "translateX(0%)" : "translateX(200%)" }}
 			/>
 		</div>
 	);

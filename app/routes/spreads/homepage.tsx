@@ -5,7 +5,6 @@ import MobileWrapper from "~/components/MobileWrapper";
 import { DModified, Star } from "~/assets";
 import { BASE_URL, contactButtons, navSections } from "~/config";
 import { useFlipbook } from "~/context/flipbook";
-import { motion } from "framer-motion";
 import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import LanguageSwitcher from "~/components/UI/LanguageSwitcher";
 import { useTranslate } from "~/context/I18nProvider";
@@ -93,7 +92,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 							if (!to) return null;
 
 							return (
-								<motion.a
+								<a
 									key={label}
 									href={to}
 									target={isMailto ? undefined : "_blank"}
@@ -107,14 +106,11 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 											window.location.assign(to);
 										}
 									}}
-									className="pointer-events-auto z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg"
-									whileHover={{ scale: 1.05, rotate: -1 }}
-									whileTap={{ scale: 0.95, rotate: 1 }}
-									transition={{ type: "spring", stiffness: 300, damping: 15 }}
+									className="pointer-events-auto z-50 inline-flex items-center justify-center bg-white rounded-full p-2 text-pink-950 shadow-md hover:shadow-lg transition-transform duration-200 ease-out hover:scale-105 hover:-rotate-1 active:scale-95 active:rotate-1"
 								>
 									<Icon className="h-6 w-6 text-[#379C8D] 2xl:w-7 2xl:h-7" aria-hidden />
 									<span className="sr-only">{label}</span>
-								</motion.a>
+								</a>
 							);
 						})}
 					</div>
