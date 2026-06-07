@@ -1,6 +1,8 @@
-import { useEffect, useMemo, useRef } from "react";
-import Lottie, { type LottieRefCurrentProps } from "lottie-react";
+import { useEffect, useMemo, useRef, Suspense, lazy } from "react";
+import type { LottieRefCurrentProps } from "lottie-react";
 import { DownUp, StarToDown, UpToStar } from "~/assets";
+
+const LazyLottie = lazy(() => import("lottie-react"));
 
 type State = "star" | "down" | "up";
 type Props = { state: State; className?: string; size?: number };
@@ -42,22 +44,18 @@ const AnimatedBookmarkIcon = ({ state, className, size = 70 }: Props) => {
 		}
 	}, [conf?.data, conf?.reverse]);
 
-	if (conf && prev.current !== state) {
-		return (
-			<Lottie
-				key={key}
-				lottieRef={lottieRef}
-				animationData={conf.data}
-				autoplay
-				loop={false}
-				className={className}
-				style={{ width: size, height: size, display: "inline-block" }}
-			/>
-		);
-	}
-
-	return (
-		<Lottie
+	const content = conf && prev.current !== state ? (
+		<LazyLottie
+			key={key}
+			lottieRef={lottieRef}
+			animationData={conf.data}
+			autoplay
+			loop={false}
+			className={className}
+			style={{ width: size, height: size, display: "inline-block" }}
+		/>
+	) : (
+		<LazyLottie
 			key={`static-${state}`}
 			lottieRef={lottieRef}
 			animationData={staticPose.data}
@@ -73,6 +71,12 @@ const AnimatedBookmarkIcon = ({ state, className, size = 70 }: Props) => {
 				p.goToAndStop(staticPose.end ? frames : 0, true);
 			}}
 		/>
+	);
+
+	return (
+		<Suspense fallback={<div className={className} style={{ width: size, height: size, display: "inline-block" }} />}>
+			{content}
+		</Suspense>
 	);
 }
 
