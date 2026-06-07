@@ -262,7 +262,7 @@ export const Mobile = () => {
 							aria-hidden="true"
 							className="font-display flex w-full justify-center font-normal leading-0 text-white"
 						>
-							<ScreenTextFit>
+							<ScreenTextFit ssrSize="18vw">
 								<span className="inline-flex items-baseline py-1">
 									<DModified className="h-[0.75em] w-auto" />
 									{t("homepage.title", "DESIGN").slice(1)}

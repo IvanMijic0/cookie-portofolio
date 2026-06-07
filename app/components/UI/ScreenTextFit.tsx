@@ -3,9 +3,10 @@ import { useLayoutEffect, useRef, type PropsWithChildren } from "react";
 type ScreenFitTextProps = PropsWithChildren<{
 	minPx?: number;
 	maxPx?: number;
+	ssrSize?: string;
 }>;
 
-function ScreenFitText({ children, minPx = 8, maxPx = 512 }: ScreenFitTextProps) {
+function ScreenFitText({ children, minPx = 8, maxPx = 512, ssrSize = "12vw" }: ScreenFitTextProps) {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const textRef = useRef<HTMLSpanElement | null>(null);
 
@@ -41,6 +42,7 @@ function ScreenFitText({ children, minPx = 8, maxPx = 512 }: ScreenFitTextProps)
 		<div ref={containerRef} className="flex w-full items-center overflow-hidden">
 			<span
 				ref={textRef}
+				style={{ fontSize: ssrSize }}
 				className="inline-block whitespace-nowrap align-baseline [-webkit-text-stroke:0.01em_white] [text-stroke:0.01em_white]"
 			>
 				{children}
