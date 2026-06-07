@@ -12,13 +12,13 @@ const MobileWrapper = ({ children }: PropsWithChildren) => {
 	useEffect(() => {
 		if (typeof window === "undefined") return;
 
-		const triggerLoad = () => {
-			setLoadNav(true);
-		};
-
 		const activityEvents = ["touchstart", "mouseover", "scroll", "wheel"];
-		const listener = () => {
-			triggerLoad();
+		const listener = (event: Event) => {
+			const target = event.target as HTMLElement;
+			if (target && typeof target.closest === "function" && target.closest(".hamburger-btn-static")) {
+				setOpenMenuOnLoad(true);
+			}
+			setLoadNav(true);
 			activityEvents.forEach(e => window.removeEventListener(e, listener));
 		};
 
@@ -53,7 +53,7 @@ const MobileWrapper = ({ children }: PropsWithChildren) => {
 					<div className="pointer-events-auto">
 						<button
 							type="button"
-							className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all"
+							className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all hamburger-btn-static"
 							aria-label="Open navigation menu"
 							style={{ color: baseColor }}
 							onClick={() => {
