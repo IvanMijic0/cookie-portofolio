@@ -1,5 +1,4 @@
-import { type Dispatch, type SetStateAction, useState, useEffect } from "react";
-import { AnimatePresence, motion, type Variants, type Transition, MotionConfig } from "framer-motion";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
@@ -13,16 +12,7 @@ type NormalizeFn = (s: string) => string;
 type LinksOverlayProps = {
 	current: string;
 	normalize: NormalizeFn;
-};
-
-const switcherV = {
-	hidden: { opacity: 0, y: 10, filter: "blur(6px)" },
-	show: {
-		opacity: 1,
-		y: 0,
-		filter: "blur(0px)",
-		transition: { type: "spring", stiffness: 320, damping: 24 }
-	}
+	active: boolean;
 };
 
 type NavProps = {
@@ -30,11 +20,8 @@ type NavProps = {
 };
 
 const Nav = ({ initialActive = false }: NavProps) => {
-	// Always start closed so Framer Motion has a rendered closed-state to
-	// animate FROM. Then flip open on the next frame if the caller wanted
-	// the menu open immediately (e.g. when the user clicked the static
-	// hamburger placeholder before CornerNav had loaded).
 	const [active, setActive] = useState(false);
+	const [renderOverlay, setRenderOverlay] = useState(initialActive);
 	const { pathname } = useLocation();
 	const [scrolled, setScrolled] = useState(false);
 
@@ -42,25 +29,31 @@ const Nav = ({ initialActive = false }: NavProps) => {
 		const onScroll = () => {
 			setScrolled(window.scrollY > 0);
 		};
-		window.addEventListener("scroll", onScroll);
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
 		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	// Defer the open-on-mount to the next frame so Framer Motion registers
-	// the closed state first, then animates to open.
 	useEffect(() => {
-		if (initialActive) {
-			const raf = requestAnimationFrame(() => setActive(true));
-			return () => cancelAnimationFrame(raf);
-		}
+		if (!initialActive) return;
+		setRenderOverlay(true);
+		const raf = requestAnimationFrame(() => setActive(true));
+		return () => cancelAnimationFrame(raf);
 	}, [initialActive]);
+
+	useEffect(() => {
+		if (active) {
+			setRenderOverlay(true);
+			return;
+		}
+
+		const timer = setTimeout(() => setRenderOverlay(false), 260);
+		return () => clearTimeout(timer);
+	}, [active]);
 
 	const normalize = (s: string) => s.replace(/\/+$/, "");
 	const current = normalize(pathname);
-
-	const isHomepage =
-		current === "/homepage" || current === "/";
-
+	const isHomepage = current.endsWith("/homepage") || current === "/";
 	const baseColor = isHomepage ? "#ffffff" : "#000000";
 
 	return (
@@ -79,18 +72,18 @@ const Nav = ({ initialActive = false }: NavProps) => {
 
 				<div className="pointer-events-auto">
 					<HamburgerButton active={active} setActive={setActive} current={current} />
-					<AnimatePresence>
-						{active && <LinksOverlay current={current} normalize={normalize} />}
-					</AnimatePresence>
+					{renderOverlay && (
+						<LinksOverlay active={active} current={current} normalize={normalize} />
+					)}
 				</div>
 
 				{isHomepage && (
 					<div className="fixed inset-x-0 top-6 pointer-events-none">
-						<motion.div
-							className="mx-auto w-fit flex items-center gap-6 pointer-events-auto"
-							initial={false}
-							animate={{ opacity: active ? 0 : 1, scale: active ? 0.98 : 1 }}
-							transition={{ duration: 0.2, ease: "easeInOut" }}
+						<div
+							className={clsx(
+								"mx-auto w-fit flex items-center gap-6 pointer-events-auto transition duration-200 ease-out",
+								active ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
+							)}
 						>
 							{contactButtons.map(({ label, to, icon: Icon }) => (
 								<a
@@ -102,36 +95,39 @@ const Nav = ({ initialActive = false }: NavProps) => {
 									<span className="sr-only">{label}</span>
 								</a>
 							))}
-						</motion.div>
+						</div>
 					</div>
 				)}
 
 				<div className="fixed right-6 top-4 z-[100] pointer-events-none">
-					<motion.div
-						className="flex flex-col items-center gap-1 pointer-events-auto"
-						initial={false}
-						animate={{ color: active ? "#000000" : baseColor }}
-						transition={{ duration: 0.25, ease: "easeInOut" }}
+					<div
+						className="flex flex-col items-center gap-1 pointer-events-auto transition-colors duration-200 ease-out"
+						style={{ color: active ? "#000000" : baseColor }}
 					>
 						<Star className="min-w-8 min-h-8 h-8 w-8" />
 						<span className="font-logo">AMNA</span>
-					</motion.div>
+					</div>
 				</div>
 			</div>
 		</Portal>
 	);
 };
 
-const LinksOverlay = ({ current, normalize }: LinksOverlayProps) => {
+const LinksOverlay = ({ active, current, normalize }: LinksOverlayProps) => {
 	return (
-		<nav className="fixed z-40 h-screen w-full text-[#272727] overflow-hidden">
-			<LinksContainer current={current} normalize={normalize} />
+		<nav
+			className={clsx(
+				"fixed z-40 h-screen w-full text-[#272727] overflow-hidden transition-opacity duration-200 ease-out",
+				active ? "opacity-100" : "opacity-0"
+			)}
+			aria-hidden={!active}
+		>
+			<LinksContainer active={active} current={current} normalize={normalize} />
 		</nav>
 	);
 };
 
-
-export const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
+export const LinksContainer = ({ active, current, normalize }: LinksOverlayProps) => {
 	const { t, makeHref } = useTranslate();
 
 	const isActiveSection = (href: string) => {
@@ -141,89 +137,102 @@ export const LinksContainer = ({ current, normalize }: LinksOverlayProps) => {
 	const isActiveItem = (href: string) => normalize(href) === current;
 
 	return (
-		<MotionConfig reducedMotion="user">
-			<motion.div
-				className="space-y-0 xs:space-y-2 overflow-y-auto p-12 pl-6 mt-6 xs:mt-10 md:pl-20"
-				variants={container}
-				initial="hidden"
-				animate="show"
-				exit="hidden"
-			>
-				<div className="flex w-full justify-between items-start">
-					<motion.h2 className="text-5xl xs:text-6xl font-serif pb-4" variants={titleV}>
-						contents
-					</motion.h2>
+		<div
+			className={clsx(
+				"space-y-0 xs:space-y-2 overflow-y-auto p-12 pl-6 mt-6 xs:mt-10 md:pl-20 transition duration-200 ease-out motion-reduce:transition-none",
+				active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+			)}
+		>
+			<div className="flex w-full justify-between items-start">
+				<h2
+					className={clsx(
+						"text-5xl xs:text-6xl font-serif pb-4 transition duration-200 ease-out motion-reduce:transition-none",
+						active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+					)}
+				>
+					contents
+				</h2>
 
-					<motion.div
-						className="pt-1 xs:pt-4"
-						variants={titleV}
-					>
-						<LanguageSwitcher />
-					</motion.div>
+				<div
+					className={clsx(
+						"pt-1 xs:pt-4 transition duration-200 ease-out motion-reduce:transition-none",
+						active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+					)}
+				>
+					<LanguageSwitcher />
 				</div>
+			</div>
 
-				<motion.ol className="space-y-4 xs:space-y-6" variants={container}>
-					{navSections(t, makeHref).map((section) => {
-						const sectionHref = `${section.to}`;
-						const sectionActive = isActiveSection(sectionHref);
+			<ol className="space-y-4 xs:space-y-6">
+				{navSections(t, makeHref).map((section, sectionIndex) => {
+					const sectionHref = `${section.to}`;
+					const sectionActive = isActiveSection(sectionHref);
+					const delay = active ? `${120 + sectionIndex * 35}ms` : "0ms";
 
-						return (
-							<motion.li
-								key={section.title}
-								layout="position"
-								className="grid grid-cols-[2ch_1fr] items-start gap-12"
-								variants={row}
-							>
-								<motion.span
-									className="text-right tabular-nums font-sans text-4xl xs:text-5xl font-light transform-gpu"
-									variants={numberV}
+					return (
+						<li
+							key={section.title}
+							className={clsx(
+								"grid grid-cols-[2ch_1fr] items-start gap-12 transition duration-200 ease-out motion-reduce:transition-none",
+								active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1.5"
+							)}
+							style={{ transitionDelay: delay }}
+						>
+							<span className="text-right tabular-nums font-sans text-4xl xs:text-5xl font-light transform-gpu">
+								{section.pageNumber}
+							</span>
+
+							<div className="flex flex-col gap-1">
+								<a
+									href={sectionHref}
+									className={[
+										"font-sans text-xl xs:text-2xl font-black cursor-pointer transition-colors transform-gpu",
+										sectionActive
+											? "text-[#379C8D] underline underline-offset-4 decoration-2"
+											: "hover:opacity-90"
+									].join(" ")}
 								>
-									{section.pageNumber}
-								</motion.span>
+									{section.title}
+								</a>
 
-								<div className="flex flex-col gap-1">
-									<motion.a
-										variants={titleV}
-										href={sectionHref}
-										className={[
-											"font-sans text-xl xs:text-2xl font-black cursor-pointer transition-colors transform-gpu",
-											sectionActive
-												? "text-[#379C8D] underline underline-offset-4 decoration-2"
-												: "hover:opacity-90"
-										].join(" ")}
-									>
-										{section.title}
-									</motion.a>
+								<ul className="ml-3 space-y-1">
+									{section.items.map((item, itemIndex) => {
+										const itemHref = `${item.to}`;
+										const itemActive = isActiveItem(itemHref);
+										const itemDelay = active
+											? `${170 + sectionIndex * 35 + itemIndex * 20}ms`
+											: "0ms";
 
-									<motion.ul className="ml-3 space-y-1" variants={subList}>
-										{section.items.map((item) => {
-											const itemHref = `${item.to}`;
-											const itemActive = isActiveItem(itemHref);
-
-											return (
-												<motion.li key={item.to} variants={subItem} layout="position">
-													<motion.a
-														href={itemHref}
-														className={[
-															"font-serif italic text-md xs:text-lg cursor-pointer transition-colors transform-gpu",
-															itemActive
-																? "text-[#379C8D] underline underline-offset-4 decoration-2"
-																: "hover:opacity-90"
-														].join(" ")}
-													>
-														{item.label}
-													</motion.a>
-												</motion.li>
-											);
-										})}
-									</motion.ul>
-								</div>
-							</motion.li>
-						);
-					})}
-				</motion.ol>
-			</motion.div>
-		</MotionConfig>
+										return (
+											<li
+												key={item.to}
+												className={clsx(
+													"transition duration-200 ease-out motion-reduce:transition-none",
+													active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1.5"
+												)}
+												style={{ transitionDelay: itemDelay }}
+											>
+												<a
+													href={itemHref}
+													className={[
+														"font-serif italic text-md xs:text-lg cursor-pointer transition-colors transform-gpu",
+														itemActive
+															? "text-[#379C8D] underline underline-offset-4 decoration-2"
+															: "hover:opacity-90"
+													].join(" ")}
+												>
+													{item.label}
+												</a>
+											</li>
+										);
+									})}
+								</ul>
+							</div>
+						</li>
+					);
+				})}
+			</ol>
+		</div>
 	);
 };
 
@@ -236,124 +245,61 @@ const HamburgerButton = ({
 	setActive: Dispatch<SetStateAction<boolean>>;
 	current: string
 }) => {
-	const isHomepage =
-		current === "/homepage" || current === "/homepage" || current === "/";
-
-	const HAMBURGER_VARIANTS = makeHamburgerVariants(!isHomepage);
+	const isHomepage = current.endsWith("/homepage") || current === "/";
+	const closedColor = isHomepage ? "#ffffff" : "#000000";
+	const barColor = active ? "#000000" : closedColor;
 
 	return (
 		<>
-			<motion.div
-				animate={active ? "open" : "closed"}
-				initial="closed"
-				variants={UNDERLAY_VARIANTS}
-				style={{ top: 0, left: 0, transformOrigin: "left top" }}
-				className="fixed z-10 bg-transparent"
+			<div
+				className="fixed z-10 bg-white transition-all duration-300 ease-out motion-reduce:transition-none"
+				style={{
+					top: 0,
+					left: 0,
+					transformOrigin: "left top",
+					width: active ? "100%" : "100px",
+					height: active ? "100vh" : "100px",
+					opacity: active ? 1 : 0,
+					transitionDelay: active ? "0ms" : "250ms",
+				}}
 			/>
-			<motion.button
-				animate={active ? "open" : "closed"}
-				initial="closed"
-				onClick={() => setActive(pv => !pv)}
+			<button
+				type="button"
+				onClick={() => setActive((pv) => !pv)}
 				className="group fixed left-1 top-1 z-50 h-20 w-20 bg-black/0 transition-all hover:bg-black/20"
 				aria-label={active ? "Close navigation menu" : "Open navigation menu"}
+				aria-expanded={active}
 			>
-				<motion.span
-					variants={HAMBURGER_VARIANTS.top}
-					initial="initial"
-					className="absolute block h-[1px] w-10"
-					style={{ y: "-50%", left: "50%", x: "-50%" }}
+				<span
+					className="absolute block h-[1px] w-10 transition-all duration-200 ease-out motion-reduce:transition-none"
+					style={{
+						top: active ? "50%" : "35%",
+						left: "50%",
+						transform: `translate(-50%, -50%) rotate(${active ? "45deg" : "0deg"})`,
+						backgroundColor: barColor,
+					}}
 				/>
-				<motion.span
-					variants={HAMBURGER_VARIANTS.middle}
-					initial="initial"
-					className="absolute block h-[1px] w-10"
-					style={{ left: "50%", x: "-50%", top: "50%", y: "-50%" }}
+				<span
+					className="absolute block h-[1px] w-10 transition-all duration-200 ease-out motion-reduce:transition-none"
+					style={{
+						top: "50%",
+						left: "50%",
+						transform: `translate(-50%, -50%) rotate(${active ? "-45deg" : "0deg"})`,
+						backgroundColor: barColor,
+					}}
 				/>
-				<motion.span
-					variants={HAMBURGER_VARIANTS.bottom}
-					initial="initial"
-					className="absolute block h-[1px] w-5"
-					style={{ x: "-150%", y: "50%" }}
+				<span
+					className="absolute block h-[1px] w-5 transition-all duration-200 ease-out motion-reduce:transition-none"
+					style={{
+						bottom: active ? "50%" : "35%",
+						left: active ? "74.5%" : "calc(50% + 10px)",
+						transform: `translate(-150%, 50%) rotate(${active ? "45deg" : "0deg"})`,
+						backgroundColor: barColor,
+					}}
 				/>
-			</motion.button>
+			</button>
 		</>
 	);
-};
-
-const EASE: Transition["ease"] = [0.22, 1, 0.36, 1];
-const DURATION = 0.22;
-
-const container: Variants = {
-	hidden: { opacity: 0, y: 8 },
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: DURATION,
-			ease: EASE,
-			delayChildren: 0.12,
-			staggerChildren: 0.035,
-		},
-	},
-};
-
-const row: Variants = {
-	hidden: { opacity: 0, y: 6 },
-	show: { opacity: 1, y: 0, transition: { duration: DURATION, ease: EASE } },
-};
-
-const numberV: Variants = row;
-const titleV: Variants = row;
-
-const subList: Variants = {
-	hidden: {},
-	show: { transition: { staggerChildren: 0.02, delayChildren: 0.05 } },
-};
-
-const subItem: Variants = row;
-
-const UNDERLAY_VARIANTS: Variants = {
-	open: {
-		width: "100%",
-		height: "100vh",
-		backgroundColor: "rgba(255,255,255,1)",
-		transition: { type: "spring", mass: 3, stiffness: 400, damping: 50 },
-	},
-	closed: {
-		width: "100px",
-		height: "100px",
-		backgroundColor: "rgba(255,255,255,0)",
-		transition: {
-			delay: 0.25,
-			type: "spring",
-			mass: 3,
-			stiffness: 400,
-			damping: 50,
-		},
-	},
-};
-
-const makeHamburgerVariants = (forceBlack: boolean): Record<"top" | "middle" | "bottom", Variants> => {
-	const openColor = forceBlack ? "#000" : "#000";
-	const closedColor = forceBlack ? "#000" : "#fff";
-	return {
-		top: {
-			// Static start state — straight bar at 35%, correct color
-			initial: { rotate: "0deg", top: "35%", backgroundColor: closedColor },
-			open: { rotate: ["0deg", "0deg", "45deg"], top: ["35%", "50%", "50%"], backgroundColor: openColor },
-			closed: { rotate: ["45deg", "0deg", "0deg"], top: ["50%", "50%", "35%"], backgroundColor: closedColor },
-		},
-		middle: {
-			initial: { rotate: "0deg", backgroundColor: closedColor },
-			open: { rotate: ["0deg", "0deg", "-45deg"], backgroundColor: openColor },
-			closed: { rotate: ["-45deg", "0deg", "0deg"], backgroundColor: closedColor },
-		},
-		bottom: {
-			initial: { rotate: "0deg", bottom: "35%", left: "calc(50% + 10px)", backgroundColor: closedColor },
-			open: { rotate: ["0deg", "0deg", "45deg"], bottom: ["35%", "50%", "50%"], left: "74.5%", backgroundColor: openColor },
-			closed: { rotate: ["45deg", "0deg", "0deg"], bottom: ["50%", "50%", "35%"], left: "calc(50% + 10px)", backgroundColor: closedColor },
-		},
-	};
 };
 
 export default Nav;
