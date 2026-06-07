@@ -1,10 +1,11 @@
 import { motion, type Variants } from "framer-motion";
-import { forwardRef, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, } from "react";
+import { forwardRef, useContext, type PropsWithChildren, type SyntheticEvent, useEffect, useRef, useState, } from "react";
 import { AnimatedBookmarkIcon } from "~/components";
 import { useFlipbook } from "~/context/flipbook";
 import { navSections } from "~/config";
 import { useTranslate } from "~/context/I18nProvider";
 import { LanguageSwitcher } from "./UI";
+import { PageContext } from "~/context/page";
 
 type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
 
@@ -20,6 +21,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 		const [hovered, setHovered] = useState(false);
 		const { goToSpread, ready } = useFlipbook();
 		const { t, makeHref } = useTranslate();
+		const { insideFlipPage } = useContext(PageContext);
 
 		const bookmarkRef = useRef<HTMLDivElement>(null);
 
@@ -35,10 +37,8 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 			return () => window.removeEventListener("bookmark:close", close);
 		}, []);
 
-		return (
-			<div ref={ref}
-				className="page page--right relative w-full h-full overflow-hidden"
-			>
+		const innerContent = (
+			<>
 				{children}
 				{showBookmark && (
 					<motion.div
@@ -132,6 +132,18 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 						</div>
 					</motion.div>
 				)}
+			</>
+		);
+
+		if (insideFlipPage) {
+			return innerContent;
+		}
+
+		return (
+			<div ref={ref}
+				className="page page--right relative w-full h-full overflow-hidden"
+			>
+				{innerContent}
 			</div>
 		);
 	}

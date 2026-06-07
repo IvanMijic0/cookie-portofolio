@@ -29,6 +29,7 @@ import { useInitialAssets } from "~/hooks";
 import type { SpreadKey } from "~/types";
 import clsx from "clsx";
 import { I18nProvider } from "~/context/I18nProvider";
+import { PageContext } from "~/context/page";
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	const ua = request.headers.get("user-agent") ?? "";
@@ -74,9 +75,13 @@ type FlipEvent = { data: number };
 const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; isRight?: boolean }>(
 	({ Component, isRight }, ref) => {
 		return (
-			<Suspense fallback={<div ref={ref} className={clsx("page bg-white", isRight ? "page--right" : "page--left")} />}>
-				<Component ref={ref} />
-			</Suspense>
+			<div ref={ref} className={clsx("page relative w-full h-full overflow-hidden", isRight ? "page--right" : "page--left")}>
+				<PageContext.Provider value={{ insideFlipPage: true }}>
+					<Suspense fallback={<div className="w-full h-full bg-white" />}>
+						<Component />
+					</Suspense>
+				</PageContext.Provider>
+			</div>
 		);
 	}
 );

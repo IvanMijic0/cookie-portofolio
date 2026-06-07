@@ -1,9 +1,15 @@
-import { forwardRef, type PropsWithChildren } from "react";
+import { forwardRef, useContext, type PropsWithChildren } from "react";
+import { PageContext } from "~/context/page";
 
 type LeftPageProps = PropsWithChildren;
 
 const LeftPage = forwardRef<HTMLDivElement, LeftPageProps>(
 	( { children }, ref ) => {
+		const { insideFlipPage } = useContext(PageContext);
+
+		if (insideFlipPage) {
+			return <>{children}</>;
+		}
 
 		return (
 			<div
