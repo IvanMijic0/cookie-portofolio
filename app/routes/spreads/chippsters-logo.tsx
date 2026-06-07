@@ -363,7 +363,7 @@ export function meta() {
 	];
 }
 
-export const loader = () => null;
+export 
 
 const ChippstersLogo = () => null;
 export default ChippstersLogo;

@@ -266,7 +266,7 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const GraphicDesign = () => null;
 export default GraphicDesign;

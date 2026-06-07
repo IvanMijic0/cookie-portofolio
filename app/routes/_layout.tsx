@@ -5,6 +5,7 @@ import {
 import {
 	useLoaderData,
 	useLocation,
+	Outlet,
 	type LoaderFunctionArgs,
 } from "react-router";
 import {
@@ -55,49 +56,17 @@ const useIsMobile = (query = "(max-width: 1023px)", initial = false) => {
 
 const LazyDesktopFlipbook = lazy(() => import("~/components/DesktopFlipbook"));
 
-const MobileSpread = ({ slug }: { slug: SpreadKey }) => {
-	const mod = spreadMap[slug] as any;
-	const Mobile = mod?.Mobile;
-
-	if (Mobile) {
-		return (
-			<div className="min-h-svh w-full overflow-y-auto">
-				<Suspense fallback={<div className="min-h-svh w-full bg-white flex items-center justify-center">Loading...</div>}>
-					<Mobile />
-				</Suspense>
-			</div>
-		);
-	}
-
-	const Left = mod.Left;
-	const Right = mod.Right;
-
-	return (
-		<div className="min-h-svh w-full overflow-y-auto bg-white">
-			<div className="mx-auto max-w-screen-lg px-4 py-6 space-y-6">
-				<Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-lg" />}>
-					<Left />
-				</Suspense>
-				<Suspense fallback={<div className="h-64 bg-gray-50 animate-pulse rounded-lg" />}>
-					<Right />
-				</Suspense>
-			</div>
-		</div>
-	);
-};
-
 const BookLayout = () => {
 	const { serverIsMobile } = useLoaderData<typeof loader>();
 	const isMobile = useIsMobile("(max-width: 1023px)", serverIsMobile);
 	const location = useLocation();
 
-	const { lang, slug } = parsePathname(location.pathname);
-	const validatedSlug = (spreads.includes(slug as SpreadKey) ? slug : "homepage") as SpreadKey;
+	const { lang } = parsePathname(location.pathname);
 
 	return (
 		<I18nProvider lang={lang}>
 			{isMobile ? (
-				<MobileSpread slug={validatedSlug} />
+				<Outlet />
 			) : (
 				<Suspense fallback={null}>
 					<LazyDesktopFlipbook />

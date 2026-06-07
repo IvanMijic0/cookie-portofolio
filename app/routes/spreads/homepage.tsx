@@ -381,7 +381,7 @@ export const meta: MetaFunction = ({ params, location }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const Homepage = () => null;
 export default Homepage;

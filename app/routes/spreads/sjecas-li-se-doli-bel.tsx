@@ -407,7 +407,7 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const SjecasLiSeDoliBel = () => null;
 export default SjecasLiSeDoliBel;

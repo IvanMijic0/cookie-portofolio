@@ -371,7 +371,7 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const Mural = () => null;
 export default Mural;

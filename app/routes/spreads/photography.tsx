@@ -213,7 +213,7 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const Photography = () => null;
 export default Photography;

@@ -414,7 +414,7 @@ export const meta: MetaFunction = ({ params }) => {
 	];
 };
 
-export const loader = () => null;
+export 
 
 const HumanRights = () => null;
 export default HumanRights;

@@ -287,7 +287,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ rel: "canonical", href: url } as any
 	];
 };
-export const loader = () => null;
+export 
 
 const AboutMe = () => null;
 export default AboutMe;

@@ -494,7 +494,7 @@ export function meta() {
 	];
 }
 
-export const loader = () => null;
+export 
 
 const KreativFestivalArtDirection = () => null;
 export default KreativFestivalArtDirection
