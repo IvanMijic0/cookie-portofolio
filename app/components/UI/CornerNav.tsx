@@ -1,5 +1,5 @@
 import { type Dispatch, type SetStateAction, useState, useEffect } from "react";
-import { AnimatePresence, motion, type Variants, type Transition, useReducedMotion, MotionConfig } from "framer-motion";
+import { AnimatePresence, motion, type Variants, type Transition, MotionConfig } from "framer-motion";
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "react-router";
