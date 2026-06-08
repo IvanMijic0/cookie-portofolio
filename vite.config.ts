@@ -23,9 +23,6 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
 						) {
 							return "vendor-pageflip";
 						}
-						if (id.includes("node_modules/yet-another-react-lightbox")) {
-							return "vendor-lightbox";
-						}
 						if (id.includes("node_modules/lottie")) {
 							return "vendor-lottie";
 						}
