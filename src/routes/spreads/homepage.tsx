@@ -252,7 +252,7 @@ export const Mobile = () => {
 					width={440}
 					height={956}
 					fetchPriority="high"
-					decoding="sync"
+					decoding="async"
 				/>
 				<link itemProp="url" href="/homepage" />
 				<section
@@ -315,7 +315,7 @@ export const Mobile = () => {
 					loading="eager"
 					width={411}
 					height={817}
-					decoding="sync"
+					decoding="async"
 					fetchPriority="high"
 				/>
 				<div
