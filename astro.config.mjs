@@ -13,6 +13,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     build: {
+      rollupOptions: {
+        output: {
+          experimentalMinChunkSize: 50000
+        }
+      },
       modulePreload: {
         resolveDependencies(url, deps) {
           const nonHomepageSpreads = [
