@@ -31,7 +31,7 @@ export const Mobile = () => {
 				/>
 				<link itemProp="url" href="/homepage" />
 				<section
-					className="relative flex h-screen w-full flex-col items-start justify-start gap-8 xs:gap-20 overflow-hidden pt-24 xs:pt-32"
+					className="relative flex h-svh w-full flex-col items-start justify-start gap-8 xs:gap-20 overflow-hidden pt-24 xs:pt-32"
 					aria-labelledby="home-hero-title"
 				>
 					<div className="relative z-10 flex w-full flex-col items-start gap-2">
