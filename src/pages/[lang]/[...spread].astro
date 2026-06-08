@@ -56,9 +56,12 @@ const PageMeta = typeof routeModule.meta === "function"
       location: { pathname: Astro.url.pathname }
     }) 
   : [];
-// Parse user agent
+// Parse user agent and device headers
 const ua = Astro.request.headers.get('user-agent') || '';
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+const cfDeviceType = Astro.request.headers.get('cf-device-type') || '';
+const secChUaMobile = Astro.request.headers.get('sec-ch-ua-mobile') || '';
+const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+const isMobile = cfDeviceType === 'mobile' || cfDeviceType === 'tablet' || secChUaMobile === '?1' || isMobileUA;
 const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
 
 // Read dynamic preloads manifest generated during build
@@ -80,13 +83,12 @@ try {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="color-scheme" content="light" />
 		<meta name="theme-color" content="#ffffff" />
-		{dynamicPreloads.map((href) => (
-			<link rel="modulepreload" href={href} />
-		))}
+		
+		{/* 1. Critical LCP images (Highest priority) */}
 		{isMobile ? (
 			<>
-				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" />
 				<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" />
 			</>
 		) : (
 			<>
@@ -95,14 +97,24 @@ try {
 				<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" />
 			</>
 		)}
+
+		{/* 2. Critical JS Modules */}
+		{dynamicPreloads.map((href) => (
+			<link rel="modulepreload" href={href} />
+		))}
 		
-		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+		{/* 3. Non-blocking Fonts (Low priority to prevent network congestion under Slow 4G) */}
+		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
-		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
-		<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
-		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		{!isMobile && (
+			<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		)}
+		{!isMobile && (
+			<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		)}
 		<style is:inline set:html={stylesheet}></style>
 		{PageMeta.map((tag: any) => {
 			if (tag.title) return <title>{tag.title}</title>;

@@ -9,10 +9,12 @@ const useIsMobile = (query = "(max-width: 1023px)", initial = false) => {
 		if (typeof window === "undefined") return;
 		const mql = window.matchMedia(query);
 		const onChange = () => setMatches(mql.matches);
-		setMatches(mql.matches);
+		if (matches !== mql.matches) {
+			setMatches(mql.matches);
+		}
 		mql.addEventListener("change", onChange);
 		return () => mql.removeEventListener("change", onChange);
-	}, [query]);
+	}, [query, matches]);
 
 	return matches;
 };
