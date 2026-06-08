@@ -18,11 +18,11 @@ const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
 		<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="low" media="(max-width: 1023px)" />
 		<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" media="(max-width: 1023px)" />
 		
-		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
 		<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" media="(min-width: 1024px)" fetchpriority="low" />
-		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
 		<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
-		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" />
+		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
 		<style is:inline set:html={stylesheet}></style>
 		<slot name="meta" />
 	</head>
