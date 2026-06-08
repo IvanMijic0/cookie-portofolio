@@ -12,8 +12,8 @@ export const links: Route.LinksFunction = () => [
 	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "low", media: "(min-width: 1024px)" } as any,
-	{ rel: "preload", as: "image", href: "/homepage.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
-	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "low", media: "(max-width: 1023px)" } as any,
+	{ rel: "preload", as: "image", href: "/homepage.webp", type: "image/webp", fetchpriority: "low", media: "(max-width: 1023px)" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
 	{
 		rel: "preload",
 		as: "font",

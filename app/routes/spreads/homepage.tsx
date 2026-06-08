@@ -248,7 +248,7 @@ export const Mobile = () => {
 					aria-hidden="true"
 					className="absolute inset-0 z-0 h-full w-full object-cover"
 					loading="eager"
-					fetchPriority="high"
+					fetchPriority="low"
 					decoding="async"
 				/>
 				<link itemProp="url" href="/homepage" />
@@ -311,7 +311,7 @@ export const Mobile = () => {
 					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
 					loading="eager"
 					decoding="async"
-					fetchPriority="low"
+					fetchPriority="high"
 				/>
 				<div
 					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[24rem] w-[24rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"
