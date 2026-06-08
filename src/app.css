@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "yet-another-react-lightbox/styles.css";
 
 @source "./{app,components,src}/**/*.{js,ts,jsx,tsx,mdx,html}";
 @source inline("bg-primary text-center md:grid-cols-3");

@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { contactButtons } from "~/config";
 import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { useTranslate } from "~/context/I18nProvider";
 import type { MetaFunction } from "react-router";

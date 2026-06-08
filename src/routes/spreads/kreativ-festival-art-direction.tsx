@@ -1,6 +1,5 @@
 import { forwardRef, useMemo, useState } from "react";
 import { isImageSlide, Lightbox, type Slide, type SlideImage } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import LeftPage from "~/components/LeftPage";
 import RightPage from "~/components/RightPage";
 import MobileWrapper from "~/components/MobileWrapper";

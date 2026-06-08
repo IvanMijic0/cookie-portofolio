@@ -1,7 +1,6 @@
 import { forwardRef, useMemo, useState } from "react";
 import type { MetaFunction } from "react-router";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import { Download, Fullscreen, Share, Zoom } from "yet-another-react-lightbox/plugins";
 import { Star } from "~/assets";
 import LeftPage from "~/components/LeftPage";

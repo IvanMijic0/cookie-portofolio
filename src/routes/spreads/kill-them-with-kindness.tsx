@@ -6,7 +6,6 @@ import Carousel from "~/components/UI/Carousel";
 import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import { useState, useMemo } from "react";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Share from "yet-another-react-lightbox/plugins/share";
