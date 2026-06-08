@@ -1,5 +1,5 @@
 ---
-import stylesheet from '../app.css?inline';
+import '../app.css';
 
 const { lang, isMobile } = Astro.props;
 const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
@@ -23,7 +23,6 @@ const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
 		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" />
 		<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" />
-		<style is:inline>{stylesheet}</style>
 		<slot name="meta" />
 	</head>
 	<body>
