@@ -2,7 +2,7 @@ import React, { Suspense, type PropsWithChildren, useState, useEffect } from "re
 import { useLocation } from "~/hooks/useRouter";
 import Star from "~/assets/Star";
 
-const LazyNav = React.lazy(() => import("./UI/CornerNav"));
+import CornerNav from "./UI/CornerNav";
 
 const MobileWrapper = ({ children }: PropsWithChildren) => {
 	const { pathname } = useLocation();
@@ -90,9 +90,7 @@ const MobileWrapper = ({ children }: PropsWithChildren) => {
 	return (
 		<main className="relative min-h-dvh w-full overflow-x-hidden">
 			{loadNav ? (
-				<Suspense fallback={renderPlaceholder()}>
-					<LazyNav initialActive={openMenuOnLoad} />
-				</Suspense>
+				<CornerNav initialActive={openMenuOnLoad} />
 			) : (
 				renderPlaceholder()
 			)}
