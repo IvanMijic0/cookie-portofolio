@@ -185,7 +185,8 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</div>
 			</section>
 			<img
-				src="/cookie-pose.avif"
+				src="/cookie-pose-small.avif"
+				srcSet="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x"
 				alt=""
 				role="presentation"
 				className="absolute bottom-0 right-0 w-[calc(100%-11rem)] object-contain z-20 pointer-events-none"
