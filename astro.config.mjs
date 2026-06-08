@@ -15,7 +15,28 @@ export default defineConfig({
     build: {
       modulePreload: {
         resolveDependencies(url, deps) {
-          return deps.filter(dep => !dep.includes("vendor-lottie") && !dep.includes("proxy"));
+          const nonHomepageSpreads = [
+            "photography",
+            "about-me",
+            "contact",
+            "graphic-design",
+            "illustration",
+            "double-indemnity",
+            "human-rights",
+            "kill-them-with-kindness",
+            "kreativ-festival-art-direction",
+            "sjecas-li-se-doli-bel",
+            "chippsters-logo",
+            "mountain-fairy",
+            "austen-in-watercolor",
+            "mural"
+          ];
+          return deps.filter(dep => {
+            if (dep.includes("vendor-lottie")) return false;
+            const filename = dep.split('/').pop() || '';
+            const isOtherSpread = nonHomepageSpreads.some(spread => filename.startsWith(spread));
+            return !isOtherSpread;
+          });
         }
       }
     },
