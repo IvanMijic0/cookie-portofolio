@@ -7,7 +7,7 @@ import {
 } from "~/config";
 import { spreadMap, spreads } from "~/config/spreads";
 import HTMLFlipBook from "react-pageflip";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate, useLocation } from "~/hooks/useRouter";
 import {
 	useEffect,
 	useMemo,

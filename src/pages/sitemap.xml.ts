@@ -1,4 +1,6 @@
-export const loader = async () => {
+export const prerender = false;
+
+export const GET = async () => {
 	const CANONICAL_ORIGIN = (
 		import.meta.env.VITE_BASE_URL ||
 		"https://amnakolic.com"

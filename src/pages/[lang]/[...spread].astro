@@ -1,0 +1,70 @@
+---
+export const prerender = false;
+
+import Layout from '../../layouts/Layout.astro';
+import { spreadMap } from '../../config/spreads';
+
+const routesMap: Record<string, () => Promise<any>> = {
+	"homepage": () => import("../../routes/spreads/homepage"),
+	"photography": () => import("../../routes/spreads/photography"),
+	"photography/kill-them-with-kindness": () => import("../../routes/spreads/kill-them-with-kindness"),
+	"photography/human-rights": () => import("../../routes/spreads/human-rights"),
+	"photography/double-indemnity": () => import("../../routes/spreads/double-indemnity"),
+	"graphic-design": () => import("../../routes/spreads/graphic-design"),
+	"graphic-design/kreativ-festival-art-direction": () => import("../../routes/spreads/kreativ-festival-art-direction"),
+	"graphic-design/sjecas-li-se-doli-bel": () => import("../../routes/spreads/sjecas-li-se-doli-bel"),
+	"graphic-design/chippsters-logo": () => import("../../routes/spreads/chippsters-logo"),
+	"illustration": () => import("../../routes/spreads/illustration"),
+	"illustration/mountain-fairy": () => import("../../routes/spreads/mountain-fairy"),
+	"illustration/austen-in-watercolor": () => import("../../routes/spreads/austen-in-watercolor"),
+	"illustration/mural": () => import("../../routes/spreads/mural"),
+	"about-me": () => import("../../routes/spreads/about-me"),
+	"contact": () => import("../../routes/spreads/contact")
+};
+
+const { lang, spread } = Astro.params;
+
+// Default empty spread to homepage
+const activeSpread = spread || 'homepage';
+
+// Validate language
+if (lang !== 'en' && lang !== 'ba') {
+  return Astro.redirect(`/en/homepage`);
+}
+
+// Redirect base slug like /en to /en/homepage
+if (!spread) {
+  return Astro.redirect(`/${lang}/homepage`);
+}
+
+// Check if slug is valid
+const moduleEntry = spreadMap[activeSpread];
+const importFn = routesMap[activeSpread];
+
+if (!moduleEntry || !importFn) {
+  return Astro.redirect(`/${lang}/homepage`);
+}
+
+// Load route module to extract page meta
+const routeModule = await importFn();
+const PageMeta = typeof routeModule.meta === "function" 
+  ? routeModule.meta({ params: { lang } }) 
+  : [];
+
+// Parse user agent
+const ua = Astro.request.headers.get('user-agent') || '';
+const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+
+const MobileComponent = moduleEntry.Mobile;
+---
+
+<Layout lang={lang} isMobile={isMobile}>
+  <Fragment slot="meta">
+    {PageMeta.map((tag: any) => {
+      if (tag.title) return <title>{tag.title}</title>;
+      if (tag.tagName === "link") return <link rel={tag.rel} href={tag.href} />;
+      return <meta {...tag} />;
+    })}
+  </Fragment>
+  <MobileComponent client:load />
+</Layout>

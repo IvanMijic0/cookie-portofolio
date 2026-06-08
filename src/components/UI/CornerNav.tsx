@@ -1,7 +1,7 @@
 import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
-import { useLocation } from "react-router";
+import { useLocation } from "~/hooks/useRouter";
 import clsx from "clsx";
 import Portal from "../Portal";
 import { useTranslate } from "~/context/I18nProvider";

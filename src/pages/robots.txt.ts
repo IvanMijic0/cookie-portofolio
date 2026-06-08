@@ -1,6 +1,8 @@
-import type { LoaderFunctionArgs } from "react-router";
+import type { APIRoute } from 'astro';
 
-export const loader = ({ request }: LoaderFunctionArgs) => {
+export const prerender = false;
+
+export const GET: APIRoute = ({ request }) => {
 	const origin = (import.meta.env.VITE_BASE_URL || new URL(request.url).origin).replace(/\/$/, "");
 	const body =
 		`User-agent: *

@@ -1,5 +1,5 @@
 import React, { Suspense, type PropsWithChildren, useState, useEffect } from "react";
-import { useLocation } from "react-router";
+import { useLocation } from "~/hooks/useRouter";
 import Star from "~/assets/Star";
 
 const LazyNav = React.lazy(() => import("./UI/CornerNav"));

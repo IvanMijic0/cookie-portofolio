@@ -10,3 +10,9 @@
 .nvim.lua
 .env
 Untitled
+
+# Astro
+.astro/
+/dist/
+/scratch/
+

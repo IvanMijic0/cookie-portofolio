@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "~/hooks/useRouter";
 import clsx from "clsx";
 
 type Props = {
