@@ -3,7 +3,6 @@ import { Star } from "~/assets";
 import { contactButtons, navSections } from "~/config";
 import { useLocation } from "~/hooks/useRouter";
 import clsx from "clsx";
-import Portal from "../Portal";
 import { useTranslate } from "~/context/I18nProvider";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -57,59 +56,57 @@ const Nav = ({ initialActive = false }: NavProps) => {
 	const baseColor = isHomepage ? "#ffffff" : "#000000";
 
 	return (
-		<Portal>
-			<div className="fixed inset-0 z-[100] pointer-events-none">
-				<div
-					className={clsx(
-						"fixed inset-x-0 top-0 h-20 transition-all duration-300 pointer-events-none",
-						scrolled
-							? "backdrop-blur bg-white/70"
-							: isHomepage
-								? ""
-								: "bg-gradient-to-b from-white/70 via-white/70 to-transparent"
-					)}
-				/>
-
-				<div className="pointer-events-auto">
-					<HamburgerButton active={active} setActive={setActive} current={current} />
-					{renderOverlay && (
-						<LinksOverlay active={active} current={current} normalize={normalize} />
-					)}
-				</div>
-
-				{isHomepage && (
-					<div className="fixed inset-x-0 top-6 pointer-events-none">
-						<div
-							className={clsx(
-								"mx-auto w-fit flex items-center gap-6 pointer-events-auto transition duration-200 ease-out",
-								active ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
-							)}
-						>
-							{contactButtons.map(({ label, to, icon: Icon }) => (
-								<a
-									key={label}
-									href={to}
-									className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md"
-								>
-									<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
-									<span className="sr-only">{label}</span>
-								</a>
-							))}
-						</div>
-					</div>
+		<div className="fixed inset-0 z-[100] pointer-events-none">
+			<div
+				className={clsx(
+					"fixed inset-x-0 top-0 h-20 transition-all duration-300 pointer-events-none",
+					scrolled
+						? "backdrop-blur bg-white/70"
+						: isHomepage
+							? ""
+							: "bg-gradient-to-b from-white/70 via-white/70 to-transparent"
 				)}
+			/>
 
-				<div className="fixed right-6 top-4 z-[100] pointer-events-none">
+			<div className="pointer-events-auto">
+				<HamburgerButton active={active} setActive={setActive} current={current} />
+				{renderOverlay && (
+					<LinksOverlay active={active} current={current} normalize={normalize} />
+				)}
+			</div>
+
+			{isHomepage && (
+				<div className="fixed inset-x-0 top-6 pointer-events-none">
 					<div
-						className="flex flex-col items-center gap-1 pointer-events-auto transition-colors duration-200 ease-out"
-						style={{ color: active ? "#000000" : baseColor }}
+						className={clsx(
+							"mx-auto w-fit flex items-center gap-6 pointer-events-auto transition duration-200 ease-out",
+							active ? "opacity-0 scale-[0.98]" : "opacity-100 scale-100"
+						)}
 					>
-						<Star className="min-w-8 min-h-8 h-8 w-8" />
-						<span className="font-logo">AMNA</span>
+						{contactButtons.map(({ label, to, icon: Icon }) => (
+							<a
+								key={label}
+								href={to}
+								className="inline-flex items-center justify-center bg-white rounded-full p-2 shadow-md"
+							>
+								<Icon className="h-6 w-6 text-[#379C8D]" aria-hidden />
+								<span className="sr-only">{label}</span>
+							</a>
+						))}
 					</div>
+				</div>
+			)}
+
+			<div className="fixed right-6 top-4 z-[100] pointer-events-none">
+				<div
+					className="flex flex-col items-center gap-1 pointer-events-auto transition-colors duration-200 ease-out"
+					style={{ color: active ? "#000000" : baseColor }}
+				>
+					<Star className="min-w-8 min-h-8 h-8 w-8" />
+					<span className="font-logo">AMNA</span>
 				</div>
 			</div>
-		</Portal>
+		</div>
 	);
 };
 
