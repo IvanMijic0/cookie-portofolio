@@ -5,8 +5,8 @@ import BookLayoutWrapper from "./BookLayoutWrapper";
 import { useLocation } from "~/hooks/useRouter";
 import { spreadMap } from "~/config/spreads";
 
-export default function App({ lang, isMobile, activeSpread: initialSpread }: { lang: string; isMobile: boolean; activeSpread: string }) {
-  const { pathname } = useLocation();
+export default function App({ lang, isMobile, activeSpread: initialSpread, initialPathname }: { lang: string; isMobile: boolean; activeSpread: string; initialPathname?: string }) {
+  const { pathname } = useLocation(initialPathname);
 
   const getActiveSpread = () => {
     if (typeof window === "undefined") return initialSpread;

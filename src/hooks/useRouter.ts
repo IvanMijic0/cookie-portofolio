@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useLocation() {
+export function useLocation(initialPathname = "/") {
   const [location, setLocation] = useState(() => {
     if (typeof window !== "undefined") {
       return {
@@ -9,7 +9,7 @@ export function useLocation() {
         hash: window.location.hash
       };
     }
-    return { pathname: "/", search: "", hash: "" };
+    return { pathname: initialPathname, search: "", hash: "" };
   });
 
   useEffect(() => {
