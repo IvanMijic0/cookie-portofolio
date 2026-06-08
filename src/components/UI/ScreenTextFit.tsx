@@ -46,7 +46,7 @@ function ScreenFitText({ children, minPx = 8, maxPx = 512, ssrSize = "12vw" }: S
 	}, []);
 
 	return (
-		<div ref={containerRef} className="flex w-full items-center overflow-hidden">
+		<div ref={containerRef} style={{ height: ssrSize }} className="flex w-full items-center overflow-hidden">
 			<span
 				ref={textRef}
 				style={{ fontSize: ssrSize }}
