@@ -1,4 +1,4 @@
-import "./app.css";
+import styles from "./app.css?inline";
 
 import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration, useParams } from "react-router";
 import type { Route } from "./+types/root";
@@ -68,6 +68,7 @@ export function Layout({ children }: { children: ReactNode }) {
 				<meta name="color-scheme" content="light" />
 				<meta name="theme-color" content="#ffffff" />
 				<Meta />
+				<style dangerouslySetInnerHTML={{ __html: styles }} />
 				<Links />
 			</head>
 			<body>
