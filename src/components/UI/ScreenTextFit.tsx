@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type PropsWithChildren } from "react";
+import { useEffect, useRef, type PropsWithChildren } from "react";
 
 type ScreenFitTextProps = PropsWithChildren<{
 	minPx?: number;
@@ -31,7 +31,7 @@ function ScreenFitText({ children, minPx = 8, maxPx = 512, ssrSize = "12vw" }: S
 		}
 	};
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		fit();
 		const ro = new ResizeObserver(fit);
 		if (containerRef.current) ro.observe(containerRef.current);
