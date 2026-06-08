@@ -251,7 +251,7 @@ export const Mobile = () => {
 					loading="eager"
 					width={440}
 					height={956}
-					fetchPriority="low"
+					fetchPriority="high"
 					decoding="async"
 				/>
 				<link itemProp="url" href="/homepage" />

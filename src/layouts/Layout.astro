@@ -12,14 +12,23 @@ const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="color-scheme" content="light" />
 		<meta name="theme-color" content="#ffffff" />
-		<link rel="preload" as="image" href="/homepage-left.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)" />
-		<link rel="preload" as="image" href="/homepage-right.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)" />
-		<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" media="(min-width: 1024px)" />
-		<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="low" media="(max-width: 1023px)" />
-		<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" media="(max-width: 1023px)" />
+		{isMobile ? (
+			<>
+				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" />
+			</>
+		) : (
+			<>
+				<link rel="preload" as="image" href="/homepage-left.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" href="/homepage-right.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" />
+			</>
+		)}
 		
 		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
-		<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" media="(min-width: 1024px)" fetchpriority="low" />
+		{!isMobile && (
+			<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		)}
 		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
 		<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
