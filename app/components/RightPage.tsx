@@ -5,6 +5,8 @@ import { useTranslate } from "~/context/I18nProvider";
 import LanguageSwitcher from "./UI/LanguageSwitcher";
 import { PageContext } from "~/context/page";
 
+import Star from "~/assets/Star";
+
 const AnimatedBookmarkIcon = lazy(() => import("~/components/AnimatedBookmark"));
 
 type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
@@ -13,6 +15,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 	({ children, showBookmark = true }, ref) => {
 		const [open, setOpen] = useState(false);
 		const [hovered, setHovered] = useState(false);
+		const [interacted, setInteracted] = useState(false);
 		const { goToSpread, ready } = useFlipbook();
 		const { t, makeHref } = useTranslate();
 		const { insideFlipPage } = useContext(PageContext);
@@ -24,6 +27,12 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 		const stopBubble = (e: SyntheticEvent) => {
 			e.stopPropagation();
 		};
+
+		useEffect(() => {
+			if (open || hovered) {
+				setInteracted(true);
+			}
+		}, [open, hovered]);
 
 		useEffect(() => {
 			const close = () => setOpen(false);
@@ -38,7 +47,10 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 					<div
 						ref={bookmarkRef}
 						className="absolute top-0 left-4 h-[45rem] w-[13rem] z-50 pointer-events-auto transition-transform duration-500 ease-[cubic-bezier(0.175,0.885,0.32,1.1)]"
-						onMouseEnter={() => !open && setHovered(true)}
+						onMouseEnter={() => {
+							setInteracted(true);
+							if (!open) setHovered(true);
+						}}
 						onMouseLeave={() => setHovered(false)}
 						onMouseDownCapture={stopBubble}
 						onPointerDownCapture={stopBubble}
@@ -103,9 +115,12 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 							<button
 								type="button"
 								aria-label={open ? "Close bookmark" : "Open bookmark"}
-								className="cursor-pointer"
+								className="cursor-pointer text-white flex items-center justify-center"
+								onMouseEnter={() => setInteracted(true)}
+								onFocus={() => setInteracted(true)}
 								onClick={(e) => {
 									e.stopPropagation();
+									setInteracted(true);
 									setOpen((prev) => {
 										const next = !prev;
 										if (!next) setHovered(false);
@@ -113,11 +128,17 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 									});
 								}}
 							>
-								<Suspense fallback={null}>
-									<AnimatedBookmarkIcon
-										state={open ? "up" : hovered ? "down" : "star"}
-									/>
-								</Suspense>
+								{interacted ? (
+									<Suspense fallback={null}>
+										<AnimatedBookmarkIcon
+											state={open ? "up" : hovered ? "down" : "star"}
+										/>
+									</Suspense>
+								) : (
+									<div style={{ width: 70, height: 70, display: "flex", alignItems: "center", justifyContent: "center" }}>
+										<Star className="w-[63px] h-[63px]" />
+									</div>
+								)}
 							</button>
 						</div>
 					</div>
