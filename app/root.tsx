@@ -11,9 +11,9 @@ import type { MetaFunction } from "react-router";
 export const links: Route.LinksFunction = () => [
 	{ rel: "preload", as: "image", href: "/homepage-left.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/homepage-right.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
-	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "high", media: "(min-width: 1024px)" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose.webp", type: "image/webp", fetchpriority: "low", media: "(min-width: 1024px)" } as any,
 	{ rel: "preload", as: "image", href: "/homepage.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
-	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "high", media: "(max-width: 1023px)" } as any,
+	{ rel: "preload", as: "image", href: "/cookie-pose-mobile.webp", type: "image/webp", fetchpriority: "low", media: "(max-width: 1023px)" } as any,
 	{
 		rel: "preload",
 		as: "font",
@@ -22,6 +22,16 @@ export const links: Route.LinksFunction = () => [
 		crossOrigin: "anonymous",
 	},
 	{
+		// italic — desktop only (83 KiB, not above-the-fold on mobile)
+		rel: "preload",
+		as: "font",
+		href: "/fonts/bodoni-moda-italic.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+		media: "(min-width: 1024px)",
+		fetchpriority: "low",
+	} as any,
+	{
 		rel: "preload",
 		as: "font",
 		href: "/fonts/libre-bodoni.woff2",
@@ -29,12 +39,20 @@ export const links: Route.LinksFunction = () => [
 		crossOrigin: "anonymous",
 	},
 	{
+		// italic — not needed above the fold on either platform
+		rel: "preload",
+		as: "font",
+		href: "/fonts/libre-bodoni-italic.woff2",
+		type: "font/woff2",
+		crossOrigin: "anonymous",
+		fetchpriority: "low",
+	} as any,
+	{
 		rel: "preload",
 		as: "font",
 		href: "/fonts/athene-voyage.woff2",
 		type: "font/woff2",
 		crossOrigin: "anonymous",
-		media: "(max-width: 1023px)",
 	},
 ];
 

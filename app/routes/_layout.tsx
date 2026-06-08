@@ -12,7 +12,7 @@ import {
 	useEffect,
 	useState,
 	Suspense,
-	lazy,
+	type ComponentType,
 } from "react";
 import type { SpreadKey } from "~/types";
 import { I18nProvider } from "~/context/I18nProvider";
@@ -54,12 +54,24 @@ const useIsMobile = (query = "(max-width: 1023px)", initial = false) => {
 	return matches;
 };
 
-const LazyDesktopFlipbook = lazy(() => import("~/components/DesktopFlipbook"));
-
 const BookLayout = () => {
 	const { serverIsMobile } = useLoaderData<typeof loader>();
 	const isMobile = useIsMobile("(max-width: 1023px)", serverIsMobile);
 	const location = useLocation();
+
+	// Runtime dynamic import — NOT React.lazy at module level.
+	// This prevents Vite/React Router from emitting a <link rel="modulepreload">
+	// for the desktop flipbook chunk on every page load, including mobile.
+	const [DesktopFlipbook, setDesktopFlipbook] =
+		useState<ComponentType | null>(null);
+
+	useEffect(() => {
+		if (!isMobile) {
+			import("~/components/DesktopFlipbook").then((m) => {
+				setDesktopFlipbook(() => m.default);
+			});
+		}
+	}, [isMobile]);
 
 	const { lang } = parsePathname(location.pathname);
 
@@ -67,11 +79,11 @@ const BookLayout = () => {
 		<I18nProvider lang={lang}>
 			{isMobile ? (
 				<Outlet />
-			) : (
+			) : DesktopFlipbook ? (
 				<Suspense fallback={null}>
-					<LazyDesktopFlipbook />
+					<DesktopFlipbook />
 				</Suspense>
-			)}
+			) : null}
 		</I18nProvider>
 	);
 };

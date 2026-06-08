@@ -130,6 +130,8 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				className="absolute inset-0 w-full h-full object-cover z-0"
 				alt=""
 				role="presentation"
+				width={713}
+				height={921}
 				loading="eager"
 				fetchPriority="high"
 				decoding="async"
@@ -187,9 +189,11 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				alt=""
 				role="presentation"
 				className="absolute bottom-0 right-0 w-[calc(100%-11rem)] object-contain z-20 pointer-events-none"
+				width={537}
+				height={827}
 				loading="eager"
 				decoding="async"
-				fetchPriority="high"
+				fetchPriority="low"
 			/>
 			<div
 				className="absolute -bottom-24 -right-12 w-[26rem] h-[26rem] 2xl:w-[33.5rem] 2xl:h-[33.5rem] rounded-full z-30 pointer-events-none isolate">
@@ -307,7 +311,7 @@ export const Mobile = () => {
 					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
 					loading="eager"
 					decoding="async"
-					fetchPriority="high"
+					fetchPriority="low"
 				/>
 				<div
 					className="pointer-events-none absolute bottom-0 right-4 z-30 h-[24rem] w-[24rem] translate-x-14 translate-y-24 overflow-hidden rounded-full xs:right-0 xs:h-[26rem] xs:w-[26rem]"

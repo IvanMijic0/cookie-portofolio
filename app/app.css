@@ -57,8 +57,16 @@
 	--breakpoint-xs: 400px;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-size-adjust: from-font;
+}
+
 h1 {
 	font-family: "Bodoni Moda", Serif, serif;
+}
+
+.font-serif, .font-display, .font-logo, .serif, .article {
+	font-size-adjust: from-font;
 }
 
 @layer base {

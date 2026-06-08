@@ -56,11 +56,52 @@ const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; isR
 );
 FlipPage.displayName = "FlipPage";
 
+function calculateDimensions(): { width: number; height: number } {
+	if (typeof window === "undefined") {
+		return { width: TARGET_WIDTH, height: TARGET_HEIGHT };
+	}
+	const width = window.innerWidth;
+	const height = window.innerHeight;
+
+	const marginX = (() => {
+		if (width < 640) return 0.01;
+		if (width < 768) return 0.02;
+		if (width < 1024) return 0.02;
+		if (width < 1280) return 0.03;
+		if (width < 1536) return 0.08;
+		if (width < 1650) return 0.01;
+		if (width < 1720) return 0.05;
+		if (width < 1840) return 0.01;
+		if (height < 2000) return 0.02;
+		return 0.12;
+	})();
+
+	const marginY = (() => {
+		if (height < 600) return 0.01;
+		if (height < 720) return 0.01;
+		if (height < 850) return 0.01;
+		if (height < 950) return 0.01;
+		if (height < 1100) return 0.01;
+		if (height < 2000) return 0.05;
+		return 0.02;
+	})();
+
+	const availableWidth = Math.max(0, width * (1 - marginX * 2));
+	const availableHeight = Math.max(0, height * (1 - marginY * 2));
+
+	let finalWidth = availableWidth;
+	let finalHeight = finalWidth / ASPECT_RATIO;
+
+	if (finalHeight > availableHeight) {
+		finalHeight = availableHeight;
+		finalWidth = finalHeight * ASPECT_RATIO;
+	}
+
+	return { width: finalWidth, height: finalHeight };
+}
+
 const DesktopFlipbook = () => {
-	const [dimensions, setDimensions] = useState<{ width: number; height: number }>({
-		width: TARGET_WIDTH,
-		height: TARGET_HEIGHT,
-	});
+	const [dimensions, setDimensions] = useState<{ width: number; height: number }>(calculateDimensions);
 	const [remountId] = useState<number>(0);
 
 	const activeRef = useRef<FlipBookRef | null>(null);
@@ -88,44 +129,7 @@ const DesktopFlipbook = () => {
 
 	useEffect(() => {
 		const updateSize = () => {
-			const width = window.innerWidth;
-			const height = window.innerHeight;
-
-			const marginX = (() => {
-				if (width < 640) return 0.01;
-				if (width < 768) return 0.02;
-				if (width < 1024) return 0.02;
-				if (width < 1280) return 0.03;
-				if (width < 1536) return 0.08;
-				if (width < 1650) return 0.01;
-				if (width < 1720) return 0.05;
-				if (width < 1840) return 0.01;
-				if (height < 2000) return 0.02;
-				return 0.12;
-			})();
-
-			const marginY = (() => {
-				if (height < 600) return 0.01;
-				if (height < 720) return 0.01;
-				if (height < 850) return 0.01;
-				if (height < 950) return 0.01;
-				if (height < 1100) return 0.01;
-				if (height < 2000) return 0.05;
-				return 0.02;
-			})();
-
-			const availableWidth = Math.max(0, width * (1 - marginX * 2));
-			const availableHeight = Math.max(0, height * (1 - marginY * 2));
-
-			let finalWidth = availableWidth;
-			let finalHeight = finalWidth / ASPECT_RATIO;
-
-			if (finalHeight > availableHeight) {
-				finalHeight = availableHeight;
-				finalWidth = finalHeight * ASPECT_RATIO;
-			}
-
-			setDimensions({ width: finalWidth, height: finalHeight });
+			setDimensions(calculateDimensions());
 		};
 
 		updateSize();
