@@ -310,7 +310,7 @@ export const Mobile = () => {
 					alt=""
 					role="presentation"
 					aria-hidden="true"
-					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
+					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0 aspect-[411/817]"
 					loading="eager"
 					width={411}
 					height={817}
