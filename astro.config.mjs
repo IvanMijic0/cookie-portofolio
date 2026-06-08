@@ -12,6 +12,13 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      modulePreload: {
+        resolveDependencies(url, deps) {
+          return deps.filter(dep => !dep.includes("vendor-lottie") && !dep.includes("proxy"));
+        }
+      }
+    },
     resolve: {
       alias: {
         '~': fileURLToPath(new URL('./src', import.meta.url))
