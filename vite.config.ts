@@ -15,7 +15,6 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
 		...(!isSsrBuild && {
 			rollupOptions: {
 				output: {
-					experimentalMinChunkSize: 50000,
 					manualChunks(id) {
 						if (
 							id.includes("node_modules/react-pageflip") ||
