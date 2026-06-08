@@ -12,12 +12,6 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
 				output: {
 					manualChunks(id) {
 						if (
-							id.includes("node_modules/framer-motion") ||
-							id.includes("node_modules/motion")
-						) {
-							return "vendor-motion";
-						}
-						if (
 							id.includes("node_modules/react-pageflip") ||
 							id.includes("node_modules/page-flip")
 						) {
