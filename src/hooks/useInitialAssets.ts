@@ -20,7 +20,11 @@ const useInitialAssets = ( fontFaces: string[], images: string[] = [] ) => {
 							const img = new Image();
 							img.onload = () => resolve();
 							img.onerror = () => resolve();
-							img.src = src;
+							if (src === "/cookie-pose.avif" && typeof window !== "undefined" && window.devicePixelRatio < 1.5) {
+								img.src = "/cookie-pose-small.avif";
+							} else {
+								img.src = src;
+							}
 						} )
 				);
 

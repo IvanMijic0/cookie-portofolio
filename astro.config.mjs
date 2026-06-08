@@ -24,13 +24,6 @@ export default defineConfig({
       ]
     },
     plugins: [tailwindcss()],
-    build: {
-      rollupOptions: {
-        output: {
-          experimentalMinChunkSize: 50000
-        }
-      }
-    },
     resolve: {
       alias: {
         '~': fileURLToPath(new URL('./src', import.meta.url)),

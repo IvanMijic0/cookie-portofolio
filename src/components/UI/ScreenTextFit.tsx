@@ -32,10 +32,17 @@ function ScreenFitText({ children, minPx = 8, maxPx = 512, ssrSize = "12vw" }: S
 	};
 
 	useEffect(() => {
-		fit();
-		const ro = new ResizeObserver(fit);
-		if (containerRef.current) ro.observe(containerRef.current);
-		return () => ro.disconnect();
+		let ro: ResizeObserver | null = null;
+		const timer = setTimeout(() => {
+			fit();
+			ro = new ResizeObserver(fit);
+			if (containerRef.current) ro.observe(containerRef.current);
+		}, 50);
+
+		return () => {
+			clearTimeout(timer);
+			if (ro) ro.disconnect();
+		};
 	}, []);
 
 	return (
