@@ -49,7 +49,10 @@ if (!moduleEntry || !importFn) {
 // Load route module to extract page meta
 const routeModule = await importFn();
 const PageMeta = typeof routeModule.meta === "function" 
-  ? routeModule.meta({ params: { lang } }) 
+  ? routeModule.meta({ 
+      params: { lang, spread: activeSpread },
+      location: { pathname: Astro.url.pathname }
+    }) 
   : [];
 
 // Parse user agent
