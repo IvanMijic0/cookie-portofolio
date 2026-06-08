@@ -2,11 +2,10 @@ import {
 	ASPECT_RATIO,
 	CRITICAL_IMAGES,
 	FONT_STRINGS,
-	spreadMap,
-	spreads,
 	TARGET_HEIGHT,
 	TARGET_WIDTH,
 } from "~/config";
+import { spreadMap, spreads } from "~/config/spreads";
 import HTMLFlipBook from "react-pageflip";
 import { useNavigate, useLocation } from "react-router";
 import {
