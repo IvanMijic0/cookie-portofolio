@@ -112,9 +112,7 @@ try {
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
-		{!isMobile && (
-			<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
-		)}
+		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		<style is:inline set:html={stylesheet}></style>
 		{PageMeta.map((tag: any) => {
 			if (tag.title) return <title>{tag.title}</title>;
