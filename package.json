@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "astro build",
+    "build": "astro build && node scripts/generate-preloads.js",
     "dev": "astro dev",
     "start": "node dist/server/entry.mjs",
     "typecheck": "tsc"

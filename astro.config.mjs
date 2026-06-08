@@ -29,32 +29,6 @@ export default defineConfig({
         output: {
           experimentalMinChunkSize: 50000
         }
-      },
-      modulePreload: {
-        resolveDependencies(url, deps) {
-          const nonHomepageSpreads = [
-            "photography",
-            "about-me",
-            "contact",
-            "graphic-design",
-            "illustration",
-            "double-indemnity",
-            "human-rights",
-            "kill-them-with-kindness",
-            "kreativ-festival-art-direction",
-            "sjecas-li-se-doli-bel",
-            "chippsters-logo",
-            "mountain-fairy",
-            "austen-in-watercolor",
-            "mural"
-          ];
-          return deps.filter(dep => {
-            if (dep.includes("vendor-lottie")) return false;
-            const filename = dep.split('/').pop() || '';
-            const isOtherSpread = nonHomepageSpreads.some(spread => filename.startsWith(spread));
-            return !isOtherSpread;
-          });
-        }
       }
     },
     resolve: {

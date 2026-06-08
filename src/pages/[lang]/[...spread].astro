@@ -1,9 +1,11 @@
 ---
 export const prerender = false;
 
-import Layout from '../../layouts/Layout.astro';
 import App from '../../components/App.tsx';
 import { spreadMap } from '../../config/spreads';
+import stylesheet from '../../app.css?inline';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const routesMap: Record<string, () => Promise<any>> = {
 	"homepage": () => import("../../routes/spreads/homepage"),
@@ -54,19 +56,61 @@ const PageMeta = typeof routeModule.meta === "function"
       location: { pathname: Astro.url.pathname }
     }) 
   : [];
-
 // Parse user agent
 const ua = Astro.request.headers.get('user-agent') || '';
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
+const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
+
+// Read dynamic preloads manifest generated during build
+let dynamicPreloads: string[] = [];
+try {
+  const preloadsPath = path.join(process.cwd(), 'dist', 'client', 'preloads.json');
+  if (fs.existsSync(preloadsPath)) {
+    dynamicPreloads = JSON.parse(fs.readFileSync(preloadsPath, 'utf-8'));
+  }
+} catch (e) {
+  console.error("Failed to read preloads.json:", e);
+}
 ---
 
-<Layout lang={lang} isMobile={isMobile}>
-  <Fragment slot="meta">
-    {PageMeta.map((tag: any) => {
-      if (tag.title) return <title>{tag.title}</title>;
-      if (tag.tagName === "link") return <link rel={tag.rel} href={tag.href} />;
-      return <meta {...tag} />;
-    })}
-  </Fragment>
-  <App lang={lang} isMobile={isMobile} activeSpread={activeSpread} initialPathname={Astro.url.pathname} client:load />
-</Layout>
+<!DOCTYPE html>
+<html lang={normalizedLang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light" />
+		<meta name="theme-color" content="#ffffff" />
+		{dynamicPreloads.map((href) => (
+			<link rel="modulepreload" href={href} />
+		))}
+		{isMobile ? (
+			<>
+				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" />
+			</>
+		) : (
+			<>
+				<link rel="preload" as="image" href="/homepage-left.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" href="/homepage-right.avif" type="image/avif" fetchpriority="high" />
+				<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" />
+			</>
+		)}
+		
+		<link rel="preload" as="font" href="/fonts/bodoni-moda.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+		{!isMobile && (
+			<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		)}
+		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+		<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		<link rel="preload" as="font" href="/fonts/athene-voyage.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="high" />
+		<style is:inline set:html={stylesheet}></style>
+		{PageMeta.map((tag: any) => {
+			if (tag.title) return <title>{tag.title}</title>;
+			if (tag.tagName === "link") return <link rel={tag.rel} href={tag.href} />;
+			return <meta {...tag} />;
+		})}
+	</head>
+	<body>
+		<App lang={lang} isMobile={isMobile} activeSpread={activeSpread} initialPathname={Astro.url.pathname} client:load />
+	</body>
+</html>
