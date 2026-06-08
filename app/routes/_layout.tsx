@@ -1,8 +1,4 @@
 import {
-	spreadMap,
-	spreads,
-} from "~/config";
-import {
 	useLoaderData,
 	useLocation,
 	Outlet,
