@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, type ReactNode } from "react";
-import { translate, type Lang } from "~/i18n/i18n";
+import { translate, type Lang, resources as globalResources } from "~/i18n/i18n";
 
 type Ctx = {
 	lang: Lang;
@@ -12,11 +12,17 @@ const I18nCtx = createContext<Ctx | null>(null);
 
 export const I18nProvider = ({
 	lang,
+	resources,
 	children,
 }: {
 	lang: Lang;
+	resources?: any;
 	children: ReactNode;
 }) => {
+	if (resources) {
+		globalResources[lang] = resources;
+	}
+
 	useEffect(() => {
 		if (typeof window !== "undefined") {
 			localStorage.setItem("lang", lang);

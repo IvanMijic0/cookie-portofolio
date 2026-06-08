@@ -6,6 +6,8 @@ import { spreadMap } from '../../config/spreads';
 import stylesheet from '../../app.css?inline';
 import fs from 'node:fs';
 import path from 'node:path';
+import enDict from '../../i18n/en.json';
+import baDict from '../../i18n/ba.json';
 
 const routesMap: Record<string, () => Promise<any>> = {
 	"homepage": () => import("../../routes/spreads/homepage"),
@@ -63,6 +65,7 @@ const secChUaMobile = Astro.request.headers.get('sec-ch-ua-mobile') || '';
 const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
 const isMobile = cfDeviceType === 'mobile' || cfDeviceType === 'tablet' || secChUaMobile === '?1' || isMobileUA;
 const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
+const resources = lang === "ba" ? baDict : enDict;
 
 // Read dynamic preloads manifest generated during build
 let dynamicPreloads: string[] = [];
@@ -108,9 +111,7 @@ try {
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
-		{!isMobile && (
-			<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
-		)}
+		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
@@ -123,6 +124,6 @@ try {
 		})}
 	</head>
 	<body>
-		<App lang={lang} isMobile={isMobile} activeSpread={activeSpread} initialPathname={Astro.url.pathname} client:load />
+		<App lang={lang} resources={resources} isMobile={isMobile} activeSpread={activeSpread} initialPathname={Astro.url.pathname} client:load />
 	</body>
 </html>

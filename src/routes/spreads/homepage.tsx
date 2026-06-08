@@ -1,5 +1,5 @@
 import MobileWrapper from "~/components/MobileWrapper";
-import { DModified } from "~/assets";
+import DModified from "~/assets/DModified";
 import { translate, type Lang } from "~/i18n/i18n";
 import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import { useTranslate } from "~/context/I18nProvider";

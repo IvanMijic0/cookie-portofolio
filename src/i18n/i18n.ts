@@ -1,13 +1,15 @@
-import en from "./en.json";
-import ba from "./ba.json";
-
 export type Lang = "en" | "ba";
-export type Dict = typeof en;
+export type Dict = typeof import("./en.json");
 
-export const resources: Record<Lang, Dict> = {
-	en,
-	ba,
+export const resources: Record<Lang, any> = {
+	en: {},
+	ba: {},
 };
+
+if (import.meta.env.SSR) {
+	resources.en = (await import("./en.json")).default;
+	resources.ba = (await import("./ba.json")).default;
+}
 
 const STORAGE_KEY = "site.lang";
 

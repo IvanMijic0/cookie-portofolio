@@ -1,6 +1,8 @@
 import React from "react";
 import type { NaveSectionItems, SpreadKey, SpreadModule } from "~/types";
-import { Instagram, Linkedin, Mail } from "~/assets";
+import Instagram from "~/assets/Instagram";
+import Linkedin from "~/assets/Linkedin";
+import Mail from "~/assets/Mail";
 import type { useTranslate } from "~/context/I18nProvider";
 
 export const FONT_STRINGS = [

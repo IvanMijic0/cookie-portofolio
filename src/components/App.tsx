@@ -5,7 +5,7 @@ import BookLayoutWrapper from "./BookLayoutWrapper";
 import { useLocation } from "~/hooks/useRouter";
 import { spreadMap } from "~/config/spreads";
 
-export default function App({ lang, isMobile, activeSpread: initialSpread, initialPathname }: { lang: string; isMobile: boolean; activeSpread: string; initialPathname?: string }) {
+export default function App({ lang, resources, isMobile, activeSpread: initialSpread, initialPathname }: { lang: string; resources?: any; isMobile: boolean; activeSpread: string; initialPathname?: string }) {
   const { pathname } = useLocation(initialPathname);
 
   const getActiveSpread = () => {
@@ -21,7 +21,7 @@ export default function App({ lang, isMobile, activeSpread: initialSpread, initi
   const MobileComponent = moduleEntry.Mobile || (() => null);
 
   return (
-    <I18nProvider lang={normalizedLang}>
+    <I18nProvider lang={normalizedLang} resources={resources}>
       <UIProvider>
         <FlipbookProvider>
           <BookLayoutWrapper lang={normalizedLang} isMobile={isMobile}>
