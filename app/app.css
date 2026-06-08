@@ -46,6 +46,15 @@
 	src: url("/fonts/athene-voyage.woff2") format("woff2");
 }
 
+@font-face {
+	font-family: "Athene Voyage";
+	font-style: italic;
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-display: block;
+	src: url("/fonts/athene-voyage.woff2") format("woff2");
+}
+
 @theme {
 	--color-primary: oklch(0.7 0.15 25);
 	--font-sans: "Roboto", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
