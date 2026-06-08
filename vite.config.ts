@@ -7,6 +7,11 @@ export default defineConfig(({ mode, isSsrBuild }) => ({
 	plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
 	build: {
 		sourcemap: mode === "development" && !isSsrBuild,
+		modulePreload: {
+			resolveDependencies(url, deps) {
+				return deps.filter(dep => !dep.includes("vendor-lottie") && !dep.includes("proxy"));
+			}
+		},
 		...(!isSsrBuild && {
 			rollupOptions: {
 				output: {
