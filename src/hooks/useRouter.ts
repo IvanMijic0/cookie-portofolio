@@ -30,12 +30,31 @@ export function useLocation() {
 export function useNavigate() {
   return (to: string, options?: { replace?: boolean }) => {
     if (typeof window === "undefined") return;
-    if (options?.replace) {
-      window.history.replaceState(null, "", to);
-    } else {
-      window.history.pushState(null, "", to);
+    
+    const isValidOrigin = window.location.protocol.startsWith('http');
+    if (!isValidOrigin) {
+      if (options?.replace) {
+        window.location.replace(to);
+      } else {
+        window.location.href = to;
+      }
+      return;
     }
-    window.dispatchEvent(new PopStateEvent("popstate"));
+
+    try {
+      if (options?.replace) {
+        window.history.replaceState(null, "", to);
+      } else {
+        window.history.pushState(null, "", to);
+      }
+      window.dispatchEvent(new PopStateEvent("popstate"));
+    } catch (e) {
+      if (options?.replace) {
+        window.location.replace(to);
+      } else {
+        window.location.href = to;
+      }
+    }
   };
 }
 
