@@ -1,5 +1,6 @@
 import React from "react";
 import type { SpreadKey, SpreadModule } from "~/types";
+import * as Homepage from "~/routes/spreads/homepage";
 
 const lazySpread = (importFn: () => Promise<any>): SpreadModule => ({
 	Left: React.lazy(() => importFn().then(m => ({ default: m.Left }))),
@@ -7,8 +8,14 @@ const lazySpread = (importFn: () => Promise<any>): SpreadModule => ({
 	Mobile: React.lazy(() => importFn().then(m => ({ default: m.Mobile || (() => null) })))
 });
 
+const homepageSpread: SpreadModule = {
+	Left: Homepage.Left,
+	Right: Homepage.Right,
+	Mobile: Homepage.Mobile
+};
+
 export const spreadMap: Record<string, SpreadModule> = {
-	"homepage": lazySpread(() => import("~/routes/spreads/homepage")),
+	"homepage": homepageSpread,
 	"photography": lazySpread(() => import("~/routes/spreads/photography")),
 	"photography/kill-them-with-kindness": lazySpread(() => import("~/routes/spreads/kill-them-with-kindness")),
 	"photography/human-rights": lazySpread(() => import("~/routes/spreads/human-rights")),
