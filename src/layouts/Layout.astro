@@ -1,6 +1,5 @@
 ---
 import '../app.css';
-import AppWrapper from '../components/AppWrapper.tsx';
 
 const { lang, isMobile } = Astro.props;
 const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
@@ -27,8 +26,6 @@ const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
 		<slot name="meta" />
 	</head>
 	<body>
-		<AppWrapper lang={lang} isMobile={isMobile} client:load>
-			<slot />
-		</AppWrapper>
+		<slot />
 	</body>
 </html>

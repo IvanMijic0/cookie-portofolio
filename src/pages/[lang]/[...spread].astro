@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import Layout from '../../layouts/Layout.astro';
+import App from '../../components/App.tsx';
 import { spreadMap } from '../../config/spreads';
 
 const routesMap: Record<string, () => Promise<any>> = {
@@ -54,8 +55,6 @@ const PageMeta = typeof routeModule.meta === "function"
 // Parse user agent
 const ua = Astro.request.headers.get('user-agent') || '';
 const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua);
-
-const MobileComponent = moduleEntry.Mobile;
 ---
 
 <Layout lang={lang} isMobile={isMobile}>
@@ -66,5 +65,5 @@ const MobileComponent = moduleEntry.Mobile;
       return <meta {...tag} />;
     })}
   </Fragment>
-  <MobileComponent client:load />
+  <App lang={lang} isMobile={isMobile} activeSpread={activeSpread} client:load />
 </Layout>
