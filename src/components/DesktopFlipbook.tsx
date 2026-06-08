@@ -1,7 +1,5 @@
 import {
 	ASPECT_RATIO,
-	CRITICAL_IMAGES,
-	FONT_STRINGS,
 	TARGET_HEIGHT,
 	TARGET_WIDTH,
 } from "~/config";
@@ -15,13 +13,16 @@ import {
 	useState,
 	Suspense,
 	forwardRef,
+	createContext,
+	useContext,
 	type ComponentType,
 	type JSX,
 } from "react";
 import { useFlipbook } from "~/context/flipbook";
-import { useInitialAssets } from "~/hooks";
 import clsx from "clsx";
 import { PageContext } from "~/context/page";
+
+const PageActiveContext = createContext<number>(0);
 
 type PageFlipApi = { flip: (pageIndex: number) => void; turnToPage?: (pageIndex: number) => void };
 type FlipBookRef = { pageFlip: () => PageFlipApi | undefined };
@@ -40,13 +41,27 @@ function parsePathname(pathname: string): { lang: Lang; slug: string } {
 	return { lang, slug };
 }
 
-const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; isRight?: boolean }>(
-	({ Component, isRight }, ref) => {
+const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; index: number; isRight?: boolean }>(
+	({ Component, index, isRight }, ref) => {
+		const currentPage = useContext(PageActiveContext);
+		const [hasRendered, setHasRendered] = useState(false);
+
+		// Virtualized window: current spread (currentPage, currentPage+1) + adjacent spreads
+		const isNear = index >= currentPage - 2 && index <= currentPage + 3;
+
+		useEffect(() => {
+			if (isNear) {
+				setHasRendered(true);
+			}
+		}, [isNear]);
+
+		const shouldRender = isNear || hasRendered;
+
 		return (
 			<div ref={ref} className={clsx("page relative w-full h-full overflow-hidden", isRight ? "page--right" : "page--left")}>
 				<PageContext.Provider value={{ insideFlipPage: true }}>
 					<Suspense fallback={<div className="w-full h-full bg-white" />}>
-						<Component />
+						{shouldRender ? <Component /> : <div className="w-full h-full bg-white" />}
 					</Suspense>
 				</PageContext.Provider>
 			</div>
@@ -110,18 +125,20 @@ const DesktopFlipbook = () => {
 	const location = useLocation();
 	const { setController } = useFlipbook();
 
-	const assetsReady = useInitialAssets(FONT_STRINGS, CRITICAL_IMAGES);
-
 	const { slug } = parsePathname(location.pathname);
 	const validatedSlug = spreads.includes(slug as any) ? slug : "homepage";
 	const startPage = spreads.indexOf(validatedSlug as any) * 2;
 
+	const [currentPage, setCurrentPage] = useState<number>(startPage);
+
 	const allPages = useMemo<JSX.Element[]>(() => {
-		return spreads.flatMap((key) => {
+		return spreads.flatMap((key, idx) => {
 			const mod = spreadMap[key];
+			const leftIndex = idx * 2;
+			const rightIndex = idx * 2 + 1;
 			return [
-				<FlipPage key={`${key}-left`} Component={mod.Left} />,
-				<FlipPage key={`${key}-right`} Component={mod.Right} isRight />
+				<FlipPage key={`${key}-left`} index={leftIndex} Component={mod.Left} />,
+				<FlipPage key={`${key}-right`} index={rightIndex} Component={mod.Right} isRight />
 			];
 		});
 	}, []);
@@ -138,6 +155,12 @@ const DesktopFlipbook = () => {
 
 	useEffect(() => {
 		currentPageRef.current = startPage;
+		setCurrentPage(startPage);
+		const api = activeRef.current?.pageFlip?.();
+		if (api) {
+			if (typeof api.flip === "function") api.flip(startPage);
+			else api.turnToPage?.(startPage);
+		}
 	}, [startPage]);
 
 	useEffect(() => {
@@ -153,6 +176,7 @@ const DesktopFlipbook = () => {
 		const goToIndex = (pageIndex: number): void => {
 			const api = getApi();
 			if (!api) return;
+			setCurrentPage(pageIndex);
 			if (typeof api.flip === "function") api.flip(pageIndex);
 			else api.turnToPage?.(pageIndex);
 		};
@@ -167,8 +191,10 @@ const DesktopFlipbook = () => {
 	}, [setController, remountId]);
 
 	const handleFlip = (e: FlipEvent): void => {
-		currentPageRef.current = Math.floor(e.data);
-		const idx = Math.floor(e.data / 2);
+		const newPage = Math.floor(e.data);
+		currentPageRef.current = newPage;
+		setCurrentPage(newPage);
+		const idx = Math.floor(newPage / 2);
 		const nextSlug = spreads[idx];
 
 		const lang = localStorage.getItem('lang') || 'en';
@@ -207,13 +233,10 @@ const DesktopFlipbook = () => {
 
 	return (
 		<div className="fixed inset-0 overflow-hidden w-full h-full">
-			<div
-				className={clsx(
-					"absolute inset-0 flex justify-center items-center",
-					!assetsReady && "invisible"
-				)}
-			>
-				<HTMLFlipBook key={remountId} ref={activeRef} {...bookProps} />
+			<div className="absolute inset-0 flex justify-center items-center">
+				<PageActiveContext.Provider value={currentPage}>
+					<HTMLFlipBook key={remountId} ref={activeRef} {...bookProps} />
+				</PageActiveContext.Provider>
 			</div>
 		</div>
 	);

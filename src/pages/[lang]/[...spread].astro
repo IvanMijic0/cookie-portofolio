@@ -88,16 +88,13 @@ try {
 		<meta name="theme-color" content="#ffffff" />
 		
 		{/* 1. Critical LCP images (Highest priority) */}
-		{isMobile ? (
+		{activeSpread === 'homepage' && (
 			<>
-				<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" />
-				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" />
-			</>
-		) : (
-			<>
-				<link rel="preload" as="image" href="/homepage-left.avif" type="image/avif" fetchpriority="high" />
-				<link rel="preload" as="image" href="/homepage-right.avif" type="image/avif" fetchpriority="high" />
-				<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" />
+				<link rel="preload" as="image" href="/cookie-pose-mobile.avif" type="image/avif" fetchpriority="high" media="(max-width: 1023px)" />
+				<link rel="preload" as="image" href="/homepage.avif" type="image/avif" fetchpriority="high" media="(max-width: 1023px)" />
+				<link rel="preload" as="image" href="/homepage-left.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)" />
+				<link rel="preload" as="image" href="/homepage-right.avif" type="image/avif" fetchpriority="high" media="(min-width: 1024px)" />
+				<link rel="preload" as="image" imagesrcset="/cookie-pose-small.avif 1x, /cookie-pose.avif 2x" fetchpriority="low" media="(min-width: 1024px)" />
 			</>
 		)}
 
