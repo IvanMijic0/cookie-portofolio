@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import type { MetaFunction } from "react-router";
-import { spreadMap } from "~/config";
+import { spreadMap } from "~/config/spreads";
 
 type MetaEntry = Partial<{ title: string; name: string; content: string }>;
 

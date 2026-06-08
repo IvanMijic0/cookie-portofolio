@@ -16,9 +16,9 @@ export default function App({ lang, isMobile, activeSpread: initialSpread, initi
   };
 
   const activeSpread = getActiveSpread();
-  const normalizedLang = lang === "ba" ? "bs" : (lang || "en");
+  const normalizedLang: "en" | "ba" = lang === "ba" ? "ba" : "en";
   const moduleEntry = spreadMap[activeSpread] || spreadMap["homepage"];
-  const MobileComponent = moduleEntry.Mobile;
+  const MobileComponent = moduleEntry.Mobile || (() => null);
 
   return (
     <I18nProvider lang={normalizedLang}>
