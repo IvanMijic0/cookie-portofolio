@@ -248,6 +248,8 @@ export const Mobile = () => {
 					aria-hidden="true"
 					className="absolute inset-0 z-0 h-full w-full object-cover"
 					loading="eager"
+					width={440}
+					height={956}
 					fetchPriority="low"
 					decoding="async"
 				/>
@@ -310,7 +312,9 @@ export const Mobile = () => {
 					aria-hidden="true"
 					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
 					loading="eager"
-					decoding="sync"
+					width={411}
+					height={817}
+					decoding="async"
 					fetchPriority="high"
 				/>
 				<div
