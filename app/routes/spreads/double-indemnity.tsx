@@ -21,7 +21,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	const slides = useMemo(
 		() =>
 			Array.from({ length: 6 }).map((_, idx) => ({
-				src: `/double-indemnity-left-${idx + 1}.webp`,
+				src: `/double-indemnity-left-${idx + 1}.avif`,
 				alt: t(`photographyThree.slides.grid.${idx + 1}`, `Double Indemnity series photo ${idx + 1} of 6`)
 			})),
 		[t]
@@ -133,7 +133,7 @@ export const Mobile = () => {
 	const diSlides = useMemo(
 		() =>
 			Array.from({ length: 6 }).map((_, i) => ({
-				src: `/double-indemnity-left-${i + 1}.webp`,
+				src: `/double-indemnity-left-${i + 1}.avif`,
 				alt: t(
 					`photographyThree.slides.grid.${i + 1}`,
 					[
@@ -158,7 +158,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("nav.photographyOne", "Kill them with kindness"),
-			src: "/kill-them-with-kindness-1.webp",
+			src: "/kill-them-with-kindness-1.avif",
 			href: makeHref("/photography/kill-them-with-kindness"),
 			alt: t(
 				"photographyOne.slides.primary",
@@ -168,7 +168,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("nav.photographyTwo", "Human Rights"),
-			src: "/human-rights-left.webp",
+			src: "/human-rights-left.avif",
 			href: makeHref("/photography/human-rights"),
 			alt: t(
 				"photographyTwo.slides.poster",
@@ -201,7 +201,7 @@ export const Mobile = () => {
 					<div className="flex flex-col gap-2 pt-10 w-full">
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
-								src="/double-indemnity-left-1.webp"
+								src="/double-indemnity-left-1.avif"
 								alt={t(
 									"photographyThree.slides.grid.1",
 									"Double Indemnity still: Phyllis and Walter framed in a doorway, classic noir lighting and tension."
@@ -209,7 +209,7 @@ export const Mobile = () => {
 								onClick={() => openAt(0)}
 							/>
 							<Thumb
-								src="/double-indemnity-left-2.webp"
+								src="/double-indemnity-left-2.avif"
 								alt={t(
 									"photographyThree.slides.grid.2",
 									"Phyllis and Walter close framing at the door, crisp suits and stark shadows."
@@ -220,7 +220,7 @@ export const Mobile = () => {
 
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
-								src="/double-indemnity-left-3.webp"
+								src="/double-indemnity-left-3.avif"
 								alt={t(
 									"photographyThree.slides.grid.3",
 									"Phyllis behind the wheel, headlights carving her face with dramatic contrast."
@@ -228,7 +228,7 @@ export const Mobile = () => {
 								onClick={() => openAt(2)}
 							/>
 							<Thumb
-								src="/double-indemnity-left-4.webp"
+								src="/double-indemnity-left-4.avif"
 								alt={t(
 									"photographyThree.slides.grid.4",
 									"Phyllis in soft focus, a cool stare underlining the film’s moral ambiguity."
@@ -239,7 +239,7 @@ export const Mobile = () => {
 
 						<div className="flex gap-2 w-full items-center overflow-hidden">
 							<Thumb
-								src="/double-indemnity-left-5.webp"
+								src="/double-indemnity-left-5.avif"
 								alt={t(
 									"photographyThree.slides.grid.5",
 									"Phyllis on the phone—brimmed hat, tight composition, deep shadows."
@@ -247,7 +247,7 @@ export const Mobile = () => {
 								onClick={() => openAt(4)}
 							/>
 							<Thumb
-								src="/double-indemnity-left-6.webp"
+								src="/double-indemnity-left-6.avif"
 								alt={t(
 									"photographyThree.slides.grid.6",
 									"Walter on the phone—hat brim across his eyes; smoke and shadow set the mood."
@@ -339,7 +339,7 @@ export const meta: MetaFunction = ({ params }) => {
 		"A trio of black-and-white photographs reimagining Double Indemnity—meticulous lighting, composition, and mood that revive classic film noir."
 	);
 	const url = `/photography/double-indemnity`;
-	const image = `/double-indemnity-left-1.webp`;
+	const image = `/double-indemnity-left-1.avif`;
 	const imageAlt = t(
 		"imageAlt",
 		"Black-and-white film-noir style photograph from the Double Indemnity series."
@@ -365,7 +365,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },

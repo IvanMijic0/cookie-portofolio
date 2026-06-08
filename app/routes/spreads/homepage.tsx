@@ -18,7 +18,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<LeftPage ref={ref}>
 			<img
-				src="/homepage-left.webp"
+				src="/homepage-left.avif"
 				alt=""
 				role="presentation"
 				className="w-full h-full object-cover z-0"
@@ -126,7 +126,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<RightPage ref={ref} showBookmark={false}>
 			<img
-				src="/homepage-right.webp"
+				src="/homepage-right.avif"
 				className="absolute inset-0 w-full h-full object-cover z-0"
 				alt=""
 				role="presentation"
@@ -185,7 +185,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</div>
 			</section>
 			<img
-				src="/cookie-pose.webp"
+				src="/cookie-pose.avif"
 				alt=""
 				role="presentation"
 				className="absolute bottom-0 right-0 w-[calc(100%-11rem)] object-contain z-20 pointer-events-none"
@@ -242,7 +242,7 @@ export const Mobile = () => {
 				itemID="/homepage"
 			>
 				<img
-					src="/homepage.webp"
+					src="/homepage.avif"
 					alt=""
 					role="presentation"
 					aria-hidden="true"
@@ -306,7 +306,7 @@ export const Mobile = () => {
 					</div>
 				</section>
 				<img
-					src="/cookie-pose-mobile.webp"
+					src="/cookie-pose-mobile.avif"
 					alt=""
 					role="presentation"
 					aria-hidden="true"

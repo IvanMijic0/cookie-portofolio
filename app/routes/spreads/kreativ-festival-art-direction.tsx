@@ -18,7 +18,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/kreativ-festival-art-direction-left.webp"
+			src="/kreativ-festival-art-direction-left.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -81,15 +81,15 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	const slides: SlideImage[] = useMemo(
 		() => [
 			{
-				src: "/kreativ-festival-art-direction-right-1.webp",
+				src: "/kreativ-festival-art-direction-right-1.avif",
 				alt: t("graphicDesignOne.slides.grid.1", "KREATIV fest visual identity poster — variant 1"),
 			},
 			{
-				src: "/kreativ-festival-art-direction-right-2.webp",
+				src: "/kreativ-festival-art-direction-right-2.avif",
 				alt: t("graphicDesignOne.slides.grid.2", "KREATIV fest visual identity poster — variant 2"),
 			},
 			{
-				src: "/kreativ-festival-art-direction-right-3.webp",
+				src: "/kreativ-festival-art-direction-right-3.avif",
 				alt: t("graphicDesignOne.slides.grid.3", "KREATIV fest visual identity poster — variant 3"),
 			},
 		],
@@ -175,22 +175,22 @@ export const Mobile = () => {
 	const kreatSlides = useMemo(
 		() => [
 			{
-				src: "/kreativ-festival-art-direction-1.webp",
+				src: "/kreativ-festival-art-direction-1.avif",
 				alt: t(
 					"graphicDesignOne.mobileSlides.hero",
 					"Kreativ Fest visual identity — hero poster, grunge-inspired layout with bold type and high-contrast textures."
 				),
 			},
 			{
-				src: "/kreativ-festival-art-direction-right-1.webp",
+				src: "/kreativ-festival-art-direction-right-1.avif",
 				alt: t("graphicDesignOne.mobileSlides.idFront", "Kreativ Fest ID badge — front side mockup with custom logotype and neon color accents."),
 			},
 			{
-				src: "/kreativ-festival-art-direction-right-3.webp",
+				src: "/kreativ-festival-art-direction-right-3.avif",
 				alt: t("graphicDesignOne.mobileSlides.idBack", "Kreativ Fest ID badge — back side mockup with typographic grid and stamp-style marks."),
 			},
 			{
-				src: "/kreativ-festival-art-direction-right-2.webp",
+				src: "/kreativ-festival-art-direction-right-2.avif",
 				alt: t("graphicDesignOne.mobileSlides.booklet", "Kreativ Fest program booklet — cover design featuring layered textures and expressive negative space."),
 			},
 		],
@@ -207,14 +207,14 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("graphicDesign.meta.shortTwo", "Doli Bel"),
-			src: "/doli-bel-1.webp",
+			src: "/doli-bel-1.avif",
 			href: makeHref("/graphic-design/sjecas-li-se-doli-bel"),
 			alt: t("graphicDesignOne.related.doliBelAlt", "Poster design inspired by the film Sjećaš li se Doli Bel?, cinematic composition with bold graphic typography."),
 		},
 		{
 			id: 2,
 			title: t("graphicDesign.meta.shortThree", "Chippsters"),
-			src: "/chippsters-1.webp",
+			src: "/chippsters-1.avif",
 			href: makeHref("/graphic-design/chippsters-logo"),
 			alt: t("graphicDesignOne.related.chippstersAlt", "Chippsters logo concept — playful wordmark with contemporary brand detailing."),
 		},
@@ -241,8 +241,8 @@ export const Mobile = () => {
 						title={t("graphicDesignOne.aria.viewHero", "View hero poster")}
 					>
 						<img
-							src="/kreativ-festival-art-direction-1.webp"
-							srcSet="/kreativ-festival-art-direction-1-800.webp 800w, /kreativ-festival-art-direction-1.webp 1600w"
+							src="/kreativ-festival-art-direction-1.avif"
+							srcSet="/kreativ-festival-art-direction-1-800.avif 800w, /kreativ-festival-art-direction-1.avif 1600w"
 							sizes="100vw"
 							alt={t("graphicDesignOne.mobileSlides.heroAlt", "Kreativ Fest hero poster — expressive grunge art direction.")}
 							className="block w-full h-auto object-cover"
@@ -257,7 +257,7 @@ export const Mobile = () => {
 					<figcaption className="sr-only" itemProp="caption">
 						{t("graphicDesignOne.mobileSlides.heroCaption", "Hero poster for Kreativ Fest visual identity.")}
 					</figcaption>
-					<meta itemProp="encodingFormat" content="image/webp" />
+					<meta itemProp="encodingFormat" content="image/avif" />
 					<meta itemProp="width" content="1600" />
 					<meta itemProp="height" content="2000" />
 				</figure>
@@ -302,7 +302,7 @@ export const Mobile = () => {
 									title={t("graphicDesignOne.aria.viewIdFront", "View ID badge front")}
 								>
 									<img
-										src="/kreativ-festival-art-direction-right-1.webp"
+										src="/kreativ-festival-art-direction-right-1.avif"
 										sizes="(max-width: 540px) 40vw, 400px"
 										className="object-cover w-full h-full flex-1"
 										loading="lazy"
@@ -327,7 +327,7 @@ export const Mobile = () => {
 									title={t("graphicDesignOne.aria.viewIdBack", "View ID badge back")}
 								>
 									<img
-										src="/kreativ-festival-art-direction-right-3.webp"
+										src="/kreativ-festival-art-direction-right-3.avif"
 										sizes="(max-width: 540px) 40vw, 400px"
 										className="object-cover w-full h-full flex-1"
 										loading="lazy"
@@ -357,7 +357,7 @@ export const Mobile = () => {
 								title={t("graphicDesignOne.aria.viewBooklet", "View program booklet")}
 							>
 								<img
-									src="/kreativ-festival-art-direction-right-2.webp"
+									src="/kreativ-festival-art-direction-right-2.avif"
 									sizes="(max-width: 640px) 55vw, 520px"
 									className="object-contain w-full h-full"
 									loading="lazy"
@@ -456,7 +456,7 @@ export function meta() {
 	const description =
 		"Festival branding and art direction for KREATIV Fest: a grunge-inspired visual identity with custom logotype, bold typography, and poster system by Amna Kolić.";
 	const url = "/graphic-design/kreativ-festival-art-direction";
-	const image = "/kreativ-festival-art-direction-left.webp";
+	const image = "/kreativ-festival-art-direction-left.avif";
 	const imageAlt =
 		"KREATIV Fest visual identity concept showcasing grunge textures, bold type, and the 'Kreativ Euphoria' logotype.";
 
@@ -477,7 +477,7 @@ export function meta() {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:locale", content: "en_US" },

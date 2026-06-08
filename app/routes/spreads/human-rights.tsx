@@ -14,7 +14,7 @@ import { translate, type Lang } from "~/i18n/i18n";
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
 		<img
-			src="/human-rights-left.webp"
+			src="/human-rights-left.avif"
 			alt=""
 			aria-hidden="true"
 			role="presentation"
@@ -31,7 +31,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	const slides = useMemo(
 		() =>
 			Array.from({ length: 4 }).map((_, idx) => ({
-				src: `/human-rights-${idx + 1}.webp`,
+				src: `/human-rights-${idx + 1}.avif`,
 				alt: `Human Rights series photo ${idx + 1} of 4`,
 			})),
 		[]
@@ -113,26 +113,26 @@ export const Mobile = () => {
 	const hrSlides = useMemo(
 		() => [
 			{
-				src: "/human-rights-left.webp",
+				src: "/human-rights-left.avif",
 				alt: t(
 					"photographyTwo.slides.poster",
 					"Human Rights series poster: still-life composition where light symbolizes the presence of rights."
 				),
 			},
 			{
-				src: "/human-rights-1.webp",
+				src: "/human-rights-1.avif",
 				alt: t("photographyTwo.slides.express", "Right to Express: directional light highlighting a solitary subject to suggest voice and visibility."),
 			},
 			{
-				src: "/human-rights-2.webp",
+				src: "/human-rights-2.avif",
 				alt: t("photographyTwo.slides.privacy", "Right to Privacy: obscured shapes and controlled shadows imply concealment and protection."),
 			},
 			{
-				src: "/human-rights-3.webp",
+				src: "/human-rights-3.avif",
 				alt: t("photographyTwo.slides.rest", "Right to Rest: softened light and quiet negative space evoke restoration and pause."),
 			},
 			{
-				src: "/human-rights-4.webp",
+				src: "/human-rights-4.avif",
 				alt: t("photographyTwo.slides.religion", "Right to Religion: a focused beam suggests contemplation, conviction, and freedom of worship."),
 			},
 		],
@@ -149,7 +149,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("nav.photographyOne", "Kill them with kindness"),
-			src: "/kill-them-with-kindness-1.webp",
+			src: "/kill-them-with-kindness-1.avif",
 			href: makeHref("/photography/kill-them-with-kindness"),
 			alt: t(
 				"photographyOne.meta.imageAlt",
@@ -159,7 +159,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("nav.photographyThree", "Double Indemnity"),
-			src: "/double-indemnity-left-1.webp",
+			src: "/double-indemnity-left-1.avif",
 			href: makeHref("/photography/double-indemnity"),
 			alt: t(
 				"photographyThree.meta.imageAlt",
@@ -198,7 +198,7 @@ export const Mobile = () => {
 								aria-label={t("photographyTwo.aria.openPoster", "Open image: Human Rights poster")}
 							>
 								<img
-									src="/human-rights-left.webp"
+									src="/human-rights-left.avif"
 									sizes="(max-width: 640px) 100vw, 640px"
 									width={1600}
 									height={2000}
@@ -226,7 +226,7 @@ export const Mobile = () => {
 									aria-label={t("photographyTwo.aria.openExpress", "Open image: Right to Express")}
 								>
 									<img
-										src="/human-rights-1.webp"
+										src="/human-rights-1.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										width={1200}
 										height={1600}
@@ -245,7 +245,7 @@ export const Mobile = () => {
 									aria-label={t("photographyTwo.aria.openPrivacy", "Open image: Right to Privacy")}
 								>
 									<img
-										src="/human-rights-2.webp"
+										src="/human-rights-2.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										width={1200}
 										height={1600}
@@ -266,7 +266,7 @@ export const Mobile = () => {
 									aria-label={t("photographyTwo.aria.openRest", "Open image: Right to Rest")}
 								>
 									<img
-										src="/human-rights-3.webp"
+										src="/human-rights-3.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										width={1200}
 										height={1600}
@@ -286,7 +286,7 @@ export const Mobile = () => {
 									aria-label={t("photographyTwo.aria.openReligion", "Open image: Right to Religion")}
 								>
 									<img
-										src="/human-rights-4.webp"
+										src="/human-rights-4.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										width={1200}
 										height={1600}
@@ -376,7 +376,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
 	const url = `${BASE_URL}/${lang}/photography/human-rights`;
-	const image = `${BASE_URL}/human-rights-left.webp`;
+	const image = `${BASE_URL}/human-rights-left.avif`;
 
 	const title = t("title", "Human Rights – Conceptual Photo Series by Amna Kolić");
 	const description = t(
@@ -399,7 +399,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },

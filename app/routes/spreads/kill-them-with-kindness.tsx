@@ -22,7 +22,7 @@ import { BASE_URL } from "~/config";
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
 		<img
-			src="/kill-them-with-kindness-left.webp"
+			src="/kill-them-with-kindness-left.avif"
 			alt=""
 			aria-hidden="true"
 			role="presentation"
@@ -38,7 +38,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<img
-			src="/kill-them-with-kindness-right.webp"
+			src="/kill-them-with-kindness-right.avif"
 			alt=""
 			aria-hidden="true"
 			role="presentation"
@@ -108,18 +108,18 @@ export const Mobile = () => {
 	const killSlides = useMemo(
 		() => [
 			{
-				src: "/kill-them-with-kindness-1.webp",
+				src: "/kill-them-with-kindness-1.avif",
 				alt: t(
 					"photographyOne.slides.primary",
 					"Primary poster: a symbolic still-life that frames empathy as strength."
 				),
 			},
 			{
-				src: "/kill-them-with-kindness-2.webp",
+				src: "/kill-them-with-kindness-2.avif",
 				alt: t("photographyOne.slides.bouquet", "Bouquet study juxtaposing tenderness and tension."),
 			},
 			{
-				src: "/kill-them-with-kindness-3.webp",
+				src: "/kill-them-with-kindness-3.avif",
 				alt: t("photographyOne.slides.roseGrenade", "Rose & Grenade still-life emphasizing peace over power."),
 			},
 		],
@@ -136,14 +136,14 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("nav.photographyTwo", "Human Rights"),
-			src: "/human-rights-left.webp",
+			src: "/human-rights-left.avif",
 			href: makeHref("/photography/human-rights"),
 			alt: t("photographyTwo.meta.imageAlt", "Human Rights photo series exploring freedom and equality."),
 		},
 		{
 			id: 2,
 			title: t("nav.photographyThree", "Double Indemnity"),
-			src: "/double-indemnity-left-1.webp",
+			src: "/double-indemnity-left-1.avif",
 			href: makeHref("/photography/double-indemnity"),
 			alt: t("photographyThree.meta.imageAlt", "Double Indemnity photo series inspired by classic noir cinema."),
 		},
@@ -179,7 +179,7 @@ export const Mobile = () => {
 								aria-label={t("photographyOne.slides.primaryAria", "Open image: Primary poster")}
 							>
 								<img
-									src="/kill-them-with-kindness-1.webp"
+									src="/kill-them-with-kindness-1.avif"
 									sizes="(max-width: 640px) 100vw, 640px"
 									alt={t(
 										"photographyOne.slides.primary",
@@ -208,7 +208,7 @@ export const Mobile = () => {
 									aria-label={t("photographyOne.slides.bouquetAria", "Open image: Bouquet study")}
 								>
 									<img
-										src="/kill-them-with-kindness-2.webp"
+										src="/kill-them-with-kindness-2.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										alt="Bouquet study juxtaposing tenderness and tension."
 										width={1200}
@@ -229,7 +229,7 @@ export const Mobile = () => {
 									aria-label={t("photographyOne.slides.roseGrenadeAria", "Open image: Rose & Grenade")}
 								>
 									<img
-										src="/kill-them-with-kindness-3.webp"
+										src="/kill-them-with-kindness-3.avif"
 										sizes="(max-width: 640px) 50vw, 320px"
 										alt={t("photographyOne.slides.roseGrenade", "Rose & Grenade still-life emphasizing peace over power.")}
 										width={1200}
@@ -345,7 +345,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const urlPath = `/${lang}/photography/kill-them-with-kindness`;
 	const url = `${BASE_URL}${urlPath}`;
-	const image = `${BASE_URL}/kill-them-with-kindness-right.webp`;
+	const image = `${BASE_URL}/kill-them-with-kindness-right.avif`;
 	const imageAlt = t(
 		"imageAlt",
 		"Conceptual portrait from the ‘Kill Them with Kindness’ photo series."
@@ -373,7 +373,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:locale", content: locale },

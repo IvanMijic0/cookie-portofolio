@@ -72,7 +72,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref}>
 		<img
-			src="/about-me.webp"
+			src="/about-me.avif"
 			alt={t("aboutMe.alts.leftImage", "Portrait of Amna Kolić")}
 			className="w-full h-full object-cover z-0"
 			loading="lazy"
@@ -91,7 +91,7 @@ export const Mobile = () => {
 	const aboutSlides = useMemo(
 		() => [
 			{
-				src: "/about-me.webp",
+				src: "/about-me.avif",
 				alt: t(
 					"aboutMe.alts.mobileHero",
 					"Amna Kolić — Bosnia-based graphic designer, UX/UI designer, and artist."
@@ -142,7 +142,7 @@ export const Mobile = () => {
 							title={t("aboutMe.a11y.openTitle", "View portrait")}
 						>
 							<img
-								src="/about-me.webp"
+								src="/about-me.avif"
 								sizes="(max-width: 640px) 100vw, 640px"
 								alt={t("aboutMe.alts.mobileHero", "Amna Kolić — Bosnia-based graphic designer and artist.")}
 								width={1600}
@@ -242,7 +242,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
 	const url = `${BASE_URL}/${lang}/about-me`;
-	const image = `${BASE_URL}/about-me.webp`;
+	const image = `${BASE_URL}/about-me.avif`;
 
 	const title = t("title", "About Amna Kolić – Graphic Designer, UX/UI & Visual Artist");
 	const description = t(

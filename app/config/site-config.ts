@@ -10,9 +10,9 @@ export const FONT_STRINGS = [
 ];
 
 export const CRITICAL_IMAGES = [
-	"/bookmark.webp",
-	"/homepage-right.webp",
-	"/cookie-pose.webp",
+	"/bookmark.avif",
+	"/homepage-right.avif",
+	"/cookie-pose.avif",
 ];
 
 type TFn = ReturnType<typeof useTranslate>["t"];

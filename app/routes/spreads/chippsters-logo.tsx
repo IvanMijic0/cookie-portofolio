@@ -14,7 +14,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/chippsters-left.webp"
+			src="/chippsters-left.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -101,7 +101,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				</section>
 			</div>
 			<img
-				src="/chippsters-right.webp"
+				src="/chippsters-right.avif"
 				alt={t(
 					"graphicDesignThree.slides.mockup",
 					"Chippsters logo mockups: circular C mark with chipmunk-in-negative-space on green gradient applications."
@@ -131,14 +131,14 @@ export const Mobile = () => {
 	const chippSlides = useMemo(
 		() => [
 			{
-				src: "/chippsters-1.webp",
+				src: "/chippsters-1.avif",
 				alt: t(
 					"graphicDesignThree.slides.hero",
 					"Chippsters logo concept — modern circular emblem with playful negative-space chipmunk design."
 				),
 			},
 			{
-				src: "/chippsters-right.webp",
+				src: "/chippsters-right.avif",
 				alt: t(
 					"graphicDesignThree.slides.mockupShort",
 					"Chippsters logo mockup — bold letter C with chipmunk character in negative space, beanie and glasses included."
@@ -158,7 +158,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("graphicDesign.meta.shortOne", "Kreativ Fest"),
-			src: "/kreativ-festival-art-direction-1.webp",
+			src: "/kreativ-festival-art-direction-1.avif",
 			href: makeHref("/graphic-design/kreativ-festival-art-direction"),
 			alt: t(
 				"graphicDesignThree.related.kreativ",
@@ -168,7 +168,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("graphicDesign.meta.shortTwo", "Doli Bel"),
-			src: "/doli-bel-1.webp",
+			src: "/doli-bel-1.avif",
 			href: makeHref("/graphic-design/sjecas-li-se-doli-bel"),
 			alt: t(
 				"graphicDesignThree.related.doli",
@@ -198,7 +198,7 @@ export const Mobile = () => {
 						title={t("graphicDesignThree.aria.viewHero", "View Chippsters logo")}
 					>
 						<img
-							src="/chippsters-1.webp"
+							src="/chippsters-1.avif"
 							sizes="100vw"
 							alt={t(
 								"graphicDesignThree.slides.heroShort",
@@ -253,7 +253,7 @@ export const Mobile = () => {
 							title={t("graphicDesignThree.aria.viewMockup", "View Chippsters logo mockup")}
 						>
 							<img
-								src="/chippsters-right.webp"
+								src="/chippsters-right.avif"
 								sizes="(max-width: 540px) 40vw, 400px"
 								className="object-cover w-full h-full flex-1"
 								loading="lazy"
@@ -329,7 +329,7 @@ export function meta() {
 	const description =
 		"Playful yet professional logo for a tech brand—chipmunk + hipster fused into a minimalist C-mark with negative space, clean geometry, and a fresh green gradient. Visual identity by Amna Kolić.";
 	const url = "/graphic-design/chippsters-logo";
-	const image = "/chippsters-right.webp";
+	const image = "/chippsters-right.avif";
 	const imageAlt =
 		"Chippsters logo mockups: circular C mark with a chipmunk silhouette in negative space, set on a soft green gradient.";
 
@@ -350,7 +350,7 @@ export function meta() {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "article:section", content: "Graphic Design" },
 		{ property: "article:tag", content: "Logo Design" },
 		{ property: "article:tag", content: "Branding" },

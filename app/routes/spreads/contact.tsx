@@ -26,7 +26,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/contact-left.webp"
+			src="/contact-left.avif"
 			alt={t("contact.meta.imageAlt", "Contact page decorative background.")}
 			role="presentation"
 			aria-hidden="true"
@@ -95,7 +95,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<img
-			src="/contact-right.webp"
+			src="/contact-right.avif"
 			alt={t("contact.meta.imageAlt", "Contact page decorative background.")}
 			role="presentation"
 			aria-hidden="true"
@@ -151,7 +151,7 @@ export const Mobile = () => {
 	const aboutSlides = useMemo(
 		() => [
 			{
-				src: "/contact.webp",
+				src: "/contact.avif",
 				alt: t(
 					"contact.alts.mobileHero",
 					"Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait."
@@ -252,7 +252,7 @@ export const Mobile = () => {
 							title={t("contact.a11y.viewPortrait", "View portrait")}
 						>
 							<img
-								src="/contact.webp"
+								src="/contact.avif"
 								sizes="(max-width: 640px) 100vw, 640px"
 								alt={t("contact.alts.mobileHero", "Amna Kolić — Bosnia-based graphic & UX/UI designer — contact portrait.")}
 								width={1600}
@@ -325,7 +325,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
 	const url = `${BASE_URL}/${lang}/contact`;
-	const image = `${BASE_URL}/contact-right.webp`;
+	const image = `${BASE_URL}/contact-right.avif`;
 
 	const title = t("title", "Get in Touch | Contact Amna Kolić – Graphic Design Portfolio");
 	const description = t(

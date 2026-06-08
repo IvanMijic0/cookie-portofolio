@@ -16,7 +16,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/mural-left.webp"
+			src="/mural-left.avif"
 			alt={t("illustrationThree.meta.imageAlt", "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.")}
 			className="w-full h-full object-cover z-0"
 			loading="lazy"
@@ -88,7 +88,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<RightPage ref={ref} showBookmark>
 			<img
-				src="/mural-right.webp"
+				src="/mural-right.avif"
 				alt={t("illustrationThree.meta.imageAlt", "Mural concept visual: Bosnia in the Heart of Europe with Sarajevo motifs and European landmarks.")}
 				className="w-full h-full object-cover z-0"
 				loading="lazy"
@@ -108,14 +108,14 @@ export const Mobile = () => {
 	const muralSlides = useMemo(
 		() => [
 			{
-				src: "/mural-1.webp",
+				src: "/mural-1.avif",
 				alt: t(
 					"illustrationThree.slides.grid.1",
 					"Bosnia in the Heart of Europe — foreground figure beneath a tree with Sarajevo in the background, opening into European landmarks."
 				),
 			},
 			{
-				src: "/mural-2.webp",
+				src: "/mural-2.avif",
 				alt: t(
 					"illustrationThree.slides.grid.2",
 					"Bosnia in the Heart of Europe — pigeons in flight connect Sarajevo motifs with iconic European architecture across the scene."
@@ -136,7 +136,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("illustrationOne.title.titleOne", "Mountain") + " " + t("illustrationOne.title.titleTwo", "Fairy"),
-			src: "/mountain-fairy-right.webp",
+			src: "/mountain-fairy-right.avif",
 			href: makeHref ? makeHref("/illustration/mountain-fairy") : "/illustration/mountain-fairy",
 			alt: t(
 				"illustrationThree.related.mountainFairy",
@@ -146,7 +146,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("illustrationTwo.title.titleOne", "Austen in") + " " + t("illustrationTwo.title.titleTwo", "watercolor"),
-			src: "/austen-right-1.webp",
+			src: "/austen-right-1.avif",
 			href: makeHref ? makeHref("/illustration/austen-in-watercolor") : "/illustration/austen-in-watercolor",
 			alt: t(
 				"illustrationThree.related.austenWatercolor",
@@ -200,7 +200,7 @@ export const Mobile = () => {
 								title={`${t("illustrationThree.slides.openTitle", "View mural")} — ${t("common.panel", "panel")} 1`}
 							>
 								<img
-									src="/mural-1.webp"
+									src="/mural-1.avif"
 									sizes="(max-width: 640px) 100vw, 640px"
 									alt={t(
 										"illustrationThree.slides.mobile.1",
@@ -228,7 +228,7 @@ export const Mobile = () => {
 								title={`${t("illustrationThree.slides.openTitle", "View mural")} — ${t("common.panel", "panel")} 2`}
 							>
 								<img
-									src="/mural-2.webp"
+									src="/mural-2.avif"
 									sizes="(max-width: 640px) 100vw, 640px"
 									alt={t(
 										"illustrationThree.slides.mobile.2",
@@ -324,7 +324,7 @@ export const meta: MetaFunction = ({ params }) => {
 
 	const BASE_URL = import.meta.env?.VITE_BASE_URL || "https://www.amnakolic.com";
 	const url = `${BASE_URL}/${lang}/illustration/mural`;
-	const image = `${BASE_URL}/mural-left.webp`;
+	const image = `${BASE_URL}/mural-left.avif`;
 
 	const title = t(
 		"title",

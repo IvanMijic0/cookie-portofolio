@@ -12,7 +12,7 @@ import type { MetaFunction } from "react-router";
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
 		<img
-			src="/photography-intro.webp"
+			src="/photography-intro.avif"
 			alt=""
 			aria-hidden="true"
 			role="presentation"
@@ -88,7 +88,7 @@ export const Mobile = () => {
 						className="m-0"
 					>
 						<img
-							src="/photography-intro.webp"
+							src="/photography-intro.avif"
 							alt="Editorial portrait introducing the Photography & Editing section"
 							className="block w-full h-auto object-cover"
 							loading="lazy"
@@ -188,7 +188,7 @@ export const meta: MetaFunction = ({ params }) => {
 		"Explore concept-driven and editorial photography by Amna Kolić — combining studio lighting, compositing, and photo editing to create powerful visual narratives from Sarajevo, Bosnia and Herzegovina."
 	);
 	const url = `${BASE_URL}/${lang}/photography`;
-	const image = `${BASE_URL}/photography-intro.webp`;
+	const image = `${BASE_URL}/photography-intro.avif`;
 	const imageAlt = t(
 		"imageAlt",
 		"Editorial and conceptual photography title spread with refined typography."

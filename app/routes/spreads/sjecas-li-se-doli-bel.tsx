@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	const slides: SlideImage[] = [
 		{
-			src: "/doli-bel-left-1.webp",
+			src: "/doli-bel-left-1.avif",
 			alt: t(
 				"graphicDesignTwo.slides.detail",
 				"Visual detail from the ‘Sjećaš li se Doli Bel’ design concept"
@@ -30,7 +30,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<LeftPage ref={ref}>
 			<img
-				src="/doli-bel-left.webp"
+				src="/doli-bel-left.avif"
 				alt=""
 				role="presentation"
 				aria-hidden="true"
@@ -87,7 +87,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<img
-			src="/doli-bel-right.webp"
+			src="/doli-bel-right.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -155,14 +155,14 @@ export const Mobile = () => {
 	const doliSlides = useMemo(
 		() => [
 			{
-				src: "/doli-bel-1.webp",
+				src: "/doli-bel-1.avif",
 				alt: t(
 					"graphicDesignTwo.slides.hero",
 					"Sjećaš li se Doli Bel? — primary poster with fragmented typography forming a crooked house silhouette on a vivid red background."
 				),
 			},
 			{
-				src: "/doli-bel-left-1.webp",
+				src: "/doli-bel-left-1.avif",
 				alt: t(
 					"graphicDesignTwo.slides.idFront",
 					"Sjećaš li se Doli Bel? — ID badge front mockup with handwritten typography symbolizing vulnerability and innocence."
@@ -182,7 +182,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("graphicDesign.meta.shortOne", "Kreativ Fest"),
-			src: "/kreativ-festival-art-direction-1.webp",
+			src: "/kreativ-festival-art-direction-1.avif",
 			href: makeHref("/graphic-design/kreativ-festival-art-direction"),
 			alt: t(
 				"graphicDesignTwo.related.kreativ",
@@ -192,7 +192,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("graphicDesign.meta.shortThree", "Chippsters"),
-			src: "/chippsters-1.webp",
+			src: "/chippsters-1.avif",
 			href: makeHref("/graphic-design/chippsters-logo"),
 			alt: t(
 				"graphicDesignTwo.related.chippsters",
@@ -222,7 +222,7 @@ export const Mobile = () => {
 						title={t("graphicDesignTwo.aria.viewHero", "View hero poster")}
 					>
 						<img
-							src="/doli-bel-1.webp"
+							src="/doli-bel-1.avif"
 							sizes="100vw"
 							alt={t(
 								"graphicDesignTwo.slides.heroShort",
@@ -282,7 +282,7 @@ export const Mobile = () => {
 							title={t("graphicDesignTwo.aria.viewIdFront", "View ID badge front")}
 						>
 							<img
-								src="/doli-bel-left-1.webp"
+								src="/doli-bel-left-1.avif"
 								sizes="(max-width: 540px) 40vw, 400px"
 								className="object-cover w-full h-full flex-1"
 								loading="lazy"
@@ -374,7 +374,7 @@ export const meta: MetaFunction = ({ params }) => {
 		"Visual identity and poster design for the stage adaptation of “Sjećaš li se Doli Bel” at Kamerni Teatar 55, Sarajevo—handwritten typography, symbolic layout, and bold color storytelling by Amna Kolić."
 	);
 	const url = "/graphic-design/sjecas-li-se-doli-bel";
-	const image = "/doli-bel-right.webp";
+	const image = "/doli-bel-right.avif";
 	const imageAlt = t(
 		"imageAlt",
 		"Red theatre poster concept for “Sjećaš li se Doli Bel” with expressive handwritten typography forming a house-like layout."
@@ -393,7 +393,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
 		{ property: "article:section", content: t("section", "Graphic Design") },
 		{ property: "article:tag", content: t("tag1", "Theatre Poster") },

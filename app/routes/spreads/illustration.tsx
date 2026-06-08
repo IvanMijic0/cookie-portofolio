@@ -12,7 +12,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return < LeftPage ref={ref} >
 		<img
-			src="/illustration-left.webp"
+			src="/illustration-left.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -65,7 +65,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<img
-			src="/illustration-right.webp"
+			src="/illustration-right.avif"
 			className="w-full h-full object-cover z-0"
 			alt=""
 			role="presentation"
@@ -114,7 +114,7 @@ export const Mobile = () => {
 					className="m-0 absolute inset-0 pointer-events-none"
 				>
 					<img
-						src="/illustration-1.webp"
+						src="/illustration-1.avif"
 						sizes="100vw"
 						alt={t(
 							"illustration.meta.imageAlt",
@@ -206,7 +206,7 @@ export const meta: MetaFunction = ({ params }) => {
 		"Explore illustration projects by Amna Kolić: watercolor, digital painting, character and concept art—blending literature, folklore, and modern visual storytelling."
 	);
 	const url = "/illustration";
-	const image = "/illustration-right.webp";
+	const image = "/illustration-right.avif";
 	const imageAlt = t(
 		"illustration.meta.imageAlt",
 		"Illustration background artwork by Amna Kolić featuring detailed, painterly textures."

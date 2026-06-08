@@ -65,7 +65,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 						<div
 							className="
 								absolute inset-0 h-full w-full
-								bg-[url('/bookmark.webp')] bg-no-repeat bg-[length:115%_105%] bg-center
+								bg-[url('/bookmark.avif')] bg-no-repeat bg-[length:115%_105%] bg-center
 								border-white border-6 shadow-lg py-2
 								flex flex-col items-center justify-between
 								outline-none

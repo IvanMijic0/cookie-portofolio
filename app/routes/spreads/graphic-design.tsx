@@ -11,7 +11,7 @@ import { translate, type Lang } from "~/i18n/i18n";
 export const Left = forwardRef<HTMLDivElement>((_, ref) => (
 	<LeftPage ref={ref}>
 		<img
-			src="/graphic-design-left.webp"
+			src="/graphic-design-left.avif"
 			alt=""
 			className="w-full h-full object-cover z-0"
 			aria-hidden="true"
@@ -26,7 +26,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <RightPage ref={ref} showBookmark>
 		<img
-			src="/graphic-design-right.webp"
+			src="/graphic-design-right.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -46,8 +46,8 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 				itemProp="keywords"
 				content="graphic design, branding, editorial design, typography, visual identity, print design, portfolio"
 			/>
-			<meta itemProp="image" content="/graphic-design-right.webp" />
-			<meta itemProp="image" content="/graphic-design-right-cards.webp" />
+			<meta itemProp="image" content="/graphic-design-right.avif" />
+			<meta itemProp="image" content="/graphic-design-right-cards.avif" />
 			<link itemProp="mainEntityOfPage" href="/graphic-design" />
 			<div className="contents">
 				<div
@@ -89,7 +89,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 			</div>
 		</article>
 		<img
-			src="/graphic-design-right-cards.webp"
+			src="/graphic-design-right-cards.avif"
 			alt=""
 			aria-hidden="true"
 			role="presentation"
@@ -117,7 +117,7 @@ export const Mobile = () => {
 					className="m-0"
 				>
 					<img
-						src="/graphic-design-mobile.webp"
+						src="/graphic-design-mobile.avif"
 						sizes="100vw"
 						alt="Graphic Design — full-bleed hero showcasing editorial artwork"
 						className="block h-screen w-full object-cover"
@@ -189,7 +189,7 @@ export const Mobile = () => {
 
 				<div className="absolute inset-x-0 bottom-0 z-30 flex justify-center">
 					<img
-						src="/graphic-design-cards.webp"
+						src="/graphic-design-cards.avif"
 						sizes="(max-width: 420px) 14rem, 92vw"
 						alt="Highlights of recent graphic design projects: identity, editorial, and print cards"
 						className="h-auto w-[14rem] max-w-[14rem] xs:w-[92vw] xs:max-w-[720px] object-contain"
@@ -221,7 +221,7 @@ export const meta: MetaFunction = ({ params }) => {
 	);
 
 	const url = "/graphic-design";
-	const image = "/graphic-design-right.webp";
+	const image = "/graphic-design-right.avif";
 	const imageAlt = translate(
 		lang,
 		"graphicDesign.meta.imageAlt",
@@ -249,7 +249,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:image:width", content: "1200" },
 		{ property: "og:image:height", content: "630" },
 		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },

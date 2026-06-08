@@ -19,7 +19,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/austen-left.webp"
+			src="/austen-left.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -117,21 +117,21 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	const slides = useMemo(
 		() => [
 			{
-				src: "/austen-right-1.webp",
+				src: "/austen-right-1.avif",
 				alt: t(
 					"illustrationTwo.slides.grid.1",
 					"Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice."
 				),
 			},
 			{
-				src: "/austen-right-2.webp",
+				src: "/austen-right-2.avif",
 				alt: t(
 					"illustrationTwo.slides.grid.2",
 					"Watercolor cameo illustration inspired by Sense and Sensibility."
 				),
 			},
 			{
-				src: "/austen-right-3.webp",
+				src: "/austen-right-3.avif",
 				alt: t(
 					"illustrationTwo.slides.grid.3",
 					"Watercolor cameo illustration inspired by Emma."
@@ -144,7 +144,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => {
 	return (
 		<RightPage ref={ref} showBookmark>
 			<img
-				src="/austen-right.webp"
+				src="/austen-right.avif"
 				alt=""
 				role="presentation"
 				aria-hidden="true"
@@ -200,21 +200,21 @@ export const Mobile = () => {
 	const austenSlides = useMemo(
 		() => [
 			{
-				src: "/austen-right-1.webp",
+				src: "/austen-right-1.avif",
 				alt: t(
 					"illustrationTwo.slides.mobile.1",
 					"Pride and Prejudice — two hands pulling in opposite directions, symbolizing pride, misjudgment, and reconciliation."
 				),
 			},
 			{
-				src: "/austen-right-2.webp",
+				src: "/austen-right-2.avif",
 				alt: t(
 					"illustrationTwo.slides.mobile.2",
 					"Sense and Sensibility — a woman reaches for a man who doesn’t hold her firmly, while a steadier hand supports from behind."
 				),
 			},
 			{
-				src: "/austen-right-3.webp",
+				src: "/austen-right-3.avif",
 				alt: t(
 					"illustrationTwo.slides.mobile.3",
 					"Emma — the heroine plays chess with real people, alluding to her well-meaning yet misguided matchmaking."
@@ -235,7 +235,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("illustrationOne.title.titleOne", "Mountain") + " " + t("illustrationOne.title.titleTwo", "Fairy"),
-			src: "/mountain-fairy-right.webp",
+			src: "/mountain-fairy-right.avif",
 			href: makeHref ? makeHref("/illustration/mountain-fairy") : "/illustration/mountain-fairy",
 			alt: t(
 				"illustrationTwo.related.mountainFairy",
@@ -245,7 +245,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("illustrationThree.title.titleOne", "Bosnia in") + " " + t("illustrationThree.title.titleThree", "of Europe"),
-			src: "/mural.webp",
+			src: "/mural.avif",
 			href: makeHref ? makeHref("/illustration/mural") : "/illustration/mural",
 			alt: t(
 				"illustrationTwo.related.mural",
@@ -265,7 +265,7 @@ export const Mobile = () => {
 					className="absolute inset-0 m-0 z-0"
 				>
 					<img
-						src="/austen.webp"
+						src="/austen.avif"
 						sizes="100vw"
 						alt={t("illustrationTwo.meta.imageAlt", "Austen in Watercolor — editorial hero illustration background")}
 						className="w-full h-full object-cover opacity-80"
@@ -413,8 +413,8 @@ export const meta: MetaFunction = ({ params }) => {
 		"Watercolor illustration series inspired by Pride and Prejudice, Sense and Sensibility, and Emma—literary symbolism meets contemporary visual storytelling."
 	);
 	const url = "/illustration/austen-in-watercolor";
-	const img1 = "/austen-right-1.webp";
-	const img2 = "/austen-left.webp";
+	const img1 = "/austen-right-1.avif";
+	const img2 = "/austen-left.avif";
 	const imageAlt1 = tt(
 		"imageAlt1",
 		"Watercolor cameo illustration inspired by Jane Austen’s Pride and Prejudice"

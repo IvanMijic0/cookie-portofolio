@@ -16,7 +16,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 
 	return <LeftPage ref={ref}>
 		<img
-			src="/mountain-fairy-left.webp"
+			src="/mountain-fairy-left.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -80,7 +80,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 	<RightPage ref={ref} showBookmark>
 		<img
-			src="/mountain-fairy-right.webp"
+			src="/mountain-fairy-right.avif"
 			alt=""
 			role="presentation"
 			aria-hidden="true"
@@ -99,7 +99,7 @@ export const Right = forwardRef<HTMLDivElement>((_, ref) => (
 				Mountain Fairy — Visual Artwork
 			</h2>
 			<figure itemProp="image" itemScope itemType="https://schema.org/ImageObject" className="sr-only">
-				<meta itemProp="contentUrl" content="/mountain-fairy-right.webp" />
+				<meta itemProp="contentUrl" content="/mountain-fairy-right.avif" />
 				<meta itemProp="caption" content="Mountain Fairy illustration — right page background" />
 			</figure>
 		</article>
@@ -117,7 +117,7 @@ export const Mobile = () => {
 	const fairySlides = useMemo(
 		() => [
 			{
-				src: "/mountain-fairy-right.webp",
+				src: "/mountain-fairy-right.avif",
 				alt: t(
 					"illustrationOne.slides.hero",
 					"Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting."
@@ -138,7 +138,7 @@ export const Mobile = () => {
 		{
 			id: 1,
 			title: t("illustration.meta.shortTwo", "Austen Books"),
-			src: "/austen-right-1.webp",
+			src: "/austen-right-1.avif",
 			href: makeHref("/illustration/austen-in-watercolor"),
 			alt: t(
 				"illustrationTwo.slides.hero",
@@ -148,7 +148,7 @@ export const Mobile = () => {
 		{
 			id: 2,
 			title: t("illustration.meta.shortThree", "Mural"),
-			src: "/mural.webp",
+			src: "/mural.avif",
 			href: makeHref("/illustration/mural"),
 			alt: t(
 				"illustrationThree.meta.imageAlt",
@@ -190,7 +190,7 @@ export const Mobile = () => {
 							title={t("illustrationOne.slides.heroTitle", "View Mountain Fairy poster")}
 						>
 							<img
-								src="/mountain-fairy-right.webp"
+								src="/mountain-fairy-right.avif"
 								sizes="(max-width: 640px) 100vw, 640px"
 								alt={t(
 									"illustrationOne.slides.hero",
@@ -322,7 +322,7 @@ export const meta: MetaFunction = ({ params }) => {
 		"Folklore-inspired concept art of the Bosnian mountain fairy (planinska vila), rendered in digital paint and rooted in cultural heritage."
 	);
 	const url = "/illustration/mountain-fairy";
-	const image = "/mountain-fairy-right.webp";
+	const image = "/mountain-fairy-right.avif";
 	const imageAlt = t(
 		"imageAlt",
 		"Mountain Fairy — digital illustration of the Bosnian planinska vila, crowned with wildflowers and adorned with horns in a mystical forest setting."
@@ -345,7 +345,7 @@ export const meta: MetaFunction = ({ params }) => {
 		{ property: "og:url", content: url },
 		{ property: "og:image", content: image },
 		{ property: "og:image:alt", content: imageAlt },
-		{ property: "og:image:type", content: "image/webp" },
+		{ property: "og:image:type", content: "image/avif" },
 		{ property: "og:locale", content: lang === "ba" ? "bs_BA" : "en_US" },
 		{ property: "article:section", content: "Illustration" },
 		{ name: "twitter:card", content: "summary_large_image" },
