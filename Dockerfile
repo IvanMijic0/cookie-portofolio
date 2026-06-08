@@ -24,7 +24,7 @@ ENV HOST=0.0.0.0
 
 # minimal files to run the server build
 COPY package*.json ./
-COPY --from=build /app/build ./build
+COPY --from=build /app/dist ./dist
 COPY --from=build /app/node_modules ./node_modules
 # if your app serves /public at runtime, keep this:
 COPY ./public ./public
