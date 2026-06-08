@@ -2,9 +2,8 @@ import { forwardRef } from "react";
 import LeftPage from "~/components/LeftPage";
 import RightPage from "~/components/RightPage";
 import MobileWrapper from "~/components/MobileWrapper";
-import { graphicDesignNavButtons } from "~/config";
-import { motion } from 'framer-motion';
 import { useTranslate } from "~/context/I18nProvider";
+import { graphicDesignNavButtons } from "~/config";
 import type { MetaFunction } from "react-router";
 import { translate, type Lang } from "~/i18n/i18n";
 
@@ -167,10 +166,8 @@ export const Mobile = () => {
 						itemType="https://schema.org/SiteNavigationElement"
 						className="mt-6 w-full"
 					>
-						<motion.div
+						<div
 							className="pointer-events-auto mx-auto flex w-full items-center justify-between gap-3"
-							initial={false}
-							transition={{ duration: 0.2, ease: "easeInOut" }}
 						>
 							{graphicDesignNavButtons(t, makeHref).map(({ label, to }) => (
 								<a
@@ -183,7 +180,7 @@ export const Mobile = () => {
 									<span itemProp="name">{label}</span>
 								</a>
 							))}
-						</motion.div>
+						</div>
 					</nav>
 				</article>
 

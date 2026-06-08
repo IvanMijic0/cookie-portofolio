@@ -4,7 +4,6 @@ import LeftPage from "~/components/LeftPage";
 import RightPage from "~/components/RightPage";
 import MobileWrapper from "~/components/MobileWrapper";
 import { BASE_URL, photographyNavButtons } from "~/config";
-import { motion } from 'framer-motion';
 import { useTranslate } from "~/context/I18nProvider";
 import { translate, type Lang } from "~/i18n/i18n";
 import type { MetaFunction } from "react-router";
@@ -123,10 +122,8 @@ export const Mobile = () => {
 							itemScope
 							itemType="https://schema.org/SiteNavigationElement"
 						>
-							<motion.div
+							<div
 								className="mx-auto w-full justify-between flex items-center gap-3 pointer-events-auto"
-								initial={false}
-								transition={{ duration: 0.2, ease: "easeInOut" }}
 							>
 								{photographyNavButtons(t, makeHref).map(({ label, to }) => (
 									<a
@@ -139,7 +136,7 @@ export const Mobile = () => {
 										<span itemProp="name">{label}</span>
 									</a>
 								))}
-							</motion.div>
+							</div>
 						</nav>
 					</div>
 					<div className="flex w-full items-end justify-between gap-3">

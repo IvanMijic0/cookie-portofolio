@@ -3,7 +3,6 @@ import { CModified } from "~/assets";
 import LeftPage from "~/components/LeftPage";
 import RightPage from "~/components/RightPage";
 import MobileWrapper from "~/components/MobileWrapper";
-import { motion } from "framer-motion";
 import { contactButtons } from "~/config";
 import ScreenTextFit from "~/components/UI/ScreenTextFit";
 import Lightbox, { isImageSlide } from "yet-another-react-lightbox";
@@ -65,7 +64,7 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 						const isExternal = to?.startsWith("http");
 						const isEmail = to?.startsWith("mailto:");
 						return (
-							<motion.a
+							<a
 								key={label}
 								href={to || undefined}
 								target={isExternal ? "_blank" : undefined}
@@ -73,14 +72,11 @@ export const Left = forwardRef<HTMLDivElement>((_, ref) => {
 								aria-label={label}
 								title={label}
 								itemProp={isEmail ? "email" : "sameAs"}
-								whileHover={{ scale: 1.05, rotate: -1 }}
-								whileTap={{ scale: 0.95, rotate: 1 }}
-								transition={{ type: "spring", stiffness: 300, damping: 15 }}
-								className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg"
+								className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg transform transition-all duration-200 ease-out hover:scale-105 hover:-rotate-1 active:scale-95 active:rotate-1"
 							>
 								<Icon className="h-6 w-6 2xl:w-8 2xl:h-8" color="white" aria-hidden />
 								<span className="sr-only">{label}</span>
-							</motion.a>
+							</a>
 						);
 					})}
 				</div>
@@ -213,7 +209,7 @@ export const Mobile = () => {
 								const mail = isMailto(to);
 
 								return (
-									<motion.a
+									<a
 										key={label}
 										href={to}
 										target={external ? "_blank" : undefined}
@@ -224,14 +220,11 @@ export const Mobile = () => {
 										onClick={(e) => {
 											e.stopPropagation();
 										}}
-										whileHover={{ scale: 1.03, rotate: -1 }}
-										whileTap={{ scale: 0.97, rotate: 1 }}
-										transition={{ type: "spring", stiffness: 250, damping: 18 }}
-										className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg pointer-events-auto"
+										className="z-50 inline-flex items-center justify-center bg-[#363636] rounded-full p-3 shadow-md hover:shadow-lg pointer-events-auto transform transition-all duration-200 ease-out hover:scale-103 hover:-rotate-1 active:scale-97 active:rotate-1"
 									>
 										<Icon className="h-10 w-10" color="white" aria-hidden />
 										<span className="sr-only">{label}</span>
-									</motion.a>
+									</a>
 								);
 							})}
 						</div>
