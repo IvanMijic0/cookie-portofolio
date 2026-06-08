@@ -310,7 +310,7 @@ export const Mobile = () => {
 					aria-hidden="true"
 					className="pointer-events-none absolute bottom-0 z-20 max-w-[45vh] object-contain object-bottom-right right-0"
 					loading="eager"
-					decoding="async"
+					decoding="sync"
 					fetchPriority="high"
 				/>
 				<div
