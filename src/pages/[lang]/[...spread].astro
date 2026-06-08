@@ -108,7 +108,9 @@ try {
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/bodoni-moda-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
-		<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		{!isMobile && (
+			<link rel="preload" as="font" href="/fonts/libre-bodoni.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
+		)}
 		{!isMobile && (
 			<link rel="preload" as="font" href="/fonts/libre-bodoni-italic.woff2" type="font/woff2" crossorigin="anonymous" fetchpriority="low" />
 		)}
