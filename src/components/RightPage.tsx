@@ -7,8 +7,6 @@ import { PageContext } from "~/context/page";
 
 import Star from "~/assets/Star";
 
-const AnimatedBookmarkIcon = lazy(() => import("~/components/AnimatedBookmark"));
-
 type RightPageProps = PropsWithChildren<{ showBookmark?: boolean }>;
 
 const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
@@ -16,6 +14,7 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 		const [open, setOpen] = useState(false);
 		const [hovered, setHovered] = useState(false);
 		const [interacted, setInteracted] = useState(false);
+		const [BookmarkIcon, setBookmarkIcon] = useState<any>(null);
 		const { goToSpread, ready } = useFlipbook();
 		const { t, makeHref } = useTranslate();
 		const { insideFlipPage } = useContext(PageContext);
@@ -27,6 +26,12 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 		const stopBubble = (e: SyntheticEvent) => {
 			e.stopPropagation();
 		};
+
+		useEffect(() => {
+			import("~/components/AnimatedBookmark").then((module) => {
+				setBookmarkIcon(() => module.default);
+			});
+		}, []);
 
 		useEffect(() => {
 			if (open || hovered) {
@@ -128,12 +133,10 @@ const RightPage = forwardRef<HTMLDivElement, RightPageProps>(
 									});
 								}}
 							>
-								{interacted ? (
-									<Suspense fallback={null}>
-										<AnimatedBookmarkIcon
-											state={open ? "up" : hovered ? "down" : "star"}
-										/>
-									</Suspense>
+								{BookmarkIcon && interacted ? (
+									<BookmarkIcon
+										state={open ? "up" : hovered ? "down" : "star"}
+									/>
 								) : (
 									<div style={{ width: 70, height: 70, display: "flex", alignItems: "center", justifyContent: "center" }}>
 										<Star className="w-[63px] h-[63px]" />
