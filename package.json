@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "astro build && node scripts/generate-preloads.js",
-    "dev": "astro dev",
+    "build": "node scripts/patch-page-flip.js && astro build && node scripts/generate-preloads.js",
+    "dev": "node scripts/patch-page-flip.js && astro dev",
     "start": "node dist/server/entry.mjs",
     "typecheck": "tsc"
   },
