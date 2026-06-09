@@ -22,7 +22,7 @@ import { useFlipbook } from "~/context/flipbook";
 import clsx from "clsx";
 import { PageContext } from "~/context/page";
 
-const PageActiveContext = createContext<number>(0);
+const PageActiveContext = createContext<{ currentPage: number; renderAll: boolean }>({ currentPage: 0, renderAll: false });
 
 type PageFlipApi = { flip: (pageIndex: number) => void; turnToPage?: (pageIndex: number) => void };
 type FlipBookRef = { pageFlip: () => PageFlipApi | undefined };
@@ -43,7 +43,7 @@ function parsePathname(pathname: string): { lang: Lang; slug: string } {
 
 const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; index: number; isRight?: boolean }>(
 	({ Component, index, isRight }, ref) => {
-		const currentPage = useContext(PageActiveContext);
+		const { currentPage, renderAll } = useContext(PageActiveContext);
 		const [hasRendered, setHasRendered] = useState(false);
 
 		// Virtualized window: current spread (currentPage, currentPage+1) + adjacent spreads
@@ -55,7 +55,7 @@ const FlipPage = forwardRef<HTMLDivElement, { Component: ComponentType<any>; ind
 			}
 		}, [isNear]);
 
-		const shouldRender = isNear || hasRendered;
+		const shouldRender = isNear || hasRendered || renderAll;
 
 		return (
 			<div ref={ref} className={clsx("page relative w-full h-full overflow-hidden", isRight ? "page--right" : "page--left")}>
@@ -130,6 +130,35 @@ const DesktopFlipbook = () => {
 	const startPage = spreads.indexOf(validatedSlug as any) * 2;
 
 	const [currentPage, setCurrentPage] = useState<number>(startPage);
+	const [renderAll, setRenderAll] = useState(false);
+
+	useEffect(() => {
+		let triggered = false;
+		const triggerRenderAll = () => {
+			if (triggered) return;
+			triggered = true;
+			setRenderAll(true);
+			cleanup();
+		};
+
+		// 3 seconds timeout to start preloading of all remaining pages in the background
+		const timer = setTimeout(triggerRenderAll, 3000);
+
+		// Eagerly trigger preload on any user interaction (to load pages before they are flipped to)
+		const events = ["mousedown", "mousemove", "keydown", "touchstart"];
+		const cleanup = () => {
+			clearTimeout(timer);
+			events.forEach(event => {
+				window.removeEventListener(event, triggerRenderAll);
+			});
+		};
+
+		events.forEach(event => {
+			window.addEventListener(event, triggerRenderAll, { passive: true });
+		});
+
+		return cleanup;
+	}, []);
 
 	const allPages = useMemo<JSX.Element[]>(() => {
 		return spreads.flatMap((key, idx) => {
@@ -234,7 +263,7 @@ const DesktopFlipbook = () => {
 	return (
 		<div className="fixed inset-0 overflow-hidden w-full h-full">
 			<div className="absolute inset-0 flex justify-center items-center">
-				<PageActiveContext.Provider value={currentPage}>
+				<PageActiveContext.Provider value={{ currentPage, renderAll }}>
 					<HTMLFlipBook key={remountId} ref={activeRef} {...bookProps} />
 				</PageActiveContext.Provider>
 			</div>
