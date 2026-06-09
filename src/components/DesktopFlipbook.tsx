@@ -206,7 +206,7 @@ const DesktopFlipbook = () => {
 	const bookProps = {
 		width: dimensions.width,
 		height: dimensions.height,
-		flippingTime: 450,
+		flippingTime: 700,
 		startZIndex: 0,
 		maxShadowOpacity: 0.8,
 		startPage: currentPageRef.current,
