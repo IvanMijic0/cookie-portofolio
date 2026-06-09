@@ -146,11 +146,7 @@ h1 {
 			rgba(0, 0, 0, 0) 60%);
 }
 
-.stf__item {
-	will-change: transform, clip-path, -webkit-clip-path;
-	transform: translateZ(0);
-}
-
+.stf__item,
 .stf__block,
 .stf__page,
 .stf__parent canvas,
